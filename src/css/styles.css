@@ -30,25 +30,44 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
+    padding: 8px 0;
 }
 
 .navbar__brand {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex: 1;
 }
 
-.navbar__logo-img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
+.navbar__logo-link {
+    text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--principal);
+    border-radius: 3px;
+    transition: all 0.3s ease;
 }
 
 .navbar__logo {
-    font-size: 2.3rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--principal);
+    margin: 0;
 }
 
 .navbar__logo span {
@@ -59,6 +78,10 @@ img {
     display: flex;
     list-style: none;
     gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
 }
 
 .navbar__menu a {
@@ -71,6 +94,8 @@ img {
     display: flex;
     gap: 10px;
     align-items: center;
+    flex: 1;
+    justify-content: center;
 }
 
 .navbar__search {
@@ -164,19 +189,39 @@ img {
 
 @media (max-width: 768px) {
 
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
+    .navbar__brand,
+    .navbar__menu,
+    .navbar__right {
+        flex: unset; 
     }
 
-    .navbar__menu {
+    .navbar {
+        flex-wrap: wrap; 
+    }
+
+    .hamburger {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .navbar__menu, 
+    .navbar__right {
+        display: none;
+        width: 100%;
         flex-direction: column;
         align-items: center;
+        gap: 15px;
+        margin-top: 15px;
     }
 
-    .navbar__right {
-        flex-direction: column;
+    .navbar.active .navbar__menu,
+    .navbar.active .navbar__right {
+        display: flex;
     }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
     .hero {
         flex-direction: column;

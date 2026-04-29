@@ -6,6 +6,7 @@
     <title>TipPlan</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./src/images/logo.png">
 
     <link rel="stylesheet" href="./src/css/styles.css">
 </head>
@@ -14,12 +15,18 @@
 
 <header class="header">
     <div class="container">
-        <nav class="navbar">
-
+        <nav class="navbar" id="navbar">
             <div class="navbar__brand">
-                <img src="./src/images/logo.png" alt="logo" class="navbar__logo-img">
-                <h1 class="navbar__logo">Tip<span>Plan</span></h1>
+                <a href="index.html" class="navbar__logo-link">
+                    <h1 class="navbar__logo">Tip<span>Plan</span></h1>
+                </a>
             </div>
+
+            <button class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
             <ul class="navbar__menu">
                 <li><a href="#">Home</a></li>
@@ -31,7 +38,6 @@
                 <input type="text" placeholder="Buscar..." class="navbar__search">
                 <a href="#" class="navbar__login">Login</a>
             </div>
-
         </nav>
     </div>
 </header>
@@ -44,7 +50,7 @@
             con todo lo que necesitas en un solo lugar
         </h2>
 
-        <a href="#" class="button">COMENCEMOS</a>
+        <a href="#" class="button">PLANIFICAR MI AVENTURA</a>
     </div>
 
     <div class="hero__img">
@@ -86,6 +92,7 @@
 
     </div>
 </section>
+<script src="./src/js/main.js"></script>
 
 </body>
 </html>
