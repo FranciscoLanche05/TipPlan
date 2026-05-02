@@ -425,3 +425,215 @@ img {
         padding: 0.4rem 1rem;
     }
 }
+
+/* Carrusel de continentes */
+.continents {
+    background-color: var(--fondo);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.continents__title {
+    color: var(--principal);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.continents__track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s ease;
+    flex-wrap: nowrap;
+}
+
+.continent {
+    flex: 0 0 calc((100% - 2rem) / 3);
+    background-color: rgb(255, 255, 255);
+    padding: 0rem;
+    border-radius: 15px;
+    text-align: center;
+    
+}
+
+.continent img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.continent {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.continent h4 {
+    margin-top: 0.7rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--principal);
+    letter-spacing: 0.5px;
+}
+
+.continent:hover h4 {
+    color: var(--secundario);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.continent:hover:not(.active) {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden; 
+}
+
+.carousel-btn {
+    position: absolute;
+    
+    top: 120px;
+    transform: translateY(-50%);
+    
+    z-index: 10;
+
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+
+    width: 45px;
+    height: 45px;
+
+    font-size: 2rem;
+
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.carousel-btn:hover {
+    background: var(--secundario);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-continent {
+    left: 15px;
+}
+
+.next-continent {
+    right: 15px;
+}
+
+/*================Filtros-Etiquetas=================*/
+.filters {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+/* CONTENIDO ENCIMA DEL FONDO */
+.filters .container {
+    position: relative;
+    z-index: 2;
+}
+
+.filters__title {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.filters__buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    color: var(--principal);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: var(--secundario);
+    color: white;
+}
+
+.filter-btn.active {
+    background-color: var(--secundario);
+    color: white;
+}
+
+.filters__images {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.filters__images img {
+    width: 30%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* ================= Fondo con Paralelogramos ================= */
+.filters__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.filters__bg div {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+
+    background-size: cover;
+    background-position: center;
+
+    clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+}
+
+
+.filters__bg div:nth-child(1) {
+    left: -15%;
+    background-image: url('../images/playa3la-digue-seychelles_bea7ddd0_1255x836.jpg');
+}
+
+.filters__bg div:nth-child(2) {
+    left: 15%;
+    background-image: url('../images/cascada3zambia-cataratas-victoria12.jpg');
+}
+
+.filters__bg div:nth-child(3) {
+    left: 45%;
+    background-image: url('../images/castillo2S-AlcazardeSegovia.jpg');
+}
+
+.filters__bg div:nth-child(4) {
+    left: 75%;
+    background-image: url('../images/Lago3NahuelArgentina.jpg');
+}
+
+.filters__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
