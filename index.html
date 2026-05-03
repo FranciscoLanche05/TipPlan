@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <body>
 
-<header class="header">
+<header class="header" id="header">
     <div class="container">
         <nav class="navbar" id="navbar">
             <div class="navbar__brand">
@@ -29,13 +31,14 @@
             </button>
 
             <ul class="navbar__menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#about">Sobre nosotros</a></li>
+                <li><a href="#destinations">Destinos</a></li>
+                <li><a href="#contact">Contáctanos</a></li>
             </ul>
 
             <div class="navbar__right">
-                <input type="text" placeholder="Buscar..." class="navbar__search">
+                <input type="text" placeholder="Buscar destinos..." class="navbar__search">
                 <a href="#" class="navbar__login">Login</a>
             </div>
         </nav>
@@ -50,7 +53,7 @@
             con todo lo que necesitas en un solo lugar
         </h2>
 
-        <a href="#" class="button">PLANIFICAR MI AVENTURA</a>
+        <a href="#destinations" class="button">PLANIFICAR MI AVENTURA</a>
     </div>
 
     <div class="hero__img">
@@ -58,7 +61,7 @@
     </div>
 </main>
 
-<section class="about">
+<section class="about" id="about">
     <div class="container">
 
         <h3 class="about__title">
@@ -93,8 +96,8 @@
     </div>
 </section>
 
-<section class="destinations">
-    <div class="container">
+<section class="destinations" id="destinations">
+    <div class="destinations__container">
         <h3 class="about__title">
             Nuestros destinos más populares
         </h3>
@@ -109,7 +112,14 @@
                         se encuentra la famosa Virgen de Quito, una majestuosa escultura que representa 
                         la identidad cultural e histórica de la capital ecuatoriana.
                     </p>
-                    <a href="https://maps.app.goo.gl/jh7iQkb7uZhAUgEq8" class="button-map">VER EN EL MAPA</a>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/VbivP6PX1syyeRz86" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -123,7 +133,14 @@
                         norte y sur. Es un lugar ideal para conocer sobre geografía, cultura y 
                         tradiciones ecuatorianas.
                     </p>
-                    <a href="https://maps.app.goo.gl/g4tKZARB7Prkp8tP6" class="button-map">VER EN EL MAPA</a>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/6UNiyqXYHAWHKqDv6" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -137,7 +154,14 @@
                         arquitectura detallada, vitrales y torres que permiten disfrutar de una vista 
                         espectacular de Quito.
                     </p>
-                    <a href="https://maps.app.goo.gl/nFDbci71dV8NMwLf6" class="button-map">VER EN EL MAPA</a>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/CojBZK24ebt8d7xK7" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -150,9 +174,48 @@
                         espacio turístico ofrece áreas verdes, restaurantes, monumentos, centros comerciales y zonas recreativas, 
                         convirtiéndose en un punto ideal para pasear, disfrutar del paisaje y conocer la cultura de la ciudad.
                     </p>
-                    <a href="https://maps.app.goo.gl/hutbjLBCTcMi2QgbA" class="button-map">VER EN EL MAPA</a>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/1ass3muhnHK26gAi7" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="contact__container">
+        <h3 class="about__title">
+            Contáctanos
+        </h3>
+        <div class="contact__wrapper">
+            <h4>
+                Ingresa tus datos
+            </h4>
+            <form action="#">
+                <input type="text" name="nombre" id="first_name" placeholder="Nombre" required>
+                <input type="text" name="apellido" id="last_name" placeholder="Apellido" required>
+                <input type="email" name="correo" id="email" placeholder="alguien@example.com" required>
+                <input type="date" name="fecha" id="date" required>
+                <div class="destination__interest">
+                    <label for="interests">Escoge el destino que más te llamó la atención</label>
+                    <select name="interests" id="interests" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="cultural">Virgen del Panecillo</option>
+                        <option value="cultural">Mitad del Mundo</option>
+                        <option value="cultural">Basílica del Voto Nacional</option>
+                        <option value="cultural">Malecón 2000</option>
+                        <option value="cultural">Solo busco más información</option>
+                    </select>
+                </div>
+                <p class="advice"><i class="fa-regular fa-envelope"></i> Nos pondremos en contacto contigo</p>
+                <button type="submit" class="button">Enviar</button>
+            </form>
         </div>
     </div>
 </section>
