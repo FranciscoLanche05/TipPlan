@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --principal: #2AA3A8;
     --secundario: #F47C5C;
@@ -10,6 +14,7 @@
 body {
     font-family: var(--fuente);
     margin: 0;
+    margin-top: 90px;
 }
 
 .container {
@@ -25,20 +30,34 @@ img {
 
 .header {
     background-color: var(--fondo);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.header h1 {
+    font-size: 50px;
+}
+
+.header li {
+    font-size: 17px;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
+    padding: 20px 0;
 }
 
 .navbar__brand {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex: 1;
+    flex: 0.8;
 }
 
 .navbar__logo-link {
@@ -220,17 +239,21 @@ img {
 
     .navbar__menu, 
     .navbar__right {
-        display: none;
         width: 100%;
         flex-direction: column;
         align-items: center;
         gap: 15px;
         margin-top: 15px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 1s ease, max-height 0.4s ease;
     }
 
     .navbar.active .navbar__menu,
     .navbar.active .navbar__right {
-        display: flex;
+        opacity: 1;
+        max-height: 500px;
     }
 
     .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -336,11 +359,33 @@ img {
 }
 
 .destination .button-map:hover {
-    background-color: white;
-    color: var(--secundario);
-    border: 2px solid var(--secundario);
+    background-color: var(--principal);
+    color: white;
+    border: 2px solid var(--principal);
     transform: scale(1.05);
     padding: 0.5rem 1.2rem;
+}
+
+.destination-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+    gap: 5.5rem;
+    padding: 1rem;
+}
+
+.destination-icons i {
+    font-size: 2rem;
+    color: var(--secundario);
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.destination-icons i:hover {
+    font-size: 2rem;
+    color: var(--principal);
+    transform: scale(1.25);
 }
 
 @media (max-width: 1024px) {
@@ -360,7 +405,7 @@ img {
     }
 
     .destination {
-        width: 90%;
+        width: 85%;
         flex-direction: column;
         gap: 1rem;
     }
@@ -403,8 +448,7 @@ img {
     }
 
     .destination {
-        width: 95%;
-        padding: 0.8rem;
+        width: 80%;
     }
 
     .destination h4 {
@@ -424,4 +468,124 @@ img {
     .destination .button-map:hover {
         padding: 0.4rem 1rem;
     }
+}
+
+.contact {
+    background-color: var(--fondo);
+    padding: 3rem 0;
+}
+
+.contact__wrapper {
+    width: 45%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: var(--principal);
+    border: solid 1px var(--principal);
+}
+
+.contact__wrapper h4, form {
+    text-align: center;
+}
+
+.contact__wrapper h4 {
+    color: var(--blanco);
+    font-size: 1.5rem;
+}
+
+.contact__wrapper form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+}
+
+.contact__wrapper form input {
+    width: 70%;
+    padding: 0.8rem;
+    border-radius: 20px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.contact__wrapper form label {
+    color: var(--blanco);
+    padding-right: 1rem;
+}
+
+.contact__wrapper form select {
+    border-radius: 20px;
+    padding: 0.2rem;
+}
+
+.contact__wrapper form p, i {
+    color: var(--blanco);
+    padding: 0 1rem;
+}
+
+.contact__wrapper button {
+    border-radius: 20px;
+    background-color: var(--secundario);
+    color: white;
+    border: 1px solid var(--secundario);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    font-size: 15px;
+}
+
+@media (max-width: 768px) {
+    .contact__wrapper {
+        width: 85%;
+        padding: 1.5rem 1rem;
+    }
+
+    .contact__wrapper h4 {
+        font-size: 1.3rem;
+    }
+
+    .contact__wrapper form input {
+        width: 80%;
+    }
+
+    .contact__wrapper form p {
+        text-align: center;
+    }
+
+    .contact__wrapper form select {
+        width: 35%;
+    }
+
+    .contact__wrapper button {
+        width: 50%;
+        padding: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact__wrapper {
+        width: 80%;
+    }
+
+    .contact__wrapper form input {
+        width: 80%;
+        font-size: 0.9rem;
+    }
+
+    .contact__wrapper h4 {
+        font-size: 1.2rem;
+    }
+
+    .contact__wrapper button {
+        width: 70%;
+        font-size: 0.9rem;
+    }
+}
+
+#about,
+#destinations,
+#contact {
+    scroll-margin-top: 90px;
 }
