@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TipPlan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./src/images/logo.png">
+
+    <link rel="stylesheet" href="./src/css/styles.css">
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<body>
+
+<header class="header" id="header">
+    <div class="container">
+        <nav class="navbar" id="navbar">
+            <div class="navbar__brand">
+                <a href="index.html" class="navbar__logo-link">
+                    <h1 class="navbar__logo">Tip<span>Plan</span></h1>
+                </a>
+            </div>
+
+            <button class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="navbar__menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#about">Sobre nosotros</a></li>
+                <li><a href="#destinations">Destinos</a></li>
+                <li><a href="#contact">Contáctanos</a></li>
+            </ul>
+
+            <div class="navbar__right">
+                <input type="text" placeholder="Buscar destinos..." class="navbar__search">
+                <a href="#" class="navbar__login">Login</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="hero">
+    <div class="hero__text">
+        <h2>
+            Tu próxima aventura empieza aquí. 
+            Planifica, organiza y vive cada viaje sin complicaciones,
+            con todo lo que necesitas en un solo lugar
+        </h2>
+
+        <a href="#destinations" class="button">PLANIFICAR MI AVENTURA</a>
+    </div>
+
+    <div class="hero__img">
+        <img src="./src/images/image1.jpg" alt="viaje">
+    </div>
+</main>
+
+<section class="about" id="about">
+    <div class="container">
+
+        <h3 class="about__title">
+            Guías y consejos para tus próximas aventuras
+        </h3>
+
+        <div class="about__content">
+            
+            <div class="about__img">
+                <img src="./src/images/image2.jpg" alt="viajeros">
+            </div>
+
+            <div class="about__text">
+                <p>
+                    Nuestra visión es transformar la manera en que las personas viven sus viajes,
+                    convirtiendo la planificación en una experiencia simple, intuitiva y emocionante.
+                </p>
+
+                <p>
+                    Buscamos que cada viajero tenga el control total de su aventura,
+                    organizando cada detalle con facilidad y confianza.
+                </p>
+
+                <p>
+                    Aspiramos a ser el punto de partida de experiencias inolvidables,
+                    donde cada destino se convierta en una historia por descubrir.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="destinations" id="destinations">
+    <div class="destinations__container">
+        <h3 class="about__title">
+            Nuestros destinos más populares
+        </h3>
+        <div class="destinations__wrapper">
+            <div class="destination">
+                <img src="./src/images/panecillo.jpg" alt="destino 1">
+                <div class="destination-content">
+                    <h4>Virgen del Panecillo, Quito</h4>
+                    <p>
+                        El Panecillo es uno de los miradores más emblemáticos de Quito, ubicado sobre 
+                        una colina que ofrece vistas panorámicas impresionantes de la ciudad. En su cima 
+                        se encuentra la famosa Virgen de Quito, una majestuosa escultura que representa 
+                        la identidad cultural e histórica de la capital ecuatoriana.
+                    </p>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/VbivP6PX1syyeRz86" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination">
+                <img src="./src/images/mitad_del_mundo.jpg" alt="destino 2">
+                <div class="destination-content">
+                    <h4>Mitad Del Mundo, Quito</h4>
+                    <p>
+                        Ciudad Mitad del Mundo es uno de los destinos turísticos más famosos del Ecuador,
+                        donde puedes visitar la línea ecuatorial que divide el planeta en hemisferio
+                        norte y sur. Es un lugar ideal para conocer sobre geografía, cultura y 
+                        tradiciones ecuatorianas.
+                    </p>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/6UNiyqXYHAWHKqDv6" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination">
+                <img src="./src/images/basilica.jpg" alt="destino 3">
+                <div class="destination-content">
+                    <h4>Basílica del Voto Nacional, Quito</h4>
+                    <p>
+                        Basílica del Voto Nacional es una impresionante iglesia de estilo neogótico 
+                        considerada una de las más grandes de América Latina. Destaca por su 
+                        arquitectura detallada, vitrales y torres que permiten disfrutar de una vista 
+                        espectacular de Quito.
+                    </p>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/CojBZK24ebt8d7xK7" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination">
+                <img src="./src/images/malecon_2000.jpg" alt="destino 3">
+                <div class="destination-content">
+                    <h4>Malecón 2000, Guayaquil</h4>
+                    <p>
+                        Malecón 2000 es uno de los lugares más representativos de Guayaquil, ubicado a orillas del río Guayas. Este moderno 
+                        espacio turístico ofrece áreas verdes, restaurantes, monumentos, centros comerciales y zonas recreativas, 
+                        convirtiéndose en un punto ideal para pasear, disfrutar del paisaje y conocer la cultura de la ciudad.
+                    </p>
+                    <div class="destination-icons">
+                        <a href="https://maps.app.goo.gl/1ass3muhnHK26gAi7" class="icon-map" title="mapa" target="_blank">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                        <a href="#contact" class="icon-contact">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CARRUSEL DE CONTINENTES ==================== -->
+<section class="galeria">
+    <h2>¡Exploremos otros continentes y subcontinentes!</h2>
+
+    <div class="container"> <!-- 👈 AÑADE ESTO -->
+        <div class="slider">
+
+            <input type="radio" name="slide" id="slide1" checked>
+            <input type="radio" name="slide" id="slide2">
+            <input type="radio" name="slide" id="slide3">
+            <input type="radio" name="slide" id="slide4">
+            <input type="radio" name="slide" id="slide5">
+            <input type="radio" name="slide" id="slide6">
+            <input type="radio" name="slide" id="slide7">
+
+            <div class="slides">
+
+                <div class="slide">
+                    <img src="./src/images/Norteamerica.jpeg" alt="Norteamérica">
+                    <a href="#" class="boton-texto">Norteamérica</a>
+                </div>
+
+                <div class="slide">
+                    <img src="./src/images/Sudamerica.jpg" alt="Sudamérica">
+                    <a href="#" class="boton-texto">Sudamérica</a>
+                </div>
+
+                <div class="slide">
+                    <img src="./src/images/Europa.jpg" alt="Europa">
+                    <a href="#" class="boton-texto">Europa</a>
+                </div>
+
+                <div class="slide">
+                    <img src="./src/images/Africa.jpg" alt="África">
+                    <a href="#" class="boton-texto">África</a>
+                </div>
+
+                <div class="slide">
+                    <img src="./src/images/Asia.jpeg" alt="Asia">
+                    <a href="#" class="boton-texto">Asia</a>
+                </div>
+
+                <div class="slide">
+                    <img src="./src/images/Oceania.jpg" alt="Oceanía">
+                    <a href="#" class="boton-texto">Oceanía</a>
+                </div>
+
+                <div class="slide">
+                    <img src="./src/images/Antartida.jpg" alt="Antártida">
+                    <a href="#" class="boton-texto">Antártida</a>
+                </div>
+
+            </div>
+            
+            <div class="navegacion">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+                <label for="slide4"></label>
+                <label for="slide5"></label>
+                <label for="slide6"></label>
+                <label for="slide7"></label>
+            </div>
+
+        </div>
+    </div> <!-- 👈 CIERRE -->
+</section>
+
+<!-- ==================== FILTROS ==================== -->
+<section class="filtros">
+
+    <h2>¿Aún no sabes a dónde ir? ¡Busquemos por filtros!</h2>
+
+    <input type="radio" name="filtro" id="cascadas" checked>
+    <input type="radio" name="filtro" id="castillos">
+    <input type="radio" name="filtro" id="lagos">
+    <input type="radio" name="filtro" id="playas">
+    <input type="radio" name="filtro" id="templos">
+    <input type="radio" name="filtro" id="volcanes">
+
+    <div class="filtros-botones">
+        <label for="cascadas">Cascadas</label>
+        <label for="castillos">Castillos</label>
+        <label for="lagos">Lagos</label>
+        <label for="playas">Playas</label>
+        <label for="templos">Templos</label>
+        <label for="volcanes">Volcanes</label>
+    </div>
+
+    <!-- CONTENIDO -->
+    <div class="contenidos">
+
+        <div class="grupo cascadas">
+            <img src="./src/images/cascadasigazu.jpg">
+            <img src="./src/images/Cascada2niagara-falls---aerial-view--niagara-falls-tourism-.3l0.jpg">
+            <img src="./src/images/cascada3zambia-cataratas-victoria12.jpg">
+        </div>
+
+        <!-- CASTILLOS -->
+        <div class="grupo castillos">
+            <img src="./src/images/Castillo-de-Neuschwanstein.jpg">
+            <img src="./src/images/castillo2S-AlcazardeSegovia.jpg">
+            <img src="./src/images/Castillo3-de-Liechtenstein.jpg">
+        </div>
+
+        <!-- LAGOS -->
+        <div class="grupo lagos">
+            <img src="./src/images/lago-di-braies-italia_1d38ca01_1254x836.jpg">
+            <img src="./src/images/Lagos2-de-Plitvice-el-secre.jpg">
+            <img src="./src/images/Lago3NahuelArgentina.jpg">
+        </div>
+
+        <!-- PLAYAS -->
+        <div class="grupo playas">
+            <img src="./src/images/playa_stiniva_croacia_vis.jpg">
+            <img src="./src/images/playa2Corralejo.jpg">
+            <img src="./src/images/playa3la-digue-seychelles_bea7ddd0_1255x836.jpg">
+        </div>
+
+        <!-- TEMPLOS -->
+        <div class="grupo templos">
+            <img src="./src/images/templos.jpg">
+            <img src="./src/images/Templo2MonasterionidodelTigre.jpg">
+            <img src="./src/images/tenplo3-LaSagradiaFamilia.jpg">
+        </div>
+
+        <!-- VOLCANES -->
+        <div class="grupo volcanes">
+            <img src="./src/images/cotopaxi-volcano-landscape.jpg">
+            <img src="./src/images/volca2TONGARIRO.jpg">
+            <img src="./src/images/volcan3MonteBromo.jpg">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==================== SECCIÓN DE CONTACTO ==================== -->
+<section class="contact" id="contact">
+    <div class="contact__container">
+        <h3 class="about__title">Contáctanos</h3>
+        <div class="contact__wrapper">
+            <h4>Ingresa tus datos</h4>
+            <form action="#">
+                <input type="text" name="nombre" id="first_name" placeholder="Nombre" required>
+                <input type="text" name="apellido" id="last_name" placeholder="Apellido" required>
+                <input type="email" name="correo" id="email" placeholder="alguien@example.com" required>
+                <input type="date" name="fecha" id="date" required>
+                <div class="destination__interest">
+                    <label for="interests">Escoge el destino que más te llamó la atención</label>
+                    <select name="interests" id="interests" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="cultural">Virgen del Panecillo</option>
+                        <option value="cultural">Mitad del Mundo</option>
+                        <option value="cultural">Basílica del Voto Nacional</option>
+                        <option value="cultural">Malecón 2000</option>
+                        <option value="cultural">Solo busco más información</option>
+                    </select>
+                </div>
+                <p class="advice"><i class="fa-regular fa-envelope"></i> Nos pondremos en contacto contigo</p>
+                <button type="submit" class="button">Enviar</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="./src/js/main.js"></script>
+
+</body>
+</html>
