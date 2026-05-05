@@ -189,68 +189,140 @@
 </section>
 
 <!-- ==================== CARRUSEL DE CONTINENTES ==================== -->
-<section class="continents">
+<section class="galeria">
+    <h2>¡Exploremos otros continentes y subcontinentes!</h2>
+
     <div class="container">
-        <h3 class="continents__title">¡Exploremos continentes!</h3>
-        <div class="carousel">
-            <button class="carousel-btn prev-continent">‹</button>
-            <div class="continents__track" id="continents-track">
-                <div class="continent">
-                    <img src="./src/images/Norteamerica.jpeg" alt="">
-                    <h4>Norteamérica</h4>
+        <div class="slider">
+
+            <input type="radio" name="slide" id="slide1" checked>
+            <input type="radio" name="slide" id="slide2">
+            <input type="radio" name="slide" id="slide3">
+            <input type="radio" name="slide" id="slide4">
+            <input type="radio" name="slide" id="slide5">
+            <input type="radio" name="slide" id="slide6">
+            <input type="radio" name="slide" id="slide7">
+
+            <div class="slides">
+
+                <div class="slide">
+                    <img src="./src/images/Norteamerica.jpeg" alt="Norteamérica">
+                    <a href="#" class="boton-texto">Norteamérica</a>
                 </div>
-                <div class="continent">
-                    <img src="./src/images/Sudamerica.jpg" alt="">
-                    <h4>Sudamérica</h4>
+
+                <div class="slide">
+                    <img src="./src/images/Sudamerica.jpg" alt="Sudamérica">
+                    <a href="#" class="boton-texto">Sudamérica</a>
                 </div>
-                <div class="continent">
-                    <img src="./src/images/Asia.jpeg" alt="">
-                    <h4>Asia</h4>
+
+                <div class="slide">
+                    <img src="./src/images/Europa.jpg" alt="Europa">
+                    <a href="#" class="boton-texto">Europa</a>
                 </div>
-                <div class="continent">
-                    <img src="./src/images/Europa.jpg" alt="">
-                    <h4>Europa</h4>
+
+                <div class="slide">
+                    <img src="./src/images/Africa.jpg" alt="África">
+                    <a href="#" class="boton-texto">África</a>
                 </div>
-                <div class="continent">
-                    <img src="./src/images/Africa.jpg" alt="">
-                    <h4>África</h4>
+
+                <div class="slide">
+                    <img src="./src/images/Asia.jpeg" alt="Asia">
+                    <a href="#" class="boton-texto">Asia</a>
                 </div>
-                <div class="continent">
-                    <img src="./src/images/Oceania.jpg" alt="">
-                    <h4>Oceanía</h4>
+
+                <div class="slide">
+                    <img src="./src/images/Oceania.jpg" alt="Oceanía">
+                    <a href="#" class="boton-texto">Oceanía</a>
                 </div>
-                <div class="continent">
-                    <img src="./src/images/Antartida.jpg" alt="">
-                    <h4>Antártida</h4>
+
+                <div class="slide">
+                    <img src="./src/images/Antartida.jpg" alt="Antártida">
+                    <a href="#" class="boton-texto">Antártida</a>
                 </div>
+
             </div>
-            <button class="carousel-btn next-continent">›</button>
+            
+            <div class="navegacion">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+                <label for="slide4"></label>
+                <label for="slide5"></label>
+                <label for="slide6"></label>
+                <label for="slide7"></label>
+            </div>
+
         </div>
-    </div>
+    </div> 
 </section>
 
-<!-- ==================== ETIQUETAS Y FILTROS ==================== -->
-<section class="filters">
-    <!--Fondo-->
-    <div class="filters__bg">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+<!-- ==================== FILTROS ==================== -->
+<section class="filtros">
+
+    <h2>¿Aún no sabes a dónde ir? ¡Busquemos por filtros!</h2>
+
+    <input type="radio" name="filtro" id="cascadas" checked>
+    <input type="radio" name="filtro" id="castillos">
+    <input type="radio" name="filtro" id="lagos">
+    <input type="radio" name="filtro" id="playas">
+    <input type="radio" name="filtro" id="templos">
+    <input type="radio" name="filtro" id="volcanes">
+
+    <div class="filtros-botones">
+        <label for="cascadas">Cascadas</label>
+        <label for="castillos">Castillos</label>
+        <label for="lagos">Lagos</label>
+        <label for="playas">Playas</label>
+        <label for="templos">Templos</label>
+        <label for="volcanes">Volcanes</label>
     </div>
-    
-    <div class="container">
-        <h3 class="filters__title">Explora por categorías</h3>
-        <div class="filters__buttons">
-            <button class="filter-btn" data-category="cascadas">Cascadas</button>
-            <button class="filter-btn" data-category="castillos">Castillos</button>
-            <button class="filter-btn" data-category="lagunas">Lagos</button>
-            <button class="filter-btn" data-category="playas">Playas</button>
-            <button class="filter-btn" data-category="templos">Templos</button>
-            <button class="filter-btn" data-category="volcanes">Volcanes</button>
+
+    <!-- CONTENIDO -->
+    <div class="contenidos">
+
+        <div class="grupo cascadas">
+            <img src="./src/images/cascadasigazu.jpg">
+            <img src="./src/images/Cascada2niagara-falls---aerial-view--niagara-falls-tourism-.3l0.jpg">
+            <img src="./src/images/cascada3zambia-cataratas-victoria12.jpg">
         </div>
-        <div class="filters__images" id="filter-images"></div>
+
+        <!-- CASTILLOS -->
+        <div class="grupo castillos">
+            <img src="./src/images/Castillo-de-Neuschwanstein.jpg">
+            <img src="./src/images/castillo2S-AlcazardeSegovia.jpg">
+            <img src="./src/images/Castillo3-de-Liechtenstein.jpg">
+        </div>
+
+        <!-- LAGOS -->
+        <div class="grupo lagos">
+            <img src="./src/images/lago-di-braies-italia_1d38ca01_1254x836.jpg">
+            <img src="./src/images/Lagos2-de-Plitvice-el-secre.jpg">
+            <img src="./src/images/Lago3NahuelArgentina.jpg">
+        </div>
+
+        <!-- PLAYAS -->
+        <div class="grupo playas">
+            <img src="./src/images/playa_stiniva_croacia_vis.jpg">
+            <img src="./src/images/playa2Corralejo.jpg">
+            <img src="./src/images/playa3la-digue-seychelles_bea7ddd0_1255x836.jpg">
+        </div>
+
+        <!-- TEMPLOS -->
+        <div class="grupo templos">
+            <img src="./src/images/templos.jpg">
+            <img src="./src/images/Templo2MonasterionidodelTigre.jpg">
+            <img src="./src/images/tenplo3-LaSagradiaFamilia.jpg">
+        </div>
+
+        <!-- VOLCANES -->
+        <div class="grupo volcanes">
+            <img src="./src/images/cotopaxi-volcano-landscape.jpg">
+            <img src="./src/images/volca2TONGARIRO.jpg">
+            <img src="./src/images/volcan3MonteBromo.jpg">
+        </div>
+
     </div>
+
 </section>
 
 <!-- ==================== SECCIÓN DE CONTACTO ==================== -->

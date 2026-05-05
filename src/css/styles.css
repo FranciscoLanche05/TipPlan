@@ -470,187 +470,286 @@ img {
     }
 }
 
-/* =========================================
-   CARRUSEL DE CONTINENTES (Paulina)
-   ========================================= */
-.continents {
-    background-color: var(--fondo);
-    padding: 3rem 0;
+
+/* ====== Fondo del carrusel ====== */
+.galeria {
+    padding: 40px 0;
+    background: var(--fondo);
     text-align: center;
 }
 
-.continents__title {
+.galeria h2 {
     color: var(--principal);
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-}
-
-.continents__track {
-    display: flex;
-    gap: 1rem;
-    transition: transform 0.5s ease;
-    flex-wrap: nowrap;
-}
-
-.continent {
-    flex: 0 0 calc((100% - 2rem) / 3);
-    background-color: rgb(255, 255, 255);
-    padding: 0rem;
-    border-radius: 15px;
+    font-family: var(--fuente);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    font-size: clamp(22px, 4vw, 34px);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
 }
 
-.continent img {
+/* ====== CARRUSEL ====== */
+.slider {
     width: 100%;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 12px;
+    max-width: 800px;
+    aspect-ratio: 16 / 9; 
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    background: var(--blanco);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.continent h4 {
-    margin-top: 0.7rem;
-    font-size: 1.2rem;
+.slider input {
+    display: none;
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 1.2s ease;
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--fondo);
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   
+    object-position: center; 
+}
+
+#slide1:checked ~ .slides { transform: translateX(0); }
+#slide2:checked ~ .slides { transform: translateX(-100%); }
+#slide3:checked ~ .slides { transform: translateX(-200%); }
+#slide4:checked ~ .slides { transform: translateX(-300%); }
+#slide5:checked ~ .slides { transform: translateX(-400%); }
+#slide6:checked ~ .slides { transform: translateX(-500%); }
+#slide7:checked ~ .slides { transform: translateX(-600%); }
+
+.navegacion {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navegacion label {
+    width: 12px;
+    height: 12px;
+    background: rgba(255,255,255,0.6);
+    margin: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    border: 2px solid rgba(0,0,0,0.2);
+}
+
+.navegacion label:hover {
+    background: var(--principal);
+}
+
+#slide1:checked ~ .navegacion label[for="slide1"],
+#slide2:checked ~ .navegacion label[for="slide2"],
+#slide3:checked ~ .navegacion label[for="slide3"],
+#slide4:checked ~ .navegacion label[for="slide4"],
+#slide5:checked ~ .navegacion label[for="slide5"],
+#slide6:checked ~ .navegacion label[for="slide6"],
+#slide7:checked ~ .navegacion label[for="slide7"] {
+    background: var(--secundario);
+    transform: scale(1.2);
+}
+
+.slide {
+    position: relative;
+}
+
+.boton-texto {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: var(--principal);
+    color: var(--blanco);
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-family: var(--fuente);
     font-weight: 700;
-    color: var(--principal);
-    letter-spacing: 0.5px;
-}
-
-.continent:hover h4 {
-    color: var(--secundario);
-    transform: scale(1.05);
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
     transition: all 0.3s ease;
 }
 
-.continent:hover:not(.active) {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.carousel {
-    position: relative;
-    overflow: hidden; 
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 120px;
-    transform: translateY(-50%);
-    z-index: 10;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    font-size: 2rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.carousel-btn:hover {
+.boton-texto:hover {
     background: var(--secundario);
-    transform: translateY(-50%) scale(1.1);
+    transform: scale(1.08);
 }
 
-.prev-continent {
-    left: 15px;
+.boton-texto:active {
+    transform: scale(0.95);
 }
 
-.next-continent {
-    right: 15px;
+@media (max-width: 768px) {
+    .galeria h2 {
+        font-size: 24px;
+        padding: 0 10px;
+    }
+
+    .slider {
+        width: 95%;
+    }
+
+    .boton-texto {
+        font-size: 14px;
+        padding: 8px 14px;
+        bottom: 15px;
+        left: 15px;
+    }
 }
 
-/* =========================================
-   FILTROS - ETIQUETAS (Paulina)
-   ========================================= */
-.filters {
-    position: relative;
-    overflow: hidden;
-    padding: 3rem 0;
+@media (max-width: 480px) {
+    .galeria h2 {
+        font-size: 20px;
+    }
+
+    .slider {
+        width: 95%;
+        aspect-ratio: 4 / 3; 
+    }
+
+    .boton-texto {
+        font-size: 12px;
+        padding: 6px 12px;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .navegacion label {
+        width: 8px;
+        height: 8px;
+        margin: 4px;
+    }
+}
+
+
+
+/* ===== SECCIÓN FILTROS ===== */
+.filtros {
+    background: var(--fondo);
+    padding: 50px 0;
     text-align: center;
+    
 }
 
-.filters .container {
-    position: relative;
-    z-index: 2;
+.filtros h2 {
+    color: var(--principal);
+    font-family: var(--fuente);
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    font-size: clamp(22px, 4vw, 34px);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
 }
 
-.filters__title {
-    color: white;
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
+
+.filtros input {
+    display: none;
 }
 
-.filters__buttons {
+.filtros-botones {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-.filter-btn {
-    padding: 0.6rem 1.2rem;
+.filtros-botones label {
+    background: var(--principal);
+    color: var(--blanco);
+    padding: 10px 18px;
     border-radius: 20px;
-    border: none;
-    background-color: white;
-    color: var(--principal);
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
-.filter-btn:hover, .filter-btn.active {
-    background-color: var(--secundario);
-    color: white;
+.filtros-botones label:hover {
+    background: var(--secundario);
 }
 
-.filters__images {
-    display: flex;
+.grupo {
+    display: none;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 15px;
 }
 
-.filters__images img {
+.grupo img {
     width: 30%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
-.filters__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+/* ===== Mostrar según filtro ===== */
+#cascadas:checked ~ .contenidos .cascadas { display: flex; }
+#castillos:checked ~ .contenidos .castillos { display: flex; }
+#lagos:checked ~ .contenidos .lagos { display: flex; }
+#playas:checked ~ .contenidos .playas { display: flex; }
+#templos:checked ~ .contenidos .templos { display: flex; }
+#volcanes:checked ~ .contenidos .volcanes { display: flex; }
+
+/* ===== Activar con botón ===== */
+#cascadas:checked ~ .filtros-botones label[for="cascadas"],
+#castillos:checked ~ .filtros-botones label[for="castillos"],
+#lagos:checked ~ .filtros-botones label[for="lagos"],
+#playas:checked ~ .filtros-botones label[for="playas"],
+#templos:checked ~ .filtros-botones label[for="templos"],
+#volcanes:checked ~ .filtros-botones label[for="volcanes"] {
+    background: var(--secundario);
 }
 
-.filters__bg div {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 50%;
-    background-size: cover;
-    background-position: center;
-    clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+@media (max-width: 768px) {
+    .grupo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .grupo img {
+        width: 80%;
+        height: 180px;
+    }
 }
 
-.filters__bg div:nth-child(1) { left: -15%; background-image: url('../images/playa3la-digue-seychelles_bea7ddd0_1255x836.jpg'); }
-.filters__bg div:nth-child(2) { left: 15%; background-image: url('../images/cascada3zambia-cataratas-victoria12.jpg'); }
-.filters__bg div:nth-child(3) { left: 45%; background-image: url('../images/castillo2S-AlcazardeSegovia.jpg'); }
-.filters__bg div:nth-child(4) { left: 75%; background-image: url('../images/Lago3NahuelArgentina.jpg'); }
+@media (max-width: 480px) {
+    .grupo img {
+        width: 90%;
+        height: 160px;
+    }
 
-.filters__bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
+    .filtros h2 {
+        font-size: 20px;
+    }
 }
 
 /* =========================================
-   CONTACTO (Main)
+CONTACTO (Main)
    ========================================= */
 .contact {
     background-color: var(--fondo);
@@ -738,5 +837,4 @@ img {
 #destinations,
 #contact {
     scroll-margin-top: 90px;
-}
 }
