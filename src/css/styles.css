@@ -170,7 +170,7 @@ img {
     width: 50%;
 }
 
-.button {
+.Boton_Principal {
     background-color: var(--secundario);
     color: white;
     padding: 0.8rem 1.5rem;
@@ -181,7 +181,7 @@ img {
     font-weight: 700;
 }
 
-.button:hover {
+.Boton_Principal:hover {
     background-color: white;
     color: var(--secundario);
     border: 2px solid var(--secundario);
@@ -343,7 +343,7 @@ img {
     font-size: 0.95rem;
 }
 
-.destination .button-map {
+.destination .Boton_Mapa {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -360,7 +360,7 @@ img {
     font-size: 0.9rem;
 }
 
-.destination .button-map:hover {
+.destination .Boton_Mapa:hover {
     background-color: var(--principal);
     color: white;
     border: 2px solid var(--principal);
@@ -368,7 +368,7 @@ img {
     padding: 0.5rem 1.2rem;
 }
 
-.destination-icons {
+.Iconos_Destino {
     display: flex;
     gap: 1rem;
     margin-top: 0.5rem;
@@ -377,14 +377,16 @@ img {
     padding: 1rem;
 }
 
-.destination-icons i {
+.Iconos_Destino .Icono_Mapa i,
+.Iconos_Destino .Icono_Contacto i {
     font-size: 2rem;
     color: var(--secundario);
     padding: 0;
     transition: all 0.3s ease;
 }
 
-.destination-icons i:hover {
+.Iconos_Destino .Icono_Mapa i:hover,
+.Iconos_Destino .Icono_Contacto i:hover {
     font-size: 2rem;
     color: var(--principal);
     transform: scale(1.25);
@@ -430,7 +432,7 @@ img {
         font-size: 0.9rem;
     }
 
-    .destination .button-map {
+    .destination .Boton_Mapa {
         align-self: center;
     }
 }
@@ -462,12 +464,12 @@ img {
         line-height: 1.4;
     }
 
-    .destination .button-map {
+    .destination .Boton_Mapa {
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
     }
 
-    .destination .button-map:hover {
+    .destination .Boton_Mapa:hover {
         padding: 0.4rem 1rem;
     }
 }
@@ -509,11 +511,15 @@ img {
 .slider input {
     display: none;
 }
+.carrusel > input[type="radio"] {
+    display: none;
+}
 
 .slides {
     display: flex;
+    width: 100%;
     height: 100%;
-    transition: transform 1.2s ease;
+    transition: transform 0.8s ease;
 }
 
 .slide {
@@ -532,19 +538,18 @@ img {
     object-position: center; 
 }
 
-#slide1:checked ~ .slides { transform: translateX(0); }
-#slide2:checked ~ .slides { transform: translateX(-100%); }
-#slide3:checked ~ .slides { transform: translateX(-200%); }
-#slide4:checked ~ .slides { transform: translateX(-300%); }
-#slide5:checked ~ .slides { transform: translateX(-400%); }
-#slide6:checked ~ .slides { transform: translateX(-500%); }
-#slide7:checked ~ .slides { transform: translateX(-600%); }
+#slide1:checked ~ .slider .slides { transform: translateX(0); }
+#slide2:checked ~ .slider .slides { transform: translateX(-100%); }
+#slide3:checked ~ .slider .slides { transform: translateX(-200%); }
+#slide4:checked ~ .slider .slides { transform: translateX(-300%); }
+#slide5:checked ~ .slider .slides { transform: translateX(-400%); }
+#slide6:checked ~ .slider .slides { transform: translateX(-500%); }
+#slide7:checked ~ .slider .slides { transform: translateX(-600%); }
 
 .navegacion {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .navegacion label {
@@ -557,7 +562,7 @@ img {
     cursor: pointer;
     transition: all 0.3s ease;
 
-    border: 2px solid rgba(0,0,0,0.2);
+    border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .navegacion label:hover {
@@ -579,7 +584,7 @@ img {
     position: relative;
 }
 
-.boton-texto {
+.Boton_Continente {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -595,12 +600,12 @@ img {
     transition: all 0.3s ease;
 }
 
-.boton-texto:hover {
+.Boton_Continente:hover {
     background: var(--secundario);
     transform: scale(1.08);
 }
 
-.boton-texto:active {
+.Boton_Continente:active {
     transform: scale(0.95);
 }
 
@@ -614,7 +619,7 @@ img {
         width: 95%;
     }
 
-    .boton-texto {
+    .Boton_Continente {
         font-size: 14px;
         padding: 8px 14px;
         bottom: 15px;
@@ -632,7 +637,7 @@ img {
         aspect-ratio: 4 / 3; 
     }
 
-    .boton-texto {
+    .Boton_Continente {
         font-size: 12px;
         padding: 6px 12px;
         bottom: 10px;
@@ -743,7 +748,6 @@ img {
     padding: 0 10px;
     outline: none;
 }
-
 @media (max-width: 768px) {
     .grupo {
         flex-direction: column;
@@ -770,12 +774,12 @@ img {
 /* =========================================
 CONTACTO (Main)
    ========================================= */
-.contact {
+.Seccion_Contacto {
     background-color: var(--fondo);
     padding: 3rem 0;
 }
 
-.contact__wrapper {
+.Formulario_Contacto {
     width: 45%;
     margin: 0 auto;
     border-radius: 20px;
@@ -783,16 +787,16 @@ CONTACTO (Main)
     border: solid 1px var(--principal);
 }
 
-.contact__wrapper h4, form {
+.Formulario_Contacto h4, form {
     text-align: center;
 }
 
-.contact__wrapper h4 {
+.Formulario_Contacto h4 {
     color: var(--blanco);
     font-size: 1.5rem;
 }
 
-.contact__wrapper form {
+.Formulario_Contacto form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -800,7 +804,7 @@ CONTACTO (Main)
     font-weight: 600;
 }
 
-.contact__wrapper form input {
+.Formulario_Contacto form input {
     width: 70%;
     padding: 0.8rem;
     border-radius: 20px;
@@ -809,22 +813,22 @@ CONTACTO (Main)
     font-weight: 600;
 }
 
-.contact__wrapper form label {
+.Formulario_Contacto form label {
     color: var(--blanco);
     padding-right: 1rem;
 }
 
-.contact__wrapper form select {
+.Formulario_Contacto form select {
     border-radius: 20px;
     padding: 0.2rem;
 }
 
-.contact__wrapper form p, i {
+.Formulario_Contacto form p, i {
     color: var(--blanco);
     padding: 0 1rem;
 }
 
-.contact__wrapper button {
+.Formulario_Contacto .Boton_Enviar {
     border-radius: 20px;
     background-color: var(--secundario);
     color: white;
@@ -834,22 +838,30 @@ CONTACTO (Main)
     transition: all 0.3s ease;
     margin-bottom: 2rem;
     font-size: 15px;
+    padding: 0.8rem 1.5rem;
+}
+
+.Formulario_Contacto .Boton_Enviar:hover {
+    background-color: white;
+    color: var(--secundario);
+    border: 2px solid var(--secundario);
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
-    .contact__wrapper { width: 85%; padding: 1.5rem 1rem; }
-    .contact__wrapper h4 { font-size: 1.3rem; }
-    .contact__wrapper form input { width: 80%; }
-    .contact__wrapper form p { text-align: center; }
-    .contact__wrapper form select { width: 35%; }
-    .contact__wrapper button { width: 50%; padding: 0.7rem; }
+    .Formulario_Contacto { width: 85%; padding: 1.5rem 1rem; }
+    .Formulario_Contacto h4 { font-size: 1.3rem; }
+    .Formulario_Contacto form input { width: 80%; }
+    .Formulario_Contacto form p { text-align: center; }
+    .Formulario_Contacto form select { width: 35%; }
+    .Formulario_Contacto .Boton_Enviar { width: 50%; padding: 0.7rem; }
 }
 
 @media (max-width: 480px) {
-    .contact__wrapper { width: 80%; }
-    .contact__wrapper form input { width: 80%; font-size: 0.9rem; }
-    .contact__wrapper h4 { font-size: 1.2rem; }
-    .contact__wrapper button { width: 70%; font-size: 0.9rem; }
+    .Formulario_Contacto { width: 80%; }
+    .Formulario_Contacto form input { width: 80%; font-size: 0.9rem; }
+    .Formulario_Contacto h4 { font-size: 1.2rem; }
+    .Formulario_Contacto .Boton_Enviar { width: 70%; font-size: 0.9rem; }
 }
 
 #about,
@@ -1028,5 +1040,139 @@ FOOTER
     .app-column {
         align-items: center; 
         margin-top: 20px;
+    }
+}
+
+/* =============================================
+   OPTIMIZACIONES DE ACCESIBILIDAD
+   ============================================= */
+
+/* Oculta labels visualmente pero los mantiene
+   legibles para lectores de pantalla */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Label del campo de fecha */
+.date-label {
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+
+/* =============================================
+    PREGUNTAS FRECUENTES 
+   ============================================= */
+
+.faq {
+    background-color: var(--blanco);
+    padding: 60px 20px;
+}
+
+.faq__container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq__title {
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    color: var(--principal);
+    margin-bottom: 40px;
+}
+
+.faq__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+}
+
+/* Input checkbox oculto */
+.faq__check {
+    display: none;
+}
+
+.faq__item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.faq__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--negro);
+    cursor: pointer;
+    gap: 12px;
+    transition: color 0.2s ease;
+    line-height: 1.45;
+}
+
+.faq__question:hover {
+    color: var(--principal);
+}
+
+.faq__icon {
+    font-size: 1.3rem;
+    color: var(--negro);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+/* Respuesta oculta por defecto */
+.faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq__answer p {
+    margin: 0 0 16px;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Cuando el checkbox está marcado: abre la respuesta */
+.faq__check:checked + .faq__question + .faq__answer {
+    max-height: 300px;
+}
+
+/* Rota el ícono cuando está abierto */
+.faq__check:checked + .faq__question .faq__icon {
+    transform: rotate(180deg);
+    color: var(--principal);
+}
+
+.faq__check:checked + .faq__question {
+    color: var(--principal);
+}
+
+/* Responsive: una columna en móvil */
+@media (max-width: 768px) {
+    .faq__grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .faq__title {
+        font-size: 22px;
+    }
+
+    .faq__question {
+        font-size: 0.9rem;
+        padding: 15px 0;
     }
 }
