@@ -726,6 +726,23 @@ img {
 #volcanes:checked ~ .filtros-botones label[for="volcanes"] {
     background: var(--secundario);
 }
+.presupuesto-container {
+    display: flex;             
+    align-items: center;       
+    gap: 15px;                 
+    color: white;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.presupuesto-container input {
+    width: 30px;             
+    height: 10px;
+    border-radius: 15px;       
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    outline: none;
+}
 
 @media (max-width: 768px) {
     .grupo {
