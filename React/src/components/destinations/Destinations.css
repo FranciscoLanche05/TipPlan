@@ -1,0 +1,181 @@
+.destinations{
+    width: 100%;
+
+    background-color:#f5edd8;
+
+    padding: 120px 100px;
+}
+
+.destination_tag{
+    display: inline-block;
+
+    background-color: #E8E1D4;
+
+    color: #013220;
+
+    padding: 10px 22px;
+
+    border-radius: 50px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-bottom: 30px;
+}
+
+.destinations h1{
+    font-size: 70px;
+font-family: 'Playfair Display';
+
+font-size: clamp;
+    color: #013220;
+
+    margin-bottom: 30px;
+}
+
+.destinations h1 span{
+    color: #D86A3A;
+
+    font-style: italic;
+}
+.destination_header{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 50px;
+
+    margin-bottom: 70px;
+}
+
+.destination_text{
+    color: #5E6A67;
+font-family: 'Plus Jakarta Sans';
+    font-size: 30px;
+
+    line-height: 1.7;
+
+    margin-bottom: 70px;
+
+    max-width: 700px;
+}
+
+.cards{
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 35px;
+}
+
+.card{
+    position: relative;
+
+    height: 430px;
+
+    overflow: hidden;
+
+    border-radius: 35px;
+
+    box-shadow: 0px 15px 30px rgba(0,0,0,0.10);
+}
+
+.card img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.overlay{
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 35px;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(1,50,32,0.95),
+        rgba(1,50,32,0.10)
+    );
+
+    color: white;
+}
+
+.city{
+    color: #E5A623;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.overlay h2{
+    font-size: 50px;
+
+    margin: 15px 0 30px;
+}
+
+.card_buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.map_btn{
+    background: rgba(255,255,255,0.15);
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    color: white;
+
+    padding: 15px 25px;
+
+    border-radius: 50px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    outline: none;
+
+    box-shadow: none;
+   
+
+}
+
+.reserve_btn{
+    background-color: #E5A623;
+
+    border: none;
+
+    color: black;
+
+    padding: 15px 30px;
+
+    border-radius: 50px;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+.reserve_btn:hover{
+    background-color: white;
+
+    color: #013220;
+}
