@@ -307,3 +307,237 @@
   z-index: 1000;
 }
 .toast.show { transform: translateX(0); }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE - TABLETS
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .itin-section {
+    padding: 4rem 2rem;
+  }
+
+  .itin-layout {
+    grid-template-columns: 180px 1fr;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .activities {
+    padding: 1.2rem 1.4rem;
+  }
+
+  .add-activity-bar {
+    padding: 1rem 1.4rem;
+  }
+
+  .day-panel-head {
+    padding: 1.2rem 1.4rem;
+  }
+
+  .activity-card {
+    grid-template-columns: 50px 1fr auto;
+    padding: 1rem;
+  }
+
+  .ac-title {
+    font-size: 0.9rem;
+  }
+
+  .ac-desc {
+    font-size: 0.78rem;
+  }
+
+  .aa-input,
+  .aa-select,
+  .aa-btn {
+    width: 100%;
+  }
+
+  .aa-time {
+    max-width: 100%;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE - MOBILE
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .itin-section {
+    padding: 3rem 1rem;
+  }
+
+  .itin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-title {
+    font-size: 1.9rem;
+  }
+
+  .section-sub {
+    max-width: 100%;
+  }
+
+  /* Layout cambia a vertical */
+  .itin-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  /* Sidebar horizontal */
+  .day-sidebar {
+    overflow-x: auto;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .day-sidebar-head {
+    display: none;
+  }
+
+  .day-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .day-tab {
+    min-width: 150px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .day-tab.active {
+    border-bottom-color: var(--gold);
+  }
+
+  .day-add-btn {
+    display: none;
+  }
+
+  .day-panel-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .activities {
+    padding: 1rem;
+  }
+
+  /* Cards verticales */
+  .activity-card {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .ac-time {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-align: left;
+  }
+
+  .ac-icon-wrap {
+    margin: 0;
+  }
+
+  .ac-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  /* Inputs responsive */
+  .add-activity-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .aa-input,
+  .aa-select,
+  .aa-btn,
+  .aa-time {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Toast */
+  .toast {
+    right: 1rem;
+    left: 1rem;
+    bottom: 1rem;
+    width: auto;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE - SMALL MOBILE
+───────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .section-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .sum-pill {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .day-tab {
+    min-width: 130px;
+    padding: 0.8rem;
+  }
+
+  .day-num {
+    font-size: 1.1rem;
+  }
+
+  .day-label {
+    font-size: 0.75rem;
+  }
+
+  .day-date {
+    font-size: 0.65rem;
+  }
+
+  .day-panel-title {
+    font-size: 1.1rem;
+  }
+
+  .ac-title {
+    font-size: 0.88rem;
+  }
+
+  .ac-desc {
+    font-size: 0.76rem;
+  }
+
+  .ac-tag {
+    font-size: 0.62rem;
+  }
+
+  .itin-btn-add,
+  .aa-btn {
+    font-size: 0.82rem;
+  }
+
+  .toast {
+    font-size: 0.8rem;
+    padding: 0.9rem 1rem;
+  }
+}

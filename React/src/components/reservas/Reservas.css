@@ -298,3 +298,234 @@
   z-index: 1000;
 }
 .toast.show { transform: translateX(0); }
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE - TABLETS
+───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .res-section {
+    padding: 4rem 2rem;
+  }
+
+  .res-form-card {
+    padding: 1.8rem;
+  }
+
+  .rf-grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .res-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .res-card {
+    grid-template-columns: 56px 1fr auto;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+
+  .rc-price-val {
+    font-size: 1.4rem;
+  }
+
+  .modal {
+    padding: 2rem;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE - MOBILE
+───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .res-section {
+    padding: 3rem 1rem;
+  }
+
+  .res-section .section-title {
+    font-size: 1.9rem;
+  }
+
+  .res-section .section-sub {
+    max-width: 100%;
+  }
+
+  /* Tabs */
+  .res-tabs {
+    gap: 0.5rem;
+  }
+
+  .res-tab {
+    flex: 1;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.82rem;
+  }
+
+  /* Formulario */
+  .res-form-card {
+    padding: 1.3rem;
+    border-radius: 18px;
+  }
+
+  .rf-grid-2,
+  .rf-grid-3,
+  .rf-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .rf-row-last {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rf-row-last .rf-field {
+    width: 100%;
+  }
+
+  .rf-search-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Result cards */
+  .res-card {
+    grid-template-columns: 1fr;
+    text-align: left;
+    padding: 1.2rem;
+  }
+
+  .rc-logo {
+    width: 52px;
+    height: 52px;
+    font-size: 1.4rem;
+  }
+
+  .rc-price {
+    text-align: left;
+  }
+
+  .rc-book-btn {
+    width: 100%;
+  }
+
+  /* Features */
+  .res-features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Modal */
+  .modal {
+    width: calc(100% - 2rem);
+    padding: 1.6rem;
+    border-radius: 18px;
+  }
+
+  .modal h3 {
+    font-size: 1.3rem;
+  }
+
+  .modal-btns {
+    flex-direction: column;
+  }
+
+  .modal-cancel,
+  .modal-confirm {
+    width: 100%;
+  }
+
+  /* Toast */
+  .toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: auto;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE - SMALL MOBILE
+───────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .res-section .section-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .res-section .section-sub {
+    font-size: 0.88rem;
+  }
+
+  .res-tab {
+    font-size: 0.75rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .rf-label {
+    font-size: 0.66rem;
+  }
+
+  .rf-input,
+  .rf-select {
+    font-size: 0.85rem;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .rf-search-btn {
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .rc-name {
+    font-size: 0.9rem;
+  }
+
+  .rc-detail {
+    font-size: 0.76rem;
+  }
+
+  .rc-price-val {
+    font-size: 1.25rem;
+  }
+
+  .rc-badge {
+    font-size: 0.62rem;
+  }
+
+  .res-feat {
+    padding: 1.1rem;
+  }
+
+  .res-feat h4 {
+    font-size: 0.85rem;
+  }
+
+  .res-feat p {
+    font-size: 0.75rem;
+  }
+
+  .modal {
+    padding: 1.3rem;
+  }
+
+  .modal h3 {
+    font-size: 1.15rem;
+  }
+
+  .modal p,
+  .modal-info-row {
+    font-size: 0.8rem;
+  }
+
+  .toast {
+    font-size: 0.8rem;
+    padding: 0.9rem 1rem;
+  }
+}
