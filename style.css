@@ -1,0 +1,601 @@
+/* RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #12231c; /* Fondo de respaldo */
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background-color: #0d2118; /* Verde oscuro del header */
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #e5a93b; /* Dorado/Mostaza de Plan */
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e5a93b;
+}
+
+.btn-cta {
+    background-color: #e5a93b;
+    color: #0d2118;
+    padding: 10px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #cd932e;
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 100vh;
+    /* Recreación exacta del degradado radial/lineal de la imagen */
+    background: radial-gradient(circle at 85% 50%, #7e8777 0%, #3e4e41 45%, #15241b 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 100px 60px 100px; /* Margen superior para no quedar bajo el navbar fijo */
+    position: relative;
+}
+
+.hero-container {
+    max-width: 700px; /* Controla que el texto se parta igual que el diseño */
+}
+
+/* Tag superior */
+.hero-tag {
+    background-color: rgba(229, 169, 59, 0.15);
+    border: 1px solid rgba(229, 169, 59, 0.4);
+    color: #e5a93b;
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.hero-tag .sparkle {
+    margin-right: 4px;
+}
+
+/* Título Serif */
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    line-height: 1.05;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.hero-title .highlight-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #e5a93b;
+    font-weight: 700;
+}
+
+/* Descripción */
+.hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ccd7d2;
+    margin-bottom: 40px;
+    max-width: 550px;
+}
+
+/* Botones de acción del Hero */
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.btn-primary {
+    background-color: #e5a93b;
+    color: #0d2118;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #cd932e;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    border-bottom: 2px solid #ffffff;
+}
+
+.btn-secondary .play-icon {
+    font-size: 11px;
+}
+
+/* Indicador de Scroll */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8c9b93;
+    font-weight: 500;
+}
+
+.scroll-indicator .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #e5a93b;
+    border-radius: 50%;
+    animation: bounce 2s infinite;
+}
+
+/* Pequeña animación para el punto de Scroll */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+/* RESPONSIVE DESIGN (Básico) */
+@media (max-width: 992px) {
+    .navbar { padding: 20px 40px; }
+    .hero { padding: 120px 40px 60px 40px; }
+    .hero-title { font-size: 80px; }
+}
+/* SECCIÓN DE ESTADÍSTICAS */
+.stats-section {
+    background-color: #0d2118; /* El mismo verde oscuro del navbar */
+    padding: 60px 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Línea sutil superior opcional */
+}
+
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #e5a93b; /* Tono dorado/mostaza */
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+.stat-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    color: #a3b899; /* Verde claro/grisáceo para el texto secundario */
+    font-weight: 500;
+}
+
+/* Líneas divisorias verticales */
+.stat-divider {
+    width: 1px;
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.1); /* Línea blanca semitransparente */
+}
+
+/* RESPONSIVE PARA LAS ESTADÍSTICAS */
+@media (max-width: 768px) {
+    .stats-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .stat-divider {
+        width: 50px;
+        height: 1px; /* Se vuelven horizontales en celulares */
+    }
+}
+/* SECCIÓN SOBRE NOSOTROS */
+.about-section {
+    background-color: #fdf6ec; /* Fondo color hueso/crema claro */
+    color: #0d2118; /* Texto oscuro para contraste */
+    padding: 100px 0;
+    width: 100%;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 80px; /* Espacio entre las dos columnas */
+}
+
+/* COLUMNA IZQUIERDA - IMAGEN */
+.about-image-side {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+}
+
+.about-img {
+    width: 100%;
+    height: auto;
+    min-height: 580px;
+    object-fit: cover;
+    border-radius: 24px; /* Bordes redondeados de la imagen */
+    background-color: #e2dfd9; /* Fondo gris temporal si no encuentra la imagen */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+/* Tarjeta flotante oscura (2021) */
+.badge-floating {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background-color: #0d2118; /* El verde oscuro principal */
+    color: #ffffff;
+    padding: 25px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+
+.badge-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #e5a93b; /* Dorado */
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.badge-text {
+    font-size: 13px;
+    color: #a3b899;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* COLUMNA DERECHA - TEXTOS */
+.about-text-side {
+    flex: 1.2;
+}
+
+/* Tag pequeño de arriba */
+.about-tag {
+    background-color: #e2dfd9;
+    color: #3e4e41;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    line-height: 1.15;
+    color: #0d2118;
+    margin-bottom: 25px;
+}
+
+.about-title-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #d96b43; /* Tono naranja/óxido de la palabra emocionante */
+}
+
+.about-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a554f;
+    margin-bottom: 40px;
+}
+
+/* LISTA DE CARACTERÍSTICAS */
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Contenedores de los Iconos */
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* Colores de fondo suaves para cada icono basándose en la imagen */
+.icon-bg-map { background-color: #e3ecf5; }
+.icon-bg-bolt { background-color: #fdf0d5; }
+.icon-bg-pin { background-color: #fcdfd7; }
+
+.feature-content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0d2118;
+    margin-bottom: 5px;
+}
+
+.feature-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #606d66;
+}
+
+/* RESPONSIVE PARA SOBRE NOSOTROS */
+@media (max-width: 992px) {
+    .about-container {
+        flex-direction: column;
+        gap: 60px;
+    }
+    
+    .about-image-side, .about-text-side {
+        width: 100%;
+    }
+    
+    .badge-floating {
+        right: 10px;
+    }
+}
+/* SECCIÓN DESTINOS POPULARES */
+.destinations-section {
+    background-color: #F5EDD8; /* Mismo fondo claro de Sobre Nosotros */
+    padding: 60px 0 100px 0;
+    width: 100%;
+}
+
+.destinations-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Cabecera estructurada en Flexbox */
+.destinations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+.destinations-tag {
+    background-color: #e2dfd9;
+    color: #3e4e41;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.destinations-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    color: #0d2118;
+    font-weight: 700;
+}
+
+.destinations-title-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #d96b43; /* Tono naranja/óxido */
+}
+
+.header-right {
+    max-width: 400px;
+}
+
+.destinations-subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #606d66;
+    padding-bottom: 8px;
+}
+
+/* CUADRÍCULA (GRID DE TARJETAS) */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas idénticas */
+    gap: 30px; /* Espacio entre tarjetas */
+}
+
+/* Tarjeta */
+.destination-card {
+    position: relative;
+    height: 380px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    background-color: #F5EDD8; /* Fondo de carga */
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Efecto zoom al pasar el cursor sobre la tarjeta */
+.destination-card:hover .card-img {
+    transform: scale(1.05);
+}
+
+/* Degradado oscuro inferior para legibilidad */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    /* Degradado idéntico que pasa de transparente arriba a verde/oscuro abajo */
+    background: linear-gradient(to bottom, rgba(249, 246, 240, 0.2) 0%, rgba(13, 33, 24, 0.4) 40%, rgba(13, 33, 24, 0.9) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 35px;
+}
+
+.card-location {
+    font-size: 11px;
+    font-weight: 700;
+    color: #e5a93b; /* Amarillo/Dorado */
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de Botones de la Tarjeta */
+.card-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Botón Reservar (Dorado) */
+.btn-card-primary {
+    background-color: #e5a93b;
+    color: #0d2118;
+    padding: 10px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-card-primary:hover {
+    background-color: #cd932e;
+}
+
+/* Botón Ver Mapa (Translúcido) */
+.btn-card-secondary {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px); /* Suavizado de fondo */
+    transition: background-color 0.3s ease;
+}
+
+.btn-card-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* RESPONSIVE PARA DESTINOS */
+@media (max-width: 992px) {
+    .destinations-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .destinations-grid {
+        grid-template-columns: 1fr; /* 1 sola columna en pantallas pequeñas */
+    }
+}
