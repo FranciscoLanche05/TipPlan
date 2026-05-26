@@ -225,5 +225,397 @@
         </div>
     </section>
 
+<!-- ════════════════════════════════════
+    SECCIÓN 3 – PLANIFICADOR DE ITINERARIOS
+════════════════════════════════════ -->
+<section id="itinerary">
+
+    <!-- Header -->
+  <div class="itin-header">
+    <div>
+      <div class="section-tag">Organiza tu viaje</div>
+      <h2 class="section-title">Planificador de <em>Itinerarios</em></h2>
+      <p class="section-sub">Organiza actividades, fechas, transporte y alojamiento día por día en un solo lugar.</p>
+    </div>
+    <button class="itin-btn-add" onclick="addDay()">+ Agregar día</button>
+  </div>
+
+<!-- Summary pills -->
+  <div class="itin-summary">
+    <div class="sum-pill"><span class="sp-icon">📅</span><div><div class="sp-val" id="s-days">3</div><div class="sp-label">Días planificados</div></div></div>
+    <div class="sum-pill"><span class="sp-icon">🎯</span><div><div class="sp-val" id="s-acts">7</div><div class="sp-label">Actividades</div></div></div>
+    <div class="sum-pill"><span class="sp-icon">🏨</span><div><div class="sp-val" id="s-aloj">2</div><div class="sp-label">Alojamientos</div></div></div>
+    <div class="sum-pill"><span class="sp-icon">🚗</span><div><div class="sp-val" id="s-trans">3</div><div class="sp-label">Transportes</div></div></div>
+  </div>
+
+  <!-- Layout principal -->
+  <div class="itin-layout">
+
+    <!-- Sidebar días -->
+    <div class="day-sidebar">
+      <div class="day-sidebar-head"><h4>Días del viaje</h4></div>
+      <div class="day-list" id="dayList"></div>
+      <button class="day-add-btn" onclick="addDay()">+ Nuevo día</button>
+    </div>
+
+    <!-- Panel actividades -->
+    <div class="day-panel">
+      <div class="day-panel-head">
+        <div>
+          <div class="day-panel-title" id="panelTitle">Día 1 – Quito</div>
+          <div class="day-panel-date"  id="panelDate">Lunes, 15 de julio 2026</div>
+        </div>
+        <div id="panelProgress" class="panel-progress-label">4 actividades</div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:100%"></div></div>
+      <div class="activities" id="activitiesContainer"></div>
+      <div class="add-activity-bar">
+        <input class="aa-input" id="aaTitle" placeholder="Ej: Visita al Cotopaxi...">
+        <select class="aa-select" id="aaType">
+          <option value="actividad">🎯 Actividad</option>
+          <option value="transport">🚗 Transporte</option>
+          <option value="alojamiento">🏨 Alojamiento</option>
+          <option value="comida">🍽️ Comida</option>
+        </select>
+        <input class="aa-input aa-time" id="aaTime" type="time" value="09:00">
+        <button class="aa-btn" onclick="addActivity()">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="itin-toast" id="itinToast"></div>
+</section>
+
+
+<!-- ════════════════════════════════════
+SECCIÓN 4 – RESERVAS
+════════════════════════════════════ -->
+<section id="reservas">
+
+  <div class="section-tag res-tag">Reserva sin complicaciones</div>
+  <h2 class="section-title res-title">Reserva tu <em>aventura</em> completa</h2>
+  <p class="section-sub res-sub">Vuelos, hoteles, tours y transporte — todo en un solo lugar, con los mejores precios garantizados.</p>
+
+  <div class="res-tabs">
+    <button class="res-tab active" onclick="setResTab('vuelos',this)">✈️ Vuelos</button>
+    <button class="res-tab" onclick="setResTab('hoteles',this)">🏨 Hoteles</button>
+    <button class="res-tab" onclick="setResTab('tours',this)">🗺️ Tours</button>
+    <button class="res-tab" onclick="setResTab('transporte',this)">🚗 Transporte</button>
+  </div>
+
+  <!-- Panel Vuelos -->
+  <div class="res-panel active" id="panel-vuelos">
+    <div class="res-form-card">
+      <div class="rf-grid-4">
+        <div class="rf-field"><label class="rf-label">Origen</label><input class="rf-input" value="Quito (UIO)"></div>
+        <div class="rf-field"><label class="rf-label">Destino</label><input class="rf-input" value="Lima (LIM)"></div>
+        <div class="rf-field"><label class="rf-label">Ida</label><input class="rf-input" type="date" value="2026-07-15"></div>
+        <div class="rf-field"><label class="rf-label">Regreso</label><input class="rf-input" type="date" value="2026-07-22"></div>
+      </div>
+      <div class="rf-row-last">
+        <div class="rf-field"><label class="rf-label">Clase</label>
+          <select class="rf-select"><option>Económica</option><option>Business</option><option>Primera clase</option></select>
+        </div>
+        <div class="rf-field"><label class="rf-label">Pasajeros</label>
+          <select class="rf-select"><option>1 adulto</option><option>2 adultos</option><option>2 adultos, 1 niño</option><option>Grupo (4+)</option></select>
+        </div>
+        <button class="rf-search-btn" onclick="showResults('vuelos')">🔍 Buscar vuelos</button>
+      </div>
+    </div>
+    <div class="res-results" id="results-vuelos"></div>
+  </div>
+
+  <!-- Panel Hoteles -->
+  <div class="res-panel" id="panel-hoteles">
+    <div class="res-form-card">
+      <div class="rf-grid-3">
+        <div class="rf-field"><label class="rf-label">Destino</label><input class="rf-input" value="Lima, Perú"></div>
+        <div class="rf-field"><label class="rf-label">Check-in</label><input class="rf-input" type="date" value="2026-07-15"></div>
+        <div class="rf-field"><label class="rf-label">Check-out</label><input class="rf-input" type="date" value="2026-07-22"></div>
+      </div>
+      <div class="rf-row-last">
+        <div class="rf-field"><label class="rf-label">Habitaciones</label>
+          <select class="rf-select"><option>1 hab.</option><option>2 hab.</option><option>3+ hab.</option></select>
+        </div>
+        <div class="rf-field"><label class="rf-label">Huéspedes</label>
+          <select class="rf-select"><option>1 persona</option><option>2 personas</option><option>Familia</option></select>
+        </div>
+        <div class="rf-field"><label class="rf-label">Categoría</label>
+          <select class="rf-select"><option>Cualquiera</option><option>★★★</option><option>★★★★</option><option>★★★★★</option></select>
+        </div>
+        <button class="rf-search-btn" onclick="showResults('hoteles')">🔍 Buscar hoteles</button>
+      </div>
+    </div>
+    <div class="res-results" id="results-hoteles"></div>
+  </div>
+
+  <!-- Panel Tours -->
+  <div class="res-panel" id="panel-tours">
+    <div class="res-form-card">
+      <div class="rf-grid-3">
+        <div class="rf-field"><label class="rf-label">Destino del tour</label><input class="rf-input" value="Quito, Ecuador"></div>
+        <div class="rf-field"><label class="rf-label">Fecha</label><input class="rf-input" type="date" value="2026-07-16"></div>
+        <div class="rf-field"><label class="rf-label">Tipo de tour</label>
+          <select class="rf-select"><option>Todos los tipos</option><option>Cultural / histórico</option><option>Aventura / naturaleza</option><option>Gastronómico</option><option>City tour</option></select>
+        </div>
+      </div>
+      <div class="rf-row-last">
+        <div class="rf-field"><label class="rf-label">Personas</label>
+          <select class="rf-select"><option>1</option><option>2</option><option>3 – 5</option><option>Grupo</option></select>
+        </div>
+        <div class="rf-field"><label class="rf-label">Duración</label>
+          <select class="rf-select"><option>Medio día</option><option>Día completo</option><option>Multi-día</option></select>
+        </div>
+        <button class="rf-search-btn" onclick="showResults('tours')">🔍 Buscar tours</button>
+      </div>
+    </div>
+    <div class="res-results" id="results-tours"></div>
+  </div>
+
+  <!-- Panel Transporte -->
+  <div class="res-panel" id="panel-transporte">
+    <div class="res-form-card">
+      <div class="rf-grid-4">
+        <div class="rf-field"><label class="rf-label">Recogida</label><input class="rf-input" value="Aeropuerto Mariscal Sucre"></div>
+        <div class="rf-field"><label class="rf-label">Destino</label><input class="rf-input" value="Centro Histórico, Quito"></div>
+        <div class="rf-field"><label class="rf-label">Fecha</label><input class="rf-input" type="date" value="2026-07-15"></div>
+        <div class="rf-field"><label class="rf-label">Hora</label><input class="rf-input" type="time" value="14:30"></div>
+      </div>
+      <div class="rf-row-last">
+        <div class="rf-field"><label class="rf-label">Tipo de vehículo</label>
+          <select class="rf-select"><option>Económico</option><option>Estándar</option><option>SUV / Camioneta</option><option>Van grupal</option></select>
+        </div>
+        <div class="rf-field"><label class="rf-label">Pasajeros</label>
+          <select class="rf-select"><option>1 – 2</option><option>3 – 4</option><option>5 – 7</option><option>8+</option></select>
+        </div>
+        <button class="rf-search-btn" onclick="showResults('transporte')">🔍 Buscar transporte</button>
+      </div>
+    </div>
+    <div class="res-results" id="results-transporte"></div>
+  </div>
+
+  <!-- Features strip -->
+  <div class="res-features">
+    <div class="res-feat"><div class="rf-icon">🔒</div><h4>Pago seguro</h4><p>Transacciones cifradas con los más altos estándares de seguridad.</p></div>
+    <div class="res-feat"><div class="rf-icon">🔄</div><h4>Cancelación flexible</h4><p>Cancela hasta 48 horas antes sin penalización en la mayoría de servicios.</p></div>
+    <div class="res-feat"><div class="rf-icon">💬</div><h4>Soporte 24/7</h4><p>Nuestro equipo está disponible todo el día para ayudarte.</p></div>
+    <div class="res-feat"><div class="rf-icon">🏅</div><h4>Mejor precio</h4><p>Comparamos opciones para darte el mejor precio disponible.</p></div>
+  </div>
+
+  <!-- Modal confirmación -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <h3>Confirmar reserva</h3>
+      <p>Revisa los detalles antes de confirmar tu reserva.</p>
+      <div class="modal-info" id="modalInfo"></div>
+      <div class="modal-btns">
+        <button class="modal-cancel"  onclick="closeModal()">Cancelar</button>
+        <button class="modal-confirm" onclick="confirmReserva()">Confirmar ✈</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="itin-toast" id="resToast"></div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════ -->
+<script>
+/* ══ DATOS ITINERARIO ══ */
+const DAYS = [
+  { label:'Quito', date:'Lunes, 15 jul 2026', activities:[
+    { time:'08:00', ampm:'AM', icon:'🚗', iconBg:'rgba(12,45,30,0.09)', title:'Transfer aeropuerto → hotel', desc:'Vehículo privado desde Mariscal Sucre al centro histórico', tags:['transport'] },
+    { time:'10:30', ampm:'AM', icon:'🏨', iconBg:'rgba(232,160,32,0.12)', title:'Check-in Hotel Casa Gangotena', desc:'Hotel boutique en el corazón del centro histórico de Quito', tags:['alojamiento'] },
+    { time:'12:00', ampm:'PM', icon:'🍽️', iconBg:'rgba(212,88,48,0.1)', title:'Almuerzo: Café del Fraile', desc:'Restaurante tradicional ecuatoriano — menú del día', tags:['comida'] },
+    { time:'02:00', ampm:'PM', icon:'⛪', iconBg:'rgba(46,139,87,0.1)', title:'Visita Basílica del Voto Nacional', desc:'Tour guiado por la basílica más grande de Ecuador', tags:['actividad'] },
+  ]},
+  { label:'Cotopaxi', date:'Martes, 16 jul 2026', activities:[
+    { time:'05:30', ampm:'AM', icon:'🚐', iconBg:'rgba(12,45,30,0.09)', title:'Salida en van hacia el Cotopaxi', desc:'Transporte grupal desde Quito al Parque Nacional Cotopaxi', tags:['transport'] },
+    { time:'09:00', ampm:'AM', icon:'🌋', iconBg:'rgba(46,139,87,0.1)', title:'Trekking al refugio José Rivas', desc:'Caminata guiada hasta 4,800 msnm, equipo incluido', tags:['actividad'] },
+    { time:'01:00', ampm:'PM', icon:'🍽️', iconBg:'rgba(212,88,48,0.1)', title:'Almuerzo en refugio', desc:'Sopa caliente y bebidas en el refugio de montaña', tags:['comida'] },
+    { time:'05:00', ampm:'PM', icon:'🏨', iconBg:'rgba(232,160,32,0.12)', title:'Check-in Hacienda El Porvenir', desc:'Hacienda histórica junto al volcán Cotopaxi', tags:['alojamiento'] },
+  ]},
+  { label:'Cuenca', date:'Miércoles, 17 jul 2026', activities:[
+    { time:'07:00', ampm:'AM', icon:'✈️', iconBg:'rgba(12,45,30,0.09)', title:'Vuelo Quito → Cuenca', desc:'Vuelo doméstico LATAM, 45 minutos', tags:['transport'] },
+    { time:'10:30', ampm:'AM', icon:'🏛️', iconBg:'rgba(46,139,87,0.1)', title:'Catedral Nueva de Cuenca', desc:'Visita a la icónica catedral con cúpulas azules, Patrimonio UNESCO', tags:['actividad'] },
+  ]},
+];
+
+let currentDay = 0;
+
+const TYPE_META = {
+  actividad:   { icon:'🎯', bg:'rgba(46,139,87,0.1)' },
+  transport:   { icon:'🚗', bg:'rgba(12,45,30,0.09)' },
+  alojamiento: { icon:'🏨', bg:'rgba(232,160,32,0.12)' },
+  comida:      { icon:'🍽️', bg:'rgba(212,88,48,0.1)' },
+};
+
+function renderDayList() {
+  const list = document.getElementById('dayList');
+  list.innerHTML = '';
+  DAYS.forEach((d, i) => {
+    const el = document.createElement('div');
+    el.className = 'day-tab' + (i === currentDay ? ' active' : '');
+    el.innerHTML = `
+      <div class="day-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="day-info">
+        <div class="day-label">Día ${i+1} – ${d.label}</div>
+        <div class="day-date">${d.date.split(',')[0]}</div>
+      </div>
+      <div class="day-dot"></div>`;
+    el.onclick = () => { currentDay = i; render(); };
+    list.appendChild(el);
+  });
+  updateSummary();
+}
+
+function renderActivities() {
+    const c   = document.getElementById('activitiesContainer');
+    const d   = DAYS[currentDay];
+    const total = d.activities.length;
+    document.getElementById('panelTitle').textContent   = `Día ${currentDay+1} – ${d.label}`;
+    document.getElementById('panelDate').textContent    = d.date;
+    document.getElementById('panelProgress').textContent = `${total} actividad${total!==1?'es':''}`;
+    document.getElementById('progressFill').style.width = total ? '100%' : '0%';
+
+   if (!total) {
+    c.innerHTML = `<div class="act-empty"><div class="em-icon">🗺️</div><p>No hay actividades aún.<br>Agrega la primera usando el campo de abajo.</p></div>`;
+    return;
+  }
+  c.innerHTML = d.activities.map((a, ai) => `
+    <div class="activity-card">
+      <div class="ac-time">
+        <div class="ac-icon-wrap" style="background:${a.iconBg}">${a.icon}</div>
+        <div class="ac-hour">${a.time}</div>
+        <div class="ac-ampm">${a.ampm}</div>
+      </div>
+      <div class="ac-body">
+        <div class="ac-title">${a.title}</div>
+        ${a.desc ? `<div class="ac-desc">${a.desc}</div>` : ''}
+        <div class="ac-tags">${a.tags.map(t=>`<span class="ac-tag tag-${t}">${t}</span>`).join('')}</div>
+      </div>
+      <div class="ac-actions">
+        <button class="ac-act-btn del" onclick="deleteActivity(${ai})">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+function render() { renderDayList(); renderActivities(); }
+
+function updateSummary() {
+    const all = DAYS.flatMap(d => d.activities);
+    document.getElementById('s-days').textContent  = DAYS.length;
+    document.getElementById('s-acts').textContent  = all.filter(a => a.tags.includes('actividad') || a.tags.includes('comida')).length;
+    document.getElementById('s-aloj').textContent  = all.filter(a => a.tags.includes('alojamiento')).length;
+    document.getElementById('s-trans').textContent = all.filter(a => a.tags.includes('transport')).length;
+}
+
+function addDay() {
+    const labels = ['Ciudad nueva','Aventura','Descanso','Exploración','Regreso'];
+    const n = DAYS.length;
+    DAYS.push({ label: labels[n % labels.length], date: `Día ${n+1} del viaje`, activities: [] });
+    currentDay = n;
+    render();
+    showToast('itinToast', `Día ${n+1} agregado al itinerario`);
+}
+
+function addActivity() {
+    const title = document.getElementById('aaTitle').value.trim();
+    const type  = document.getElementById('aaType').value;
+    const time  = document.getElementById('aaTime').value || '09:00';
+    if (!title) { showToast('itinToast','Escribe el nombre de la actividad'); return; }
+    const [h, m] = time.split(':');
+    const hr   = parseInt(h);
+    const ampm = hr >= 12 ? 'PM' : 'AM';
+    const disp = `${hr > 12 ? hr-12 : hr||12}:${m}`;
+    const meta = TYPE_META[type];
+    DAYS[currentDay].activities.push({ time:disp, ampm, icon:meta.icon, iconBg:meta.bg, title, desc:'', tags:[type] });
+    document.getElementById('aaTitle').value = '';
+    render();
+    showToast('itinToast','Actividad agregada ✓');
+}
+
+function deleteActivity(idx) {
+    DAYS[currentDay].activities.splice(idx, 1);
+    render();
+}
+
+/* ══ DATOS RESERVAS ══ */
+const RESULTS = {
+  vuelos: [
+    { logo:'✈️', bg:'rgba(0,100,200,0.15)',  name:'LATAM Airlines — UIO → LIM',       detail:'Quito → Lima · Ida y vuelta · 2h 30min · 1 parada',              badges:['ok','pop'], price:'$248',   unit:'/persona', bookData:{Tipo:'Vuelo',Ruta:'Quito (UIO) → Lima (LIM)',Fecha:'15 jul 2026',Clase:'Económica',Precio:'$248 por persona'} },
+    { logo:'🛫', bg:'rgba(200,50,0,0.12)',   name:'Avianca — UIO → LIM',              detail:'Quito → Lima · Ida y vuelta · 3h 10min · 1 parada',              badges:['ok'],       price:'$215',   unit:'/persona', bookData:{Tipo:'Vuelo',Ruta:'Quito (UIO) → Lima (LIM)',Fecha:'15 jul 2026',Clase:'Económica',Precio:'$215 por persona'} },
+    { logo:'🌐', bg:'rgba(50,150,50,0.12)',  name:'Copa Airlines — UIO → LIM',        detail:'Quito → Lima · Ida y vuelta · 4h 05min · 2 paradas',             badges:['new'],      price:'$189',   unit:'/persona', bookData:{Tipo:'Vuelo',Ruta:'Quito (UIO) → Lima (LIM) vía PTY',Fecha:'15 jul 2026',Clase:'Económica',Precio:'$189 por persona'} },
+  ],
+  hoteles: [
+    { logo:'🏨', bg:'rgba(232,160,32,0.14)', name:'Hotel Belmond Miraflores Park',    detail:'Lima, Perú · 5 estrellas · Vista al Pacífico · Desayuno incluido',badges:['pop'],      price:'$320',   unit:'/noche',   bookData:{Tipo:'Hotel',Nombre:'Belmond Miraflores Park',Ciudad:'Lima, Perú',Fechas:'15 – 22 jul 2026',Precio:'$320 por noche'} },
+    { logo:'🏩', bg:'rgba(46,139,87,0.12)',  name:'Casa Andina Premium Miraflores',   detail:'Lima, Perú · 4 estrellas · Spa · Restaurante incluido',           badges:['ok'],       price:'$148',   unit:'/noche',   bookData:{Tipo:'Hotel',Nombre:'Casa Andina Premium',Ciudad:'Lima, Perú',Fechas:'15 – 22 jul 2026',Precio:'$148 por noche'} },
+    { logo:'🌿', bg:'rgba(12,45,30,0.1)',    name:'Hotel B Barranco Design',          detail:'Lima, Perú · Boutique 4★ · Diseño exclusivo · Barranco artístico',badges:['new'],      price:'$195',   unit:'/noche',   bookData:{Tipo:'Hotel',Nombre:'Hotel B Barranco',Ciudad:'Lima, Perú',Fechas:'15 – 22 jul 2026',Precio:'$195 por noche'} },
+  ],
+  tours: [
+    { logo:'⛪', bg:'rgba(46,139,87,0.12)',  name:'Tour Centro Histórico + Panecillo',detail:'Quito · City tour guiado · 6 horas · Transporte y guía incluidos',badges:['pop'],      price:'$45',    unit:'/persona', bookData:{Tipo:'Tour',Nombre:'Centro Histórico + Panecillo',Ciudad:'Quito',Fecha:'16 jul 2026',Precio:'$45 por persona'} },
+    { logo:'🌋', bg:'rgba(232,160,32,0.14)', name:'Expedición Volcán Cotopaxi',       detail:'Quito · Aventura · Día completo · Equipo y guía incluidos',       badges:['ok','pop'], price:'$89',    unit:'/persona', bookData:{Tipo:'Tour',Nombre:'Expedición Volcán Cotopaxi',Ciudad:'Cotopaxi',Fecha:'16 jul 2026',Precio:'$89 por persona'} },
+    { logo:'🌊', bg:'rgba(0,150,200,0.12)',  name:'Galápagos — Navegación 4 días',    detail:'Santa Cruz · Naturaleza · Todo incluido · Cupos limitados',       badges:['new'],      price:'$1,200', unit:'/persona', bookData:{Tipo:'Tour',Nombre:'Galápagos 4 días',Ciudad:'Islas Galápagos',Fecha:'16 jul 2026',Precio:'$1,200 por persona'} },
+  ],
+  transporte: [
+    { logo:'🚗', bg:'rgba(12,45,30,0.1)',    name:'Sedan privado — Ejecutivo',        detail:'Aeropuerto → Centro Histórico · Hasta 3 pasajeros · A/C · WiFi',  badges:['ok'],       price:'$28',    unit:'/viaje',   bookData:{Tipo:'Transporte',Vehículo:'Sedan Ejecutivo',Ruta:'Aeropuerto → Centro Histórico',Fecha:'15 jul 2026 14:30',Precio:'$28 por viaje'} },
+    { logo:'🚐', bg:'rgba(232,160,32,0.14)', name:'Van grupal — Aeropuerto Shuttle',  detail:'Aeropuerto → Zona Rosa · Hasta 8 pasajeros · Salidas cada 30 min',badges:['pop'],      price:'$8',     unit:'/persona', bookData:{Tipo:'Transporte',Vehículo:'Van Shuttle',Ruta:'Aeropuerto → Zona Rosa',Fecha:'15 jul 2026 14:30',Precio:'$8 por persona'} },
+    { logo:'🚙', bg:'rgba(46,139,87,0.12)',  name:'SUV 4x4 — Aventura off-road',      detail:'Quito → Cotopaxi → Quito · Guía incluido · 1 día completo',       badges:['new'],      price:'$95',    unit:'/día',     bookData:{Tipo:'Transporte',Vehículo:'SUV 4x4',Ruta:'Quito ↔ Cotopaxi',Fecha:'16 jul 2026',Precio:'$95 por día'} },
+  ],
+};
+
+function setResTab(cat, btn) {
+    document.querySelectorAll('.res-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.res-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + cat).classList.add('active');
+    document.getElementById('results-' + cat).innerHTML = '';
+}
+
+function showResults(cat) {
+  const c = document.getElementById('results-' + cat);
+  c.innerHTML = RESULTS[cat].map(r => `
+    <div class="res-card" onclick='openModal(${JSON.stringify(r.bookData)})'>
+      <div class="rc-logo" style="background:${r.bg}">${r.logo}</div>
+      <div class="rc-info">
+        <div class="rc-name">${r.name}</div>
+        <div class="rc-detail">${r.detail}</div>
+        <div class="rc-badges">${r.badges.map(b =>
+          b==='ok'  ? '<span class="rc-badge badge-ok">✓ Disponible</span>' :
+          b==='pop' ? '<span class="rc-badge badge-pop">★ Popular</span>' :
+                      '<span class="rc-badge badge-new">✦ Nuevo</span>'
+        ).join('')}</div>
+      </div>
+      <div class="rc-price">
+        <div class="rc-price-val">${r.price}</div>
+        <div class="rc-price-unit">${r.unit}</div>
+        <button class="rc-book-btn">Reservar →</button>
+      </div>
+    </div>`).join('');
+}
+
+function openModal(data) {
+  const rows = Object.entries(data).map(([k,v]) =>
+    `<div class="modal-info-row"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('');
+  document.getElementById('modalInfo').innerHTML = rows;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+function confirmReserva() { closeModal(); showToast('resToast','¡Reserva confirmada! Recibirás un email con los detalles. ✓'); }
+
+/* ══ TOAST GENÉRICO ══ */
+function showToast(id, msg) {
+    const t = document.getElementById(id);
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+/* ══ INIT ══ */
+render();
+</script>
+
 </body>
 </html>
