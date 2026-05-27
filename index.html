@@ -1327,6 +1327,387 @@
         // Aquí puedes agregar lógica para filtrar marcadores reales cuando conectes una API de mapas
         console.log('Filtro activo:', category);
     }
+
+    /* ══ PRESUPUESTO ══ */
+    function calculateBudget() {
+      const days = parseInt(document.getElementById('budgetDays').value) || 7;
+      const total = parseInt(document.getElementById('budgetTotal').value) || 2000;
+
+      // Distribución típica: Transporte 20%, Hospedaje 35%, Comida 25%, Actividades 20%
+      const transport = Math.round(total * 0.20);
+      const hospedaje = Math.round(total * 0.35);
+      const comida = Math.round(total * 0.25);
+      const actividades = Math.round(total * 0.20);
+
+      document.getElementById('transportAmount').textContent = '$' + transport;
+      document.getElementById('hospedajeAmount').textContent = '$' + hospedaje;
+      document.getElementById('comidaAmount').textContent = '$' + comida;
+      document.getElementById('actividadesAmount').textContent = '$' + actividades;
+
+      document.getElementById('transportBar').style.width = '20%';
+      document.getElementById('hospedajeBar').style.width = '35%';
+      document.getElementById('comidaBar').style.width = '25%';
+      document.getElementById('actividadesBar').style.width = '20%';
+
+      document.getElementById('transportPercent').textContent = '20%';
+      document.getElementById('hospedajePercent').textContent = '35%';
+      document.getElementById('comidaPercent').textContent = '25%';
+      document.getElementById('actividadesPercent').textContent = '20%';
+
+      showToast('itinToast', '💰 Presupuesto calculado con éxito');
+    }
+
+    /* ══ COMUNIDAD TABS ══ */
+    function setCommunityTab(tab, btn) {
+      document.querySelectorAll('.community-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.community-tab').forEach(t => t.classList.remove('active'));
+      
+      document.getElementById('panel-' + tab).classList.add('active');
+      btn.classList.add('active');
+    }
     </script>
+
+<!-- ════════════════════════════════════
+     SECCIÓN 7 – PRESUPUESTO DE VIAJE
+════════════════════════════════════ -->
+<section id="presupuesto" class="budget-section">
+  <div class="budget-container">
+    
+    <div class="budget-header">
+      <span class="budget-tag">PLANIFICA TUS GASTOS</span>
+      <h2 class="budget-title">Calculadora de <em>Presupuesto</em></h2>
+      <p class="budget-subtitle">Estima tus gastos de viaje: transporte, hospedaje, comida y actividades.</p>
+    </div>
+
+    <!-- Formulario Budget -->
+    <div class="budget-form-card">
+      <div class="budget-inputs">
+        <div class="budget-input-group">
+          <label class="bi-label">Duración del viaje (días)</label>
+          <input type="number" id="budgetDays" class="bi-input" value="7" min="1">
+        </div>
+        <div class="budget-input-group">
+          <label class="bi-label">Presupuesto total (USD)</label>
+          <input type="number" id="budgetTotal" class="bi-input" value="2000" min="0">
+        </div>
+        <button class="budget-calc-btn" onclick="calculateBudget()">Calcular distribución</button>
+      </div>
+
+      <!-- Resumen Budget -->
+      <div class="budget-summary">
+        <div class="bs-item">
+          <div class="bs-icon">🚗</div>
+          <div class="bs-content">
+            <div class="bs-label">Transporte</div>
+            <div class="bs-amount" id="transportAmount">$400</div>
+            <div class="bs-desc">Vuelos, traslados locales</div>
+          </div>
+        </div>
+
+        <div class="bs-item">
+          <div class="bs-icon">🏨</div>
+          <div class="bs-content">
+            <div class="bs-label">Hospedaje</div>
+            <div class="bs-amount" id="hospedajeAmount">$700</div>
+            <div class="bs-desc">Hoteles y alojamientos</div>
+          </div>
+        </div>
+
+        <div class="bs-item">
+          <div class="bs-icon">🍽️</div>
+          <div class="bs-content">
+            <div class="bs-label">Comida</div>
+            <div class="bs-amount" id="comidaAmount">$500</div>
+            <div class="bs-desc">Restaurantes y snacks</div>
+          </div>
+        </div>
+
+        <div class="bs-item">
+          <div class="bs-icon">🎯</div>
+          <div class="bs-content">
+            <div class="bs-label">Actividades</div>
+            <div class="bs-amount" id="actividadesAmount">$400</div>
+            <div class="bs-desc">Tours y experiencias</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breakdown visual -->
+    <div class="budget-breakdown">
+      <div class="breakdown-bars">
+        <div class="bb-item">
+          <div class="bb-label">
+            <span class="bb-icon">🚗</span>
+            <span>Transporte</span>
+          </div>
+          <div class="bb-bar">
+            <div class="bb-fill" id="transportBar" style="width: 20%"></div>
+          </div>
+          <span class="bb-percent" id="transportPercent">20%</span>
+        </div>
+
+        <div class="bb-item">
+          <div class="bb-label">
+            <span class="bb-icon">🏨</span>
+            <span>Hospedaje</span>
+          </div>
+          <div class="bb-bar">
+            <div class="bb-fill" id="hospedajeBar" style="width: 35%; background: #e5a93b;"></div>
+          </div>
+          <span class="bb-percent" id="hospedajePercent">35%</span>
+        </div>
+
+        <div class="bb-item">
+          <div class="bb-label">
+            <span class="bb-icon">🍽️</span>
+            <span>Comida</span>
+          </div>
+          <div class="bb-bar">
+            <div class="bb-fill" id="comidaBar" style="width: 25%; background: #d45830;"></div>
+          </div>
+          <span class="bb-percent" id="comidaPercent">25%</span>
+        </div>
+
+        <div class="bb-item">
+          <div class="bb-label">
+            <span class="bb-icon">🎯</span>
+            <span>Actividades</span>
+          </div>
+          <div class="bb-bar">
+            <div class="bb-fill" id="actividadesBar" style="width: 20%; background: #2e8b57;"></div>
+          </div>
+          <span class="bb-percent" id="actividadesPercent">20%</span>
+        </div>
+      </div>
+
+      <div class="breakdown-tips">
+        <h4>💡 Consejos de presupuesto</h4>
+        <ul>
+          <li>Hospedaje: 35-40% del presupuesto total</li>
+          <li>Transporte: 15-25% (depende de destino)</li>
+          <li>Comida: 20-25% por día</li>
+          <li>Actividades: 15-20% para tours y experiencias</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════
+     SECCIÓN 8 – OPINIONES Y COMUNIDAD
+════════════════════════════════════ -->
+<section id="comunidad" class="community-section">
+  <div class="community-container">
+    
+    <div class="community-header">
+      <span class="community-tag">COMUNIDAD GLOBAL</span>
+      <h2 class="community-title">Experiencias de <em>viajeros</em> reales</h2>
+      <p class="community-subtitle">Descubre reseñas, recomendaciones y consejos de nuestra comunidad de viajeros.</p>
+    </div>
+
+    <!-- Tabs: Reseñas / Foros -->
+    <div class="community-tabs">
+      <button class="community-tab active" onclick="setCommunityTab('reviews', this)">⭐ Reseñas</button>
+      <button class="community-tab" onclick="setCommunityTab('forum', this)">💬 Foros</button>
+      <button class="community-tab" onclick="setCommunityTab('tips', this)">💡 Consejos</button>
+    </div>
+
+    <!-- Panel de Reseñas -->
+    <div class="community-panel active" id="panel-reviews">
+      <div class="reviews-grid">
+        
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">👨‍🌾</div>
+            <div class="review-info">
+              <div class="review-author">Carlos Mendoza</div>
+              <div class="review-location">📍 Quito, Ecuador</div>
+            </div>
+            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+          <div class="review-title">Experiencia increíble en el Cotopaxi</div>
+          <div class="review-text">
+            Usé TipPlan para mi viaje al volcán Cotopaxi y fue todo un éxito. Las recomendaciones de hospedajes fueron perfectas y el itinerario sugerido me ayudó a optimizar mi tiempo. ¡Volvería a usar!
+          </div>
+          <div class="review-meta">
+            <span class="review-date">Hace 2 semanas</span>
+            <span class="review-helpful">👍 23 útiles</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">👩‍💼</div>
+            <div class="review-info">
+              <div class="review-author">María Guayasamin</div>
+              <div class="review-location">📍 Cuenca, Ecuador</div>
+            </div>
+            <div class="review-rating">⭐⭐⭐⭐</div>
+          </div>
+          <div class="review-title">Planificación sencilla para principiantes</div>
+          <div class="review-text">
+            Primera vez viajando solo y TipPlan hizo que todo fuera muy fácil. La interfaz es intuitiva y las recomendaciones locales son muy útiles. Recomendaría a cualquiera que quiera viajar sin estrés.
+          </div>
+          <div class="review-meta">
+            <span class="review-date">Hace 3 semanas</span>
+            <span class="review-helpful">👍 18 útiles</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">👨‍✈️</div>
+            <div class="review-info">
+              <div class="review-author">Juan Pablo Rojas</div>
+              <div class="review-location">📍 Lima, Perú</div>
+            </div>
+            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+          <div class="review-title">Herramienta imprescindible para viajeros</div>
+          <div class="review-text">
+            He viajado a más de 20 países y esta es la plataforma más completa que he encontrado. La calculadora de presupuesto es muy precisa y los mapas interactivos son de gran ayuda. ¡Excelente trabajo!
+          </div>
+          <div class="review-meta">
+            <span class="review-date">Hace 1 mes</span>
+            <span class="review-helpful">👍 45 útiles</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">👩‍🎓</div>
+            <div class="review-info">
+              <div class="review-author">Sofía Hidalgo</div>
+              <div class="review-location">📍 Otavalo, Ecuador</div>
+            </div>
+            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+          <div class="review-title">Perfecta para viajes en grupo</div>
+          <div class="review-text">
+            Organicé un viaje para 8 personas y TipPlan facilitó toda la coordinación. Desde presupuestos hasta itinerarios, todo quedó perfectamente organizado. Mis amigos están muy contentos.
+          </div>
+          <div class="review-meta">
+            <span class="review-date">Hace 5 días</span>
+            <span class="review-helpful">👍 32 útiles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel de Foros -->
+    <div class="community-panel" id="panel-forum">
+      <div class="forum-container">
+        <div class="forum-post">
+          <div class="fp-header">
+            <div class="fp-avatar">👨</div>
+            <div class="fp-info">
+              <div class="fp-author">Diego Flores</div>
+              <div class="fp-topic">¿Cuál es la mejor época para visitar la Amazonía?</div>
+            </div>
+            <div class="fp-meta">
+              <span>2 respuestas</span>
+              <span>👁️ 48 vistas</span>
+            </div>
+          </div>
+          <div class="fp-content">
+            Estoy planeando un viaje a la selva amazónica y no sé qué época es mejor. ¿Alguien ha ido? ¿Lluvias, temperatura?
+          </div>
+        </div>
+
+        <div class="forum-post">
+          <div class="fp-header">
+            <div class="fp-avatar">👩</div>
+            <div class="fp-info">
+              <div class="fp-author">Laura Sánchez</div>
+              <div class="fp-topic">Recomendación: Restaurantes baratos en el Centro Histórico</div>
+            </div>
+            <div class="fp-meta">
+              <span>5 respuestas</span>
+              <span>👁️ 156 vistas</span>
+            </div>
+          </div>
+          <div class="fp-content">
+            Acabo de descubrir unos restaurantes increíbles en Quito con comida deliciosa y precios muy accesibles. Aquí van mis favoritos...
+          </div>
+        </div>
+
+        <div class="forum-post">
+          <div class="fp-header">
+            <div class="fp-avatar">👨‍🌾</div>
+            <div class="fp-info">
+              <div class="fp-author">Andrés Montenegro</div>
+              <div class="fp-topic">Itinerario 10 días: Costa + Sierra + Amazonía</div>
+            </div>
+            <div class="fp-meta">
+              <span>8 respuestas</span>
+              <span>👁️ 234 vistas</span>
+            </div>
+          </div>
+          <div class="fp-content">
+            ¿Es posible hacer todo en 10 días? ¿Qué ciudades me recomiendan? Tengo presupuesto de $1500...
+          </div>
+        </div>
+      </div>
+      <button class="community-post-btn">+ Crear nuevo tema</button>
+    </div>
+
+    <!-- Panel de Consejos -->
+    <div class="community-panel" id="panel-tips">
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-header">
+            <div class="tip-icon">🧳</div>
+            <div class="tip-votes">👍 127</div>
+          </div>
+          <h4 class="tip-title">Cómo empacar de forma inteligente</h4>
+          <p class="tip-text">
+            Usa la técnica de rollo para ahorrar espacio, lleva ropa versátil que combinen colores, y siempre deja espacio para compras. Los cubos de empaque también son geniales.
+          </p>
+          <div class="tip-author">por María Rodríguez</div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-header">
+            <div class="tip-icon">💰</div>
+            <div class="tip-votes">👍 98</div>
+          </div>
+          <h4 class="tip-title">Ahorrar dinero en hospedaje</h4>
+          <p class="tip-text">
+            Reserva con 2-3 meses de anticipación para mejores precios, considera Airbnb con cocina para preparar desayunos, y viaja en temporada baja cuando es posible.
+          </p>
+          <div class="tip-author">por Carlos Mendoza</div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-header">
+            <div class="tip-icon">📸</div>
+            <div class="tip-votes">👍 156</div>
+          </div>
+          <h4 class="tip-title">Mejores horas para fotografiar</h4>
+          <p class="tip-text">
+            La hora dorada (primera y última hora del día) ofrece la mejor iluminación. Evita el mediodía cuando el sol está muy fuerte y crea sombras duras en las fotos.
+          </p>
+          <div class="tip-author">por Sofía Hidalgo</div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-header">
+            <div class="tip-icon">🚗</div>
+            <div class="tip-votes">👍 82</div>
+          </div>
+          <h4 class="tip-title">Viajar seguro usando transporte público</h4>
+          <p class="tip-text">
+            Ten cuidado con tus pertenencias, evita viajar con dinero en efectivo visible, usa mochilas con cierre seguro y mantente atento a tu entorno en todo momento.
+          </p>
+          <div class="tip-author">por Juan Pablo Rojas</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+    
   </body>
 </html>
