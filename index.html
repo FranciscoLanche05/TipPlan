@@ -1,594 +1,2169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TipPlan</title>
-
-    <!-- SEO: Meta descripción -->
-    <meta name="description" content="TipPlan – Planifica, organiza y vive cada viaje sin complicaciones. Descubre destinos increíbles en Ecuador y el mundo con guías, mapas y consejos de viaje en un solo lugar.">
-
-    <!-- Preconexiones para reducir latencia de terceros -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-    <!-- Google Fonts (ya tiene display=swap, no bloquea renderizado) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
-    <link rel="icon" type="image/webp" href="./src/images/logo.webp">
-
-    <!-- Preload de la imagen hero (LCP crítico) -->
-    <link rel="preload" as="image" href="./src/images/image1.webp" fetchpriority="high">
-
-    <link rel="stylesheet" href="./src/css/styles.css">
-
-    <!-- FontAwesome cargado de forma NO bloqueante (mejora FCP y LCP) -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </noscript>
-</head>
-
-<body>
-
-<header class="header" id="header">
-    <div class="container">
-        <nav class="navbar" id="navbar">
-            <div class="navbar__brand">
-                <a href="index.html" class="navbar__logo-link">
-                    <h1 class="navbar__logo">Tip<span>Plan</span></h1>
-                </a>
-            </div>
-
-            <!-- Accesibilidad: aria-label en botón hamburguesa -->
-            <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú de navegación">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <ul class="navbar__menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#about">Sobre nosotros</a></li>
-                <li><a href="#destinations">Destinos</a></li>
-                <li><a href="#contact">Contáctanos</a></li>
-            </ul>
-
-            <div class="navbar__right">
-                <!-- aria-label en el input de búsqueda -->
-                <input type="text" placeholder="Buscar destinos..." class="navbar__search" aria-label="Buscar destinos">
-                <a href="#" class="navbar__login">Login</a>
-            </div>
-        </nav>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TipPlan - Tu plataforma de viajes en Ecuador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./src/images/tipplan_favicon_32.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+  <a href="#hero" class="logo">Tip<span>Plan</span></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#nosotros" class="nav-item">Nosotros</a>
+    <a href="#destinos" class="nav-item">Destinos</a>
+    <a href="#mapa" class="nav-item">Mundo</a>
+    <a href="#experiencias" class="nav-item">Planificador</a>
+    <a href="#blog" class="nav-item">Blog</a>
+    <a href="#contacto" class="nav-item">Contacto</a>
+    <a href="#experiencias" class="btn-cta btn-cta-mobile">Planificar viaje →</a>
+  </nav>
+  <div class="nav-btn-container">
+    <a href="#experiencias" class="btn-cta">Planificar viaje →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
 </header>
+<div class="nav-overlay" id="navOverlay"></div>
 
-<main class="hero">
-    <div class="hero__text">
-        <h2>
-            Tu próxima aventura empieza aquí. 
-            Planifica, organiza y vive cada viaje sin complicaciones,
-            con todo lo que necesitas en un solo lugar
-        </h2>
-        <a href="#destinations" class="Boton_Principal">PLANIFICAR MI AVENTURA</a>
-    </div>
+    <main class="hero" id="hero">
+      <div class="hero-container">
+        <div class="hero-tag">
+          <span class="sparkle">✦</span> TU PLATAFORMA DE VIAJES EN ECUADOR
+        </div>
 
-    <div class="hero__img">
-        <!-- fetchpriority="high" + preload en head = LCP mejorado -->
-        <img src="./src/images/image1.webp"
-             alt="Viajeros explorando el mundo"
-             width="600" height="400"
-             fetchpriority="high">
-    </div>
-</main>
+        <h1 class="hero-title">
+          Tu próxima <br />
+          <span class="highlight-text">aventura</span> <br />
+          empieza aquí
+        </h1>
 
-<section class="about" id="about">
-    <div class="container">
-        <h3 class="about__title">
-            Guías y consejos para tus próximas aventuras
-        </h3>
-        <div class="about__content">
-            <div class="about__img">
-                <!-- loading="lazy" en imágenes fuera del viewport inicial -->
-                <img src="./src/images/image2.webp"
-                     alt="Grupo de viajeros"
-                     width="600" height="400"
-                     loading="lazy">
+        <p class="hero-description">
+          Planifica, organiza y vive cada viaje sin complicaciones. <br />
+          Descubre destinos increíbles con guías, mapas y consejos en un solo
+          lugar.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#explorar" class="btn-primary">Explorar destinos →</a>
+          <button class="btn-secondary">
+            <span class="play-icon">▶</span> Planificar mi aventura
+          </button>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="dot"></div>
+      </div>
+    </main>
+    <section class="stats-section">
+      <div class="stats-container">
+        <div class="stat-item">
+          <h2 class="stat-number">50+</h2>
+          <p class="stat-label">Destinos disponibles</p>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <h2 class="stat-number">7</h2>
+          <p class="stat-label">Continentes cubiertos</p>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <h2 class="stat-number">12K+</h2>
+          <p class="stat-label">Viajeros satisfechos</p>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <h2 class="stat-number">100%</h2>
+          <p class="stat-label">Gratuito para siempre</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros" class="about-section">
+      <div class="about-container">
+        <div class="about-image-side">
+          <div class="image-wrapper">
+            <img
+              src="./src/images/viajeros_11zon.webp"
+              alt="Viajeros explorando Ecuador"
+              class="about-img"
+            />
+
+            <div class="badge-floating">
+              <h3 class="badge-year">2021</h3>
+              <p class="badge-text">Fundado en Ecuador</p>
             </div>
-            <div class="about__text">
+          </div>
+        </div>
+
+        <div class="about-text-side">
+          <span class="about-tag">SOBRE NOSOTROS</span>
+
+          <h2 class="about-title">
+            Hacemos que planificar sea <br />
+            <span class="about-title-italic">emocionante</span>
+          </h2>
+
+          <p class="about-description">
+            Nuestra visión es transformar la manera en que las personas viven
+            sus viajes, convirtiendo la planificación en una experiencia simple,
+            intuitiva y emocionante.
+          </p>
+
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-icon icon-bg-map">🗺️</div>
+              <div class="feature-content">
+                <h3>Guías locales expertas</h3>
                 <p>
-                    Nuestra visión es transformar la manera en que las personas viven sus viajes,
-                    convirtiendo la planificación en una experiencia simple, intuitiva y emocionante.
+                  Información curada por viajeros reales con experiencia de
+                  primera mano en cada destino.
                 </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon icon-bg-bolt">⚡</div>
+              <div class="feature-content">
+                <h3>Planificación en minutos</h3>
                 <p>
-                    Buscamos que cada viajero tenga el control total de su aventura,
-                    organizando cada detalle con facilidad y confianza.
+                  Herramientas intuitivas que te permiten organizar todo tu
+                  viaje de forma rápida y sin complicaciones.
                 </p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon icon-bg-pin">📍</div>
+              <div class="feature-content">
+                <h3>Mapas y ubicaciones exactas</h3>
                 <p>
-                    Aspiramos a ser el punto de partida de experiencias inolvidables,
-                    donde cada destino se convierta en una historia por descubrir.
+                  Integración directa con Google Maps para que encuentres cada
+                  destino sin problemas.
                 </p>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="destinations" id="destinations">
-    <div class="destinations__container">
-        <h3 class="about__title">
-            Nuestros destinos más populares
-        </h3>
-        <div class="destinations__wrapper">
+    <section id="destinos" class="destinations-section">
+      <div class="destinations-container">
+        <div class="destinations-header">
+          <div class="header-left">
+            <span class="destinations-tag">ECUADOR</span>
+            <h2 class="destinations-title">
+              Destinos
+              <span class="destinations-title-italic">más populares</span>
+            </h2>
+          </div>
+          <div class="header-right">
+            <p class="destinations-subtitle">
+              Los lugares más icónicos de nuestro hermoso país, listos para
+              explorar.
+            </p>
+          </div>
+        </div>
 
-            <div class="destination">
-                <img src="./src/images/panecillo.webp"
-                     alt="Virgen del Panecillo, Quito"
-                     width="231" height="345"
-                     loading="lazy">
-                <div class="destination-content">
-                    <h4>Virgen del Panecillo, Quito</h4>
-                    <p>
-                        El Panecillo es uno de los miradores más emblemáticos de Quito, ubicado sobre 
-                        una colina que ofrece vistas panorámicas impresionantes de la ciudad. En su cima 
-                        se encuentra la famosa Virgen de Quito, una majestuosa escultura que representa 
-                        la identidad cultural e histórica de la capital ecuatoriana.
-                    </p>
-                    <div class="Iconos_Destino">
-                        <a href="https://maps.app.goo.gl/VbivP6PX1syyeRz86" class="Icono_Mapa"
-                           aria-label="Ver Virgen del Panecillo en Google Maps" target="_blank" rel="noopener">
-                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                        </a>
-                        <a href="#contact" class="Icono_Contacto"
-                           aria-label="Más información sobre Virgen del Panecillo">
-                            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
+        <div class="destinations-grid">
+          <div class="destination-card">
+            <img
+              src="./src/images/panecillo_11zon.webp"
+              alt="Virgen del Panecillo"
+              class="card-img"
+            />
+            <div class="card-overlay">
+              <span class="card-location">QUITO, ECUADOR</span>
+              <h3 class="card-title">Virgen del Panecillo</h3>
+              <div class="card-actions">
+                <a
+                  href="https://maps.google.com/?q=Virgen+del+Panecillo+QuitoA"
+                  target="_blank"
+                  class="btn-card-secondary"
+                  >📍 Ver mapa</a
+                >
+                <a href="#" class="btn-card-primary">Reservar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="./src/images/mitad_mundog_11zon.webp"
+              alt="Mitad del Mundo"
+              class="card-img"
+            />
+            <div class="card-overlay">
+              <span class="card-location">QUITO, ECUADOR</span>
+              <h3 class="card-title">Mitad del Mundo</h3>
+              <div class="card-actions">
+                <a
+                  href="https://maps.google.com/?q=Mitad+del+Mundo+Quito"
+                  target="_blank"
+                  class="btn-card-secondary"
+                  >📍 Ver mapa</a
+                >
+                <a href="#" class="btn-card-primary">Reservar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="./src/images/basilica_11zon.webp"
+              alt="Basílica del Voto Nacional"
+              class="card-img"
+            />
+            <div class="card-overlay">
+              <span class="card-location">QUITO, ECUADOR</span>
+              <h3 class="card-title">Basílica del Voto Nacional</h3>
+              <div class="card-actions">
+                <a
+                  href="https://maps.google.com/?q=Basilica+del+Voto+Nacional+Quito"
+                  target="_blank"
+                  class="btn-card-secondary"
+                  >📍 Ver mapa</a
+                >
+
+                <a href="#" class="btn-card-primary">Reservar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img
+              src="./src/images/malecon_11zon.webp"
+              alt="Malecón 2000"
+              class="card-img"
+            />
+            <div class="card-overlay">
+              <span class="card-location">GUAYAQUIL, ECUADOR</span>
+              <h3 class="card-title">Malecón 2000</h3>
+              <div class="card-actions">
+                <a
+                  href="https://maps.google.com/?q=Malecon+2000+Guayaquil"
+                  target="_blank"
+                  class="btn-card-secondary"
+                  >📍 Ver mapa</a
+                >
+
+                <a href="#" class="btn-card-primary">Reservar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+    SECCIÓN 3 – PLANIFICADOR DE ITINERARIOS
+════════════════════════════════════ -->
+    <section id="itinerary">
+      <!-- Header -->
+      <div class="itin-header">
+        <div>
+          <div class="section-tag">Organiza tu viaje</div>
+          <h2 class="section-title">Planificador de <em>Itinerarios</em></h2>
+          <p class="section-sub">
+            Organiza actividades, fechas, transporte y alojamiento día por día
+            en un solo lugar.
+          </p>
+        </div>
+        <button class="itin-btn-add" onclick="addDay()">+ Agregar día</button>
+      </div>
+
+      <!-- Summary pills -->
+      <div class="itin-summary">
+        <div class="sum-pill">
+          <span class="sp-icon">📅</span>
+          <div>
+            <div class="sp-val" id="s-days">3</div>
+            <div class="sp-label">Días planificados</div>
+          </div>
+        </div>
+        <div class="sum-pill">
+          <span class="sp-icon">🎯</span>
+          <div>
+            <div class="sp-val" id="s-acts">7</div>
+            <div class="sp-label">Actividades</div>
+          </div>
+        </div>
+        <div class="sum-pill">
+          <span class="sp-icon">🏨</span>
+          <div>
+            <div class="sp-val" id="s-aloj">2</div>
+            <div class="sp-label">Alojamientos</div>
+          </div>
+        </div>
+        <div class="sum-pill">
+          <span class="sp-icon">🚗</span>
+          <div>
+            <div class="sp-val" id="s-trans">3</div>
+            <div class="sp-label">Transportes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Layout principal -->
+      <div class="itin-layout">
+        <!-- Sidebar días -->
+        <div class="day-sidebar">
+          <div class="day-sidebar-head"><h4>Días del viaje</h4></div>
+          <div class="day-list" id="dayList"></div>
+          <button class="day-add-btn" onclick="addDay()">+ Nuevo día</button>
+        </div>
+
+        <!-- Panel actividades -->
+        <div class="day-panel">
+          <div class="day-panel-head">
+            <div>
+              <div class="day-panel-title" id="panelTitle">Día 1 – Quito</div>
+              <div class="day-panel-date" id="panelDate">
+                Lunes, 15 de julio 2026
+              </div>
+            </div>
+            <div id="panelProgress" class="panel-progress-label">
+              4 actividades
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div
+              class="progress-fill"
+              id="progressFill"
+              style="width: 100%"
+            ></div>
+          </div>
+          <div class="activities" id="activitiesContainer"></div>
+          <div class="add-activity-bar">
+            <input
+              class="aa-input"
+              id="aaTitle"
+              placeholder="Ej: Visita al Cotopaxi..."
+            />
+            <select class="aa-select" id="aaType">
+              <option value="actividad">🎯 Actividad</option>
+              <option value="transport">🚗 Transporte</option>
+              <option value="alojamiento">🏨 Alojamiento</option>
+              <option value="comida">🍽️ Comida</option>
+            </select>
+            <input
+              class="aa-input aa-time"
+              id="aaTime"
+              type="time"
+              value="09:00"
+            />
+            <button class="aa-btn" onclick="addActivity()">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="itin-toast" id="itinToast"></div>
+    </section>
+
+    <!-- ════════════════════════════════════
+     SECCIÓN 4 – RESERVAS
+════════════════════════════════════ -->
+    <section id="reservas">
+      <div class="section-tag res-tag">Reserva sin complicaciones</div>
+      <h2 class="section-title res-title">
+        Reserva tu <em>aventura</em> completa
+      </h2>
+      <p class="section-sub res-sub">
+        Vuelos, hoteles, tours y transporte — todo en un solo lugar, con los
+        mejores precios garantizados.
+      </p>
+
+      <!-- Tabs -->
+      <div class="res-tabs">
+        <button class="res-tab active" onclick="setResTab('vuelos', this)">
+          ✈️ Vuelos
+        </button>
+        <button class="res-tab" onclick="setResTab('hoteles', this)">
+          🏨 Hoteles
+        </button>
+        <button class="res-tab" onclick="setResTab('tours', this)">
+          🗺️ Tours
+        </button>
+        <button class="res-tab" onclick="setResTab('transporte', this)">
+          🚗 Transporte
+        </button>
+      </div>
+
+      <!-- Panel Vuelos -->
+      <div class="res-panel active" id="panel-vuelos">
+        <div class="res-form-card">
+          <div class="rf-grid-4">
+            <div class="rf-field">
+              <label class="rf-label">Origen</label
+              ><input class="rf-input" value="Quito (UIO)" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Destino</label
+              ><input class="rf-input" value="Lima (LIM)" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Ida</label
+              ><input class="rf-input" type="date" value="2026-07-15" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Regreso</label
+              ><input class="rf-input" type="date" value="2026-07-22" />
+            </div>
+          </div>
+          <div class="rf-row-last">
+            <div class="rf-field">
+              <label class="rf-label">Clase</label>
+              <select class="rf-select">
+                <option>Económica</option>
+                <option>Business</option>
+                <option>Primera clase</option>
+              </select>
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Pasajeros</label>
+              <select class="rf-select">
+                <option>1 adulto</option>
+                <option>2 adultos</option>
+                <option>2 adultos, 1 niño</option>
+                <option>Grupo (4+)</option>
+              </select>
+            </div>
+            <button class="rf-search-btn" onclick="showResults('vuelos')">
+              🔍 Buscar vuelos
+            </button>
+          </div>
+        </div>
+        <div class="res-results" id="results-vuelos"></div>
+      </div>
+
+      <!-- Panel Hoteles -->
+      <div class="res-panel" id="panel-hoteles">
+        <div class="res-form-card">
+          <div class="rf-grid-3">
+            <div class="rf-field">
+              <label class="rf-label">Destino</label
+              ><input class="rf-input" value="Lima, Perú" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Check-in</label
+              ><input class="rf-input" type="date" value="2026-07-15" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Check-out</label
+              ><input class="rf-input" type="date" value="2026-07-22" />
+            </div>
+          </div>
+          <div class="rf-row-last">
+            <div class="rf-field">
+              <label class="rf-label">Habitaciones</label>
+              <select class="rf-select">
+                <option>1 hab.</option>
+                <option>2 hab.</option>
+                <option>3+ hab.</option>
+              </select>
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Huéspedes</label>
+              <select class="rf-select">
+                <option>1 persona</option>
+                <option>2 personas</option>
+                <option>Familia</option>
+              </select>
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Categoría</label>
+              <select class="rf-select">
+                <option>Cualquiera</option>
+                <option>★★★</option>
+                <option>★★★★</option>
+                <option>★★★★★</option>
+              </select>
+            </div>
+            <button class="rf-search-btn" onclick="showResults('hoteles')">
+              🔍 Buscar hoteles
+            </button>
+          </div>
+        </div>
+        <div class="res-results" id="results-hoteles"></div>
+      </div>
+
+      <!-- Panel Tours -->
+      <div class="res-panel" id="panel-tours">
+        <div class="res-form-card">
+          <div class="rf-grid-3">
+            <div class="rf-field">
+              <label class="rf-label">Destino del tour</label
+              ><input class="rf-input" value="Quito, Ecuador" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Fecha</label
+              ><input class="rf-input" type="date" value="2026-07-16" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Tipo de tour</label>
+              <select class="rf-select">
+                <option>Todos los tipos</option>
+                <option>Cultural / histórico</option>
+                <option>Aventura / naturaleza</option>
+                <option>Gastronómico</option>
+                <option>City tour</option>
+              </select>
+            </div>
+          </div>
+          <div class="rf-row-last">
+            <div class="rf-field">
+              <label class="rf-label">Personas</label>
+              <select class="rf-select">
+                <option>1</option>
+                <option>2</option>
+                <option>3 – 5</option>
+                <option>Grupo</option>
+              </select>
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Duración</label>
+              <select class="rf-select">
+                <option>Medio día</option>
+                <option>Día completo</option>
+                <option>Multi-día</option>
+              </select>
+            </div>
+            <button class="rf-search-btn" onclick="showResults('tours')">
+              🔍 Buscar tours
+            </button>
+          </div>
+        </div>
+        <div class="res-results" id="results-tours"></div>
+      </div>
+
+      <!-- Panel Transporte -->
+      <div class="res-panel" id="panel-transporte">
+        <div class="res-form-card">
+          <div class="rf-grid-4">
+            <div class="rf-field">
+              <label class="rf-label">Recogida</label
+              ><input class="rf-input" value="Aeropuerto Mariscal Sucre" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Destino</label
+              ><input class="rf-input" value="Centro Histórico, Quito" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Fecha</label
+              ><input class="rf-input" type="date" value="2026-07-15" />
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Hora</label
+              ><input class="rf-input" type="time" value="14:30" />
+            </div>
+          </div>
+          <div class="rf-row-last">
+            <div class="rf-field">
+              <label class="rf-label">Tipo de vehículo</label>
+              <select class="rf-select">
+                <option>Económico</option>
+                <option>Estándar</option>
+                <option>SUV / Camioneta</option>
+                <option>Van grupal</option>
+              </select>
+            </div>
+            <div class="rf-field">
+              <label class="rf-label">Pasajeros</label>
+              <select class="rf-select">
+                <option>1 – 2</option>
+                <option>3 – 4</option>
+                <option>5 – 7</option>
+                <option>8+</option>
+              </select>
+            </div>
+            <button class="rf-search-btn" onclick="showResults('transporte')">
+              🔍 Buscar transporte
+            </button>
+          </div>
+        </div>
+        <div class="res-results" id="results-transporte"></div>
+      </div>
+
+      <!-- Features strip -->
+      <div class="res-features">
+        <div class="res-feat">
+          <div class="rf-icon">🔒</div>
+          <h4>Pago seguro</h4>
+          <p>
+            Transacciones cifradas con los más altos estándares de seguridad.
+          </p>
+        </div>
+        <div class="res-feat">
+          <div class="rf-icon">🔄</div>
+          <h4>Cancelación flexible</h4>
+          <p>
+            Cancela hasta 48 horas antes sin penalización en la mayoría de
+            servicios.
+          </p>
+        </div>
+        <div class="res-feat">
+          <div class="rf-icon">💬</div>
+          <h4>Soporte 24/7</h4>
+          <p>Nuestro equipo está disponible todo el día para ayudarte.</p>
+        </div>
+        <div class="res-feat">
+          <div class="rf-icon">🏅</div>
+          <h4>Mejor precio</h4>
+          <p>Comparamos opciones para darte el mejor precio disponible.</p>
+        </div>
+      </div>
+
+      <!-- Modal confirmación -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+          <h3>Confirmar reserva</h3>
+          <p>Revisa los detalles antes de confirmar tu reserva.</p>
+          <div class="modal-info" id="modalInfo"></div>
+          <div class="modal-btns">
+            <button class="modal-cancel" onclick="closeModal()">
+              Cancelar
+            </button>
+            <button class="modal-confirm" onclick="confirmReserva()">
+              Confirmar ✈
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="itin-toast" id="resToast"></div>
+    </section>
+    <section id="experiencias" class="experiences-section">
+      <div class="experiences-container">
+        <!-- CABECERA -->
+        <div class="experiences-header">
+          <span class="experiences-tag">AVENTURA & CULTURA</span>
+          <h2 class="experiences-title">
+            Experiencias y
+            <span class="experiences-title-italic">Actividades</span>
+          </h2>
+          <p class="experiences-subtitle">
+            Desde excursiones en la selva hasta gastronomía local: vive Ecuador
+            de una forma que nunca olvidarás.
+          </p>
+        </div>
+
+        <!-- GRID DE TARJETAS -->
+        <div class="experiences-grid">
+          <div class="exp-card">
+            <div class="exp-icon-wrap exp-icon-green">🥾</div>
+            <h3 class="exp-title">Excursiones</h3>
+            <p class="exp-desc">
+              Rutas guiadas por volcanes, reservas naturales y comunidades
+              indígenas del Ecuador.
+            </p>
+            <a href="#contacto" class="exp-link">Ver tours →</a>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-icon-wrap exp-icon-gold">🧗</div>
+            <h3 class="exp-title">Aventura extrema</h3>
+            <p class="exp-desc">
+              Rafting, canopy, escalada en roca y más. Para los que buscan
+              adrenalina pura.
+            </p>
+            <a href="#contacto" class="exp-link">Ver actividades →</a>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-icon-wrap exp-icon-orange">🍽️</div>
+            <h3 class="exp-title">Gastronomía</h3>
+            <p class="exp-desc">
+              Descubre los sabores auténticos del Ecuador: mercados,
+              restaurantes locales y food tours.
+            </p>
+            <a href="#contacto" class="exp-link">Ver experiencias →</a>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-icon-wrap exp-icon-sage">🎉</div>
+            <h3 class="exp-title">Eventos locales</h3>
+            <p class="exp-desc">
+              Festivales, ferias artesanales y celebraciones culturales que no
+              te puedes perder.
+            </p>
+            <a href="#contacto" class="exp-link">Ver eventos →</a>
+          </div>
+        </div>
+
+        <!-- BANNER INFERIOR CTA -->
+        <div class="experiences-cta-banner">
+          <div class="cta-banner-text">
+            <h3>¿No sabes por dónde empezar?</h3>
+            <p>
+              Cuéntanos tus intereses y te recomendamos la experiencia perfecta
+              para ti.
+            </p>
+          </div>
+          <a href="#planificador" class="cta-banner-btn"
+            >Planificar mi aventura →</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     SECCIÓN 6: MAPA INTERACTIVO
+     Pegar justo después de la sección de Experiencias
+════════════════════════════════════════════ -->
+
+    <section id="mapa" class="map-section">
+      <div class="map-container">
+        <!-- COLUMNA IZQUIERDA: TEXTO + FILTROS -->
+        <div class="map-text-side">
+          <span class="map-tag">EXPLORA EN MAPA</span>
+          <h2 class="map-title">
+            Mapa <span class="map-title-italic">Interactivo</span>
+          </h2>
+          <p class="map-description">
+            Visualiza rutas turísticas, puntos de interés, restaurantes y
+            hospedajes directamente en el mapa. Todo en un solo lugar.
+          </p>
+
+          <!-- FILTROS -->
+          <div class="map-filters">
+            <button
+              class="filter-btn filter-active"
+              onclick="setFilter(this, 'todos')"
+            >
+              🗺️ Todos
+            </button>
+            <button class="filter-btn" onclick="setFilter(this, 'turisticos')">
+              📸 Turísticos
+            </button>
+            <button
+              class="filter-btn"
+              onclick="setFilter(this, 'restaurantes')"
+            >
+              🍽️ Restaurantes
+            </button>
+            <button class="filter-btn" onclick="setFilter(this, 'hospedajes')">
+              🏨 Hospedajes
+            </button>
+            <button class="filter-btn" onclick="setFilter(this, 'rutas')">
+              🛤️ Rutas
+            </button>
+          </div>
+
+          <!-- LEYENDA -->
+          <div class="map-legend">
+            <div class="legend-item">
+              <span class="legend-dot dot-turistico"></span>
+              <span>Puntos turísticos</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot dot-restaurante"></span>
+              <span>Restaurantes</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot dot-hospedaje"></span>
+              <span>Hospedajes</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot dot-ruta"></span>
+              <span>Rutas</span>
+            </div>
+          </div>
+
+          <a
+            href="https://maps.google.com/?q=Ecuador"
+            target="_blank"
+            class="btn-open-maps"
+          >
+            Abrir en Google Maps ↗
+          </a>
+        </div>
+
+        <!-- COLUMNA DERECHA: IFRAME DEL MAPA -->
+        <div class="map-embed-side">
+          <div class="map-embed-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3989.804942551083!2d-78.5127734!3d-0.2201681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sec!4v1716000000000!5m2!1ses!2sec"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa interactivo TipPlan Ecuador"
+            >
+            </iframe>
+            <!-- Puntos marcadores decorativos encima del mapa -->
+            <div class="map-pin pin-1">📍<span>Panecillo</span></div>
+            <div class="map-pin pin-2">📍<span>Mitad del Mundo</span></div>
+            <div class="map-pin pin-3">📍<span>Basílica</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+     SCRIPTS 
+════════════════════════════════════ -->
+    <script>
+      /* ══ DATOS ITINERARIO ══ */
+      const DAYS = [
+        {
+          label: "Quito",
+          date: "Lunes, 15 jul 2026",
+          activities: [
+            {
+              time: "08:00",
+              ampm: "AM",
+              icon: "🚗",
+              iconBg: "rgba(12,45,30,0.09)",
+              title: "Transfer aeropuerto → hotel",
+              desc: "Vehículo privado desde Mariscal Sucre al centro histórico",
+              tags: ["transport"],
+            },
+            {
+              time: "10:30",
+              ampm: "AM",
+              icon: "🏨",
+              iconBg: "rgba(232,160,32,0.12)",
+              title: "Check-in Hotel Casa Gangotena",
+              desc: "Hotel boutique en el corazón del centro histórico de Quito",
+              tags: ["alojamiento"],
+            },
+            {
+              time: "12:00",
+              ampm: "PM",
+              icon: "🍽️",
+              iconBg: "rgba(212,88,48,0.1)",
+              title: "Almuerzo: Café del Fraile",
+              desc: "Restaurante tradicional ecuatoriano — menú del día",
+              tags: ["comida"],
+            },
+            {
+              time: "02:00",
+              ampm: "PM",
+              icon: "⛪",
+              iconBg: "rgba(46,139,87,0.1)",
+              title: "Visita Basílica del Voto Nacional",
+              desc: "Tour guiado por la basílica más grande de Ecuador",
+              tags: ["actividad"],
+            },
+          ],
+        },
+        {
+          label: "Cotopaxi",
+          date: "Martes, 16 jul 2026",
+          activities: [
+            {
+              time: "05:30",
+              ampm: "AM",
+              icon: "🚐",
+              iconBg: "rgba(12,45,30,0.09)",
+              title: "Salida en van hacia el Cotopaxi",
+              desc: "Transporte grupal desde Quito al Parque Nacional Cotopaxi",
+              tags: ["transport"],
+            },
+            {
+              time: "09:00",
+              ampm: "AM",
+              icon: "🌋",
+              iconBg: "rgba(46,139,87,0.1)",
+              title: "Trekking al refugio José Rivas",
+              desc: "Caminata guiada hasta 4,800 msnm, equipo incluido",
+              tags: ["actividad"],
+            },
+            {
+              time: "01:00",
+              ampm: "PM",
+              icon: "🍽️",
+              iconBg: "rgba(212,88,48,0.1)",
+              title: "Almuerzo en refugio",
+              desc: "Sopa caliente y bebidas en el refugio de montaña",
+              tags: ["comida"],
+            },
+            {
+              time: "05:00",
+              ampm: "PM",
+              icon: "🏨",
+              iconBg: "rgba(232,160,32,0.12)",
+              title: "Check-in Hacienda El Porvenir",
+              desc: "Hacienda histórica junto al volcán Cotopaxi",
+              tags: ["alojamiento"],
+            },
+          ],
+        },
+        {
+          label: "Cuenca",
+          date: "Miércoles, 17 jul 2026",
+          activities: [
+            {
+              time: "07:00",
+              ampm: "AM",
+              icon: "✈️",
+              iconBg: "rgba(12,45,30,0.09)",
+              title: "Vuelo Quito → Cuenca",
+              desc: "Vuelo doméstico LATAM, 45 minutos",
+              tags: ["transport"],
+            },
+            {
+              time: "10:30",
+              ampm: "AM",
+              icon: "🏛️",
+              iconBg: "rgba(46,139,87,0.1)",
+              title: "Catedral Nueva de Cuenca",
+              desc: "Visita a la icónica catedral con cúpulas azules, Patrimonio UNESCO",
+              tags: ["actividad"],
+            },
+          ],
+        },
+      ];
+
+      let currentDay = 0;
+
+      const TYPE_META = {
+        actividad: { icon: "🎯", bg: "rgba(46,139,87,0.1)" },
+        transport: { icon: "🚗", bg: "rgba(12,45,30,0.09)" },
+        alojamiento: { icon: "🏨", bg: "rgba(232,160,32,0.12)" },
+        comida: { icon: "🍽️", bg: "rgba(212,88,48,0.1)" },
+      };
+
+      function renderDayList() {
+        const list = document.getElementById("dayList");
+        list.innerHTML = "";
+        DAYS.forEach((d, i) => {
+          const el = document.createElement("div");
+          el.className = "day-tab" + (i === currentDay ? " active" : "");
+          el.innerHTML = `
+                  <div class="day-num">${String(i + 1).padStart(2, "0")}</div>
+                  <div class="day-info">
+                    <div class="day-label">Día ${i + 1} – ${d.label}</div>
+                    <div class="day-date">${d.date.split(",")[0]}</div>
+                  </div>
+                  <div class="day-dot"></div>`;
+          el.onclick = () => {
+            currentDay = i;
+            render();
+          };
+          list.appendChild(el);
+        });
+        updateSummary();
+      }
+
+      function renderActivities() {
+        const c = document.getElementById("activitiesContainer");
+        const d = DAYS[currentDay];
+        const total = d.activities.length;
+        document.getElementById("panelTitle").textContent =
+          `Día ${currentDay + 1} – ${d.label}`;
+        document.getElementById("panelDate").textContent = d.date;
+        document.getElementById("panelProgress").textContent =
+          `${total} actividad${total !== 1 ? "es" : ""}`;
+        document.getElementById("progressFill").style.width = total
+          ? "100%"
+          : "0%";
+
+        if (!total) {
+          c.innerHTML = `<div class="act-empty"><div class="em-icon">🗺️</div><p>No hay actividades aún.<br>Agrega la primera usando el campo de abajo.</p></div>`;
+          return;
+        }
+        c.innerHTML = d.activities
+          .map(
+            (a, ai) => `
+                <div class="activity-card">
+                  <div class="ac-time">
+                    <div class="ac-icon-wrap" style="background:${a.iconBg}">${a.icon}</div>
+                    <div class="ac-hour">${a.time}</div>
+                    <div class="ac-ampm">${a.ampm}</div>
+                  </div>
+                  <div class="ac-body">
+                    <div class="ac-title">${a.title}</div>
+                    ${a.desc ? `<div class="ac-desc">${a.desc}</div>` : ""}
+                    <div class="ac-tags">${a.tags.map((t) => `<span class="ac-tag tag-${t}">${t}</span>`).join("")}</div>
+                  </div>
+                  <div class="ac-actions">
+                    <button class="ac-act-btn del" onclick="deleteActivity(${ai})">✕</button>
+                  </div>
+                </div>`,
+          )
+          .join("");
+      }
+
+      function render() {
+        renderDayList();
+        renderActivities();
+      }
+
+      function updateSummary() {
+        const all = DAYS.flatMap((d) => d.activities);
+        document.getElementById("s-days").textContent = DAYS.length;
+        document.getElementById("s-acts").textContent = all.filter(
+          (a) => a.tags.includes("actividad") || a.tags.includes("comida"),
+        ).length;
+        document.getElementById("s-aloj").textContent = all.filter((a) =>
+          a.tags.includes("alojamiento"),
+        ).length;
+        document.getElementById("s-trans").textContent = all.filter((a) =>
+          a.tags.includes("transport"),
+        ).length;
+      }
+
+      function addDay() {
+        const labels = [
+          "Ciudad nueva",
+          "Aventura",
+          "Descanso",
+          "Exploración",
+          "Regreso",
+        ];
+        const n = DAYS.length;
+        DAYS.push({
+          label: labels[n % labels.length],
+          date: `Día ${n + 1} del viaje`,
+          activities: [],
+        });
+        currentDay = n;
+        render();
+        showToast("itinToast", `Día ${n + 1} agregado al itinerario`);
+      }
+
+      function addActivity() {
+        const title = document.getElementById("aaTitle").value.trim();
+        const type = document.getElementById("aaType").value;
+        const time = document.getElementById("aaTime").value || "09:00";
+        if (!title) {
+          showToast("itinToast", "Escribe el nombre de la actividad");
+          return;
+        }
+        const [h, m] = time.split(":");
+        const hr = parseInt(h);
+        const ampm = hr >= 12 ? "PM" : "AM";
+        const disp = `${hr > 12 ? hr - 12 : hr || 12}:${m}`;
+        const meta = TYPE_META[type];
+        DAYS[currentDay].activities.push({
+          time: disp,
+          ampm,
+          icon: meta.icon,
+          iconBg: meta.bg,
+          title,
+          desc: "",
+          tags: [type],
+        });
+        document.getElementById("aaTitle").value = "";
+        render();
+        showToast("itinToast", "Actividad agregada ✓");
+      }
+
+      function deleteActivity(idx) {
+        DAYS[currentDay].activities.splice(idx, 1);
+        render();
+      }
+
+      /* ══ DATOS RESERVAS ══ */
+      const RESULTS = {
+        vuelos: [
+          {
+            logo: "✈️",
+            bg: "rgba(0,100,200,0.15)",
+            name: "LATAM Airlines — UIO → LIM",
+            detail: "Quito → Lima · Ida y vuelta · 2h 30min · 1 parada",
+            badges: ["ok", "pop"],
+            price: "$248",
+            unit: "/persona",
+            bookData: {
+              Tipo: "Vuelo",
+              Ruta: "Quito (UIO) → Lima (LIM)",
+              Fecha: "15 jul 2026",
+              Clase: "Económica",
+              Precio: "$248 por persona",
+            },
+          },
+          {
+            logo: "🛫",
+            bg: "rgba(200,50,0,0.12)",
+            name: "Avianca — UIO → LIM",
+            detail: "Quito → Lima · Ida y vuelta · 3h 10min · 1 parada",
+            badges: ["ok"],
+            price: "$215",
+            unit: "/persona",
+            bookData: {
+              Tipo: "Vuelo",
+              Ruta: "Quito (UIO) → Lima (LIM)",
+              Fecha: "15 jul 2026",
+              Clase: "Económica",
+              Precio: "$215 por persona",
+            },
+          },
+          {
+            logo: "🌐",
+            bg: "rgba(50,150,50,0.12)",
+            name: "Copa Airlines — UIO → LIM",
+            detail: "Quito → Lima · Ida y vuelta · 4h 05min · 2 paradas",
+            badges: ["new"],
+            price: "$189",
+            unit: "/persona",
+            bookData: {
+              Tipo: "Vuelo",
+              Ruta: "Quito (UIO) → Lima (LIM) vía PTY",
+              Fecha: "15 jul 2026",
+              Clase: "Económica",
+              Precio: "$189 por persona",
+            },
+          },
+        ],
+        hoteles: [
+          {
+            logo: "🏨",
+            bg: "rgba(232,160,32,0.14)",
+            name: "Hotel Belmond Miraflores Park",
+            detail:
+              "Lima, Perú · 5 estrellas · Vista al Pacífico · Desayuno incluido",
+            badges: ["pop"],
+            price: "$320",
+            unit: "/noche",
+            bookData: {
+              Tipo: "Hotel",
+              Nombre: "Belmond Miraflores Park",
+              Ciudad: "Lima, Perú",
+              Fechas: "15 – 22 jul 2026",
+              Precio: "$320 por noche",
+            },
+          },
+          {
+            logo: "🏩",
+            bg: "rgba(46,139,87,0.12)",
+            name: "Casa Andina Premium Miraflores",
+            detail: "Lima, Perú · 4 estrellas · Spa · Restaurante incluido",
+            badges: ["ok"],
+            price: "$148",
+            unit: "/noche",
+            bookData: {
+              Tipo: "Hotel",
+              Nombre: "Casa Andina Premium",
+              Ciudad: "Lima, Perú",
+              Fechas: "15 – 22 jul 2026",
+              Precio: "$148 por noche",
+            },
+          },
+          {
+            logo: "🌿",
+            bg: "rgba(12,45,30,0.1)",
+            name: "Hotel B Barranco Design",
+            detail:
+              "Lima, Perú · Boutique 4★ · Diseño exclusivo · Barranco artístico",
+            badges: ["new"],
+            price: "$195",
+            unit: "/noche",
+            bookData: {
+              Tipo: "Hotel",
+              Nombre: "Hotel B Barranco",
+              Ciudad: "Lima, Perú",
+              Fechas: "15 – 22 jul 2026",
+              Precio: "$195 por noche",
+            },
+          },
+        ],
+        tours: [
+          {
+            logo: "⛪",
+            bg: "rgba(46,139,87,0.12)",
+            name: "Tour Centro Histórico + Panecillo",
+            detail:
+              "Quito · City tour guiado · 6 horas · Transporte y guía incluidos",
+            badges: ["pop"],
+            price: "$45",
+            unit: "/persona",
+            bookData: {
+              Tipo: "Tour",
+              Nombre: "Centro Histórico + Panecillo",
+              Ciudad: "Quito",
+              Fecha: "16 jul 2026",
+              Precio: "$45 por persona",
+            },
+          },
+          {
+            logo: "🌋",
+            bg: "rgba(232,160,32,0.14)",
+            name: "Expedición Volcán Cotopaxi",
+            detail: "Quito · Aventura · Día completo · Equipo y guía incluidos",
+            badges: ["ok", "pop"],
+            price: "$89",
+            unit: "/persona",
+            bookData: {
+              Tipo: "Tour",
+              Nombre: "Expedición Volcán Cotopaxi",
+              Ciudad: "Cotopaxi",
+              Fecha: "16 jul 2026",
+              Precio: "$89 por persona",
+            },
+          },
+          {
+            logo: "🌊",
+            bg: "rgba(0,150,200,0.12)",
+            name: "Galápagos — Navegación 4 días",
+            detail: "Santa Cruz · Naturaleza · Todo incluido · Cupos limitados",
+            badges: ["new"],
+            price: "$1,200",
+            unit: "/persona",
+            bookData: {
+              Tipo: "Tour",
+              Nombre: "Galápagos 4 días",
+              Ciudad: "Islas Galápagos",
+              Fecha: "16 jul 2026",
+              Precio: "$1,200 por persona",
+            },
+          },
+        ],
+        transporte: [
+          {
+            logo: "🚗",
+            bg: "rgba(12,45,30,0.1)",
+            name: "Sedan privado — Ejecutivo",
+            detail:
+              "Aeropuerto → Centro Histórico · Hasta 3 pasajeros · A/C · WiFi",
+            badges: ["ok"],
+            price: "$28",
+            unit: "/viaje",
+            bookData: {
+              Tipo: "Transporte",
+              Vehículo: "Sedan Ejecutivo",
+              Ruta: "Aeropuerto → Centro Histórico",
+              Fecha: "15 jul 2026 14:30",
+              Precio: "$28 por viaje",
+            },
+          },
+          {
+            logo: "🚐",
+            bg: "rgba(232,160,32,0.14)",
+            name: "Van grupal — Aeropuerto Shuttle",
+            detail:
+              "Aeropuerto → Zona Rosa · Hasta 8 pasajeros · Salidas cada 30 min",
+            badges: ["pop"],
+            price: "$8",
+            unit: "/persona",
+            bookData: {
+              Tipo: "Transporte",
+              Vehículo: "Van Shuttle",
+              Ruta: "Aeropuerto → Zona Rosa",
+              Fecha: "15 jul 2026 14:30",
+              Precio: "$8 por persona",
+            },
+          },
+          {
+            logo: "🚙",
+            bg: "rgba(46,139,87,0.12)",
+            name: "SUV 4x4 — Aventura off-road",
+            detail: "Quito → Cotopaxi → Quito · Guía incluido · 1 día completo",
+            badges: ["new"],
+            price: "$95",
+            unit: "/día",
+            bookData: {
+              Tipo: "Transporte",
+              Vehículo: "SUV 4x4",
+              Ruta: "Quito ↔ Cotopaxi",
+              Fecha: "16 jul 2026",
+              Precio: "$95 por día",
+            },
+          },
+        ],
+      };
+
+      function setResTab(cat, btn) {
+        document
+          .querySelectorAll(".res-tab")
+          .forEach((b) => b.classList.remove("active"));
+        document
+          .querySelectorAll(".res-panel")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("panel-" + cat).classList.add("active");
+        document.getElementById("results-" + cat).innerHTML = "";
+      }
+
+      function showResults(cat) {
+        const c = document.getElementById("results-" + cat);
+        c.innerHTML = RESULTS[cat]
+          .map(
+            (r) => `
+                <div class="res-card" onclick='openModal(${JSON.stringify(r.bookData)})'>
+                  <div class="rc-logo" style="background:${r.bg}">${r.logo}</div>
+                  <div class="rc-info">
+                    <div class="rc-name">${r.name}</div>
+                    <div class="rc-detail">${r.detail}</div>
+                    <div class="rc-badges">${r.badges
+                      .map((b) =>
+                        b === "ok"
+                          ? '<span class="rc-badge badge-ok">✓ Disponible</span>'
+                          : b === "pop"
+                            ? '<span class="rc-badge badge-pop">★ Popular</span>'
+                            : '<span class="rc-badge badge-new">✦ Nuevo</span>',
+                      )
+                      .join("")}</div>
+                  </div>
+                  <div class="rc-price">
+                    <div class="rc-price-val">${r.price}</div>
+                    <div class="rc-price-unit">${r.unit}</div>
+                    <button class="rc-book-btn">Reservar →</button>
+                  </div>
+                </div>`,
+          )
+          .join("");
+      }
+
+      function openModal(data) {
+        const rows = Object.entries(data)
+          .map(
+            ([k, v]) =>
+              `<div class="modal-info-row"><span class="k">${k}</span><span class="v">${v}</span></div>`,
+          )
+          .join("");
+        document.getElementById("modalInfo").innerHTML = rows;
+        document.getElementById("modalOverlay").classList.add("open");
+      }
+      function closeModal() {
+        document.getElementById("modalOverlay").classList.remove("open");
+      }
+      function confirmReserva() {
+        closeModal();
+        showToast(
+          "resToast",
+          "¡Reserva confirmada! Recibirás un email con los detalles. ✓",
+        );
+      }
+
+      /* ══ TOAST GENÉRICO ══ */
+      function showToast(id, msg) {
+        const t = document.getElementById(id);
+        t.textContent = msg;
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 3200);
+      }
+
+      /* ══ INIT ══ */
+      render();
+    </script>
+
+    <script>
+      function setFilter(btn, category) {
+        // Quitar clase activa de todos los botones
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("filter-active"));
+        // Poner activo al botón clickeado
+        btn.classList.add("filter-active");
+        // Aquí puedes agregar lógica para filtrar marcadores reales cuando conectes una API de mapas
+        console.log("Filtro activo:", category);
+      }
+
+      /* ══ PRESUPUESTO ══ */
+      function calculateBudget() {
+        const days = parseInt(document.getElementById("budgetDays").value) || 7;
+        const total =
+          parseInt(document.getElementById("budgetTotal").value) || 2000;
+
+        // Distribución típica: Transporte 20%, Hospedaje 35%, Comida 25%, Actividades 20%
+        const transport = Math.round(total * 0.2);
+        const hospedaje = Math.round(total * 0.35);
+        const comida = Math.round(total * 0.25);
+        const actividades = Math.round(total * 0.2);
+
+        document.getElementById("transportAmount").textContent =
+          "$" + transport;
+        document.getElementById("hospedajeAmount").textContent =
+          "$" + hospedaje;
+        document.getElementById("comidaAmount").textContent = "$" + comida;
+        document.getElementById("actividadesAmount").textContent =
+          "$" + actividades;
+
+        document.getElementById("transportBar").style.width = "20%";
+        document.getElementById("hospedajeBar").style.width = "35%";
+        document.getElementById("comidaBar").style.width = "25%";
+        document.getElementById("actividadesBar").style.width = "20%";
+
+        document.getElementById("transportPercent").textContent = "20%";
+        document.getElementById("hospedajePercent").textContent = "35%";
+        document.getElementById("comidaPercent").textContent = "25%";
+        document.getElementById("actividadesPercent").textContent = "20%";
+
+        showToast("itinToast", "💰 Presupuesto calculado con éxito");
+      }
+
+      /* ══ COMUNIDAD TABS ══ */
+      function setCommunityTab(tab, btn) {
+        document
+          .querySelectorAll(".community-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".community-tab")
+          .forEach((t) => t.classList.remove("active"));
+
+        document.getElementById("panel-" + tab).classList.add("active");
+        btn.classList.add("active");
+      }
+    </script>
+
+    <!-- ════════════════════════════════════
+     SECCIÓN 7 – PRESUPUESTO DE VIAJE
+════════════════════════════════════ -->
+    <section id="presupuesto" class="budget-section">
+      <div class="budget-container">
+        <div class="budget-header">
+          <span class="budget-tag">PLANIFICA TUS GASTOS</span>
+          <h2 class="budget-title">Calculadora de <em>Presupuesto</em></h2>
+          <p class="budget-subtitle">
+            Estima tus gastos de viaje: transporte, hospedaje, comida y
+            actividades.
+          </p>
+        </div>
+
+        <!-- Formulario Budget -->
+        <div class="budget-form-card">
+          <div class="budget-inputs">
+            <div class="budget-input-group">
+              <label class="bi-label">Duración del viaje (días)</label>
+              <input
+                type="number"
+                id="budgetDays"
+                class="bi-input"
+                value="7"
+                min="1"
+              />
+            </div>
+            <div class="budget-input-group">
+              <label class="bi-label">Presupuesto total (USD)</label>
+              <input
+                type="number"
+                id="budgetTotal"
+                class="bi-input"
+                value="2000"
+                min="0"
+              />
+            </div>
+            <button class="budget-calc-btn" onclick="calculateBudget()">
+              Calcular distribución
+            </button>
+          </div>
+
+          <!-- Resumen Budget -->
+          <div class="budget-summary">
+            <div class="bs-item">
+              <div class="bs-icon">🚗</div>
+              <div class="bs-content">
+                <div class="bs-label">Transporte</div>
+                <div class="bs-amount" id="transportAmount">$400</div>
+                <div class="bs-desc">Vuelos, traslados locales</div>
+              </div>
             </div>
 
-            <div class="destination">
-                <img src="./src/images/mitad_del_mundo.webp"
-                     alt="Mitad del Mundo, Quito"
-                     width="231" height="364"
-                     loading="lazy">
-                <div class="destination-content">
-                    <h4>Mitad Del Mundo, Quito</h4>
-                    <p>
-                        Ciudad Mitad del Mundo es uno de los destinos turísticos más famosos del Ecuador,
-                        donde puedes visitar la línea ecuatorial que divide el planeta en hemisferio
-                        norte y sur. Es un lugar ideal para conocer sobre geografía, cultura y 
-                        tradiciones ecuatorianas.
-                    </p>
-                    <div class="Iconos_Destino">
-                        <a href="https://maps.app.goo.gl/6UNiyqXYHAWHKqDv6" class="Icono_Mapa"
-                           aria-label="Ver Mitad del Mundo en Google Maps" target="_blank" rel="noopener">
-                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                        </a>
-                        <a href="#contact" class="Icono_Contacto"
-                           aria-label="Más información sobre Mitad del Mundo">
-                            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="bs-item">
+              <div class="bs-icon">🏨</div>
+              <div class="bs-content">
+                <div class="bs-label">Hospedaje</div>
+                <div class="bs-amount" id="hospedajeAmount">$700</div>
+                <div class="bs-desc">Hoteles y alojamientos</div>
+              </div>
             </div>
 
-            <div class="destination">
-                <img src="./src/images/basilica.webp"
-                     alt="Basílica del Voto Nacional, Quito"
-                     width="231" height="359"
-                     loading="lazy">
-                <div class="destination-content">
-                    <h4>Basílica del Voto Nacional, Quito</h4>
-                    <p>
-                        Basílica del Voto Nacional es una impresionante iglesia de estilo neogótico 
-                        considerada una de las más grandes de América Latina. Destaca por su 
-                        arquitectura detallada, vitrales y torres que permiten disfrutar de una vista 
-                        espectacular de Quito.
-                    </p>
-                    <div class="Iconos_Destino">
-                        <a href="https://maps.app.goo.gl/CojBZK24ebt8d7xK7" class="Icono_Mapa"
-                           aria-label="Ver Basílica del Voto Nacional en Google Maps" target="_blank" rel="noopener">
-                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                        </a>
-                        <a href="#contact" class="Icono_Contacto"
-                           aria-label="Más información sobre Basílica del Voto Nacional">
-                            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="bs-item">
+              <div class="bs-icon">🍽️</div>
+              <div class="bs-content">
+                <div class="bs-label">Comida</div>
+                <div class="bs-amount" id="comidaAmount">$500</div>
+                <div class="bs-desc">Restaurantes y snacks</div>
+              </div>
             </div>
 
-            <div class="destination">
-                <img src="./src/images/malecon_2000.webp"
-                     alt="Malecón 2000, Guayaquil"
-                     width="231" height="307"
-                     loading="lazy">
-                <div class="destination-content">
-                    <h4>Malecón 2000, Guayaquil</h4>
-                    <p>
-                        Malecón 2000 es uno de los lugares más representativos de Guayaquil, ubicado a orillas del río Guayas. Este moderno 
-                        espacio turístico ofrece áreas verdes, restaurantes, monumentos, centros comerciales y zonas recreativas, 
-                        convirtiéndose en un punto ideal para pasear, disfrutar del paisaje y conocer la cultura de la ciudad.
-                    </p>
-                    <div class="Iconos_Destino">
-                        <a href="https://maps.app.goo.gl/1ass3muhnHK26gAi7" class="Icono_Mapa"
-                           aria-label="Ver Malecón 2000 en Google Maps" target="_blank" rel="noopener">
-                            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                        </a>
-                        <a href="#contact" class="Icono_Contacto"
-                           aria-label="Más información sobre Malecón 2000">
-                            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
+            <div class="bs-item">
+              <div class="bs-icon">🎯</div>
+              <div class="bs-content">
+                <div class="bs-label">Actividades</div>
+                <div class="bs-amount" id="actividadesAmount">$400</div>
+                <div class="bs-desc">Tours y experiencias</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakdown visual -->
+        <div class="budget-breakdown">
+          <div class="breakdown-bars">
+            <div class="bb-item">
+              <div class="bb-label">
+                <span class="bb-icon">🚗</span>
+                <span>Transporte</span>
+              </div>
+              <div class="bb-bar">
+                <div class="bb-fill" id="transportBar" style="width: 20%"></div>
+              </div>
+              <span class="bb-percent" id="transportPercent">20%</span>
             </div>
 
-        </div>
-    </div>
-</section>
-
-<!-- ==================== CARRUSEL DE CONTINENTES ==================== -->
-<section class="galeria">
-    <h2>¡Exploremos otros continentes y subcontinentes!</h2>
-
-    <div class="container">
-        <div class="carrusel">
-            <input type="radio" name="slides" id="slide1" checked>
-            <input type="radio" name="slides" id="slide2">
-            <input type="radio" name="slides" id="slide3">
-            <input type="radio" name="slides" id="slide4">
-            <input type="radio" name="slides" id="slide5">
-            <input type="radio" name="slides" id="slide6">
-            <input type="radio" name="slides" id="slide7">
-
-            <div class="slider">
-                <div class="slides">
-                    <div class="slide">
-                        <img src="./src/images/Norteamerica.webp" alt="Norteamérica" width="800" height="450" loading="lazy">
-                        <a href="#" class="Boton_Continente">Norteamérica</a>
-                    </div>
-                    <div class="slide">
-                        <img src="./src/images/Sudamerica.webp" alt="Sudamérica" width="800" height="500" loading="lazy">
-                        <a href="#" class="Boton_Continente">Sudamérica</a>
-                    </div>
-                    <div class="slide">
-                        <img src="./src/images/Europa.webp" alt="Europa" loading="lazy">
-                        <a href="#" class="Boton_Continente">Europa</a>
-                    </div>
-                    <div class="slide">
-                        <img src="./src/images/Africa.webp" alt="África" loading="lazy">
-                        <a href="#" class="Boton_Continente">África</a>
-                    </div>
-                    <div class="slide">
-                        <img src="./src/images/Asia.webp" alt="Asia" loading="lazy">
-                        <a href="#" class="Boton_Continente">Asia</a>
-                    </div>
-                    <div class="slide">
-                        <img src="./src/images/Oceania.webp" alt="Oceanía" loading="lazy">
-                        <a href="#" class="Boton_Continente">Oceanía</a>
-                    </div>
-                    <div class="slide">
-                        <img src="./src/images/Antartida.webp" alt="Antártida" loading="lazy">
-                        <a href="#" class="Boton_Continente">Antártida</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="navegacion">
-                <label for="slide1"></label>
-                <label for="slide2"></label>
-                <label for="slide3"></label>
-                <label for="slide4"></label>
-                <label for="slide5"></label>
-                <label for="slide6"></label>
-                <label for="slide7"></label>
-            </div>
-        </div>
-    </div> 
-</section>
-
-<!-- ==================== FILTROS ==================== -->
-<section class="filtros">
-
-    <h2>¿Aún no sabes a dónde ir? ¡Busquemos por filtros!</h2>
-
-    <input type="radio" name="filtro" id="cascadas" checked>
-    <input type="radio" name="filtro" id="castillos">
-    <input type="radio" name="filtro" id="lagos">
-    <input type="radio" name="filtro" id="playas">
-    <input type="radio" name="filtro" id="templos">
-    <input type="radio" name="filtro" id="volcanes">
-
-    <div class="filtros-botones">
-        <label for="cascadas">Cascadas</label>
-        <label for="castillos">Castillos</label>
-        <label for="lagos">Lagos</label>
-        <label for="playas">Playas</label>
-        <label for="templos">Templos</label>
-        <label for="volcanes">Volcanes</label>
-    </div>
-
-    <div class="contenidos">
-
-        <!-- Alt añadido a todas las imágenes de filtros (accesibilidad + SEO) -->
-        <div class="grupo cascadas">
-            <img src="./src/images/cascadasigazu.webp" alt="Cataratas del Iguazú, Argentina" loading="lazy">
-            <img src="./src/images/Cascada2niagara-falls---aerial-view--niagara-falls-tourism-.3l0.webp" alt="Cataratas del Niágara, vista aérea" loading="lazy">
-            <img src="./src/images/cascada3zambia-cataratas-victoria12.webp" alt="Cataratas Victoria, Zambia" loading="lazy">
-        </div>
-
-        <div class="grupo castillos">
-            <img src="./src/images/Castillo-de-Neuschwanstein.webp" alt="Castillo de Neuschwanstein, Alemania" loading="lazy">
-            <img src="./src/images/castillo2S-AlcazardeSegovia.webp" alt="Alcázar de Segovia, España" loading="lazy">
-            <img src="./src/images/Castillo3-de-Liechtenstein.webp" alt="Castillo de Liechtenstein" loading="lazy">
-        </div>
-
-        <div class="grupo lagos">
-            <img src="./src/images/lago-di-braies-italia_1d38ca01_1254x836.webp" alt="Lago di Braies, Italia" loading="lazy">
-            <img src="./src/images/Lagos2-de-Plitvice-el-secre.webp" alt="Lagos de Plitvice, Croacia" loading="lazy">
-            <img src="./src/images/Lago3NahuelArgentina.webp" alt="Lago Nahuel Huapi, Argentina" loading="lazy">
-        </div>
-
-        <div class="grupo playas">
-            <img src="./src/images/playa_stiniva_croacia_vis.webp" alt="Playa Stiniva, Croacia" loading="lazy">
-            <img src="./src/images/playa2Corralejo.webp" alt="Playa de Corralejo, Fuerteventura" loading="lazy">
-            <img src="./src/images/playa3la-digue-seychelles_bea7ddd0_1255x836.webp" alt="Playa La Digue, Seychelles" loading="lazy">
-        </div>
-
-        <div class="grupo templos">
-            <img src="./src/images/templos.webp" alt="Templos en Asia" loading="lazy">
-            <img src="./src/images/Templo2MonasterionidodelTigre.webp" alt="Monasterio Nido del Tigre, Bután" loading="lazy">
-            <img src="./src/images/tenplo3-LaSagradiaFamilia.webp" alt="La Sagrada Familia, Barcelona" loading="lazy">
-        </div>
-
-        <div class="grupo volcanes">
-            <img src="./src/images/cotopaxi-volcano-landscape.webp" alt="Volcán Cotopaxi, Ecuador" loading="lazy">
-            <img src="./src/images/volca2TONGARIRO.webp" alt="Volcán Tongariro, Nueva Zelanda" loading="lazy">
-            <img src="./src/images/volcan3MonteBromo.webp" alt="Monte Bromo, Indonesia" loading="lazy">
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==================== PREGUNTAS FRECUENTES ==================== -->
-<section class="faq" id="faq">
-    <div class="faq__container">
-        <h3 class="faq__title">Preguntas frecuentes</h3>
-        <div class="faq__grid">
-
-            <!-- Columna izquierda -->
-            <div class="faq__col">
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq1" class="faq__check">
-                    <label for="faq1" class="faq__question">
-                        ¿Cuánto tiempo antes debo planificar mi viaje?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>Lo ideal es planificar con al menos 2 a 4 semanas de anticipación. Esto te permite elegir los mejores destinos, coordinar fechas y asegurarte de tener todo listo para una experiencia sin contratiempos.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq2" class="faq__check">
-                    <label for="faq2" class="faq__question">
-                        ¿Puedo personalizar mi itinerario en TipPlan?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>Sí. TipPlan está diseñado para que cada viajero adapte su aventura según sus intereses, presupuesto y tiempo disponible. Puedes seleccionar destinos, fechas y contáctarnos para recibir orientación personalizada.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq3" class="faq__check">
-                    <label for="faq3" class="faq__question">
-                        ¿Cómo encuentro los mejores destinos en Ecuador?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>Usa nuestra sección "Destinos más populares" para explorar lugares icónicos como el Panecillo, la Mitad del Mundo o el Malecón 2000. También puedes filtrar por tipo de paisaje: cascadas, volcanes, playas y más.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq4" class="faq__check">
-                    <label for="faq4" class="faq__question">
-                        ¿TipPlan tiene información actualizada sobre los destinos?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>Sí, mantenemos nuestra información actualizada periódicamente. Cada destino incluye descripción, imágenes y enlace directo a Google Maps para que siempre tengas los datos más recientes.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq5" class="faq__check">
-                    <label for="faq5" class="faq__question">
-                        ¿Hay algún costo por usar TipPlan?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>No, TipPlan es completamente gratuito. Puedes explorar todos los destinos, usar los filtros y contactarnos sin ningún costo. Nuestra misión es hacer la planificación de viajes accesible para todos.</p>
-                    </div>
-                </div>
-
+            <div class="bb-item">
+              <div class="bb-label">
+                <span class="bb-icon">🏨</span>
+                <span>Hospedaje</span>
+              </div>
+              <div class="bb-bar">
+                <div
+                  class="bb-fill"
+                  id="hospedajeBar"
+                  style="width: 35%; background: #e5a93b"
+                ></div>
+              </div>
+              <span class="bb-percent" id="hospedajePercent">35%</span>
             </div>
 
-            <!-- Columna derecha -->
-            <div class="faq__col">
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq6" class="faq__check">
-                    <label for="faq6" class="faq__question">
-                        ¿Qué destinos internacionales están disponibles?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>Contamos con una galería de continentes que incluye destinos en Norteamérica, Sudamérica, Europa, África, Asia, Oceanía y Antártida. Puedes explorarlos usando nuestra sección de filtros por tipo de destino.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq7" class="faq__check">
-                    <label for="faq7" class="faq__question">
-                        ¿Puedo filtrar destinos por tipo de paisaje?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>¡Claro! TipPlan cuenta con filtros interactivos por categoría: Cascadas, Castillos, Lagos, Playas, Templos y Volcanes. Solo haz clic en la categoría que más te llame la atención para ver los destinos disponibles.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq8" class="faq__check">
-                    <label for="faq8" class="faq__question">
-                        ¿Cómo puedo ver la ubicación exacta de un destino?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>Cada destino en nuestra sección principal tiene un ícono de mapa que te lleva directamente a Google Maps con la ubicación exacta del lugar. Así puedes ver rutas, distancias y referencias antes de tu viaje.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq9" class="faq__check">
-                    <label for="faq9" class="faq__question">
-                        ¿Cómo me pongo en contacto con el equipo de TipPlan?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>Puedes usar nuestro formulario de contacto en la sección "Contáctanos". Solo ingresa tu nombre, correo, el destino de tu interés y la fecha estimada del viaje. Nos pondremos en contacto contigo a la brevedad.</p>
-                    </div>
-                </div>
-
-                <div class="faq__item">
-                    <input type="checkbox" id="faq10" class="faq__check">
-                    <label for="faq10" class="faq__question">
-                        ¿TipPlan estará disponible como app móvil?
-                        <span class="faq__icon">&#8964;</span>
-                    </label>
-                    <div class="faq__answer">
-                        <p>¡Estamos trabajando en ello! Próximamente TipPlan estará disponible en Google Play y App Store para que puedas planificar tus viajes desde cualquier lugar y en cualquier momento.</p>
-                    </div>
-                </div>
-
+            <div class="bb-item">
+              <div class="bb-label">
+                <span class="bb-icon">🍽️</span>
+                <span>Comida</span>
+              </div>
+              <div class="bb-bar">
+                <div
+                  class="bb-fill"
+                  id="comidaBar"
+                  style="width: 25%; background: #d45830"
+                ></div>
+              </div>
+              <span class="bb-percent" id="comidaPercent">25%</span>
             </div>
 
+            <div class="bb-item">
+              <div class="bb-label">
+                <span class="bb-icon">🎯</span>
+                <span>Actividades</span>
+              </div>
+              <div class="bb-bar">
+                <div
+                  class="bb-fill"
+                  id="actividadesBar"
+                  style="width: 20%; background: #2e8b57"
+                ></div>
+              </div>
+              <span class="bb-percent" id="actividadesPercent">20%</span>
+            </div>
+          </div>
+
+          <div class="breakdown-tips">
+            <h4>💡 Consejos de presupuesto</h4>
+            <ul>
+              <li>Hospedaje: 35-40% del presupuesto total</li>
+              <li>Transporte: 15-25% (depende de destino)</li>
+              <li>Comida: 20-25% por día</li>
+              <li>Actividades: 15-20% para tours y experiencias</li>
+            </ul>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- ==================== SECCIÓN DE CONTACTO ==================== -->
-<section class="Seccion_Contacto" id="contact">
-    <div class="contact__container">
-        <h3 class="about__title">Contáctanos</h3>
-        <div class="Formulario_Contacto">
-            <h4>Ingresa tus datos</h4>
-            <form action="#">
-                <!-- Labels ocultos visualmente pero legibles para lectores de pantalla -->
-                <label for="first_name" class="visually-hidden">Nombre</label>
-                <input type="text" name="nombre" id="first_name" placeholder="Nombre" required>
-
-                <label for="last_name" class="visually-hidden">Apellido</label>
-                <input type="text" name="apellido" id="last_name" placeholder="Apellido" required>
-
-                <label for="email" class="visually-hidden">Correo electrónico</label>
-                <input type="email" name="correo" id="email" placeholder="alguien@example.com" required>
-
-                <!-- Label visible para el campo fecha (era el error de accesibilidad) -->
-                <label for="date" class="date-label">Fecha de viaje</label>
-                <input type="date" name="fecha" id="date" required>
-
-                <div class="destination__interest">
-                    <label for="interests">Escoge el destino que más te llamó la atención</label>
-                    <select name="interests" id="interests" required>
-                        <option value="">Selecciona una opción</option>
-                        <option value="panecillo">Virgen del Panecillo</option>
-                        <option value="mitad">Mitad del Mundo</option>
-                        <option value="basilica">Basílica del Voto Nacional</option>
-                        <option value="malecon">Malecón 2000</option>
-                        <option value="info">Solo busco más información</option>
-                    </select>
-                    <!-- ==================================== FILTRO PRECIO ==================================== -->
-                <div class="presupuesto-container">
-                    <label for="presupuesto">Dinos tu presupuesto:</label>
-                    <input type="number" id="presupuesto" name="presupuesto" placeholder="Ej: 500">
-                </div>
-                <!-- ======================================================================== -->
-                </div>
-                <p class="advice"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Nos pondremos en contacto contigo</p>
-                <button type="submit" class="Boton_Enviar">Enviar</button>
-            </form>
+    <!-- ════════════════════════════════════
+     SECCIÓN 8 – OPINIONES Y COMUNIDAD
+════════════════════════════════════ -->
+    <section id="comunidad" class="community-section">
+      <div class="community-container">
+        <div class="community-header">
+          <span class="community-tag">COMUNIDAD GLOBAL</span>
+          <h2 class="community-title">
+            Experiencias de <em>viajeros</em> reales
+          </h2>
+          <p class="community-subtitle">
+            Descubre reseñas, recomendaciones y consejos de nuestra comunidad de
+            viajeros.
+          </p>
         </div>
-    </div>
-</section>
 
-<!-- ==================================== FOOTER ==================================== -->
-<footer class="footer-container">
+        <!-- Tabs: Reseñas / Foros -->
+        <div class="community-tabs">
+          <button
+            class="community-tab active"
+            onclick="setCommunityTab('reviews', this)"
+          >
+            ⭐ Reseñas
+          </button>
+          <button
+            class="community-tab"
+            onclick="setCommunityTab('forum', this)"
+          >
+            💬 Foros
+          </button>
+          <button class="community-tab" onclick="setCommunityTab('tips', this)">
+            💡 Consejos
+          </button>
+        </div>
+
+        <!-- Panel de Reseñas -->
+        <div class="community-panel active" id="panel-reviews">
+          <div class="reviews-grid">
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">👨‍🌾</div>
+                <div class="review-info">
+                  <div class="review-author">Carlos Mendoza</div>
+                  <div class="review-location">📍 Quito, Ecuador</div>
+                </div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div class="review-title">
+                Experiencia increíble en el Cotopaxi
+              </div>
+              <div class="review-text">
+                Usé TipPlan para mi viaje al volcán Cotopaxi y fue todo un
+                éxito. Las recomendaciones de hospedajes fueron perfectas y el
+                itinerario sugerido me ayudó a optimizar mi tiempo. ¡Volvería a
+                usar!
+              </div>
+              <div class="review-meta">
+                <span class="review-date">Hace 2 semanas</span>
+                <span class="review-helpful">👍 23 útiles</span>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">👩‍💼</div>
+                <div class="review-info">
+                  <div class="review-author">María Guayasamin</div>
+                  <div class="review-location">📍 Cuenca, Ecuador</div>
+                </div>
+                <div class="review-rating">⭐⭐⭐⭐</div>
+              </div>
+              <div class="review-title">
+                Planificación sencilla para principiantes
+              </div>
+              <div class="review-text">
+                Primera vez viajando solo y TipPlan hizo que todo fuera muy
+                fácil. La interfaz es intuitiva y las recomendaciones locales
+                son muy útiles. Recomendaría a cualquiera que quiera viajar sin
+                estrés.
+              </div>
+              <div class="review-meta">
+                <span class="review-date">Hace 3 semanas</span>
+                <span class="review-helpful">👍 18 útiles</span>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">👨‍✈️</div>
+                <div class="review-info">
+                  <div class="review-author">Juan Pablo Rojas</div>
+                  <div class="review-location">📍 Lima, Perú</div>
+                </div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div class="review-title">
+                Herramienta imprescindible para viajeros
+              </div>
+              <div class="review-text">
+                He viajado a más de 20 países y esta es la plataforma más
+                completa que he encontrado. La calculadora de presupuesto es muy
+                precisa y los mapas interactivos son de gran ayuda. ¡Excelente
+                trabajo!
+              </div>
+              <div class="review-meta">
+                <span class="review-date">Hace 1 mes</span>
+                <span class="review-helpful">👍 45 útiles</span>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">👩‍🎓</div>
+                <div class="review-info">
+                  <div class="review-author">Sofía Hidalgo</div>
+                  <div class="review-location">📍 Otavalo, Ecuador</div>
+                </div>
+                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div class="review-title">Perfecta para viajes en grupo</div>
+              <div class="review-text">
+                Organicé un viaje para 8 personas y TipPlan facilitó toda la
+                coordinación. Desde presupuestos hasta itinerarios, todo quedó
+                perfectamente organizado. Mis amigos están muy contentos.
+              </div>
+              <div class="review-meta">
+                <span class="review-date">Hace 5 días</span>
+                <span class="review-helpful">👍 32 útiles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel de Foros -->
+        <div class="community-panel" id="panel-forum">
+          <div class="forum-container">
+            <div class="forum-post">
+              <div class="fp-header">
+                <div class="fp-avatar">👨</div>
+                <div class="fp-info">
+                  <div class="fp-author">Diego Flores</div>
+                  <div class="fp-topic">
+                    ¿Cuál es la mejor época para visitar la Amazonía?
+                  </div>
+                </div>
+                <div class="fp-meta">
+                  <span>2 respuestas</span>
+                  <span>👁️ 48 vistas</span>
+                </div>
+              </div>
+              <div class="fp-content">
+                Estoy planeando un viaje a la selva amazónica y no sé qué época
+                es mejor. ¿Alguien ha ido? ¿Lluvias, temperatura?
+              </div>
+            </div>
+
+            <div class="forum-post">
+              <div class="fp-header">
+                <div class="fp-avatar">👩</div>
+                <div class="fp-info">
+                  <div class="fp-author">Laura Sánchez</div>
+                  <div class="fp-topic">
+                    Recomendación: Restaurantes baratos en el Centro Histórico
+                  </div>
+                </div>
+                <div class="fp-meta">
+                  <span>5 respuestas</span>
+                  <span>👁️ 156 vistas</span>
+                </div>
+              </div>
+              <div class="fp-content">
+                Acabo de descubrir unos restaurantes increíbles en Quito con
+                comida deliciosa y precios muy accesibles. Aquí van mis
+                favoritos...
+              </div>
+            </div>
+
+            <div class="forum-post">
+              <div class="fp-header">
+                <div class="fp-avatar">👨‍🌾</div>
+                <div class="fp-info">
+                  <div class="fp-author">Andrés Montenegro</div>
+                  <div class="fp-topic">
+                    Itinerario 10 días: Costa + Sierra + Amazonía
+                  </div>
+                </div>
+                <div class="fp-meta">
+                  <span>8 respuestas</span>
+                  <span>👁️ 234 vistas</span>
+                </div>
+              </div>
+              <div class="fp-content">
+                ¿Es posible hacer todo en 10 días? ¿Qué ciudades me recomiendan?
+                Tengo presupuesto de $1500...
+              </div>
+            </div>
+          </div>
+          <button class="community-post-btn">+ Crear nuevo tema</button>
+        </div>
+
+        <!-- Panel de Consejos -->
+        <div class="community-panel" id="panel-tips">
+          <div class="tips-grid">
+            <div class="tip-card">
+              <div class="tip-header">
+                <div class="tip-icon">🧳</div>
+                <div class="tip-votes">👍 127</div>
+              </div>
+              <h4 class="tip-title">Cómo empacar de forma inteligente</h4>
+              <p class="tip-text">
+                Usa la técnica de rollo para ahorrar espacio, lleva ropa
+                versátil que combinen colores, y siempre deja espacio para
+                compras. Los cubos de empaque también son geniales.
+              </p>
+              <div class="tip-author">por María Rodríguez</div>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-header">
+                <div class="tip-icon">💰</div>
+                <div class="tip-votes">👍 98</div>
+              </div>
+              <h4 class="tip-title">Ahorrar dinero en hospedaje</h4>
+              <p class="tip-text">
+                Reserva con 2-3 meses de anticipación para mejores precios,
+                considera Airbnb con cocina para preparar desayunos, y viaja en
+                temporada baja cuando es posible.
+              </p>
+              <div class="tip-author">por Carlos Mendoza</div>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-header">
+                <div class="tip-icon">📸</div>
+                <div class="tip-votes">👍 156</div>
+              </div>
+              <h4 class="tip-title">Mejores horas para fotografiar</h4>
+              <p class="tip-text">
+                La hora dorada (primera y última hora del día) ofrece la mejor
+                iluminación. Evita el mediodía cuando el sol está muy fuerte y
+                crea sombras duras en las fotos.
+              </p>
+              <div class="tip-author">por Sofía Hidalgo</div>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-header">
+                <div class="tip-icon">🚗</div>
+                <div class="tip-votes">👍 82</div>
+              </div>
+              <h4 class="tip-title">Viajar seguro usando transporte público</h4>
+              <p class="tip-text">
+                Ten cuidado con tus pertenencias, evita viajar con dinero en
+                efectivo visible, usa mochilas con cierre seguro y mantente
+                atento a tu entorno en todo momento.
+              </p>
+              <div class="tip-author">por Juan Pablo Rojas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+     SECCIÓN 9 – BLOG Y CONSEJOS DE VIAJE
+════════════════════════════════════ -->
+    <section id="blog" class="blog-section">
+      <div class="blog-container">
+        <div class="blog-header">
+          <span class="blog-tag">BLOG Y CONSEJOS</span>
+          <h2 class="blog-title">Blog y Consejos de <em>Viaje</em></h2>
+          <p class="blog-subtitle">
+            Artículos sobre tips de viaje, documentación, seguridad, clima y
+            cultura local.
+          </p>
+        </div>
+
+        <!-- Grid de Artículos -->
+        <div class="blog-grid">
+          <div class="blog-card">
+            <div class="blog-image">🌴</div>
+            <div class="blog-content">
+              <span class="blog-category">Destinos</span>
+              <h3 class="blog-article-title">
+                Guía completa: Las mejores playas de Ecuador
+              </h3>
+              <p class="blog-excerpt">
+                Descubre los secretos mejor guardados de las costas
+                ecuatorianas, desde playas tranquilas hasta destinos de
+                aventura.
+              </p>
+              <div class="blog-meta">
+                <span class="blog-author">por Marco Vélez</span>
+                <span class="blog-date">15 mayo 2026</span>
+              </div>
+              <a href="#" class="blog-read-link">Leer artículo →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <div class="blog-image">📋</div>
+            <div class="blog-content">
+              <span class="blog-category">Documentación</span>
+              <h3 class="blog-article-title">
+                Documentos necesarios para viajar al extranjero
+              </h3>
+              <p class="blog-excerpt">
+                Todo lo que necesitas saber sobre pasaportes, visas y requisitos
+                de entrada en diferentes países.
+              </p>
+              <div class="blog-meta">
+                <span class="blog-author">por Ana Gonzáles</span>
+                <span class="blog-date">12 mayo 2026</span>
+              </div>
+              <a href="#" class="blog-read-link">Leer artículo →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <div class="blog-image">🛡️</div>
+            <div class="blog-content">
+              <span class="blog-category">Seguridad</span>
+              <h3 class="blog-article-title">
+                Cómo viajar de forma segura: Tips imprescindibles
+              </h3>
+              <p class="blog-excerpt">
+                Consejos prácticos para mantener tu seguridad en destinos
+                desconocidos y disfrutar sin preocupaciones.
+              </p>
+              <div class="blog-meta">
+                <span class="blog-author">por Roberto Silva</span>
+                <span class="blog-date">10 mayo 2026</span>
+              </div>
+              <a href="#" class="blog-read-link">Leer artículo →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <div class="blog-image">🌡️</div>
+            <div class="blog-content">
+              <span class="blog-category">Clima</span>
+              <h3 class="blog-article-title">
+                Guía de climas: Prepárate para cada estación
+              </h3>
+              <p class="blog-excerpt">
+                Entiende los patrones climáticos de Ecuador y prepara tu
+                equipaje según la época del año.
+              </p>
+              <div class="blog-meta">
+                <span class="blog-author">por Daniela López</span>
+                <span class="blog-date">8 mayo 2026</span>
+              </div>
+              <a href="#" class="blog-read-link">Leer artículo →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <div class="blog-image">🎭</div>
+            <div class="blog-content">
+              <span class="blog-category">Cultura</span>
+              <h3 class="blog-article-title">
+                Respeta y vive la cultura local: Etiqueta del viajero
+              </h3>
+              <p class="blog-excerpt">
+                Aprende sobre tradiciones, costumbres y normas de cortesía para
+                ser un viajero responsable.
+              </p>
+              <div class="blog-meta">
+                <span class="blog-author">por Patricia Ruiz</span>
+                <span class="blog-date">5 mayo 2026</span>
+              </div>
+              <a href="#" class="blog-read-link">Leer artículo →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <div class="blog-image">✈️</div>
+            <div class="blog-content">
+              <span class="blog-category">Viajes</span>
+              <h3 class="blog-article-title">
+                Itinerarios imprescindibles: 7 y 15 días por Ecuador
+              </h3>
+              <p class="blog-excerpt">
+                Rutas probadas que combinan la riqueza de la costa, sierra y
+                Amazonía para viajeros con poco tiempo.
+              </p>
+              <div class="blog-meta">
+                <span class="blog-author">por Gustavo Torres</span>
+                <span class="blog-date">2 mayo 2026</span>
+              </div>
+              <a href="#" class="blog-read-link">Leer artículo →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ════════════════════════════════════
+     SECCIÓN 10 – CONTACTO
+════════════════════════════════════ -->
+<section id="contacto" class="contact-section">
+  <div class="contact-container">
     
-    <div class="footer-column">
-        <h4>Nuestra empresa</h4>
-        <ul>
-            <li><a href="index.html">Quiénes somos</a></li>
-            <li><a href="#">Equipo</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="#">Cómo funcionan nuestros servicios</a></li>
-        </ul>
+    <div class="contact-header">
+      <span class="contact-tag">PONTE EN CONTACTO</span>
+      <h2 class="contact-title">¿Preguntas o sugerencias?</h2>
+      <p class="contact-subtitle">Nos encantaría escuchar de ti. Completa el formulario y nos pondremos en contacto pronto.</p>
     </div>
 
-    <div class="footer-column">
-        <h4>Contactar</h4>
-        <ul>
-            <li><a href="#contact">Ayuda/Preguntas frecuentes</a></li>
-            <li><a href="mailto:info@tipplan.com">Enviar un email</a></li>
-            <li><a href="#">Socios (Partners)</a></li>
-            <li><a href="#">Medios (Prensa)</a></li>
-        </ul>
+    <!-- Formulario de Contacto -->
+    <div class="contact-form-wrapper">
+      <form class="contact-form">
+        <div class="contact-form-grid">
+          <div class="contact-input-group">
+            <label class="contact-label">Nombre completo</label>
+            <input type="text" class="contact-input" placeholder="Tu nombre" required>
+          </div>
+
+          <div class="contact-input-group">
+            <label class="contact-label">Email</label>
+            <input type="email" class="contact-input" placeholder="tu@email.com" required>
+          </div>
+
+          <div class="contact-input-group">
+            <label class="contact-label">Teléfono (opcional)</label>
+            <input type="tel" class="contact-input" placeholder="+593 9 1234 5678">
+          </div>
+
+          <div class="contact-input-group">
+            <label class="contact-label">Asunto</label>
+            <select class="contact-input">
+              <option value="">Selecciona un asunto</option>
+              <option value="pregunta">Pregunta general</option>
+              <option value="soporte">Soporte técnico</option>
+              <option value="sugerencia">Sugerencia o feedback</option>
+              <option value="partnership">Partnership / Colaboración</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="contact-textarea-group">
+          <label class="contact-label">Mensaje</label>
+          <textarea class="contact-textarea" placeholder="Cuéntanos más sobre tu consulta..." rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="contact-submit-btn">Enviar mensaje →</button>
+      </form>
+
+      <!-- Info de contacto alternativa -->
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📧</div>
+          <div class="contact-info-content">
+            <h4>Email</h4>
+            <a href="mailto:info@tipplan.com">info@tipplan.com</a>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📞</div>
+          <div class="contact-info-content">
+            <h4>Teléfono</h4>
+            <a href="tel:+5932123456">+593 2 123 456</a>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📍</div>
+          <div class="contact-info-content">
+            <h4>Ubicación</h4>
+            <p>Quito, Ecuador</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🕐</div>
+          <div class="contact-info-content">
+            <h4>Horario</h4>
+            <p>Lun - Vie: 9:00 - 18:00<br>Sábado: 10:00 - 14:00</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="footer-column">
-        <h4>Más</h4>
-        <ul>
-            <li><a href="#">Tipos de viajes/Aerolíneas</a></li>
-            <li><a href="#">Tipos de tarifas bajas</a></li>
-            <li><a href="#">Herramientas de planificación</a></li>
-            <li><a href="#">Consejos de viaje</a></li>
-        </ul>
-    </div>
+  </div>
+</section>
 
-    <div class="footer-column app-column">
-        <h4>Descarga la app de TipPlan</h4>
-        <!-- aria-label añadido a botones de app sin texto -->
-        <a href="[URL_GOOGLE_PLAY]" target="_blank" rel="noopener"
-            class="app-button google-play" aria-label="Descargar TipPlan en Google Play">
-            <i class="fa-brands fa-google-play" aria-hidden="true"></i>
-            Google Play
-        </a>
-        <a href="[URL_APP_STORE]" target="_blank" rel="noopener"
-            class="app-button app-store" aria-label="Descargar TipPlan en App Store">
-            <i class="fa-brands fa-app-store-ios" aria-hidden="true"></i>
-            App Store
-        </a>
-    </div>
+    <!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Columna 1: Branding -->
+          <div class="footer-section">
+            <div class="footer-logo">Tip<span>Plan</span></div>
+            <p class="footer-desc">
+              Tu plataforma completa para planificar viajes en Ecuador con
+              confianza y seguridad.
+            </p>
+            <div class="footer-socials">
+              <a href="#" class="social-link" title="Facebook">f</a>
+              <a href="#" class="social-link" title="Twitter">𝕏</a>
+              <a href="#" class="social-link" title="Instagram">📷</a>
+              <a href="#" class="social-link" title="LinkedIn">in</a>
+            </div>
+          </div>
 
-</footer>
+          <!-- Columna 2: Explorar -->
+          <div class="footer-section">
+            <h4 class="footer-title">Explorar</h4>
+            <ul class="footer-links">
+              <li><a href="#destinos">Destinos</a></li>
+              <li><a href="#experiencias">Planificador de viajes</a></li>
+              <li><a href="#mapa">Mapa del mundo</a></li>
+              <li><a href="#presupuesto">Calculadora de presupuesto</a></li>
+            </ul>
+          </div>
 
-<div class="footer-bottom">
-    <p>©2026 TipPlan. Todos los derechos reservados.</p>
-    <div class="legal-links">
-        <a href="/privacidad.html">Privacidad</a> | 
-        <a href="/terminos-y-condiciones.html">Términos y condiciones</a>
-    </div>
-</div>
+          <!-- Columna 3: Comunidad -->
+          <div class="footer-section">
+            <h4 class="footer-title">Comunidad</h4>
+            <ul class="footer-links">
+              <li><a href="#comunidad">Reseñas</a></li>
+              <li><a href="#comunidad">Foros</a></li>
+              <li><a href="#comunidad">Consejos de viajeros</a></li>
+              <li><a href="#blog">Blog de viajes</a></li>
+            </ul>
+          </div>
 
-<!-- defer para no bloquear el renderizado -->
-<script src="./src/js/main.js" defer></script>
+          <!-- Columna 4: Soporte -->
+          <div class="footer-section">
+            <h4 class="footer-title">Soporte</h4>
+            <ul class="footer-links">
+              <li><a href="#contacto">Contacto</a></li>
+              <li><a href="#">Preguntas frecuentes</a></li>
+              <li><a href="#">Centro de ayuda</a></li>
+              <li><a href="#">Reportar problema</a></li>
+            </ul>
+          </div>
 
-</body>
+          <!-- Columna 5: Legal -->
+          <div class="footer-section">
+            <h4 class="footer-title">Legal</h4>
+            <ul class="footer-links">
+              <li><a href="#">Términos de servicio</a></li>
+              <li><a href="#">Política de privacidad</a></li>
+              <li><a href="#">Política de cookies</a></li>
+              <li><a href="#">Aviso legal</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-divider"></div>
+          <div class="footer-bottom-content">
+            <p class="footer-copyright">
+              &copy; 2026 TipPlan. Todos los derechos reservados.
+            </p>
+            <p class="footer-tagline">
+              Hecho con ❤️ para los viajeros de Ecuador
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function toggleMenu(open) {
+    hamburger.classList.toggle('is-open', open);
+    navLinks.classList.toggle('is-open', open);
+    navOverlay.classList.toggle('is-open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    toggleMenu(!navLinks.classList.contains('is-open'));
+  });
+
+  navOverlay.addEventListener('click', () => toggleMenu(false));
+
+  document.querySelectorAll('.nav-item, .btn-cta-mobile').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+</script>
+  </body>
 </html>
