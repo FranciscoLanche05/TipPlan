@@ -1539,3 +1539,626 @@ body {
         gap: 8px;
     }
 }
+
+
+/* ════════════════════════════════════
+   SECCIÓN 7 – PRESUPUESTO DE VIAJE
+════════════════════════════════════ */
+
+.budget-section {
+  padding: 100px 100px;
+  background: linear-gradient(135deg, #15241b 0%, #1a2e26 50%, #12231c 100%);
+}
+
+.budget-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.budget-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.budget-tag {
+  background-color: rgba(229, 169, 59, 0.15);
+  border: 1px solid rgba(229, 169, 59, 0.4);
+  color: #e5a93b;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.budget-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.budget-title em {
+  color: #e5a93b;
+  font-style: italic;
+}
+
+.budget-subtitle {
+  font-size: 16px;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Tarjeta de formulario */
+.budget-form-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(229, 169, 59, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.budget-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.budget-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bi-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bi-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(229, 169, 59, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.bi-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #e5a93b;
+}
+
+.budget-calc-btn {
+  background: linear-gradient(135deg, #e5a93b 0%, #cd932e 100%);
+  color: #0d2118;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.budget-calc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(229, 169, 59, 0.3);
+}
+
+/* Resumen de presupuesto */
+.budget-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.bs-item {
+  background: rgba(46, 139, 87, 0.08);
+  border: 1px solid rgba(46, 139, 87, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.bs-item:hover {
+  background: rgba(46, 139, 87, 0.12);
+  border-color: rgba(46, 139, 87, 0.4);
+}
+
+.bs-icon {
+  font-size: 32px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.bs-content {
+  flex: 1;
+}
+
+.bs-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 4px;
+}
+
+.bs-amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #e5a93b;
+  margin-bottom: 4px;
+}
+
+.bs-desc {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* Breakdown visual */
+.budget-breakdown {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.breakdown-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.bb-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bb-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.bb-icon {
+  font-size: 20px;
+}
+
+.bb-bar {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bb-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2e8b57 0%, #46b978 100%);
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+.bb-percent {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e5a93b;
+  width: 60px;
+  text-align: right;
+}
+
+.breakdown-tips {
+  background: rgba(229, 169, 59, 0.08);
+  border: 1px solid rgba(229, 169, 59, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.breakdown-tips h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.breakdown-tips ul {
+  list-style: none;
+  padding: 0;
+}
+
+.breakdown-tips li {
+  font-size: 14px;
+  color: #cbd5e1;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.breakdown-tips li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #e5a93b;
+  font-weight: 600;
+}
+
+
+/* ════════════════════════════════════
+   SECCIÓN 8 – OPINIONES Y COMUNIDAD
+════════════════════════════════════ */
+
+.community-section {
+  padding: 100px 100px;
+  background: linear-gradient(135deg, #0d1e1a 0%, #13252c 50%, #0a1e22 100%);
+}
+
+.community-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.community-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.community-tag {
+  background-color: rgba(100, 200, 255, 0.15);
+  border: 1px solid rgba(100, 200, 255, 0.4);
+  color: #64c8ff;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.community-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.community-title em {
+  color: #64c8ff;
+  font-style: italic;
+}
+
+.community-subtitle {
+  font-size: 16px;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Tabs */
+.community-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+}
+
+.community-tab {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 20px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.community-tab:hover {
+  color: #64c8ff;
+}
+
+.community-tab.active {
+  color: #64c8ff;
+}
+
+.community-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #64c8ff;
+}
+
+/* Panel */
+.community-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.community-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grid de reseñas */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 200, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.review-header {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.review-avatar {
+  font-size: 40px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.review-info {
+  flex: 1;
+}
+
+.review-author {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.review-location {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.review-rating {
+  font-size: 14px;
+  color: #fbbf24;
+}
+
+.review-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.review-text {
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.review-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: #64a0d6;
+}
+
+/* Foros */
+.forum-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.forum-post {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.forum-post:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 200, 255, 0.4);
+}
+
+.fp-header {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.fp-avatar {
+  font-size: 36px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.fp-info {
+  flex: 1;
+}
+
+.fp-author {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.fp-topic {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64c8ff;
+}
+
+.fp-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.fp-content {
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  padding-left: 65px;
+}
+
+.community-post-btn {
+  background: linear-gradient(135deg, #64c8ff 0%, #3b82f6 100%);
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  display: block;
+}
+
+.community-post-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(100, 200, 255, 0.3);
+}
+
+/* Consejos */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.tip-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(100, 200, 255, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(100, 200, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.tip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.tip-icon {
+  font-size: 36px;
+}
+
+.tip-votes {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64c8ff;
+}
+
+.tip-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.tip-text {
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.tip-author {
+  font-size: 12px;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .budget-form-card,
+  .reviews-grid,
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .budget-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .community-tabs {
+    flex-wrap: wrap;
+  }
+
+  .budget-section,
+  .community-section {
+    padding: 60px 40px;
+  }
+
+  .budget-title,
+  .community-title {
+    font-size: 36px;
+  }
+}
