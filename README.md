@@ -23,10 +23,10 @@
 ### Vista Previa (Live Demo)
 
 * **Desktop:**
-![Preview de TipPlan](./src/image/MacBook-Pro-1777432065379.jpeg)
+![Preview de TipPlan](./src/image/MacBook-Pro-1777432065379.png)
 
 * **Mobile:**
-![Preview de TipPlan](./src/image/iPhone-12-Pro-1777432061901.jpeg)
+![Preview de TipPlan](./src/image/iPhone-12-Pro-1777432061901.png)
 
 ### Proceso de Diseño
 | Wireframe Inicial | Mockup de Alta Fidelidad |
