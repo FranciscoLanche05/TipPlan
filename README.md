@@ -8,9 +8,15 @@
 * **Estética Moderna:** Uso de variables CSS para una paleta de colores coherente y profesional.
 
 ## 🛠️ Tecnologías Utilizadas
-* **HTML5 & CSS3:** Estructura semántica y diseño con metodología BEM.
-* **JavaScript:** Interactividad para el manejo del menú responsivo.
+* **React & Vite:** Migración a una arquitectura moderna basada en componentes.
+* **HTML5 & CSS3:** Estructura semántica y diseño modular.
+* **JavaScript:** Interactividad y lógica de la aplicación.
 * **Git/GitHub:** Flujo de trabajo colaborativo mediante ramas y Pull Requests.
+
+### Scripts de Desarrollo
+* `npm install` - Instala las dependencias.
+* `npm run dev` - Inicia el servidor de desarrollo.
+* `npm run build` - Construye el proyecto para producción.
 
 ## 🎨 Diseño y Prototipado
 
