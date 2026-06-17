@@ -1,0 +1,200 @@
+.experiencesSection {
+  background-color: #0d2118;
+  padding: 100px 0;
+  width: 100%;
+}
+
+.experiencesContainer {
+  max-width: 1440px;
+  width: 92%;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.experiencesHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.experiencesTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.1;
+  margin-top: 15px;
+}
+
+.experiencesTitleItalic {
+  font-style: italic;
+  color: #e5a93b;
+}
+
+.experiencesSubtitle {
+  font-size: 16px;
+  color: #a3b899;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.experiencesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.expCard {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 36px 28px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  cursor: default;
+}
+
+.expCard:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+  border-color: rgba(229, 169, 59, 0.3);
+  transform: translateY(-5px);
+}
+
+.expIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.expIconGreen {
+  background-color: rgba(106, 146, 80, 0.25);
+}
+.expIconGold {
+  background-color: rgba(229, 169, 59, 0.2);
+}
+.expIconOrange {
+  background-color: rgba(217, 107, 67, 0.2);
+}
+.expIconSage {
+  background-color: rgba(163, 184, 153, 0.2);
+}
+
+.expTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.expDesc {
+  font-size: 14px;
+  color: #a3b899;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.expLink {
+  color: #e5a93b;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+  display: inline-block;
+}
+
+.expLink:hover {
+  border-bottom-color: #e5a93b;
+}
+
+.experiencesCtaBanner {
+  background: linear-gradient(135deg, #1a3d28 0%, #0d2118 100%);
+  border: 1px solid rgba(229, 169, 59, 0.2);
+  border-radius: 24px;
+  padding: 48px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.ctaBannerText h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.ctaBannerText p {
+  font-size: 15px;
+  color: #a3b899;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ctaBannerBtn {
+  background-color: #e5a93b;
+  color: #0d2118;
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.ctaBannerBtn:hover {
+  background-color: #cd932e;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .experiencesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .experiencesGrid {
+    grid-template-columns: 1fr;
+  }
+  .experiencesCtaBanner {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 28px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .experiencesSection { padding: 60px 0; }
+  .experiencesContainer { padding: 0 20px; }
+  .experiencesTitle { font-size: 32px; }
+  .experiencesGrid { grid-template-columns: 1fr; gap: 30px; }
+}
+
+
+@media (min-width: 2000px) {
+  .experiencesContainer { max-width: none; width: 92%; }
+  .experiencesTitle { font-size: 64px; }
+  .experiencesGrid { grid-template-columns: repeat(3, 1fr); gap: 60px; }
+  .cardTitle { font-size: 32px; }
+  .cardDesc { font-size: 20px; }
+}
+
