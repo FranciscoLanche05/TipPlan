@@ -1,7 +1,7 @@
 {
-  "name": "sistema-viajes-epn",
+  "name": "tipplan",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,15 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FranciscoLanche05/sistema-viajes-epn.git"
+    "url": "git+https://github.com/FranciscoLanche05/TipPlan.git"
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "leaflet": "^1.9.4",
     "lucide-react": "^1.20.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.17.0"
   },
   "devDependencies": {
