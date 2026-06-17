@@ -5,7 +5,7 @@ import Body from "../../components/common/Estadisticas/Body";
 import Destinations from "../../components/sections/Destinos/Destinations";
 import Experiences from "../../components/sections/Experiencias/Experiences";
 import InteractiveMap from "../../components/sections/MapaInteractivo/InteractiveMap";
-import { Budget } from '../../components/sections/Presupuesto';
+import Planner from '../../components/sections/Planificador/Planner';
 import { FAQ } from '../../components/sections/PreguntasFrecuentes';
 import Blog from "../../components/sections/Blog/Blog";
 
@@ -18,7 +18,7 @@ const Home = () => {
       <Destinations />
       <Experiences />
       <InteractiveMap />
-      <Budget />
+      <Planner />
       <FAQ />
       <Blog />
     </>
