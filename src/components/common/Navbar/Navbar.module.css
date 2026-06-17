@@ -1,0 +1,131 @@
+.navbar {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background-color: #0c2d1ee0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.logo {
+  margin-left: 20px;
+  font-family: "Playfair Display";
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #f5c040;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.logo span {
+  font-family: "Playfair Display";
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.nav {
+  display: flex;
+  gap: 50px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #e8a020;
+}
+
+.btn_viaje {
+  background-color: #e8a020;
+  color: black;
+  border: none;
+  padding: 15px 32px;
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.btn_viaje:hover {
+  background-color: white;
+  color: #013220;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburgerOpen span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: #0c2d1e;
+    gap: 0;
+    padding: 20px 0;
+  }
+
+  .navOpen {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 15px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .btn_viaje {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
