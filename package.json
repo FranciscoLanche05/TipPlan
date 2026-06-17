@@ -1,1 +1,29 @@
-{"name":"sistema-viajes-epn","version":"1.0.0","description":"","main":"vite.config.js","scripts":{"dev":"vite","build":"vite build","preview":"vite preview","test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"git+https://github.com/FranciscoLanche05/sistema-viajes-epn.git"},"keywords":[],"author":"","license":"ISC","type":"commonjs","bugs":{"url":"https://github.com/FranciscoLanche05/sistema-viajes-epn/issues"},"homepage":"https://github.com/FranciscoLanche05/sistema-viajes-epn#readme","dependencies":{"aos":"^2.3.4","leaflet":"^1.9.4","react":"^19.2.7","react-dom":"^19.2.7","react-leaflet":"^5.0.0","react-router-dom":"^7.17.0"},"devDependencies":{"@vitejs/plugin-react":"^6.0.2","vite":"^8.0.16"}}
+{
+  "name": "sistema-viajes-epn",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranciscoLanche05/sistema-viajes-epn.git"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.20.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.17.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.16"
+  }
+}
