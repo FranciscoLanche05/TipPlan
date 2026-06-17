@@ -1,61 +1,37 @@
-import styles from './Budget.module.css';
-import BudgetForm from './BudgetForm';
-import SectionTag from '../../ui/SectionTag/SectionTag';
+import { useState } from "react";
+import BudgetForm from "./BudgetForm";
+import BudgetDonut from "./BudgetDonut";
+import CategoryRow from "./CategoryRow";
+import useProgress from "../../../hooks/useProgress";
+import styles from "./Budget.module.css";
+
+export const categories = [
+  { id: "aloj",   label: "Alojamiento",  pct: 35, color: "#1f5c3a" },
+  { id: "trans",  label: "Transporte",   pct: 20, color: "#e8a020" },
+  { id: "comida", label: "Comida",       pct: 25, color: "#d45830" },
+  { id: "act",    label: "Actividades",  pct: 15, color: "#3b82a0" },
+  { id: "otros",  label: "Otros",        pct: 5,  color: "#8a8f98" },
+];
 
 export default function Budget() {
+  const [total, setTotal] = useState(1200);
+  const progress = useProgress(total);
+
   return (
-    <section className={styles.budgetSection} id="budget">
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.leftContent}>
-            <SectionTag>PLANIFICADOR</SectionTag>
-            <h1 className={styles.title}>
-              Diseña tu viaje <span className={styles.highlight}>perfecto</span>
-            </h1>
-            <p className={styles.description}>
-              Cuéntanos tus preferencias y nosotros te orientamos hacia la aventura ideal.
-            </p>
+    <div className={styles.card}>
+      <BudgetForm total={total} onChange={setTotal} />
 
-            <div className={styles.features}>
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>📅</div>
-                <div>
-                  <h3>Itinerario personalizado</h3>
-                  <p>Generamos un plan día a día adaptado a tu tiempo disponible y estilo de viaje.</p>
-                </div>
-              </div>
+      <div className={styles.grid}>
+        <div className={styles.donutWrap}>
+          <BudgetDonut total={total} progress={progress} categories={categories} />
+        </div>
 
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>💰</div>
-                <div>
-                  <h3>Control de presupuesto</h3>
-                  <p>Te ayudamos a distribuir tu presupuesto de forma inteligente sin sacrificar experiencias.</p>
-                </div>
-              </div>
-
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>📱</div>
-                <div>
-                  <h3>Acceso desde tu móvil</h3>
-                  <p>Próximamente disponible en Google Play y App Store para llevar tu itinerario en el bolsillo.</p>
-                </div>
-              </div>
-
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>❤️</div>
-                <div>
-                  <h3>Asesoría personalizada</h3>
-                  <p>Nuestro equipo revisa tu plan y te da recomendaciones basadas en experiencia real de viaje.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.rightContent}>
-            <BudgetForm />
-          </div>
+        <div className={styles.categories}>
+          {categories.map((cat) => (
+            <CategoryRow key={cat.id} category={cat} total={total} progress={progress} />
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
