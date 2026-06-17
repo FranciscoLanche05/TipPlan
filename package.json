@@ -1,1 +1,20 @@
-{"name":"sistema-viajes-epn","version":"1.0.0","description":"","main":"vite.config.js","scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"git+https://github.com/FranciscoLanche05/sistema-viajes-epn.git"},"keywords":[],"author":"","license":"ISC","type":"commonjs","bugs":{"url":"https://github.com/FranciscoLanche05/sistema-viajes-epn/issues"},"homepage":"https://github.com/FranciscoLanche05/sistema-viajes-epn#readme","dependencies":{"react":"^19.2.7","react-dom":"^19.2.7","react-router-dom":"^7.17.0"},"devDependencies":{"@vitejs/plugin-react":"^6.0.2","vite":"^8.0.16"}}
+{
+  "name": "tipplan",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^1.20.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.2.0"
+  }
+}
