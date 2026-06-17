@@ -1,0 +1,116 @@
+.header {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 35, 30, 0.92),
+    rgba(130, 145, 135, 0.5)
+  );
+  z-index: 0;
+}
+
+.container {
+  margin: 0 200px;
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid #d89a1d;
+  color: #d89a1d;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.container h1 {
+  font-family: "Playfair Display";
+  font-size: 110px;
+  line-height: 1;
+  color: white;
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.container h1 span {
+  color: #e5a623;
+  font-style: italic;
+}
+
+.container p {
+  font-size: 26px;
+  color: #d8d8d8;
+  line-height: 1.7;
+  margin-bottom: 50px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.btn_explorar {
+  background-color: #e5a623;
+  border: none;
+  padding: 20px 38px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.btn_explorar:hover {
+  box-shadow: 0 0 20px rgba(229, 166, 35, 0.7);
+  transform: scale(1.03);
+}
+
+.btn_plan {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.btn_plan:hover {
+  color: #e5a623;
+}
+
+@media (max-width: 900px) {
+  .container {
+    margin: 0 40px;
+  }
+
+  .container h1 {
+    font-size: 60px;
+  }
+
+  .container p {
+    font-size: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
