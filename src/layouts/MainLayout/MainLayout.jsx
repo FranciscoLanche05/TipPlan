@@ -1,16 +1,10 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "../../components/common/Navbar/Navbar";
-import styles from "./MainLayout.module.css";
+import styles from './MainLayout.module.css';
+import Home from '../../pages/Home/Home';
 
-const MainLayout = () => {
+export default function MainLayout() {
   return (
-    <div className={styles.layout}>
-      <Navbar />
-      <main className={styles.main}>
-        <Outlet />
-      </main>
+    <div className={styles.mainLayout}>
+      <Home />
     </div>
   );
-};
-
-export default MainLayout;
+}
