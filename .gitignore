@@ -1,10 +1,28 @@
-node_modules
-dist
-dist-ssr
-*.local
+# Dependencias
+front/node_modules
+front/dist
+back/node_modules
+back/dist
+
+# Variables de entorno (credenciales)
+front/.env
+front/.env.local
+front/.env.development.local
+front/.env.test.local
+front/.env.production.local
+back/.env
+back/.env.*
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Scripts temporales
+*.cjs
+split_project.cjs
+
+# Backup
 backup_old_content.zip
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+
+# IDE
+.vscode
