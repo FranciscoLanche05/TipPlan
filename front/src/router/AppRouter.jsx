@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/PlantillaPrincipal/MainLayout";
 import Home from "../pages/Inicio/Home";
+import Login from "../pages/Login/Login";
+import { ROUTES } from "../constants/routes";
 
 const AppRouter = () => {
   return (
@@ -8,6 +10,7 @@ const AppRouter = () => {
       <Route element={<MainLayout />}>
         <Route index element={<Home />} />
       </Route>
+      <Route path={ROUTES.LOGIN} element={<Login />} />
     </Routes>
   );
 };
