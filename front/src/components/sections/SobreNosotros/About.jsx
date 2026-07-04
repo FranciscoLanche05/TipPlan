@@ -25,7 +25,7 @@ const features = [
 
 const About = () => {
   return (
-    <section className={styles.about} data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+    <section id="nosotros" className={styles.about} data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
       <div className={styles.aboutContainer}>
         <div className={styles.image}>
           <img src={viajeros} alt="Viajeros explorando" />

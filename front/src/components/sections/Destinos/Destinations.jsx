@@ -4,7 +4,7 @@ import styles from "./Destinations.module.css";
 
 const Destinations = () => {
   return (
-    <section className={styles.destinations}>
+    <section id="destinos" className={styles.destinations}>
       <div className={styles.destinationsContainer}>
         <span className={styles.tag}>ECUADOR</span>
 
