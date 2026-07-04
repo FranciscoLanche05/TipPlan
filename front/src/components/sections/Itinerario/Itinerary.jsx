@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { Plus, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Plus, ChevronLeft, ChevronRight, X, Save } from "lucide-react";
 import ActivityCard from "./ActivityCard";
 import ItineraryForm from "./ItineraryForm";
+import {
+  saveItinerary,
+  updateItinerary,
+} from "@back/services/firestoreService";
 import styles from "./Itinerary.module.css";
 
 const initialItinerary = [
@@ -22,11 +26,20 @@ const initialItinerary = [
   ]},
 ];
 
-export default function Itinerary() {
-  const [itinerary, setItinerary] = useState(initialItinerary);
+/**
+ * Itinerary
+ * - Sin props: modo local (uso en Home).
+ * - Con userId: modo persistente (uso en Mis Viajes), muestra destino + botón guardar.
+ */
+export default function Itinerary({ userId, existingDoc, onSaved }) {
+  const [itinerary, setItinerary] = useState(
+    existingDoc?.days?.length ? existingDoc.days : initialItinerary
+  );
+  const [destination, setDestination] = useState(existingDoc?.destination || "");
   const [day, setDay] = useState(1);
   const [editingId, setEditingId] = useState(null);
   const [addingItem, setAddingItem] = useState(false);
+  const [saving, setSaving] = useState(false);
   const idRef = useRef(0);
 
   const current = itinerary.find((d) => d.day === day) || itinerary[0];
@@ -82,8 +95,40 @@ export default function Itinerary() {
     );
   }
 
+  async function handleSave() {
+    if (!userId) return;
+    setSaving(true);
+    try {
+      const data = { userId, destination: destination.trim(), days: itinerary };
+      if (existingDoc?.id) {
+        await updateItinerary(existingDoc.id, data);
+      } else {
+        await saveItinerary(data);
+      }
+      onSaved?.();
+    } catch (err) {
+      console.error("Error guardando itinerario:", err);
+      alert("No se pudo guardar el itinerario. Intenta de nuevo.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   return (
     <div className={styles.card}>
+      {/* Destino (solo modo persistente) */}
+      {userId && (
+        <div className={styles.destinationRow}>
+          <input
+            className={styles.destinationInput}
+            type="text"
+            placeholder="¿A dónde vas? (ej. Quito, Ecuador)"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+          />
+        </div>
+      )}
+
       <div className={styles.dayRow}>
         <button className={styles.navBtn} onClick={() => setDay((d) => Math.max(1, d - 1))}>
           <ChevronLeft size={18} />
@@ -143,6 +188,17 @@ export default function Itinerary() {
           </button>
         )}
       </div>
+
+      {/* Botón guardar (solo modo persistente) */}
+      {userId && (
+        <button
+          className={styles.saveBtn}
+          onClick={handleSave}
+          disabled={saving}
+        >
+          <Save size={16} /> {saving ? "Guardando..." : "Guardar itinerario"}
+        </button>
+      )}
     </div>
   );
 }
