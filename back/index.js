@@ -56,12 +56,14 @@ export {
 } from "./services/firestoreService";
 
 // Servicios de Almacenamiento (Storage)
-export {
-  uploadFile,
-  getFileURL,
-  deleteFile,
-  listFiles,
-} from "./services/storageService";
+// ─── DESHABILITADO: Storage requiere plan Blaze.
+// ─── Las imágenes se sirven desde /public en el frontend.
+// export {
+//   uploadFile,
+//   getFileURL,
+//   deleteFile,
+//   listFiles,
+// } from "./services/storageService";
 
 // Migración de datos
 export { runMigration } from "./seedData";

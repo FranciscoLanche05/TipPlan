@@ -2,14 +2,14 @@
 // Firebase — Configuración Central
 // ============================================================
 // Este archivo inicializa Firebase y exporta las instancias
-// de los 3 servicios: Auth, Firestore y Storage.
+// de los servicios: Auth y Firestore.
+// (Storage deshabilitado — requiere plan Blaze.)
 // Las credenciales se leen del archivo .env de la raíz.
 // ============================================================
 
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -32,5 +32,4 @@ try {
 // Exportar instancias nulas si Firebase no pudo inicializarse
 export const auth = app ? getAuth(app) : null;
 export const db = app ? getFirestore(app) : null;
-export const storage = app ? getStorage(app) : null;
 export default app;

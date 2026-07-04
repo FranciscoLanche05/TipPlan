@@ -19,7 +19,7 @@ export default function FAQ() {
           </div>
           <div className={styles.imageContainer}>
             <img 
-              src="/imagenes/thinking.png" 
+              src="/images/thinking.png" 
               alt="Preguntas frecuentes" 
               className={styles.faqImage}
             />
