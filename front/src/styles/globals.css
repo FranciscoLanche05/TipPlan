@@ -10,6 +10,8 @@ html {
 }
 
 body {
+  width: 100%;
+  overflow-x: hidden;
   font-family: "Plus Jakarta Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,12 +57,6 @@ select {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-body {
-  width: 100%;
-  overflow-x: hidden;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 #root {
