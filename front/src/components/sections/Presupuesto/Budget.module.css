@@ -85,6 +85,24 @@
   transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ─── Modo persistente (Mis Viajes) ─────────────────── */
+.saveBtn {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.9rem;
+  margin-top: 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background: #e8a020;
+  color: #123524;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.saveBtn:hover:not(:disabled) { background: #f5c040; transform: translateY(-1px); }
+.saveBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
 .budgetSection {
   background: linear-gradient(135deg, #1a4d3e 0%, #0f3829 100%);
   padding: 60px 20px;

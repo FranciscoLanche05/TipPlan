@@ -223,6 +223,42 @@
 @keyframes dayFade { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
+/* ─── Modo persistente (Mis Viajes) ─────────────────── */
+.destinationRow {
+  margin-bottom: 1.25rem;
+}
+
+.destinationInput {
+  width: 100%;
+  border: 1.5px solid #ddd2b3;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  outline: none;
+  background: #faf7f0;
+  color: #123524;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.destinationInput:focus { border-color: #e8a020; }
+
+.saveBtn {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.9rem;
+  margin-top: 1.5rem;
+  border-radius: 50px;
+  border: none;
+  background: #e8a020;
+  color: #123524;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.saveBtn:hover:not(:disabled) { background: #f5c040; transform: translateY(-1px); }
+.saveBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
 @media (max-width: 768px) {
   .dayRow { flex-wrap: wrap; }
   .itemRow { flex-direction: column; gap: 15px; text-align: center; }

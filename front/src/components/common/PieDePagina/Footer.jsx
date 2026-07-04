@@ -26,7 +26,7 @@ export default function Footer() {
               <li><a href="#destinos">Destinos</a></li>
               <li><a href="#experiencias">Planificador de viajes</a></li>
               <li><a href="#mapa">Mapa del mundo</a></li>
-              <li><a href="#presupuesto">Calculadora de presupuesto</a></li>
+              <li><a href="#planificador">Calculadora de presupuesto</a></li>
             </ul>
           </div>
 
@@ -34,9 +34,9 @@ export default function Footer() {
           <div className={styles.footerSection}>
             <h4 className={styles.footerTitle}>Comunidad</h4>
             <ul className={styles.footerLinks}>
-              <li><a href="#comunidad">Reseñas</a></li>
-              <li><a href="#comunidad">Foros</a></li>
-              <li><a href="#comunidad">Consejos de viajeros</a></li>
+              <li><a href="#nosotros">Reseñas</a></li>
+              <li><a href="#nosotros">Foros</a></li>
+              <li><a href="#nosotros">Consejos de viajeros</a></li>
               <li><a href="#blog">Blog de viajes</a></li>
             </ul>
           </div>
@@ -45,10 +45,10 @@ export default function Footer() {
           <div className={styles.footerSection}>
             <h4 className={styles.footerTitle}>Soporte</h4>
             <ul className={styles.footerLinks}>
-              <li><a href="#contacto">Contacto</a></li>
-              <li><a href="#">Preguntas frecuentes</a></li>
-              <li><a href="#">Centro de ayuda</a></li>
-              <li><a href="#">Reportar problema</a></li>
+              <li><a href="#faq">Contacto</a></li>
+              <li><a href="#faq">Preguntas frecuentes</a></li>
+              <li><a href="#faq">Centro de ayuda</a></li>
+              <li><a href="#faq">Reportar problema</a></li>
             </ul>
           </div>
 
