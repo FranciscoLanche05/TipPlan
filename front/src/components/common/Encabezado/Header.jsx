@@ -24,12 +24,12 @@ const Header = () => {
           en un solo lugar.
         </p>
         <div className={styles.buttons}>
-          <button className={styles.btn_explorar}>
+          <a href="#destinos" className={styles.btn_explorar} style={{ textDecoration: 'none', display: 'inline-block' }}>
             Explorar Destinos →
-          </button>
-          <button className={styles.btn_plan}>
+          </a>
+          <a href="#planificador" className={styles.btn_plan} style={{ textDecoration: 'none', display: 'inline-block' }}>
             ▶ Planificar mi aventura
-          </button>
+          </a>
         </div>
       </div>
     </section>

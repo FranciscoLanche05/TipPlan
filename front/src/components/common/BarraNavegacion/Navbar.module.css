@@ -154,12 +154,89 @@
     font-weight: 500;
   }
 
-  .btn_viaje {
+  .btn_viaje,
+  .btn_login {
     display: none;
+  }
+
+  .userMenu {
+    display: none !important;
   }
 
   .hamburger {
     display: flex;
     z-index: 1000;
+  }
+}
+
+/* ─── Usuario autenticado ─────────────────────────────── */
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e5a93b;
+  color: #0d2118;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.userName {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn_logout {
+  background: transparent;
+  border: 1px solid #e5a93b;
+  color: #e5a93b;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.btn_logout:hover {
+  background-color: #e5a93b;
+  color: #0d2118;
+}
+
+/* Botón de login dentro del menú hamburguesa (móvil) */
+.btn_login_mobile {
+  display: none;
+  background-color: #e5a93b;
+  color: #0d2118;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.btn_login_mobile:hover {
+  background-color: #cd932e;
+}
+
+@media (max-width: 900px) {
+  .btn_login_mobile {
+    display: inline-flex;
   }
 }
