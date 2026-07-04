@@ -80,5 +80,6 @@ export const logout = async () => {
 // ─── Observador de Estado de Autenticación ───────────────────
 // Úsalo en un useEffect para saber si el usuario está logueado.
 export const onAuthChange = (callback) => {
+  if (!auth) throw new Error("Servicio de autenticación no inicializado");
   return onAuthStateChanged(auth, callback);
 };
