@@ -6,7 +6,7 @@
 // Las credenciales se leen del archivo .env de la raíz.
 // ============================================================
 
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
@@ -20,11 +20,17 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Inicializar la app de Firebase
-const app = initializeApp(firebaseConfig);
+// Inicialización segura que no rompe la app si faltan credenciales (ej. en Vercel)
+let app;
+try {
+  if (!firebaseConfig.apiKey) throw new Error("Falta API KEY");
+  app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+} catch (error) {
+  console.warn("⚠️ Firebase deshabilitado:", error.message);
+}
 
-// Exportar instancias de cada servicio
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+// Exportar instancias nulas si Firebase no pudo inicializarse
+export const auth = app ? getAuth(app) : null;
+export const db = app ? getFirestore(app) : null;
+export const storage = app ? getStorage(app) : null;
 export default app;
