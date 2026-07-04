@@ -7,8 +7,9 @@ import { ROUTES } from "../constants/routes";
 const AppRouter = () => {
   return (
     <Routes>
-      <Route element={<MainLayout />}>
+        <Route element={<MainLayout />}>
         <Route index element={<Home />} />
+        <Route path="registro" element={<Registro />} />
       </Route>
       <Route path={ROUTES.LOGIN} element={<Login />} />
     </Routes>
