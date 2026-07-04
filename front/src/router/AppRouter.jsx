@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/PlantillaPrincipal/MainLayout";
 import Home from "../pages/Inicio/Home";
-import Registro from "../pages/Registro/Registro";
+import Login from "../pages/Login/Login";
+import { ROUTES } from "../constants/routes";
 
 const AppRouter = () => {
   return (
@@ -10,6 +11,7 @@ const AppRouter = () => {
         <Route index element={<Home />} />
         <Route path="registro" element={<Registro />} />
       </Route>
+      <Route path={ROUTES.LOGIN} element={<Login />} />
     </Routes>
   );
 };
