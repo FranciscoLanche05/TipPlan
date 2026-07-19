@@ -6,4 +6,6 @@ export const ROUTES = {
   DESTINATIONS: "/destinos",
   BLOG: "/blog",
   CONTACT: "/contactos",
+  RESERVAS: "/reservas",
+  CONFIGURACION: "/configuracion",
 };
