@@ -2,49 +2,83 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { ROUTES } from "../../../constants/routes";
+import {
+  Info,
+  MapPin,
+  Globe,
+  BookOpen,
+  MessageCircle,
+  Plane,
+  Calendar,
+  Settings,
+} from "lucide-react";
 
-// Enlaces de navegación con anclas a las secciones (ids reales del Home)
+// Enlaces de navegación con anclas a las secciones e íconos
 const links = [
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#destinos", label: "Destinos" },
-  { href: "#mapa", label: "Mundo" },
-  { href: "#planificador", label: "Planificador" },
-  { href: "#blog", label: "Blog" },
-  { href: "#faq", label: "Contactos" },
+  { href: "#nosotros", label: "Nosotros", icon: Info },
+  { href: "#destinos", label: "Destinos", icon: MapPin },
+  { href: "#mapa", label: "Mundo", icon: Globe },
+  { href: "#blog", label: "Blog", icon: BookOpen },
+  { href: "#faq", label: "Contactos", icon: MessageCircle },
 ];
 
-const NavLinks = ({ isOpen }) => {
-  const { isAuthenticated, logout } = useAuth();
-  const navigate = useNavigate();
+const NavLinks = ({ onClose }) => {
+  const { isAuthenticated } = useAuth();
 
-  const handleLogout = async () => {
-    await logout();
-    navigate("/");
+  const handleClick = () => {
+    if (onClose) onClose();
   };
 
   return (
-    <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ""}`}>
-      {links.map((link) => (
-        <a key={link.label} href={link.href}>
-          {link.label}
-        </a>
-      ))}
-
-      {/* Opciones de sesión (visibles en móvil, ya que userMenu se oculta) */}
-      {isAuthenticated ? (
+    <nav className={styles.sidebarNav}>
+      {isAuthenticated && (
         <>
-          <Link to={ROUTES.MIS_VIAJES} style={{ textDecoration: "none" }}>
-            Mis viajes
+          <Link
+            to={ROUTES.MIS_VIAJES}
+            className={styles.sidebarLink}
+            onClick={handleClick}
+            style={{ textDecoration: "none" }}
+          >
+            <Plane size={20} />
+            <span>Mis viajes</span>
           </Link>
-          <button className={styles.btn_logout} onClick={handleLogout}>
-            Cerrar sesión
-          </button>
+          <Link
+            to={ROUTES.RESERVAS}
+            className={styles.sidebarLink}
+            onClick={handleClick}
+            style={{ textDecoration: "none" }}
+          >
+            <Calendar size={20} />
+            <span>Reservas</span>
+          </Link>
+          <Link
+            to={ROUTES.CONFIGURACION}
+            className={styles.sidebarLink}
+            onClick={handleClick}
+            style={{ textDecoration: "none" }}
+          >
+            <Settings size={20} />
+            <span>Configuración de cuenta</span>
+          </Link>
         </>
-      ) : (
-        <Link to={ROUTES.LOGIN} className={styles.btn_login_mobile} style={{ textDecoration: "none" }}>
-          Iniciar sesión
-        </Link>
       )}
+
+      <div className={styles.sidebarDivider} />
+
+      {links.map((link) => {
+        const IconComponent = link.icon;
+        return (
+          <a
+            key={link.label}
+            href={link.href}
+            className={styles.sidebarLink}
+            onClick={handleClick}
+          >
+            <IconComponent size={20} />
+            <span>{link.label}</span>
+          </a>
+        );
+      })}
     </nav>
   );
 };

@@ -1,6 +1,10 @@
+import { Link } from 'react-router-dom';
+import { useAuth } from "../../../contexts/AuthContext";
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  const { openLoginModal } = useAuth();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
@@ -24,9 +28,9 @@ export default function Footer() {
             <h4 className={styles.footerTitle}>Explorar</h4>
             <ul className={styles.footerLinks}>
               <li><a href="#destinos">Destinos</a></li>
-              <li><a href="#experiencias">Planificador de viajes</a></li>
+              <li><button onClick={openLoginModal} className={styles.footerLinkButton}>Planificador de viajes</button></li>
               <li><a href="#mapa">Mapa del mundo</a></li>
-              <li><a href="#planificador">Calculadora de presupuesto</a></li>
+              <li><button onClick={openLoginModal} className={styles.footerLinkButton}>Calculadora de presupuesto</button></li>
             </ul>
           </div>
 

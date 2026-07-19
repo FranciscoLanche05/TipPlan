@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -8,7 +9,15 @@ import { useAuth } from "../contexts/AuthContext";
  * - Si hay sesión, renderiza las rutas hijas (Outlet).
  */
 export default function ProtectedRoute() {
-  const { loading, isAuthenticated } = useAuth();
+  const { loading, isAuthenticated, openLoginModal } = useAuth();
+  const [hasTriggered, setHasTriggered] = useState(false);
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated && !hasTriggered) {
+      openLoginModal();
+      setHasTriggered(true);
+    }
+  }, [loading, isAuthenticated, openLoginModal, hasTriggered]);
 
   if (loading) {
     return (
@@ -33,7 +42,7 @@ export default function ProtectedRoute() {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return <Outlet />;
