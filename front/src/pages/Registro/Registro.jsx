@@ -22,7 +22,7 @@ const Registro = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [aceptaTerminos, setAceptaTerminos] = useState(false);
 
-  const { register, authError, clearError, isAuthenticated } = useAuth();
+  const { register, authError, clearError, isAuthenticated, openLoginModal } = useAuth();
   const navigate = useNavigate();
 
   // Redirigir si ya hay sesión
@@ -270,9 +270,22 @@ const Registro = () => {
             </div>
             <p style={{ gridColumn: "1 / -1", textAlign: "center", color: "rgba(255,255,255,0.7)", fontSize: "14px" }}>
               ¿Ya tienes cuenta?{" "}
-              <Link to="/login" style={{ color: "rgb(229, 169, 59)", fontWeight: 700, textDecoration: "none" }}>
+              <button 
+                onClick={openLoginModal} 
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  padding: 0, 
+                  color: "rgb(229, 169, 59)", 
+                  fontWeight: 700, 
+                  textDecoration: "none",
+                  cursor: "pointer",
+                  fontSize: "inherit",
+                  fontFamily: "inherit"
+                }}
+              >
                 Inicia sesión
-              </Link>
+              </button>
             </p>
           </>
         )}

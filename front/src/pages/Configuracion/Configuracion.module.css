@@ -1,0 +1,179 @@
+.configPage {
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding: 100px 40px 80px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #0d2118;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.navSection {
+  margin-bottom: 24px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #475569;
+  font-size: 15px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  transition: all 0.2s;
+}
+
+.navItem:hover {
+  background-color: #f1f5f9;
+  color: #0d2118;
+}
+
+.navItem.active {
+  background-color: #e2e8f0;
+  color: #0d2118;
+  font-weight: 600;
+}
+
+.contentArea {
+  flex-grow: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  color: #0d2118;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 16px;
+}
+
+.settingGroup {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.settingGroup:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.settingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.settingTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0d2118;
+  margin-bottom: 4px;
+}
+
+.settingDesc {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #0284c7; /* Azul tipo Trivago */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 0;
+  color: #64748b;
+}
+
+.emptyState h2 {
+  color: #0d2118;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
+}

@@ -4,7 +4,6 @@ import About from "../../components/sections/SobreNosotros/About";
 import Destinations from "../../components/sections/Destinos/Destinations";
 import Experiences from "../../components/sections/Experiencias/Experiences";
 import InteractiveMap from "../../components/sections/MapaInteractivo/InteractiveMap";
-import Planner from '../../components/sections/Planificador/Planner';
 import { FAQ } from '../../components/sections/PreguntasFrecuentes';
 import Blog from "../../components/sections/Blog/Blog";
 
@@ -16,7 +15,6 @@ const Home = () => {
       <Destinations />
       <Experiences />
       <InteractiveMap />
-      <Planner />
       <FAQ />
       <Blog />
     </>
