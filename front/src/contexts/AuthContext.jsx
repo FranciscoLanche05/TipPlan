@@ -13,6 +13,8 @@ import {
   loginWithEmail,
   registerWithEmail,
   loginWithGoogle,
+  loginWithFacebook,
+  checkEmailExists,
   logout as firebaseLogout,
 } from "@back/services/authService";
 import { update } from "@back/services/firestoreService";
@@ -43,6 +45,13 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState(null);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const openLoginModal = () => setIsLoginModalOpen(true);
+  const closeLoginModal = () => {
+    setIsLoginModalOpen(false);
+    clearError();
+  };
 
   useEffect(() => {
     try {
@@ -91,7 +100,22 @@ export const AuthProvider = ({ children }) => {
   const loginGoogle = async () => {
     clearError();
     try {
-      return await loginWithGoogle();
+      const u = await loginWithGoogle();
+      closeLoginModal(); // Cerrar modal en éxito
+      return u;
+    } catch (err) {
+      setAuthError(mapAuthError(err));
+      throw err;
+    }
+  };
+
+  // ─── Login con Facebook ────────────────────────────────────
+  const loginFacebook = async () => {
+    clearError();
+    try {
+      const u = await loginWithFacebook();
+      closeLoginModal(); // Cerrar modal en éxito
+      return u;
     } catch (err) {
       setAuthError(mapAuthError(err));
       throw err;
@@ -118,7 +142,12 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     loginGoogle,
+    loginFacebook,
+    checkEmailExists,
     logout,
+    isLoginModalOpen,
+    openLoginModal,
+    closeLoginModal,
   };
 
   return (

@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NavLinks from "./NavLinks";
-import HamburgerButton from "./HamburgerButton";
+import UserDropdown from "./UserDropdown/UserDropdown";
 import styles from "./Navbar.module.css";
 import { ROUTES } from "../../../constants/routes";
 import { useAuth } from "../../../contexts/AuthContext";
+import { Menu, X, User, LogOut, MapPin, Calendar } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user, logout, openLoginModal } = useAuth();
   const navigate = useNavigate();
 
   // Inicial del nombre del usuario para el avatar
@@ -22,56 +23,126 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await logout();
+    setIsOpen(false);
     navigate("/");
   };
 
+  // Bloquear scroll del body cuando el sidebar está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
-    <header className={styles.navbar}>
-      <Link 
-        to="/" 
-        className={styles.logo} 
-        style={{ textDecoration: "none" }}
-        onClick={() => {
-          // Si ya estamos en la página de inicio, hacemos scroll arriba
-          if (window.location.pathname === '/') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-        }}
-      >
-        Tip<span>Plan</span>
-      </Link>
-      <NavLinks isOpen={isOpen} />
-      <div className={styles.actions}>
-        {isAuthenticated ? (
-          <>
-            <div className={styles.userMenu}>
-              <Link to={ROUTES.MIS_VIAJES} className={styles.userName} style={{ textDecoration: "none" }}>
-                {displayName}
-              </Link>
-              <Link to={ROUTES.MIS_VIAJES} className={styles.avatar} style={{ textDecoration: "none" }}>
-                {initial}
-              </Link>
-              <button className={styles.btn_logout} onClick={handleLogout}>
-                Cerrar sesión
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <button
-              className={styles.btn_viaje}
-              onClick={() => navigate(ROUTES.LOGIN)}
-            >
-              Planificar viaje
+    <>
+      <header className={styles.navbar}>
+        {/* Lado izquierdo: Hamburguesa + Logo */}
+        <div className={styles.leftGroup}>
+          <button
+            className={styles.menuBtn}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Abrir menú de navegación"
+          >
+            <Menu size={22} />
+          </button>
+
+          <Link
+            to="/"
+            className={styles.logo}
+            style={{ textDecoration: "none" }}
+            onClick={() => {
+              if (window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
+            Tip<span>Plan</span>
+          </Link>
+        </div>
+
+        {/* Lado derecho: Botones de acción */}
+        <div className={styles.actions}>
+          {isAuthenticated ? (
+            <UserDropdown />
+          ) : (
+            <button className={styles.btn_login} onClick={openLoginModal}>
+              <User size={16} />
+              <span>Iniciar sesión</span>
             </button>
-            <Link to={ROUTES.LOGIN} className={styles.btn_login}>
-              Iniciar sesión
-            </Link>
-          </>
-        )}
-      </div>
-      <HamburgerButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
-    </header>
+          )}
+        </div>
+      </header>
+
+      {/* Overlay oscuro */}
+      <div
+        className={`${styles.overlay} ${isOpen ? styles.overlayVisible : ""}`}
+        onClick={() => setIsOpen(false)}
+      />
+
+      {/* Sidebar deslizable desde la izquierda */}
+      <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ""}`}>
+        <div className={styles.sidebarHeader}>
+          <Link
+            to="/"
+            className={styles.sidebarLogo}
+            style={{ textDecoration: "none" }}
+            onClick={() => setIsOpen(false)}
+          >
+            Tip<span>Plan</span>
+          </Link>
+          <button
+            className={styles.closeBtn}
+            onClick={() => setIsOpen(false)}
+            aria-label="Cerrar menú"
+          >
+            <X size={22} />
+          </button>
+        </div>
+
+        <NavLinks onClose={() => setIsOpen(false)} />
+
+        {/* Sección de sesión en el sidebar */}
+        <div className={styles.sidebarFooter}>
+          {isAuthenticated ? (
+            <>
+              <Link
+                to={ROUTES.MIS_VIAJES}
+                className={styles.sidebarUserCard}
+                style={{ textDecoration: "none" }}
+                onClick={() => setIsOpen(false)}
+              >
+                <span className={styles.sidebarAvatar}>{initial}</span>
+                <div className={styles.sidebarUserInfo}>
+                  <span className={styles.sidebarUserName}>{displayName}</span>
+                  <span className={styles.sidebarUserLabel}>Ver mi perfil</span>
+                </div>
+              </Link>
+              <button className={styles.sidebarLogoutBtn} onClick={handleLogout}>
+                <LogOut size={18} />
+                <span>Cerrar sesión</span>
+              </button>
+            </>
+          ) : (
+            <button
+              className={styles.sidebarLoginBtn}
+              onClick={() => {
+                setIsOpen(false);
+                openLoginModal();
+              }}
+            >
+              <User size={18} />
+              <span>Iniciar sesión</span>
+            </button>
+          )}
+        </div>
+      </aside>
+    </>
   );
 };
 
