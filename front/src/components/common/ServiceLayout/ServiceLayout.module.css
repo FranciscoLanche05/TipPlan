@@ -1,0 +1,352 @@
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f6f8;
+  font-family: 'Inter', system-ui, sans-serif;
+  /* Top spacing to account for main global navbar if there is one */
+  padding-top: 80px; 
+}
+
+/* --- Top Header & Search --- */
+.topHeader {
+  background-color: #ffffff;
+  padding: 20px 40px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.headerTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.titles h1 {
+  font-size: 28px;
+  color: #1a202c;
+  margin: 0 0 5px;
+  font-weight: 700;
+}
+
+.titles p {
+  color: #718096;
+  margin: 0;
+  font-size: 15px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding: 8px 16px;
+  min-width: 400px;
+  border: 1px solid #cbd5e1;
+}
+
+.searchIcon {
+  color: #64748b;
+  margin-right: 10px;
+}
+
+.searchBox input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 16px;
+  outline: none;
+  color: #1e293b;
+}
+
+.searchBtn {
+  background-color: #ff5a5f; /* Accent color like Kayak/Airbnb */
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.searchBtn:hover {
+  background-color: #e53e3e;
+}
+
+/* --- Filters Bar --- */
+.filtersBar {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.filterBtn:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.filterActive {
+  background-color: #f1f5f9;
+  border-color: #1e293b;
+  color: #1e293b;
+}
+
+.badge {
+  background-color: #1e293b;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.arrow {
+  font-size: 10px;
+  color: #64748b;
+}
+
+/* --- Custom Dropdowns --- */
+.dropdownWrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+}
+
+.dropdownPopover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  min-width: 220px;
+  z-index: 100;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #334155;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.dropdownItem:hover {
+  background: #f8fafc;
+}
+
+.dropdownItemActive {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* --- Main Split Content --- */
+.mainContent {
+  display: flex;
+  flex: 1;
+}
+
+.noMap {
+  justify-content: center;
+}
+
+.noMap .resultsColumn {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* --- Left Column (Results) --- */
+.resultsColumn {
+  flex: 1;
+  padding: 20px 40px;
+  max-width: 65%; /* Limita el ancho de la lista */
+}
+
+.resultsMeta {
+  font-size: 14px;
+  color: #166534;
+  margin-bottom: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.noResults {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+/* --- Right Column (Map) --- */
+.mapColumn {
+  width: 35%;
+  min-width: 400px;
+  position: relative;
+  border-left: 1px solid #e2e8f0;
+}
+
+.mapStickyContainer {
+  position: sticky;
+  top: 80px; /* Debajo del navbar principal */
+  height: calc(100vh - 80px);
+  width: 100%;
+}
+
+.leafletMap {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* --- Custom Map Marker (Price Pill) --- */
+.customMarker {
+  background: transparent;
+  border: none;
+}
+
+.markerPrice {
+  background-color: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: inline-flex;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.markerPrice:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-color: #1e293b;
+  z-index: 1000;
+}
+
+.customPopup {
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Mobile Responsiveness --- */
+.mobileMapBtn {
+  display: none;
+}
+
+.closeMapBtn {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .resultsColumn {
+    max-width: 100%;
+    padding: 20px;
+  }
+  
+  .mapColumn {
+    display: none; /* Hide map on small screens by default */
+  }
+
+  .mobileMapBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #1e293b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  /* When map is open on mobile */
+  .mapOpenMobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+  }
+
+  .mapOpenMobile .mapStickyContainer {
+    top: 0;
+    height: 100vh;
+  }
+
+  .closeMapBtn {
+    display: flex;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background-color: #1e293b;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .headerTopRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .searchBox {
+    min-width: 100%;
+  }
+}

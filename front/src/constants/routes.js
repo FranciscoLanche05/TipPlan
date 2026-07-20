@@ -8,4 +8,12 @@ export const ROUTES = {
   CONTACT: "/contactos",
   RESERVAS: "/reservas",
   CONFIGURACION: "/configuracion",
+  EXPERIENCIAS_CATEGORIA: "/experiencias/:categoria",
+  PLANIFICADOR: "/planificador",
+  DASHBOARD: "/dashboard",
+  VUELOS: "/vuelos",
+  HOTELES: "/hoteles",
+  AUTOS: "/autos",
+  RESTAURANTES: "/restaurantes",
+  ACTIVIDADES: "/actividades",
 };

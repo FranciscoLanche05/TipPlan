@@ -15,6 +15,7 @@ export const COLLECTIONS = {
   STATS: "estadisticas",
   FEATURES: "caracteristicas",
   CONTACTS: "contactos",
+  RESERVATIONS: "reservaciones",
 };
 
 // Esquemas de referencia (documentación, no se validan en runtime)

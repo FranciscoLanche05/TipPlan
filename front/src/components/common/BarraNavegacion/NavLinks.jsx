@@ -11,6 +11,11 @@ import {
   Plane,
   Calendar,
   Settings,
+  LayoutDashboard,
+  Bed,
+  Car,
+  Utensils,
+  Compass
 } from "lucide-react";
 
 // Enlaces de navegación con anclas a las secciones e íconos
@@ -34,31 +39,58 @@ const NavLinks = ({ onClose }) => {
       {isAuthenticated && (
         <>
           <Link
-            to={ROUTES.MIS_VIAJES}
+            to={ROUTES.DASHBOARD}
+            className={styles.sidebarLink}
+            onClick={handleClick}
+            style={{ textDecoration: "none" }}
+          >
+            <LayoutDashboard size={20} />
+            <span>Panel de Control</span>
+          </Link>
+          <Link
+            to={ROUTES.VUELOS}
             className={styles.sidebarLink}
             onClick={handleClick}
             style={{ textDecoration: "none" }}
           >
             <Plane size={20} />
-            <span>Mis viajes</span>
+            <span>Reservar Vuelos</span>
           </Link>
           <Link
-            to={ROUTES.RESERVAS}
+            to={ROUTES.HOTELES}
             className={styles.sidebarLink}
             onClick={handleClick}
             style={{ textDecoration: "none" }}
           >
-            <Calendar size={20} />
-            <span>Reservas</span>
+            <Bed size={20} />
+            <span>Buscar Hoteles</span>
           </Link>
           <Link
-            to={ROUTES.CONFIGURACION}
+            to={ROUTES.AUTOS}
             className={styles.sidebarLink}
             onClick={handleClick}
             style={{ textDecoration: "none" }}
           >
-            <Settings size={20} />
-            <span>Configuración de cuenta</span>
+            <Car size={20} />
+            <span>Rentar Autos</span>
+          </Link>
+          <Link
+            to={ROUTES.RESTAURANTES}
+            className={styles.sidebarLink}
+            onClick={handleClick}
+            style={{ textDecoration: "none" }}
+          >
+            <Utensils size={20} />
+            <span>Restaurantes</span>
+          </Link>
+          <Link
+            to={ROUTES.ACTIVIDADES}
+            className={styles.sidebarLink}
+            onClick={handleClick}
+            style={{ textDecoration: "none" }}
+          >
+            <Compass size={20} />
+            <span>Ver Actividades</span>
           </Link>
         </>
       )}
