@@ -15,7 +15,12 @@ import {
   HelpCircle,
   Building,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Plane,
+  Bed,
+  Car,
+  Utensils,
+  Compass
 } from "lucide-react";
 
 const UserDropdown = () => {
@@ -63,6 +68,7 @@ const UserDropdown = () => {
             <span className={styles.greeting}>Hola de nuevo, {displayName}</span>
             <ChevronRight size={16} className={styles.chevron} />
           </div>
+
 
           <div className={styles.section}>
             <h4 className={styles.sectionTitle}>Cuenta</h4>
