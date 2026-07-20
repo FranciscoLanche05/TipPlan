@@ -24,7 +24,7 @@ const DestinationCard = ({ destination, delay = 0 }) => {
       data-aos-duration="800"
       data-aos-once="true"
     >
-      <img src={image} alt={title} />
+      <img src={image} alt={title} className={styles.card_img} />
       <div className={styles.overlay}>
         <span className={styles.city}>{location}</span>
         <h2>{title}</h2>

@@ -2,7 +2,6 @@ import { useRef, useEffect } from "react";
 import destinations from "../../../services/datos/destinations";
 import DestinationCard from "./DestinationCard";
 import styles from "./Destinations.module.css";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Destinations = () => {
   const carouselRef = useRef(null);
@@ -42,13 +41,6 @@ const Destinations = () => {
     };
   }, []);
 
-  const scroll = (direction) => {
-    if (carouselRef.current) {
-      const scrollAmount = 350;
-      carouselRef.current.scrollBy({ left: direction === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="destinos" className={styles.destinations}>
       <div className={styles.destinationsContainer}>
@@ -63,15 +55,6 @@ const Destinations = () => {
               Lugares icónicos de nuestro país y del mundo entero,
               listos para ser explorados.
             </p>
-          </div>
-          
-          <div className={styles.controls}>
-            <button onClick={() => scroll("left")} className={styles.navBtn} aria-label="Anterior">
-              <ChevronLeft size={24} />
-            </button>
-            <button onClick={() => scroll("right")} className={styles.navBtn} aria-label="Siguiente">
-              <ChevronRight size={24} />
-            </button>
           </div>
         </div>
 
