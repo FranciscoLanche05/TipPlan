@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../../constants/routes";
 import styles from "./LoginModal.module.css";
 
 const STEP_EMAIL = "EMAIL";
@@ -69,10 +70,8 @@ const LoginModal = () => {
     setSubmitting(true);
     try {
       await login(email, password);
-      // El modal se cierra desde adentro de la función login en AuthContext,
-      // pero si no, podemos cerrarlo aquí o esperar a que cambie la sesión.
       closeLoginModal();
-      navigate("/mis-viajes");
+      navigate(ROUTES.DASHBOARD);
     } catch (err) {
       // error manejado en AuthContext
     } finally {
@@ -87,7 +86,7 @@ const LoginModal = () => {
     try {
       await register(email, password, name);
       closeLoginModal();
-      navigate("/mis-viajes");
+      navigate(ROUTES.DASHBOARD);
     } catch (err) {
       // error manejado en AuthContext
     } finally {
@@ -98,14 +97,14 @@ const LoginModal = () => {
   const handleGoogle = async () => {
     try {
       await loginGoogle();
-      navigate("/mis-viajes");
+      navigate(ROUTES.DASHBOARD);
     } catch (err) {}
   };
 
   const handleFacebook = async () => {
     try {
       await loginFacebook();
-      navigate("/mis-viajes");
+      navigate(ROUTES.DASHBOARD);
     } catch (err) {
       alert("Modo Demo: " + err.message);
     }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { ROUTES } from '../../constants/routes';
 
 const colors = {
   forest: "#0C2D1E",
@@ -24,7 +25,7 @@ const Login = () => {
 
   // Redirigir si ya hay sesión activa
   useEffect(() => {
-    if (isAuthenticated) navigate("/mis-viajes", { replace: true });
+    if (isAuthenticated) navigate(ROUTES.DASHBOARD, { replace: true });
   }, [isAuthenticated, navigate]);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Login = () => {
     setSubmitting(true);
     try {
       await login(email, pwd);
-      navigate("/mis-viajes", { replace: true });
+      navigate(ROUTES.DASHBOARD, { replace: true });
     } catch (err) {
       // el mensaje ya queda en authError
     } finally {

@@ -16,13 +16,15 @@ import panecillo from "../../imagenes/panecillo_11zon.webp";
 import mitadMundo from "../../imagenes/mitad_mundog_11zon.webp";
 import basilica from "../../imagenes/basilica_11zon.webp";
 import malecon from "../../imagenes/malecon_11zon.webp";
+import viajeros from "../../imagenes/viajeros_11zon.webp";
+import cotopaxi from "../../imagenes/cotopaxi.webp";
 
 const destinations = [
   {
     id: 1,
     title: "Islas Galápagos",
     location: "GALÁPAGOS, ECUADOR",
-    image: "https://images.unsplash.com/photo-1571295758309-84725e2e8e50?q=80&w=600&auto=format&fit=crop",
+    image: "/images/Galapagos.jpg",
     mapUrl: "https://maps.google.com/?q=Islas+Galapagos",
   },
   {
@@ -64,7 +66,7 @@ const destinations = [
     id: 7,
     title: "Laguna de Quilotoa",
     location: "COTOPAXI, ECUADOR",
-    image: "https://images.unsplash.com/photo-1598285906562-b9cfbe0d4cbf?q=80&w=600&auto=format&fit=crop",
+    image: "/images/quilotoa-view.webp",
     mapUrl: "https://maps.google.com/?q=Laguna+de+Quilotoa",
   },
   {
@@ -78,7 +80,7 @@ const destinations = [
     id: 9,
     title: "Centro Histórico Cuenca",
     location: "AZUAY, ECUADOR",
-    image: "https://images.unsplash.com/photo-1629828859174-8dc5f0a766c1?q=80&w=600&auto=format&fit=crop",
+    image: "/images/cuenca.jpg",
     mapUrl: "https://maps.google.com/?q=Cuenca+Ecuador",
   },
   {
