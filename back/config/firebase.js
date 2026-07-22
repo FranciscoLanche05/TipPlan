@@ -20,11 +20,14 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Inicializar la app de Firebase
-const app = initializeApp(firebaseConfig);
+const isFirebaseConfigured = Object.values(firebaseConfig).every(Boolean);
+
+// Firebase es opcional durante el desarrollo local si todavía no existe .env.
+const app = isFirebaseConfigured ? initializeApp(firebaseConfig) : null;
 
 // Exportar instancias de cada servicio
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+export const auth = app ? getAuth(app) : null;
+export const db = app ? getFirestore(app) : null;
+export const storage = app ? getStorage(app) : null;
+export { isFirebaseConfigured };
 export default app;
