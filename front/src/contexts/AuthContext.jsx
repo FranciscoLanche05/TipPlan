@@ -8,6 +8,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import { onAuthChange } from "@back/services/authService";
+import { isFirebaseConfigured } from "@back/config/firebase";
 
 const AuthContext = createContext(null);
 
@@ -16,6 +17,11 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!isFirebaseConfigured) {
+      setLoading(false);
+      return undefined;
+    }
+
     // Escuchar cambios de sesión (login/logout)
     const unsubscribe = onAuthChange((firebaseUser) => {
       setUser(firebaseUser);
