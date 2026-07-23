@@ -25,7 +25,7 @@ const features = [
 
 const About = () => {
   return (
-    <section className={styles.about} data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
+    <section id="nosotros" className={styles.about} data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
       <div className={styles.aboutContainer}>
         <div className={styles.image}>
           <img src={viajeros} alt="Viajeros explorando" />
@@ -37,11 +37,11 @@ const About = () => {
 
         <div className={styles.content}>
           <span className={styles.tag}>SOBRE NOSOTROS</span>
-          <h1>
+          <h2>
             Hacemos que <br />
             planificar sea <br />
             <span>emocionante</span>
-          </h1>
+          </h2>
           <p className={styles.text}>
             Nuestra visión es transformar la manera en que las personas viven
             sus viajes, convirtiendo la planificación en una experiencia simple,

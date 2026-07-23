@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { ROUTES } from '../../constants/routes';
 
 const colors = {
   forest: "#0C2D1E",
@@ -16,6 +19,14 @@ const Login = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [remember, setRemember] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const { login, authError, clearError, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  // Redirigir si ya hay sesión activa
+  useEffect(() => {
+    if (isAuthenticated) navigate(ROUTES.DASHBOARD, { replace: true });
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -26,12 +37,22 @@ const Login = () => {
     return () => document.head.removeChild(link);
   }, []);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const newErrors = {};
     if (!email) newErrors.email = true;
     if (!pwd) newErrors.pwd = true;
     setErrors(newErrors);
-    if (Object.keys(newErrors).length === 0) alert("¡Bienvenido de vuelta! 🌍");
+    if (Object.keys(newErrors).length > 0) return;
+
+    setSubmitting(true);
+    try {
+      await login(email, pwd);
+      navigate(ROUTES.DASHBOARD, { replace: true });
+    } catch (err) {
+      // el mensaje ya queda en authError
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -150,8 +171,10 @@ const Login = () => {
 
       {/* RIGHT PANEL */}
       <div className="login-right">
-        <div className="login-right-blob-1" />
-        <div className="login-right-blob-2" />
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <div className="login-right-blob-1" />
+          <div className="login-right-blob-2" />
+        </div>
 
         <div className="login-form-box">
           {/* Mobile logo */}
@@ -184,9 +207,9 @@ const Login = () => {
             </h2>
             <p style={{ fontSize: "0.9rem", color: colors.muted }}>
               ¿No tienes cuenta?{" "}
-              <a href="#" style={{ color: colors.forestMid, fontWeight: 700, textDecoration: "none" }}>
+              <Link to="/registro" style={{ color: colors.forestMid, fontWeight: 700, textDecoration: "none" }}>
                 Regístrate gratis
-              </a>
+              </Link>
             </p>
           </div>
 
@@ -248,7 +271,7 @@ const Login = () => {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => { setEmail(e.target.value); clearError(); }}
                 placeholder="tu@email.com"
                 className="login-input"
                 style={{
@@ -290,7 +313,7 @@ const Login = () => {
               <input
                 type={showPwd ? "text" : "password"}
                 value={pwd}
-                onChange={(e) => setPwd(e.target.value)}
+                onChange={(e) => { setPwd(e.target.value); clearError(); }}
                 placeholder="••••••••"
                 className="login-input"
                 style={{
@@ -352,8 +375,25 @@ const Login = () => {
             </a>
           </div>
 
+          {authError && (
+            <div style={{
+              background: "rgba(212,88,48,0.10)",
+              border: `1.5px solid ${colors.coral}`,
+              color: colors.coral,
+              padding: "0.7rem 1rem",
+              borderRadius: "12px",
+              fontSize: "0.82rem",
+              fontWeight: 600,
+              marginBottom: "1.1rem",
+              textAlign: "center",
+            }}>
+              {authError}
+            </div>
+          )}
+
           <button
             onClick={handleLogin}
+            disabled={submitting}
             className="login-submit-btn"
             style={{
               width: "100%",
@@ -365,7 +405,8 @@ const Login = () => {
               fontWeight: 700,
               fontSize: "1rem",
               border: "none",
-              cursor: "pointer",
+              cursor: submitting ? "not-allowed" : "pointer",
+              opacity: submitting ? 0.7 : 1,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -373,7 +414,7 @@ const Login = () => {
               marginBottom: "1.4rem",
             }}
           >
-            Iniciar sesión ✈
+            {submitting ? "Ingresando..." : "Iniciar sesión ✈"}
           </button>
         </div>
       </div>

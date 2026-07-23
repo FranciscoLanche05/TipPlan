@@ -1,7 +1,31 @@
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
+import { ROUTES } from '../../../constants/routes';
 import styles from './Experiences.module.css';
 import SectionTag from '../../ui/EtiquetaSeccion/SectionTag';
 
 export default function Experiences() {
+  const { isAuthenticated, openLoginModal } = useAuth();
+  const navigate = useNavigate();
+
+  const handlePlanificarClick = (e) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      navigate(ROUTES.NUEVO_VIAJE);
+    } else {
+      openLoginModal();
+    }
+  };
+
+  const handleCategoryClick = (e) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      navigate(ROUTES.ACTIVIDADES);
+    } else {
+      openLoginModal();
+    }
+  };
+
   return (
     <section id="experiencias" className={styles.experiencesSection}>
       <div className={styles.experiencesContainer}>
@@ -26,7 +50,7 @@ export default function Experiences() {
               Rutas guiadas por volcanes, reservas naturales y comunidades
               indígenas del Ecuador.
             </p>
-            <a href="#contacto" className={styles.expLink}>Ver tours →</a>
+            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver tours →</a>
           </div>
 
           <div className={styles.expCard}>
@@ -36,7 +60,7 @@ export default function Experiences() {
               Rafting, canopy, escalada en roca y más. Para los que buscan
               adrenalina pura.
             </p>
-            <a href="#contacto" className={styles.expLink}>Ver actividades →</a>
+            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver actividades →</a>
           </div>
 
           <div className={styles.expCard}>
@@ -46,7 +70,7 @@ export default function Experiences() {
               Descubre los sabores auténticos del Ecuador: mercados,
               restaurantes locales y food tours.
             </p>
-            <a href="#contacto" className={styles.expLink}>Ver experiencias →</a>
+            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver experiencias →</a>
           </div>
 
           <div className={styles.expCard}>
@@ -56,7 +80,7 @@ export default function Experiences() {
               Festivales, ferias artesanales y celebraciones culturales que no
               te puedes perder.
             </p>
-            <a href="#contacto" className={styles.expLink}>Ver eventos →</a>
+            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver eventos →</a>
           </div>
         </div>
 
@@ -69,9 +93,9 @@ export default function Experiences() {
               para ti.
             </p>
           </div>
-          <a href="#planificador" className={styles.ctaBannerBtn}>
+          <button onClick={handlePlanificarClick} className={styles.ctaBannerBtn}>
             Planificar mi aventura →
-          </a>
+          </button>
         </div>
       </div>
     </section>

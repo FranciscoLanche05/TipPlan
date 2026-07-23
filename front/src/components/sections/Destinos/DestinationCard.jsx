@@ -1,7 +1,20 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/AuthContext";
+import { ROUTES } from "../../../constants/routes";
 import styles from "./Destinations.module.css";
 
 const DestinationCard = ({ destination, delay = 0 }) => {
   const { title, location, image, mapUrl } = destination;
+  const { isAuthenticated, openLoginModal } = useAuth();
+  const navigate = useNavigate();
+
+  const handleReserve = () => {
+    if (!isAuthenticated) {
+      openLoginModal();
+    } else {
+      navigate(ROUTES.NUEVO_VIAJE || "/viajes/nuevo");
+    }
+  };
 
   return (
     <div
@@ -11,7 +24,7 @@ const DestinationCard = ({ destination, delay = 0 }) => {
       data-aos-duration="800"
       data-aos-once="true"
     >
-      <img src={image} alt={title} />
+      <img src={image} alt={title} className={styles.card_img} />
       <div className={styles.overlay}>
         <span className={styles.city}>{location}</span>
         <h2>{title}</h2>
@@ -24,7 +37,9 @@ const DestinationCard = ({ destination, delay = 0 }) => {
           >
             📍 Ver mapa
           </a>
-          <button className={styles.reserve_btn}>Reservar</button>
+          <button className={styles.reserve_btn} onClick={handleReserve}>
+            Reservar
+          </button>
         </div>
       </div>
     </div>

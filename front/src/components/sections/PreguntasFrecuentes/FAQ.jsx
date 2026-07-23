@@ -10,18 +10,20 @@ export default function FAQ() {
         <div className={styles.header}>
           <div className={styles.headerContent}>
             <SectionTag>AYUDA</SectionTag>
-            <h1 className={styles.title}>
+            <h2 className={styles.title}>
               Preguntas <span className={styles.highlight}>frecuentes</span>
-            </h1>
+            </h2>
             <p className={styles.description}>
               Todo lo que necesitas saber antes de empezar tu aventura.
             </p>
           </div>
           <div className={styles.imageContainer}>
             <img 
-              src="/imagenes/thinking.png" 
+              src="/images/thinking.png" 
               alt="Preguntas frecuentes" 
               className={styles.faqImage}
+              width="400"
+              height="400"
             />
           </div>
         </div>
