@@ -16,6 +16,7 @@ export const COLLECTIONS = {
   FEATURES: "caracteristicas",
   CONTACTS: "contactos",
   RESERVATIONS: "reservaciones",
+  TRIPS: "viajes",
 };
 
 // Esquemas de referencia (documentación, no se validan en runtime)
