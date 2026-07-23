@@ -48,9 +48,9 @@ const Destinations = () => {
 
         <div className={styles.header}>
           <div className={styles.titleArea}>
-            <h1>
+            <h2>
               Destinos <span>más populares</span>
-            </h1>
+            </h2>
             <p className={styles.text}>
               Lugares icónicos de nuestro país y del mundo entero,
               listos para ser explorados.

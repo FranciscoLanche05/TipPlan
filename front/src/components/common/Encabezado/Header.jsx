@@ -1,10 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../constants/routes";
 import { useAuth } from "../../../contexts/AuthContext";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const { openLoginModal } = useAuth();
+  const { isAuthenticated, openLoginModal } = useAuth();
+  const navigate = useNavigate();
+
+  const handlePlanClick = () => {
+    if (isAuthenticated) {
+      navigate(ROUTES.NUEVO_VIAJE);
+    } else {
+      openLoginModal();
+    }
+  };
 
   return (
     <section
@@ -21,6 +30,7 @@ const Header = () => {
         className={styles.videoBackground}
       >
         <source src="/images/coverr-beautiful-valley-at-golden-hour-3055-1080p.mp4" type="video/mp4" />
+        <track kind="captions" srcLang="es" label="Sin subtítulos" default />
       </video>
 
       <div className={styles.container}>
@@ -41,7 +51,7 @@ const Header = () => {
             Explorar Destinos →
           </a>
           <button 
-            onClick={openLoginModal} 
+            onClick={handlePlanClick} 
             className={styles.btn_plan} 
             style={{ textDecoration: 'none', display: 'inline-block', cursor: 'pointer' }}
           >

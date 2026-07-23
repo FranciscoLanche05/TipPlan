@@ -37,11 +37,11 @@ const About = () => {
 
         <div className={styles.content}>
           <span className={styles.tag}>SOBRE NOSOTROS</span>
-          <h1>
+          <h2>
             Hacemos que <br />
             planificar sea <br />
             <span>emocionante</span>
-          </h1>
+          </h2>
           <p className={styles.text}>
             Nuestra visión es transformar la manera en que las personas viven
             sus viajes, convirtiendo la planificación en una experiencia simple,

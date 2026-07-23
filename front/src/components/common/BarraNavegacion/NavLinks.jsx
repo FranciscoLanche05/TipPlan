@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { useAuth } from "../../../contexts/AuthContext";
 import { ROUTES } from "../../../constants/routes";
+import { BorderBeam } from "@stianlarsen/border-beam";
+
 import {
   Info,
   MapPin,
@@ -15,14 +17,14 @@ import {
   Bed,
   Car,
   Utensils,
-  Compass
+  Compass,
+  Sparkles
 } from "lucide-react";
 
 // Enlaces de navegación con anclas a las secciones e íconos
 const links = [
   { href: "#nosotros", label: "Nosotros", icon: Info },
   { href: "#destinos", label: "Destinos", icon: MapPin },
-  { href: "#mapa", label: "Mundo", icon: Globe },
   { href: "#blog", label: "Blog", icon: BookOpen },
   { href: "#faq", label: "Contactos", icon: MessageCircle },
 ];
@@ -45,7 +47,17 @@ const NavLinks = ({ onClose }) => {
             style={{ textDecoration: "none" }}
           >
             <LayoutDashboard size={20} />
-            <span>Panel de Control</span>
+            <span>Tu espacio personal</span>
+          </Link>
+          <Link
+            to={ROUTES.NUEVO_VIAJE}
+            className={`${styles.sidebarLink} ${styles.aiLink}`}
+            onClick={handleClick}
+            style={{ textDecoration: "none", position: "relative", overflow: "hidden" }}
+          >
+            <Sparkles size={20} color="#f4a02c" />
+            <span>Planifica con IA</span>
+            <BorderBeam size={60} duration={3} delay={0} colorFrom="#f4a02c" colorTo="#ffffff" />
           </Link>
           <Link
             to={ROUTES.VUELOS}
