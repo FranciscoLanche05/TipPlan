@@ -5,6 +5,7 @@ back/node_modules
 back/dist
 
 # Variables de entorno (credenciales)
+.env
 front/.env
 front/.env.local
 front/.env.development.local
