@@ -33,15 +33,15 @@
   margin-bottom: 50px;
 }
 
-.header h1 {
+.titleArea h2 {
   font-size: 44px;
   font-family: "Playfair Display", serif;
   color: #0d2118;
   font-weight: 700;
 }
 
-.header h1 span {
-  color: #d96b43;
+.titleArea h2 span {
+  color: #b84f28;
   font-style: italic;
 }
 
@@ -54,10 +54,51 @@
   padding-bottom: 8px;
 }
 
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #0d2118;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.navBtn:hover {
+  transform: scale(1.05);
+  background-color: #1a3a2a;
+}
+
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+}
+
 .cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 35px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.cards::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.cardWrapper {
+  flex: 0 0 calc(33.333% - 24px);
+  width: calc(33.333% - 24px);
 }
 
 .card {
@@ -158,18 +199,26 @@
   .destinations {
     padding: 80px 40px;
   }
-
   .header {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
   .overlay h2 {
     font-size: 36px;
+  }
+  .cardWrapper { 
+    flex: 0 0 calc(50% - 17.5px);
+    width: calc(50% - 17.5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .destinationsContainer { padding: 0 20px; }
+  .header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .titleArea h2 { font-size: 32px; }
+  .cardWrapper { 
+    flex: 0 0 100%;
+    width: 100%;
   }
 }
 
@@ -177,24 +226,12 @@
   .destinations {
     padding: 60px 20px;
   }
-
-  .header h1 {
+  .titleArea h2 {
     font-size: 40px;
   }
 }
 
-
-@media (max-width: 768px) {
-  .destinationsContainer { padding: 0 20px; }
-  .header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .header h1 { font-size: 32px; }
-  .cards { grid-template-columns: 1fr; gap: 20px; }
-}
-
-
 @media (min-width: 2000px) {
   .destinationsContainer { max-width: none; width: 92%; }
-  .header h1 { font-size: 64px; }
-  .cards { grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .titleArea h2 { font-size: 64px; }
 }
-

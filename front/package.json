@@ -14,14 +14,17 @@
     "url": "git+https://github.com/FranciscoLanche05/sistema-viajes-epn.git"
   },
   "dependencies": {
+    "@stianlarsen/border-beam": "^1.0.21",
     "aos": "^2.3.4",
     "firebase": "^12.15.0",
     "leaflet": "^1.9.4",
-    "lucide-react": "^1.20.0",
+    "lucide-react": "^1.26.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-leaflet": "^5.0.0",
-    "react-router-dom": "^7.17.0"
+    "react-router-dom": "^7.17.0",
+    "react-toastify": "^11.1.0",
+    "recharts": "^3.9.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.2",

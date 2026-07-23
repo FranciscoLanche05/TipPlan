@@ -1,15 +1,38 @@
+import { Link, useNavigate } from "react-router-dom";
+import { ROUTES } from "../../../constants/routes";
+import { useAuth } from "../../../contexts/AuthContext";
 import styles from "./Header.module.css";
-import bgHeader from "../../../imagenes/cotopaxi.webp";
 
 const Header = () => {
+  const { isAuthenticated, openLoginModal } = useAuth();
+  const navigate = useNavigate();
+
+  const handlePlanClick = () => {
+    if (isAuthenticated) {
+      navigate(ROUTES.NUEVO_VIAJE);
+    } else {
+      openLoginModal();
+    }
+  };
+
   return (
     <section
       className={styles.header}
-      style={{ backgroundImage: `url(${bgHeader})` }}
       data-aos="fade-in"
       data-aos-duration="1200"
       data-aos-once="true"
     >
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={styles.videoBackground}
+      >
+        <source src="/images/coverr-beautiful-valley-at-golden-hour-3055-1080p.mp4" type="video/mp4" />
+        <track kind="captions" srcLang="es" label="Sin subtítulos" default />
+      </video>
+
       <div className={styles.container}>
         <span className={styles.tag}>✦ TU PLATAFORMA DE VIAJES EN ECUADOR</span>
         <h1>
@@ -24,10 +47,14 @@ const Header = () => {
           en un solo lugar.
         </p>
         <div className={styles.buttons}>
-          <button className={styles.btn_explorar}>
+          <a href="#destinos" className={styles.btn_explorar} style={{ textDecoration: 'none', display: 'inline-block' }}>
             Explorar Destinos →
-          </button>
-          <button className={styles.btn_plan}>
+          </a>
+          <button 
+            onClick={handlePlanClick} 
+            className={styles.btn_plan} 
+            style={{ textDecoration: 'none', display: 'inline-block', cursor: 'pointer' }}
+          >
             ▶ Planificar mi aventura
           </button>
         </div>

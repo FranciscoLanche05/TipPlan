@@ -111,11 +111,11 @@ export const deleteBlogPost = (id) => remove(COLLECTIONS.BLOG, id);
 export const getUserItineraries = async (userId) => {
   const q = query(
     collection(db, COLLECTIONS.ITINERARIES),
-    where("userId", "==", userId),
-    orderBy("createdAt", "desc")
+    where("userId", "==", userId)
   );
   const snapshot = await getDocs(q);
-  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return docs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
 };
 
 export const saveItinerary = (data) => create(COLLECTIONS.ITINERARIES, data);
@@ -128,11 +128,11 @@ export const deleteItinerary = (id) =>
 export const getUserBudgets = async (userId) => {
   const q = query(
     collection(db, COLLECTIONS.BUDGETS),
-    where("userId", "==", userId),
-    orderBy("createdAt", "desc")
+    where("userId", "==", userId)
   );
   const snapshot = await getDocs(q);
-  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return docs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
 };
 
 export const saveBudget = (data) => create(COLLECTIONS.BUDGETS, data);
@@ -146,3 +146,34 @@ export const sendContactMessage = (data) =>
 
 // ─── Estadísticas ────────────────────────────────────────────
 export const getStats = () => getAll(COLLECTIONS.STATS, "order");
+
+// ─── Reservaciones (Vuelos, Hoteles, Autos, Restaurantes, etc) ───
+export const getUserReservations = async (userId) => {
+  const q = query(
+    collection(db, COLLECTIONS.RESERVATIONS),
+    where("userId", "==", userId)
+  );
+  const snapshot = await getDocs(q);
+  const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return docs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+};
+
+export const saveReservation = (data) => create(COLLECTIONS.RESERVATIONS, data);
+export const updateReservation = (id, data) => update(COLLECTIONS.RESERVATIONS, id, data);
+export const deleteReservation = (id) => remove(COLLECTIONS.RESERVATIONS, id);
+
+// ─── Viajes (Trips - Contenedores principales) ──────────────────
+export const getUserTrips = async (userId) => {
+  const q = query(
+    collection(db, COLLECTIONS.TRIPS),
+    where("userId", "==", userId)
+  );
+  const snapshot = await getDocs(q);
+  const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  return docs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+};
+
+export const getTripById = (id) => getById(COLLECTIONS.TRIPS, id);
+export const createTrip = (data) => create(COLLECTIONS.TRIPS, data);
+export const updateTrip = (id, data) => update(COLLECTIONS.TRIPS, id, data);
+export const deleteTrip = (id) => remove(COLLECTIONS.TRIPS, id);
