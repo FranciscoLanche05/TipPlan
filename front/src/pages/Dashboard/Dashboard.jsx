@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { getUserReservations } from '@back/services/firestoreService';
-import { Plane, Bed, Car, Utensils, Compass, Calendar, MapPin, TrendingUp, CreditCard, CheckCircle, Clock, Search, Bell, MoreHorizontal, ArrowRight } from 'lucide-react';
+import { Plane, Bed, Car, Utensils, Compass, Calendar, MapPin, TrendingUp, CreditCard, CheckCircle, Clock, Search, Bell, MoreHorizontal, ArrowRight, Download } from 'lucide-react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ReservationReceipt from '../../components/pdf/ReservationReceipt';
+import ReservationsReport from '../../components/pdf/ReservationsReport';
 import { ROUTES } from '../../constants/routes';
 import styles from './Dashboard.module.css';
 import { 
@@ -293,7 +296,29 @@ const Dashboard = () => {
           <div className={`${styles.widget} ${styles.tableWidget}`}>
             <div className={styles.widgetHeader}>
               <h3>Últimas Reservaciones</h3>
-              <a href="#all" className={styles.linkAction}>Ver todas</a>
+              <div className={styles.headerActions}>
+                {reservations.length > 0 && (
+                  <PDFDownloadLink
+                    document={
+                      <ReservationsReport
+                        reservations={reservations}
+                        userName={user?.displayName || user?.email || 'Viajero TipPlan'}
+                        userEmail={user?.email || 'N/A'}
+                      />
+                    }
+                    fileName="reporte-reservas-tipplan.pdf"
+                    className={styles.reportDownloadBtn}
+                  >
+                    {({ loading }) => (
+                      <>
+                        <Download size={14} />
+                        {loading ? 'Generando...' : 'Reporte PDF'}
+                      </>
+                    )}
+                  </PDFDownloadLink>
+                )}
+                <a href="#all" className={styles.linkAction}>Ver todas</a>
+              </div>
             </div>
             {reservations.length === 0 ? (
               <div className={styles.emptyTable}>No hay reservaciones recientes.</div>
@@ -327,6 +352,23 @@ const Dashboard = () => {
                         </td>
                         <td align="right">
                           <span className={styles.tbPrice}>{res.price || 'N/A'}</span>
+                        </td>
+                        <td>
+                          <PDFDownloadLink
+                            document={
+                              <ReservationReceipt
+                                reservation={res}
+                                userName={user?.displayName || user?.email || 'Viajero TipPlan'}
+                                userEmail={user?.email || 'N/A'}
+                              />
+                            }
+                            fileName={`comprobante-${res.id?.slice(0, 8) || 'reserva'}.pdf`}
+                            className={styles.pdfBtn}
+                          >
+                            {({ loading }) => (
+                              <Download size={14} className={loading ? styles.pdfBtnLoading : ''} />
+                            )}
+                          </PDFDownloadLink>
                         </td>
                       </tr>
                     ))}

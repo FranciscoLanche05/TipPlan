@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle, X, Navigation, Briefcase } from 'lucide-react';
+import { CheckCircle, X, Navigation, Briefcase, Download } from 'lucide-react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ReservationReceipt from '../../pdf/ReservationReceipt';
 import { ROUTES } from '../../../constants/routes';
 import styles from './ReservationModal.module.css';
 
-const ReservationModal = ({ isOpen, onClose, title, message }) => {
+const ReservationModal = ({ isOpen, onClose, title, message, reservationData, user }) => {
   const navigate = useNavigate();
 
   if (!isOpen) return null;
@@ -38,6 +40,29 @@ const ReservationModal = ({ isOpen, onClose, title, message }) => {
             Ver mi reserva
           </button>
         </div>
+
+        {reservationData && (
+          <div className={styles.pdfButtonWrapper}>
+            <PDFDownloadLink
+              document={
+                <ReservationReceipt
+                  reservation={reservationData}
+                  userName={user?.displayName || user?.email || 'Viajero TipPlan'}
+                  userEmail={user?.email || 'N/A'}
+                />
+              }
+              fileName={`comprobante-${reservationData.id?.slice(0, 8) || 'reserva'}.pdf`}
+              className={styles.pdfDownloadBtn}
+            >
+              {({ loading }) => (
+                <>
+                  <Download size={16} />
+                  {loading ? 'Generando...' : 'Descargar Comprobante'}
+                </>
+              )}
+            </PDFDownloadLink>
+          </div>
+        )}
       </div>
     </div>
   );

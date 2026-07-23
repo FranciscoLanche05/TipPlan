@@ -12,6 +12,7 @@ const Vuelos = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [results, setResults] = useState(vuelosRealistas);
   const [selectedVuelo, setSelectedVuelo] = useState(null);
+  const [reservationData, setReservationData] = useState(null);
 
   const handleSearch = (term) => {
     if (!term) {
@@ -33,7 +34,7 @@ const Vuelos = () => {
     }
     
     try {
-      await saveReservation({
+      const resData = {
         userId: user.uid,
         type: 'vuelo',
         title: `Vuelo ${vuelo.origen} a ${vuelo.destino}`,
@@ -42,7 +43,9 @@ const Vuelos = () => {
         price: `$${vuelo.precio}`,
         status: 'Confirmado',
         airline: vuelo.aerolinea
-      });
+      };
+      const id = await saveReservation(resData);
+      setReservationData({ id, ...resData });
       setSelectedVuelo(vuelo);
       setIsModalOpen(true);
     } catch (error) {
@@ -107,6 +110,8 @@ const Vuelos = () => {
         onClose={() => setIsModalOpen(false)} 
         title="¡Vuelo Reservado!" 
         message={`Tu vuelo con ${selectedVuelo?.aerolinea} ha sido guardado exitosamente. Puedes gestionarlo desde tu Dashboard.`}
+        reservationData={reservationData}
+        user={user}
       />
     </>
   );

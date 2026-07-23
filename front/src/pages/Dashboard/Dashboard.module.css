@@ -297,6 +297,56 @@
   font-weight: 500;
 }
 
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.reportDownloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #fdf6e7;
+  color: #0c2d1e;
+  border: 1px solid #e5a93b;
+  text-decoration: none;
+}
+
+.reportDownloadBtn:hover {
+  background-color: #e5a93b;
+  color: white;
+}
+
+.pdfBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #fdf6e7;
+  color: #0c2d1e;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.pdfBtn:hover {
+  background-color: #e5a93b;
+  color: white;
+}
+
+.pdfBtnLoading {
+  opacity: 0.5;
+}
+
 .tableContainer {
   overflow-x: auto;
 }

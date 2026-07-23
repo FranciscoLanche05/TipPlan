@@ -12,6 +12,7 @@ const Autos = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [results, setResults] = useState(autosRealistas);
   const [selectedAuto, setSelectedAuto] = useState(null);
+  const [reservationData, setReservationData] = useState(null);
 
   const handleSearch = (term) => {
     if (!term) {
@@ -33,7 +34,7 @@ const Autos = () => {
     }
     
     try {
-      await saveReservation({
+      const resData = {
         userId: user.uid,
         type: 'auto',
         title: `Renta de ${auto.modelo} con ${auto.empresa}`,
@@ -41,7 +42,9 @@ const Autos = () => {
         date: 'Fechas abiertas',
         price: `$${auto.precioDia}/día`,
         status: 'Confirmado'
-      });
+      };
+      const id = await saveReservation(resData);
+      setReservationData({ id, ...resData });
       setSelectedAuto(auto);
       setIsModalOpen(true);
     } catch (error) {
@@ -111,6 +114,8 @@ const Autos = () => {
         onClose={() => setIsModalOpen(false)} 
         title="¡Auto Reservado!" 
         message={`Tu reserva del ${selectedAuto?.modelo} ha sido confirmada. Gestionala desde tu Dashboard.`}
+        reservationData={reservationData}
+        user={user}
       />
     </>
   );

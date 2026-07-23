@@ -158,6 +158,9 @@ export const getUserReservations = async (userId) => {
   return docs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
 };
 
-export const saveReservation = (data) => create(COLLECTIONS.RESERVATIONS, data);
+export const saveReservation = async (data) => {
+  const id = await create(COLLECTIONS.RESERVATIONS, data);
+  return id;
+};
 export const updateReservation = (id, data) => update(COLLECTIONS.RESERVATIONS, id, data);
 export const deleteReservation = (id) => remove(COLLECTIONS.RESERVATIONS, id);

@@ -13,6 +13,7 @@ const Actividades = () => {
   const todasLasActividades = Object.values(actividadesPorCiudad).flat();
   const [results, setResults] = useState(todasLasActividades);
   const [selectedAct, setSelectedAct] = useState(null);
+  const [reservationData, setReservationData] = useState(null);
 
   const handleSearch = (term) => {
     if (!term) {
@@ -42,7 +43,7 @@ const Actividades = () => {
     });
 
     try {
-      await saveReservation({
+      const resData = {
         userId: user.uid,
         type: 'actividad',
         title: `Tour: ${act.titulo}`,
@@ -50,7 +51,9 @@ const Actividades = () => {
         date: 'Fecha abierta',
         price: `$${act.precio}`,
         status: 'Confirmado'
-      });
+      };
+      const id = await saveReservation(resData);
+      setReservationData({ id, ...resData });
       setSelectedAct(act);
       setIsModalOpen(true);
     } catch (error) {
@@ -119,6 +122,8 @@ const Actividades = () => {
         onClose={() => setIsModalOpen(false)} 
         title="¡Tour Reservado!" 
         message={`Tu actividad "${selectedAct?.titulo}" ha sido confirmada. Gestionala desde tu Dashboard.`}
+        reservationData={reservationData}
+        user={user}
       />
     </>
   );

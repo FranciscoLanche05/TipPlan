@@ -12,6 +12,7 @@ const Hoteles = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [results, setResults] = useState(hotelesRealistas);
   const [selectedHotel, setSelectedHotel] = useState(null);
+  const [reservationData, setReservationData] = useState(null);
 
   const handleSearch = (term) => {
     if (!term) {
@@ -32,7 +33,7 @@ const Hoteles = () => {
     }
     
     try {
-      await saveReservation({
+      const resData = {
         userId: user.uid,
         type: 'hotel',
         title: `Estadía en ${hotel.nombre}`,
@@ -40,7 +41,9 @@ const Hoteles = () => {
         date: 'Fechas abiertas',
         price: `$${hotel.precioNoche}/noche`,
         status: 'Confirmado'
-      });
+      };
+      const id = await saveReservation(resData);
+      setReservationData({ id, ...resData });
       setSelectedHotel(hotel);
       setIsModalOpen(true);
     } catch (error) {
@@ -112,6 +115,8 @@ const Hoteles = () => {
         onClose={() => setIsModalOpen(false)} 
         title="¡Reserva Confirmada!" 
         message={`Tu reserva en ${selectedHotel?.nombre} ha sido asegurada. Puedes gestionar tu estadía desde tu Dashboard.`}
+        reservationData={reservationData}
+        user={user}
       />
     </>
   );

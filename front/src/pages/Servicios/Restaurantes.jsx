@@ -12,6 +12,7 @@ const Restaurantes = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [results, setResults] = useState(restaurantesRealistas);
   const [selectedRest, setSelectedRest] = useState(null);
+  const [reservationData, setReservationData] = useState(null);
 
   const handleSearch = (term) => {
     if (!term) {
@@ -33,7 +34,7 @@ const Restaurantes = () => {
     }
     
     try {
-      await saveReservation({
+      const resData = {
         userId: user.uid,
         type: 'restaurante',
         title: `Mesa en ${rest.nombre}`,
@@ -41,7 +42,9 @@ const Restaurantes = () => {
         date: 'Fecha abierta',
         price: 'Reserva gratuita',
         status: 'Confirmado'
-      });
+      };
+      const id = await saveReservation(resData);
+      setReservationData({ id, ...resData });
       setSelectedRest(rest);
       setIsModalOpen(true);
     } catch (error) {
@@ -110,6 +113,8 @@ const Restaurantes = () => {
         onClose={() => setIsModalOpen(false)} 
         title="¡Mesa Reservada!" 
         message={`Tu mesa en ${selectedRest?.nombre} te está esperando. Gestionala desde tu Dashboard.`}
+        reservationData={reservationData}
+        user={user}
       />
     </>
   );
