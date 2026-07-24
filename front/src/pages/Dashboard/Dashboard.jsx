@@ -6,6 +6,7 @@ import { getUserReservations, getUserTrips } from '@back/services/firestoreServi
 import { Wallet, Briefcase, PlaneTakeoff, FolderPlus, FileQuestion, ChevronRight, ChevronDown, Plane, Bed, Car, Utensils, CalendarDays } from 'lucide-react';
 import styles from './Dashboard.module.css';
 import destinations from '../../services/datos/destinations';
+import DataListModal from '../../components/common/Modals/DataListModal';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -13,6 +14,7 @@ const Dashboard = () => {
   const [reservations, setReservations] = useState([]);
   const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeModal, setActiveModal] = useState({ isOpen: false, type: null, title: '', data: null });
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -129,8 +131,20 @@ const Dashboard = () => {
     return <div className={styles.dashboardPage} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh'}}>Cargando tu espacio personal...</div>;
   }
 
+  const openModal = (type, title, data) => {
+    setActiveModal({ isOpen: true, type, title, data });
+  };
+
   return (
     <div className={styles.dashboardPage}>
+      <DataListModal 
+        isOpen={activeModal.isOpen} 
+        onClose={() => setActiveModal({ ...activeModal, isOpen: false })}
+        title={activeModal.title}
+        data={activeModal.data}
+        type={activeModal.type}
+        trips={trips}
+      />
       <div className={styles.personalSpaceWrapper}>
         
         <div className={styles.mainBody}>
@@ -176,7 +190,7 @@ const Dashboard = () => {
 
           {/* Tarjetas de Resumen (6 Cards) */}
           <div className={styles.statsGrid}>
-            <div className={styles.statCard}>
+            <div className={styles.statCard} style={{ cursor: 'pointer' }} onClick={() => openModal('all_expenses', 'Total Invertido', reservations)}>
               <div className={styles.statIconBox}><Wallet size={20} /></div>
               <div>
                 <div className={styles.statLabel}>Total invertido</div>
@@ -184,7 +198,7 @@ const Dashboard = () => {
               </div>
             </div>
             
-            <div className={styles.statCard}>
+            <div className={styles.statCard} style={{ cursor: 'pointer' }} onClick={() => openModal('trips', 'Viajes Activos', trips)}>
               <div className={styles.statIconBox}><Briefcase size={20} /></div>
               <div>
                 <div className={styles.statLabel}>Viajes activos</div>
@@ -192,7 +206,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className={styles.statCard}>
+            <div className={styles.statCard} style={{ cursor: 'pointer' }} onClick={() => openModal('reservations', 'Vuelos', reservations.filter(r => r.type === 'vuelo'))}>
               <div className={styles.statIconBox}><Plane size={20} /></div>
               <div>
                 <div className={styles.statLabel}>Vuelos</div>
@@ -200,7 +214,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className={styles.statCard}>
+            <div className={styles.statCard} style={{ cursor: 'pointer' }} onClick={() => openModal('reservations', 'Estadía (Hoteles)', reservations.filter(r => r.type === 'hotel'))}>
               <div className={styles.statIconBox}><Bed size={20} /></div>
               <div>
                 <div className={styles.statLabel}>Estadía (Hoteles)</div>
@@ -208,7 +222,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className={styles.statCard}>
+            <div className={styles.statCard} style={{ cursor: 'pointer' }} onClick={() => openModal('reservations', 'Autos Rentados', reservations.filter(r => r.type === 'auto'))}>
               <div className={styles.statIconBox}><Car size={20} /></div>
               <div>
                 <div className={styles.statLabel}>Autos rentados</div>
@@ -216,7 +230,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className={styles.statCard}>
+            <div className={styles.statCard} style={{ cursor: 'pointer' }} onClick={() => openModal('reservations', 'Restaurantes', reservations.filter(r => r.type === 'restaurante'))}>
               <div className={styles.statIconBox}><Utensils size={20} /></div>
               <div>
                 <div className={styles.statLabel}>Restaurantes</div>
@@ -227,7 +241,15 @@ const Dashboard = () => {
 
           {/* Resumen del Itinerario de Actividades */}
           <div className={styles.sectionTitle}>Itinerario del viaje</div>
-          <div className={styles.itineraryCard}>
+          <div 
+            className={styles.itineraryCard} 
+            style={{ cursor: upcomingTrip ? 'pointer' : 'default' }}
+            onClick={() => {
+              if (upcomingTrip) {
+                openModal('itinerary', 'Próximo Itinerario', { trip: upcomingTrip, activities: actividades });
+              }
+            }}
+          >
             <div className={styles.itineraryIconBox}>
               <CalendarDays size={24} />
             </div>
@@ -298,20 +320,6 @@ const Dashboard = () => {
 
           </div>
 
-          {/* Sin Asignar */}
-          <div className={styles.sectionTitle}>Sin asignar</div>
-          <div className={styles.unassignedCard}>
-            <div className={styles.unassignedIconBox}>
-              <FileQuestion size={20} />
-            </div>
-            <div className={styles.unassignedText}>
-              <div className={styles.unassignedTitle}>{reservations.length} reservas sin asignar</div>
-              <div className={styles.unassignedSub}>
-                Muévelas a un viaje cuando quieras
-              </div>
-            </div>
-            <ChevronRight size={18} color="var(--text-secondary)" />
-          </div>
 
           {/* Explora tu próximo destino */}
           <div className={styles.exploreSection}>
@@ -322,7 +330,12 @@ const Dashboard = () => {
             
             <div className={styles.exploreGrid}>
               {suggestedDestinations.map(dest => (
-                <div key={dest.id} className={styles.exploreCard}>
+                <div 
+                  key={dest.id} 
+                  className={styles.exploreCard}
+                  onClick={() => navigate(ROUTES.NUEVO_VIAJE)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <div 
                     className={styles.exploreImage} 
                     style={{ backgroundImage: `url(${typeof dest.image === 'string' ? dest.image : dest.image?.src || dest.image})` }}

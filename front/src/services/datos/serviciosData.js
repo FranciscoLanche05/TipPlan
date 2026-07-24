@@ -90,6 +90,16 @@ export const autosRealistas = [
   { id: 'a18', empresa: 'Budget', modelo: 'Seat Leon (Compact)', ciudad: 'Madrid', precioDia: 33, tipo: 'auto', proveedor: 'Budget', rating: 8.9, lat: 40.4600, lng: -3.5800, imagen: 'https://loremflickr.com/600/400/compact,car?lock=18' },
   { id: 'a19', empresa: 'Enterprise', modelo: 'Toyota Corolla (Sedan)', ciudad: 'Quito', precioDia: 38, tipo: 'auto', proveedor: 'Enterprise', rating: 9.2, lat: -0.1950, lng: -78.4800, imagen: 'https://loremflickr.com/600/400/sedan,car?lock=19' },
   { id: 'a20', empresa: 'Alamo', modelo: 'Honda CR-V (SUV)', ciudad: 'Guayaquil', precioDia: 55, tipo: 'auto', proveedor: 'Alamo', rating: 9.1, lat: -2.1650, lng: -79.8900, imagen: 'https://loremflickr.com/600/400/suv,car?lock=20' },
+  { id: 'a21', empresa: 'Hertz', modelo: 'SUV Premium París', ciudad: 'París', precioDia: 81, tipo: 'auto', proveedor: 'Hertz', rating: 9.4, lat: 48.8566, lng: 2.3522, imagen: 'https://loremflickr.com/600/400/suv,car?lock=21' },
+  { id: 'a22', empresa: 'Avis', modelo: 'Sedán Económico', ciudad: 'París', precioDia: 35, tipo: 'auto', proveedor: 'Avis', rating: 7.8, lat: 48.8606, lng: 2.3322, imagen: 'https://loremflickr.com/600/400/sedan,car?lock=22' },
+  { id: 'a23', empresa: 'Avis', modelo: 'Toyota Yaris', ciudad: 'Lima', precioDia: 30, tipo: 'auto', proveedor: 'Avis', rating: 8.5, lat: -12.0464, lng: -77.0428, imagen: 'https://loremflickr.com/600/400/sedan,car?lock=23' },
+  { id: 'a24', empresa: 'Hertz', modelo: 'Chevrolet Spark', ciudad: 'Bogotá', precioDia: 25, tipo: 'auto', proveedor: 'Hertz', rating: 8.2, lat: 4.7110, lng: -74.0721, imagen: 'https://loremflickr.com/600/400/compact,car?lock=24' },
+  { id: 'a25', empresa: 'Alamo', modelo: 'Ford Mustang', ciudad: 'Miami', precioDia: 90, tipo: 'auto', proveedor: 'Alamo', rating: 9.1, lat: 25.7617, lng: -80.1918, imagen: 'https://loremflickr.com/600/400/sport,car?lock=25' },
+  { id: 'a26', empresa: 'Enterprise', modelo: 'Nissan Altima', ciudad: 'Nueva York', precioDia: 60, tipo: 'auto', proveedor: 'Enterprise', rating: 8.7, lat: 40.7128, lng: -74.0060, imagen: 'https://loremflickr.com/600/400/sedan,car?lock=26' },
+  { id: 'a27', empresa: 'Sixt', modelo: 'Fiat 500', ciudad: 'Roma', precioDia: 40, tipo: 'auto', proveedor: 'Sixt', rating: 8.9, lat: 41.9028, lng: 12.4964, imagen: 'https://loremflickr.com/600/400/compact,car?lock=27' },
+  { id: 'a28', empresa: 'Toyota Rent', modelo: 'Toyota Prius', ciudad: 'Tokyo', precioDia: 55, tipo: 'auto', proveedor: 'Toyota', rating: 9.3, lat: 35.6762, lng: 139.6503, imagen: 'https://loremflickr.com/600/400/hybrid,car?lock=28' },
+  { id: 'a29', empresa: 'Europcar', modelo: 'Mini Cooper', ciudad: 'Londres', precioDia: 50, tipo: 'auto', proveedor: 'Europcar', rating: 8.6, lat: 51.5074, lng: -0.1278, imagen: 'https://loremflickr.com/600/400/compact,car?lock=29' },
+  { id: 'a30', empresa: 'Localiza', modelo: 'VW Gol', ciudad: 'Buenos Aires', precioDia: 28, tipo: 'auto', proveedor: 'Localiza', rating: 8.1, lat: -34.6037, lng: -58.3816, imagen: 'https://loremflickr.com/600/400/hatchback,car?lock=30' }
 ];
 
 export const restaurantesRealistas = [
@@ -113,6 +123,14 @@ export const restaurantesRealistas = [
   { id: 'r18', nombre: 'Lo Nuestro', ciudad: 'Guayaquil', tipoComida: 'Criolla', precioPromedio: '$$', tipo: 'restaurante', lat: -2.1500, lng: -79.9000, rating: 9.2, resenas: 2200, imagen: 'https://loremflickr.com/600/400/traditional,food?lock=18', proveedor: 'TripAdvisor' },
   { id: 'r19', nombre: 'Punto MX', ciudad: 'Madrid', tipoComida: 'Mexicana', precioPromedio: '$$$', tipo: 'restaurante', lat: 40.4350, lng: -3.6700, rating: 9.5, resenas: 1900, imagen: 'https://loremflickr.com/600/400/tacos,food?lock=19', proveedor: 'Michelin' },
   { id: 'r20', nombre: 'Zielo', ciudad: 'Quito', tipoComida: 'Internacional', precioPromedio: '$$', tipo: 'restaurante', lat: -0.1700, lng: -78.4600, rating: 8.9, resenas: 850, imagen: 'https://loremflickr.com/600/400/salad,food?lock=20', proveedor: 'TripAdvisor' },
+  { id: 'r21', nombre: 'Central', ciudad: 'Lima', tipoComida: 'Peruana Contemporánea', precioPromedio: '$$$$', tipo: 'restaurante', lat: -12.1492, lng: -77.0224, rating: 9.9, resenas: 4500, imagen: 'https://loremflickr.com/600/400/fine,dining?lock=21', proveedor: 'Michelin' },
+  { id: 'r22', nombre: 'Leo', ciudad: 'Bogotá', tipoComida: 'Colombiana Moderna', precioPromedio: '$$$$', tipo: 'restaurante', lat: 4.6097, lng: -74.0817, rating: 9.7, resenas: 2100, imagen: 'https://loremflickr.com/600/400/gourmet,food?lock=22', proveedor: 'Michelin' },
+  { id: 'r23', nombre: 'Joe\'s Stone Crab', ciudad: 'Miami', tipoComida: 'Mariscos', precioPromedio: '$$$', tipo: 'restaurante', lat: 25.7689, lng: -80.1362, rating: 9.4, resenas: 8200, imagen: 'https://loremflickr.com/600/400/crab,food?lock=23', proveedor: 'TripAdvisor' },
+  { id: 'r24', nombre: 'Le Bernardin', ciudad: 'Nueva York', tipoComida: 'Francesa / Mariscos', precioPromedio: '$$$$', tipo: 'restaurante', lat: 40.7614, lng: -73.9818, rating: 9.8, resenas: 5400, imagen: 'https://loremflickr.com/600/400/french,cuisine?lock=24', proveedor: 'Michelin' },
+  { id: 'r25', nombre: 'Roscioli', ciudad: 'Roma', tipoComida: 'Italiana Tradicional', precioPromedio: '$$$', tipo: 'restaurante', lat: 41.8943, lng: 12.4735, rating: 9.6, resenas: 6100, imagen: 'https://loremflickr.com/600/400/pasta,rome?lock=25', proveedor: 'TripAdvisor' },
+  { id: 'r26', nombre: 'Sukiyabashi Jiro', ciudad: 'Tokyo', tipoComida: 'Sushi', precioPromedio: '$$$$', tipo: 'restaurante', lat: 35.6722, lng: 139.7634, rating: 9.9, resenas: 1200, imagen: 'https://loremflickr.com/600/400/sushi,tokyo?lock=26', proveedor: 'Michelin' },
+  { id: 'r27', nombre: 'Gordon Ramsay', ciudad: 'Londres', tipoComida: 'Europea Moderna', precioPromedio: '$$$$', tipo: 'restaurante', lat: 51.4854, lng: -0.1623, rating: 9.7, resenas: 3800, imagen: 'https://loremflickr.com/600/400/gourmet,london?lock=27', proveedor: 'Michelin' },
+  { id: 'r28', nombre: 'Don Julio', ciudad: 'Buenos Aires', tipoComida: 'Parrilla Argentina', precioPromedio: '$$$', tipo: 'restaurante', lat: -34.5888, lng: -58.4251, rating: 9.8, resenas: 9500, imagen: 'https://loremflickr.com/600/400/steak,argentina?lock=28', proveedor: 'Michelin' }
 ];
 
 export const actividadesPorCiudad = {

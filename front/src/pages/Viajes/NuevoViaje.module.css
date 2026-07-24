@@ -440,64 +440,35 @@
   box-shadow: 0 12px 40px rgba(0,0,0,0.3);
 }
 
-/* Slide-out AI Panel */
-.aiPanelOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(13, 33, 24, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.aiPanelOverlay.panelOpen {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.aiPanelContent {
+/* Slide-out AI Drawer */
+.aiDrawer {
   position: absolute;
   top: 0;
-  right: -450px;
-  width: 450px;
-  max-width: 100vw;
-  height: 100vh;
+  left: 0;
+  width: 55%;
+  height: 100%;
   background: var(--bg-page);
-  box-shadow: -10px 0 40px rgba(0,0,0,0.1);
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 50;
   display: flex;
   flex-direction: column;
+  box-shadow: 10px 0 40px rgba(0,0,0,0.1);
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-right: 1px solid var(--border-soft);
+  padding-top: 56px; /* Offset for global Navbar */
 }
 
-.panelOpen .aiPanelContent {
-  right: 0;
+.drawerOpen {
+  transform: translateX(0);
 }
 
 .aiPanelHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 24px;
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.aiHeaderTitle {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.aiHeaderTitle h2 {
-  font-size: 18px;
-  margin: 0;
-  color: var(--text-primary);
-  font-weight: 600;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  background: transparent;
+  z-index: 10;
 }
 
 .closeAiBtn {
@@ -505,16 +476,19 @@
   border: none;
   color: var(--text-secondary);
   cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
+  padding: 8px 12px;
+  border-radius: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
 .closeAiBtn:hover {
   background: var(--bg-chip);
+  color: var(--text-primary);
 }
 
 .aiChatArea {
@@ -522,92 +496,149 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background: var(--bg-page);
 }
 
 .chatMessages {
   flex: 1;
-  padding: 24px;
+  padding: 0 24px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   overflow-y: auto;
+  position: relative;
 }
 
-.messageRow {
+/* Empty State Hero */
+.emptyStateContainer {
+  flex: 1;
   display: flex;
-  gap: 12px;
-  align-items: flex-end;
-  max-width: 90%;
-}
-
-.messageRowAi {
-  align-self: flex-start;
-}
-
-.messageRowUser {
-  align-self: flex-end;
-  flex-direction: row-reverse;
-}
-
-.avatarAi {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(229,169,59,0.15);
-  color: var(--accent-gold-strong);
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  height: 100%;
+  padding-bottom: 10%;
 }
 
-.messageBubble {
-  padding: 14px 18px;
-  border-radius: 16px;
-  font-size: 14px;
-  line-height: 1.5;
+.emptyStateHero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
 }
 
-.bubbleAi {
-  background: var(--bg-surface);
+.heroSparkle {
+  color: #f97316; /* Orange icon */
+}
+
+.heroTitle {
+  font-size: 42px;
+  font-weight: 800;
   color: var(--text-primary);
-  border-bottom-left-radius: 4px;
-  border: 1px solid var(--border-soft);
+  margin: 0;
+  letter-spacing: -1px;
 }
 
-.bubbleUser {
-  background: #0d2118;
-  color: #ffffff;
-  border-bottom-right-radius: 4px;
+.heroSubtitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.heroSubtitle strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Input Box Redesign */
+.aiInputContainer {
+  padding: 24px 40px 16px;
+  background: var(--bg-page);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .aiInputForm {
-  padding: 24px;
-  background: var(--bg-surface);
-  border-top: 1px solid var(--border-soft);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .aiInputWrapper {
+  width: 100%;
+  max-width: 700px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 16px;
   display: flex;
-  align-items: center;
-  background: var(--bg-surface-alt);
-  border: 1px solid var(--border-soft);
-  border-radius: 50px;
-  padding: 4px;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.aiInputWrapper:focus-within {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .aiInput {
-  flex: 1;
-  padding: 12px 20px;
-  border: none;
+  width: 100%;
   background: transparent;
+  border: none;
   outline: none;
+  color: var(--text-primary);
+  font-size: 16px;
+  padding: 0;
+  resize: none;
+  font-family: inherit;
+}
+
+.aiInput::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.kayakInputActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.kayakActionBtn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.kayakActionBtn:hover {
+  background: var(--bg-chip);
   color: var(--text-primary);
 }
 
+.kayakRightActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .aiSendBtn {
-  background: #0d2118;
-  color: #ffffff;
+  background: #f1f5f9;
+  color: #94a3b8;
   border: none;
   width: 40px;
   height: 40px;
@@ -616,9 +647,41 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.2s;
+}
+
+.aiInputWrapper:focus-within .aiSendBtn,
+.aiSendBtn.activeBtn {
+  background: #e2e8f0;
+  color: #0f172a;
 }
 
 .aiSendBtn:hover {
+  background: #cbd5e1;
   transform: scale(1.05);
+}
+
+.aiDisclaimer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.aiDisclaimer a {
+  color: #94a3b8;
+  text-decoration: underline;
+}
+
+.aiDisclaimer a:hover {
+  color: #64748b;
+}
+
+@media (max-width: 1024px) {
+  .aiDrawer {
+    width: 100%;
+  }
+  .aiInputContainer {
+    padding: 16px 20px;
+  }
 }

@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../../components/common/BarraNavegacion/Navbar';
 import Footer from '../../components/common/PieDePagina/Footer';
+import ChatBot from '../../components/common/ChatBot/ChatBot';
 import styles from './MainLayout.module.css';
 
 export default function MainLayout() {
@@ -11,6 +12,7 @@ export default function MainLayout() {
         <Outlet />
       </main>
       <Footer />
+      <ChatBot />
     </div>
   );
 }

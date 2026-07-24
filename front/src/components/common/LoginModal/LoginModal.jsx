@@ -14,7 +14,6 @@ const LoginModal = () => {
     isLoginModalOpen,
     closeLoginModal,
     loginGoogle,
-    loginFacebook,
     checkEmailExists,
     login,
     register,
@@ -101,15 +100,6 @@ const LoginModal = () => {
     } catch (err) {}
   };
 
-  const handleFacebook = async () => {
-    try {
-      await loginFacebook();
-      navigate(ROUTES.DASHBOARD);
-    } catch (err) {
-      alert("Modo Demo: " + err.message);
-    }
-  };
-
   const goBack = () => {
     setStep(STEP_EMAIL);
     setPassword("");
@@ -138,9 +128,6 @@ const LoginModal = () => {
               <div className={styles.socialButtons}>
                 <button className={styles.socialBtn} onClick={handleGoogle}>
                   <span className={styles.iconGoogle}>G</span> Google
-                </button>
-                <button className={styles.socialBtn} onClick={handleFacebook}>
-                  <span className={styles.iconFacebook}>f</span> Facebook
                 </button>
               </div>
 

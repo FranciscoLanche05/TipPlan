@@ -79,7 +79,10 @@ const Navbar = () => {
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           {isAuthenticated && (
-            <button className={styles.googleAiBtn} onClick={() => navigate(ROUTES.NUEVO_VIAJE)}>
+            <button 
+              className={styles.googleAiBtn} 
+              onClick={() => window.dispatchEvent(new CustomEvent('toggleChat'))}
+            >
               <div className={styles.googleAiBtnContent}>
                 <Sparkles size={18} color="#1a73e8" />
                 <span>Ask IA</span>

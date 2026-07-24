@@ -108,12 +108,6 @@ export const checkRedirectResult = async () => {
   return null;
 };
 
-// ─── Login con Facebook (Demo por ahora) ─────────────────────
-export const loginWithFacebook = async () => {
-  // Simulación de modo demo para Facebook
-  console.log("Iniciando sesión con Facebook (Modo Demo)");
-  throw new Error("El inicio de sesión con Facebook está en modo demostración y requiere configuración adicional en Meta for Developers.");
-};
 
 // ─── Verificar si el correo ya está registrado ────────────────
 export const checkEmailExists = async (email) => {

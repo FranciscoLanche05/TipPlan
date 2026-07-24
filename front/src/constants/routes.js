@@ -15,6 +15,8 @@ export const ROUTES = {
   AUTOS: "/autos",
   RESTAURANTES: "/restaurantes",
   ACTIVIDADES: "/actividades",
+  PRIVACIDAD: "/privacidad",
+  ELIMINACION_DATOS: "/eliminacion-datos",
   NUEVO_VIAJE: "/viajes/nuevo",
   DETALLE_VIAJE: "/viajes/:id",
 };

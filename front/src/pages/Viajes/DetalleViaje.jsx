@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getTripById, getUserReservations, updateTrip, deleteTrip } from '@back/services/firestoreService';
+import { getTripById, getUserReservations, updateTrip, deleteTrip, deleteReservation, saveReservation } from '@back/services/firestoreService';
 import { ROUTES } from '../../constants/routes';
+import { generateModification } from '../../services/aiModifierService';
+import ModificationCard from '../../components/common/ChatBot/ModificationCard';
 import { 
   ArrowLeft, Folder, Pencil, Calendar, Plane, Bed, Briefcase, MapPin, 
   X, FileText, Coins, Cloud, Hand, Sun, CloudRain, Ticket, CalendarDays, 
-  UserPlus, Plus, Car, Utensils, Loader2, Trash2, Save
+  UserPlus, Plus, Car, Utensils, Loader2, Trash2, Save, Download, Sparkles, Send
 } from 'lucide-react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import TripItineraryPDF from '../../components/pdf/TripItineraryPDF';
+import ReservationReceiptPDF from '../../components/pdf/ReservationReceiptPDF';
 import { toast } from 'react-toastify';
 import ConfirmModal from '../../components/common/Modals/ConfirmModal';
 import styles from './DetalleViaje.module.css';
@@ -22,6 +27,13 @@ const DetalleViaje = () => {
   const [isEditingTrip, setIsEditingTrip] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [editTripData, setEditTripData] = useState({ title: '', destination: '', startDate: '', endDate: '' });
+
+  // AI Modifier States
+  const [isAiOpen, setIsAiOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [chatHistory, setChatHistory] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [isReplacing, setIsReplacing] = useState(false);
 
   useEffect(() => {
     const fetchTripData = async () => {
@@ -78,7 +90,7 @@ const DetalleViaje = () => {
     { id: 'vuelo', icon: Plane, label: 'Vuelos' },
     { id: 'hotel', icon: Bed, label: 'Hoteles' },
     { id: 'actividad', icon: Briefcase, label: 'Actividades' },
-    { id: 'vehiculo', icon: Car, label: 'Vehículos' },
+    { id: 'auto', icon: Car, label: 'Vehículos' },
     { id: 'restaurante', icon: Utensils, label: 'Restaurantes' }
   ];
 
@@ -93,7 +105,7 @@ const DetalleViaje = () => {
       case 'vuelo': route = ROUTES.VUELOS; break;
       case 'hotel': route = ROUTES.HOTELES; break;
       case 'actividad': route = ROUTES.ACTIVIDADES; break;
-      case 'vehiculo': route = ROUTES.AUTOS; break;
+      case 'auto': route = ROUTES.AUTOS; break;
       case 'restaurante': route = ROUTES.RESTAURANTES; break;
       default: route = ROUTES.NUEVO_VIAJE;
     }
@@ -105,7 +117,7 @@ const DetalleViaje = () => {
       case 'vuelo': return <Plane size={18} />;
       case 'hotel': return <Bed size={18} />;
       case 'actividad': return <Briefcase size={18} />;
-      case 'vehiculo': return <Car size={18} />;
+      case 'auto': return <Car size={18} />;
       case 'restaurante': return <Utensils size={18} />;
       default: return <Ticket size={18} />;
     }
@@ -145,6 +157,70 @@ const DetalleViaje = () => {
       toast.error('Error al eliminar el viaje');
       setIsDeleteModalOpen(false);
     }
+  };
+
+  const handleAiSend = async (e) => {
+    e.preventDefault();
+    if (!query.trim()) return;
+    
+    const newHistory = [...chatHistory, { role: 'user', text: query }];
+    setChatHistory(newHistory);
+    setQuery('');
+    setIsTyping(true);
+    
+    try {
+      const response = await generateModification(query, reservations, trip.destination);
+      setChatHistory([
+        ...newHistory, 
+        { role: 'ai', text: response.message, modification: response.modification }
+      ]);
+    } catch (error) {
+      console.error(error);
+      setChatHistory([
+        ...newHistory, 
+        { role: 'ai', text: 'Hubo un error contactando a la inteligencia artificial.' }
+      ]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  const handleConfirmReplacement = async (oldReservationId, type, newServiceData) => {
+    setIsReplacing(true);
+    try {
+      // 1. Delete old reservation
+      await deleteReservation(oldReservationId);
+      
+      // 2. Save new reservation
+      await saveReservation({
+        tripId: id,
+        userId: trip.userId,
+        type: type,
+        price: newServiceData.precio || newServiceData.precioNoche || newServiceData.precioPromedio || 0,
+        data: newServiceData
+      });
+
+      toast.success("Reserva actualizada correctamente");
+      
+      // Reload reservations
+      const allRes = await getUserReservations(trip.userId);
+      setReservations(allRes.filter(r => r.tripId === id));
+      
+      // Close AI panel automatically for better UX
+      setIsAiOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al reemplazar la reserva");
+    } finally {
+      setIsReplacing(false);
+    }
+  };
+
+  const handleCancelModification = (msgIndex) => {
+    const newHistory = [...chatHistory];
+    newHistory[msgIndex].modification = null;
+    newHistory[msgIndex].text = newHistory[msgIndex].text + " (Propuesta descartada)";
+    setChatHistory(newHistory);
   };
 
   return (
@@ -233,6 +309,17 @@ const DetalleViaje = () => {
                     ${res.price || res.precio || res.precioNoche || res.precioDia || 0}
                   </span>
                   <span className={styles.resStatus}>Confirmado</span>
+                  <PDFDownloadLink
+                    document={<ReservationReceiptPDF reservation={res} tripTitle={trip.title} />}
+                    fileName={`comprobante_${(res.name || res.title || res.aerolinea || 'reserva').replace(/\s+/g, '_')}.pdf`}
+                    style={{ textDecoration: 'none', marginLeft: 'auto', marginRight: '5px' }}
+                  >
+                    {({ loading }) => (
+                      <button className={styles.resDeleteBtn} style={{ color: 'var(--accent-blue)' }} title="Descargar comprobante" disabled={loading}>
+                        {loading ? <Loader2 size={14} className={styles.spinner} /> : <Download size={14} />}
+                      </button>
+                    )}
+                  </PDFDownloadLink>
                   <button className={styles.resDeleteBtn} aria-label="Cancelar reserva">
                     <X size={14} />
                   </button>
@@ -245,7 +332,7 @@ const DetalleViaje = () => {
                 <div className={styles.addButtonsRow}>
                   <button onClick={() => handleAddService('vuelo')} className={styles.addBtnSm}><Plane size={14}/> Añadir Vuelo</button>
                   <button onClick={() => handleAddService('hotel')} className={styles.addBtnSm}><Bed size={14}/> Añadir Hotel</button>
-                  <button onClick={() => handleAddService('vehiculo')} className={styles.addBtnSm}><Car size={14}/> Añadir Vehículo</button>
+                  <button onClick={() => handleAddService('auto')} className={styles.addBtnSm}><Car size={14}/> Añadir Vehículo</button>
                   <button onClick={() => handleAddService('restaurante')} className={styles.addBtnSm}><Utensils size={14}/> Añadir Restaurante</button>
                   <button onClick={() => handleAddService('actividad')} className={styles.addBtnSm}><Briefcase size={14}/> Añadir Actividad</button>
                 </div>
@@ -363,6 +450,19 @@ const DetalleViaje = () => {
             <Plus size={16} /> Agregar reserva
           </button>
 
+          <PDFDownloadLink
+            document={<TripItineraryPDF trip={trip} reservations={reservations} />}
+            fileName={`itinerario_${trip.title.replace(/\s+/g, '_')}.pdf`}
+            style={{ textDecoration: 'none' }}
+          >
+            {({ loading }) => (
+              <button className={styles.mainAddBtn} style={{ marginTop: '10px', backgroundColor: 'var(--bg-surface)', color: 'var(--text-primary)', border: '1px solid var(--border-soft)' }} disabled={loading}>
+                {loading ? <Loader2 size={16} className={styles.spinner} /> : <FileText size={16} />} 
+                {loading ? ' Generando PDF...' : ' Exportar Itinerario (PDF)'}
+              </button>
+            )}
+          </PDFDownloadLink>
+
         </div>
 
       </div>
@@ -377,6 +477,90 @@ const DetalleViaje = () => {
         onConfirm={handleDeleteTrip}
         onCancel={() => setIsDeleteModalOpen(false)}
       />
+
+      {/* Floating Ask IA Button */}
+      {!isAiOpen && (
+        <button 
+          className={styles.floatingAiBtn}
+          onClick={() => setIsAiOpen(true)}
+          title="Modificar viaje con IA"
+        >
+          <Sparkles size={20} />
+          <span>Ask IA</span>
+        </button>
+      )}
+
+      {/* AI Drawer */}
+      <div className={`${styles.aiDrawer} ${isAiOpen ? styles.drawerOpen : ''}`}>
+        <div className={styles.drawerHeader}>
+          <div className={styles.drawerTitle}>
+            <Sparkles size={18} className={styles.iconGold} />
+            <h2>Modificador IA</h2>
+          </div>
+          <button className={styles.closeDrawerBtn} onClick={() => setIsAiOpen(false)}>
+            <X size={20} />
+          </button>
+        </div>
+        
+        <div className={styles.chatArea}>
+          {chatHistory.length === 0 ? (
+            <div className={styles.emptyChat}>
+              <Sparkles size={40} className={styles.emptyIcon} />
+              <h3>¿Qué quieres cambiar?</h3>
+              <p>Dime qué reserva quieres cambiar y buscaré una alternativa. (Ej: "Cámbiame el vuelo por uno de KLM")</p>
+            </div>
+          ) : (
+            <div className={styles.messageList}>
+              {chatHistory.map((msg, index) => (
+                <div key={index} className={`${styles.messageRow} ${msg.role === 'user' ? styles.messageRowUser : styles.messageRowAi}`}>
+                  {msg.role === 'ai' && (
+                    <div className={styles.avatarAi}>
+                      <Sparkles size={16} />
+                    </div>
+                  )}
+                  <div className={`${styles.messageBubble} ${msg.role === 'user' ? styles.bubbleUser : styles.bubbleAi}`}>
+                    {msg.text}
+                    {msg.modification && (
+                      <ModificationCard 
+                        modification={msg.modification}
+                        currentReservations={reservations}
+                        onConfirm={handleConfirmReplacement}
+                        onCancel={() => handleCancelModification(index)}
+                        isReplacing={isReplacing}
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
+              {isTyping && (
+                <div className={`${styles.messageRow} ${styles.messageRowAi}`}>
+                  <div className={styles.avatarAi}>
+                    <Sparkles size={16} />
+                  </div>
+                  <div className={`${styles.messageBubble} ${styles.bubbleAi}`}>
+                    <Loader2 className={styles.spinner} size={14} /> Buscando alternativas...
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+        
+        <div className={styles.inputArea}>
+          <form onSubmit={handleAiSend} className={styles.chatForm}>
+            <input 
+              type="text" 
+              placeholder="Escribe tu modificación..." 
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className={styles.chatInput}
+            />
+            <button type="submit" className={styles.sendBtn} disabled={!query.trim() || isTyping}>
+              <Send size={18} />
+            </button>
+          </form>
+        </div>
+      </div>
 
     </div>
   );
