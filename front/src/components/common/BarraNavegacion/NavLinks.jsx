@@ -56,7 +56,7 @@ const NavLinks = ({ onClose }) => {
             style={{ textDecoration: "none", position: "relative", overflow: "hidden" }}
           >
             <Sparkles size={20} color="#f4a02c" />
-            <span>Planifica con IA</span>
+            <span>Planifica tu viaje</span>
             <BorderBeam size={60} duration={3} delay={0} colorFrom="#f4a02c" colorTo="#ffffff" />
           </Link>
           <Link
