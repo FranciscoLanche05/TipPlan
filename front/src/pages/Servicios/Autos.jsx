@@ -251,7 +251,7 @@ const Autos = () => {
           <div className={styles.kCardMeta}>
             <span className={styles.ratingBadge}>{auto.rating}</span>
             <span className={styles.ratingText}>Excelente</span>
-            <span style={{ fontSize: '13px', color: '#64748b' }}>• {auto.empresa} en {auto.ciudad}</span>
+            <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>• {auto.empresa} en {auto.ciudad}</span>
           </div>
         </div>
 
@@ -313,11 +313,11 @@ const Autos = () => {
                   <div className={modalStyles.mDetails}>
                     <h3>{selectedAuto.modelo}</h3>
                     <p>{selectedAuto.ciudad} • {selectedAuto.empresa} • {selectedAuto.proveedor}</p>
-                    <p style={{fontSize: '12px', color: '#64748b', marginTop: '4px'}}>Kilometraje ilimitado • Seguro básico</p>
+                    <p style={{fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px'}}>Kilometraje ilimitado • Seguro básico</p>
                   </div>
                   <div className={modalStyles.mPrice}>
                     <h2>${selectedAuto.precioDia}</h2>
-                    <span style={{ fontSize: '11px', color: '#64748b' }}>por día</span>
+                    <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>por día</span>
                   </div>
                 </div>
 
@@ -400,7 +400,7 @@ const Autos = () => {
                   >
                     {isPaying ? 'Procesando pago...' : `Pagar $${getCalculatedTotal().toFixed(2)}`}
                   </button>
-                  <p style={{textAlign: 'center', fontSize: '12px', color: '#64748b', marginTop: '12px'}}>
+                  <p style={{textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', marginTop: '12px'}}>
                     Incluye renta de {days} días, seguro y tasas.
                   </p>
                 </div>
@@ -410,8 +410,8 @@ const Autos = () => {
                 <div style={{ background: '#10b981', width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
                   <Check size={32} color="#fff" />
                 </div>
-                <h2 style={{fontSize: '24px', fontWeight: 'bold', color: '#0f172a'}}>¡Reserva Confirmada!</h2>
-                <p style={{ color: '#64748b', marginTop: '8px' }}>Tu renta de {selectedAuto.modelo} en {selectedAuto.ciudad} ha sido asegurada.</p>
+                <h2 style={{fontSize: '24px', fontWeight: 'bold', color: 'var(--text-primary)'}}>¡Reserva Confirmada!</h2>
+                <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Tu renta de {selectedAuto.modelo} en {selectedAuto.ciudad} ha sido asegurada.</p>
               </div>
             )}
           </div>

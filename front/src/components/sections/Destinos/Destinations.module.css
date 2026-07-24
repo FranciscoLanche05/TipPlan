@@ -1,6 +1,6 @@
 .destinations {
   width: 100%;
-  background-color: #f5edd8;
+  background-color: var(--bg-chip);
   padding: 80px 0;
   display: flex;
   justify-content: center;
@@ -15,8 +15,8 @@
 
 .tag {
   display: inline-block;
-  background-color: #e2dfd9;
-  color: #3e4e41;
+  background-color: var(--bg-chip);
+  color: var(--text-secondary);
   padding: 6px 14px;
   border-radius: 15px;
   font-size: 11px;
@@ -36,7 +36,7 @@
 .titleArea h2 {
   font-size: 44px;
   font-family: "Playfair Display", serif;
-  color: #0d2118;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .text {
-  color: #606d66;
+  color: var(--text-secondary);
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -181,7 +181,7 @@
 .reserve_btn {
   background-color: #e5a93b;
   border: none;
-  color: #0d2118;
+  color: var(--text-primary);
   padding: 10px 18px;
   border-radius: 25px;
   font-size: 13px;
@@ -192,7 +192,7 @@
 
 .reserve_btn:hover {
   background-color: white;
-  color: #013220;
+  color: var(--text-primary);
 }
 
 @media (max-width: 1024px) {
