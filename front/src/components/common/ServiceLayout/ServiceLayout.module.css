@@ -138,7 +138,7 @@
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
-  background: white;
+  background: var(--bg-surface);
   border: 1px solid var(--border-soft);
   border-radius: 8px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -215,7 +215,7 @@
 .noResults {
   text-align: center;
   padding: 60px 20px;
-  background-color: white;
+  background-color: var(--bg-surface);
   border-radius: 12px;
   border: 1px solid var(--border-soft);
 }
@@ -248,7 +248,7 @@
 }
 
 .markerPrice {
-  background-color: white;
+  background-color: var(--bg-surface);
   border: 1px solid var(--border-soft);
   border-radius: 20px;
   padding: 4px 10px;

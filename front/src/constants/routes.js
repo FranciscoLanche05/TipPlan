@@ -6,14 +6,17 @@ export const ROUTES = {
   DESTINATIONS: "/destinos",
   BLOG: "/blog",
   CONTACT: "/contactos",
-  RESERVAS: "/reservas",
+
   CONFIGURACION: "/configuracion",
-  EXPERIENCIAS_CATEGORIA: "/experiencias/:categoria",
-  PLANIFICADOR: "/planificador",
+
   DASHBOARD: "/dashboard",
   VUELOS: "/vuelos",
   HOTELES: "/hoteles",
   AUTOS: "/autos",
   RESTAURANTES: "/restaurantes",
   ACTIVIDADES: "/actividades",
+  PRIVACIDAD: "/privacidad",
+  ELIMINACION_DATOS: "/eliminacion-datos",
+  NUEVO_VIAJE: "/viajes/nuevo",
+  DETALLE_VIAJE: "/viajes/:id",
 };

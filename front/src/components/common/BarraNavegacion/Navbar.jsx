@@ -5,7 +5,8 @@ import UserDropdown from "./UserDropdown/UserDropdown";
 import styles from "./Navbar.module.css";
 import { ROUTES } from "../../../constants/routes";
 import { useAuth } from "../../../contexts/AuthContext";
-import { Menu, X, User, LogOut, MapPin, Calendar } from "lucide-react";
+import { useTheme } from "../../../contexts/ThemeContext";
+import { Menu, X, User, LogOut, MapPin, Calendar, Sparkles, Sun, Moon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,10 +70,29 @@ const Navbar = () => {
 
         {/* Lado derecho: Botones de acción */}
         <div className={styles.actions}>
+          <button
+            className={styles.themeToggleBtn}
+            onClick={toggleTheme}
+            aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}
+            title={isDark ? "Modo claro" : "Modo oscuro"}
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          {isAuthenticated && (
+            <button 
+              className={styles.googleAiBtn} 
+              onClick={() => window.dispatchEvent(new CustomEvent('toggleChat'))}
+            >
+              <div className={styles.googleAiBtnContent}>
+                <Sparkles size={18} color="#1a73e8" />
+                <span>Ask IA</span>
+              </div>
+            </button>
+          )}
           {isAuthenticated ? (
             <UserDropdown />
           ) : (
-            <button className={styles.btn_login} onClick={openLoginModal}>
+            <button className={styles.btn_login} onClick={openLoginModal} aria-label="Iniciar sesión">
               <User size={16} />
               <span>Iniciar sesión</span>
             </button>

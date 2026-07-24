@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function to check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if the document belongs to the authenticated user
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Rules for 'trips' collection
+    match /trips/{tripId} {
+      // Create: User can create a trip only if they set themselves as the owner
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      // Read, Update, Delete: Only the owner can access or modify their trips
+      allow read, update, delete: if isOwner(resource.data.userId);
+    }
+
+    // Rules for 'reservations' collection
+    match /reservations/{reservationId} {
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow read, update, delete: if isOwner(resource.data.userId);
+    }
+
+    // Rules for 'itineraries' collection
+    match /itineraries/{itineraryId} {
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow read, update, delete: if isOwner(resource.data.userId);
+    }
+
+    // Rules for 'budgets' collection
+    match /budgets/{budgetId} {
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow read, update, delete: if isOwner(resource.data.userId);
+    }
+
+    // Default deny for all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
