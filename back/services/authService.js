@@ -12,6 +12,8 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   updateProfile,
   fetchSignInMethodsForEmail
 } from "firebase/auth";
@@ -52,25 +54,58 @@ export const loginWithEmail = async (email, password) => {
   return userCredential.user;
 };
 
-// ─── Login con Google ────────────────────────────────────────
 export const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
-  const user = result.user;
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
 
-  // Crear/actualizar documento del usuario en Firestore
-  await setDoc(
-    doc(db, COLLECTIONS.USERS, user.uid),
-    {
-      email: user.email,
-      displayName: user.displayName || "",
-      photoURL: user.photoURL || "",
-      createdAt: serverTimestamp(),
-    },
-    { merge: true } // No sobreescribir si ya existe
-  );
+    // Crear/actualizar documento del usuario en Firestore
+    await setDoc(
+      doc(db, COLLECTIONS.USERS, user.uid),
+      {
+        email: user.email,
+        displayName: user.displayName || "",
+        photoURL: user.photoURL || "",
+        createdAt: serverTimestamp(),
+      },
+      { merge: true } // No sobreescribir si ya existe
+    );
 
-  return user;
+    return user;
+  } catch (error) {
+    if (error.code === 'auth/popup-blocked') {
+      console.warn("Popup bloqueado por el navegador. Usando redirección...");
+      await signInWithRedirect(auth, provider);
+      // El navegador se recargará hacia Google
+      return null;
+    }
+    throw error;
+  }
+};
+
+// ─── Manejar Resultado de Redirección (PWA / Popups bloqueados) ───
+export const checkRedirectResult = async () => {
+  try {
+    const result = await getRedirectResult(auth);
+    if (result && result.user) {
+      const user = result.user;
+      await setDoc(
+        doc(db, COLLECTIONS.USERS, user.uid),
+        {
+          email: user.email,
+          displayName: user.displayName || "",
+          photoURL: user.photoURL || "",
+          createdAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+      return user;
+    }
+  } catch (err) {
+    console.error("Error en redirección de Google:", err);
+  }
+  return null;
 };
 
 // ─── Login con Facebook (Demo por ahora) ─────────────────────
