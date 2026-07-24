@@ -60,6 +60,12 @@
   color: #1e293b;
 }
 
+.pageContainer {
+  padding: 40px 3%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 .searchBtn {
   background-color: #ff5a5f; /* Accent color like Kayak/Airbnb */
   color: white;
@@ -90,7 +96,8 @@
   background-color: #ffffff;
   border: 1px solid #cbd5e1;
   padding: 8px 16px;
-  border-radius: 20px;
+  min-height: 48px;
+  border-radius: 24px;
   font-size: 14px;
   font-weight: 500;
   color: #334155;
@@ -186,7 +193,7 @@
 
 .noMap .resultsColumn {
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
 }
 
 /* --- Left Column (Results) --- */
@@ -300,7 +307,8 @@
     color: white;
     border: none;
     padding: 8px 16px;
-    border-radius: 20px;
+    min-height: 48px;
+    border-radius: 24px;
     font-size: 14px;
     cursor: pointer;
     margin-left: auto;
@@ -333,6 +341,7 @@
     color: white;
     border: none;
     padding: 12px 24px;
+    min-height: 48px;
     border-radius: 30px;
     font-weight: 600;
     align-items: center;
