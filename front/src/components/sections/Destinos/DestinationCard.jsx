@@ -12,7 +12,7 @@ const DestinationCard = ({ destination, delay = 0 }) => {
     if (!isAuthenticated) {
       openLoginModal();
     } else {
-      navigate(ROUTES.NUEVO_VIAJE || "/viajes/nuevo");
+      navigate(ROUTES.RESERVAS || "/reservas");
     }
   };
 

@@ -158,25 +158,6 @@ export const getUserReservations = async (userId) => {
   return docs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
 };
 
-export const saveReservation = async (data) => {
-  const id = await create(COLLECTIONS.RESERVATIONS, data);
-  return id;
-};
+export const saveReservation = (data) => create(COLLECTIONS.RESERVATIONS, data);
 export const updateReservation = (id, data) => update(COLLECTIONS.RESERVATIONS, id, data);
 export const deleteReservation = (id) => remove(COLLECTIONS.RESERVATIONS, id);
-
-// ─── Viajes (Trips - Contenedores principales) ──────────────────
-export const getUserTrips = async (userId) => {
-  const q = query(
-    collection(db, COLLECTIONS.TRIPS),
-    where("userId", "==", userId)
-  );
-  const snapshot = await getDocs(q);
-  const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  return docs.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
-};
-
-export const getTripById = (id) => getById(COLLECTIONS.TRIPS, id);
-export const createTrip = (data) => create(COLLECTIONS.TRIPS, data);
-export const updateTrip = (id, data) => update(COLLECTIONS.TRIPS, id, data);
-export const deleteTrip = (id) => remove(COLLECTIONS.TRIPS, id);

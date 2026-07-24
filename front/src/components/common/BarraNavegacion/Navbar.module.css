@@ -27,8 +27,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   background: transparent;
   border: none;
@@ -87,116 +87,6 @@
   background-color: #e5a93b;
   color: #0d2118;
   border-color: #e5a93b;
-}
-
-.googleAiBtn {
-  display: inline-flex;
-  position: relative;
-  padding: 2.5px;
-  border-radius: 25px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(66, 133, 244, 0.1);
-  text-decoration: none;
-}
-
-.googleAiBtn::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 250%;
-  height: 250%;
-  background: conic-gradient(
-    #4285F4, 
-    #EA4335, 
-    #FBBC05, 
-    #34A853, 
-    #4285F4
-  );
-  animation: spinBeam 3.5s linear infinite;
-  z-index: 0;
-  transform: translate(-50%, -50%);
-}
-
-@keyframes spinBeam {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.googleAiBtnContent {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #f8f9fa;
-  padding: 6px 14px;
-  border-radius: 23px;
-  color: #1a73e8;
-  font-size: 14px;
-  font-weight: 600;
-  z-index: 1;
-}
-
-.googleAiBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(66, 133, 244, 0.2);
-}
-
-.googleAiBtn:hover .googleAiBtnContent {
-  background-color: #ffffff;
-}
-
-.googleAiBtnContent span {
-  display: inline-block;
-  white-space: nowrap;
-  transition: max-width 0.3s ease, opacity 0.3s ease;
-  max-width: 100px;
-  opacity: 1;
-}
-
-.googleAiSidebarBtn {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  background-color: #f8f9fa;
-  color: #1a73e8;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  position: relative;
-  border: none;
-  transition: all 0.3s ease;
-  margin-bottom: 8px;
-  box-shadow: 0 4px 10px rgba(66, 133, 244, 0.1);
-  text-decoration: none;
-}
-
-.googleAiSidebarBtn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  padding: 2.5px;
-  background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.googleAiSidebarBtn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 15px rgba(66, 133, 244, 0.2);
-  background-color: #ffffff;
 }
 
 /* ── Usuario autenticado (navbar) ─────────────────────── */
@@ -336,8 +226,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
   background: transparent;
   border: none;
@@ -502,8 +392,8 @@
   .btn_logout {
     padding: 8px;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     justify-content: center;
   }
 
@@ -514,35 +404,8 @@
   .btn_login {
     padding: 8px;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     justify-content: center;
-  }
-
-  .googleAiBtnContent {
-    gap: 0;
-    width: 43px;
-    height: 43px;
-    padding: 0;
-    justify-content: center;
-    transition: width 0.3s ease, gap 0.3s ease;
-  }
-
-  .googleAiBtnContent span {
-    max-width: 0;
-    opacity: 0;
-    overflow: hidden;
-    margin: 0;
-  }
-
-  .googleAiBtn:hover .googleAiBtnContent {
-    width: 105px;
-    padding: 6px 14px;
-    gap: 8px;
-  }
-
-  .googleAiBtn:hover .googleAiBtnContent span {
-    max-width: 80px;
-    opacity: 1;
   }
 }

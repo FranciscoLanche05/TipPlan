@@ -5,7 +5,7 @@ import UserDropdown from "./UserDropdown/UserDropdown";
 import styles from "./Navbar.module.css";
 import { ROUTES } from "../../../constants/routes";
 import { useAuth } from "../../../contexts/AuthContext";
-import { Menu, X, User, LogOut, MapPin, Calendar, Sparkles } from "lucide-react";
+import { Menu, X, User, LogOut, MapPin, Calendar } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,18 +68,10 @@ const Navbar = () => {
 
         {/* Lado derecho: Botones de acción */}
         <div className={styles.actions}>
-          {isAuthenticated && (
-            <button className={styles.googleAiBtn} onClick={() => navigate(ROUTES.NUEVO_VIAJE)}>
-              <div className={styles.googleAiBtnContent}>
-                <Sparkles size={18} color="#1a73e8" />
-                <span>Ask IA</span>
-              </div>
-            </button>
-          )}
           {isAuthenticated ? (
             <UserDropdown />
           ) : (
-            <button className={styles.btn_login} onClick={openLoginModal} aria-label="Iniciar sesión">
+            <button className={styles.btn_login} onClick={openLoginModal}>
               <User size={16} />
               <span>Iniciar sesión</span>
             </button>

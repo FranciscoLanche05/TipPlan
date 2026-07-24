@@ -1,60 +1,46 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/PlantillaPrincipal/MainLayout";
 import Home from "../pages/Inicio/Home";
 import Login from "../pages/Login/Login";
 import Registro from "../pages/Registro/Registro";
-
+import MisViajes from "../pages/MisViajes";
+import Reservas from "../pages/Reservas/Reservas";
 import ProtectedRoute from "./ProtectedRoute";
 import { ROUTES } from "../constants/routes";
-
-const MisViajes = lazy(() => import("../pages/MisViajes"));
-const ConfiguracionCuenta = lazy(() => import("../pages/Configuracion/ConfiguracionCuenta"));
-const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard"));
-const Vuelos = lazy(() => import("../pages/Servicios/Vuelos"));
-const Hoteles = lazy(() => import("../pages/Servicios/Hoteles"));
-const Autos = lazy(() => import("../pages/Servicios/Autos"));
-const Restaurantes = lazy(() => import("../pages/Servicios/Restaurantes"));
-const Actividades = lazy(() => import("../pages/Servicios/Actividades"));
-const NuevoViaje = lazy(() => import("../pages/Viajes/NuevoViaje"));
-const DetalleViaje = lazy(() => import("../pages/Viajes/DetalleViaje"));
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
+import ConfiguracionCuenta from "../pages/Configuracion/ConfiguracionCuenta";
+import ExperienciasCategoria from "../pages/Experiencias/ExperienciasCategoria";
+import Planificador from "../pages/Planificador/Planificador";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Vuelos from "../pages/Servicios/Vuelos";
+import Hoteles from "../pages/Servicios/Hoteles";
+import Autos from "../pages/Servicios/Autos";
+import Restaurantes from "../pages/Servicios/Restaurantes";
+import Actividades from "../pages/Servicios/Actividades";
 
 const AppRouter = () => {
   return (
-    <>
-      <ScrollToTop />
-      <Suspense fallback={<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>Cargando...</div>}>
-        <Routes>
-        <Route element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="registro" element={<Registro />} />
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="registro" element={<Registro />} />
+        <Route path="experiencias/:categoria" element={<ExperienciasCategoria />} />
 
-          {/* Rutas protegidas */}
-          <Route element={<ProtectedRoute />}>
-            <Route path={ROUTES.DASHBOARD.replace("/", "")} element={<Dashboard />} />
-            <Route path={ROUTES.MIS_VIAJES.replace("/", "")} element={<MisViajes />} />
-            <Route path={ROUTES.VUELOS.replace("/", "")} element={<Vuelos />} />
-            <Route path={ROUTES.HOTELES.replace("/", "")} element={<Hoteles />} />
-            <Route path={ROUTES.AUTOS.replace("/", "")} element={<Autos />} />
-            <Route path={ROUTES.RESTAURANTES.replace("/", "")} element={<Restaurantes />} />
-            <Route path={ROUTES.ACTIVIDADES.replace("/", "")} element={<Actividades />} />
-            <Route path={ROUTES.NUEVO_VIAJE.replace("/", "")} element={<NuevoViaje />} />
-            <Route path={ROUTES.DETALLE_VIAJE.replace("/", "")} element={<DetalleViaje />} />
-            <Route path={`${ROUTES.CONFIGURACION.replace("/", "")}/*`} element={<ConfiguracionCuenta />} />
-          </Route>
+        {/* Rutas protegidas */}
+        <Route element={<ProtectedRoute />}>
+          <Route path={ROUTES.DASHBOARD.replace("/", "")} element={<Dashboard />} />
+          <Route path={ROUTES.MIS_VIAJES.replace("/", "")} element={<MisViajes />} />
+          <Route path={ROUTES.RESERVAS.replace("/", "")} element={<Reservas />} />
+          <Route path={ROUTES.PLANIFICADOR.replace("/", "")} element={<Planificador />} />
+          <Route path={ROUTES.VUELOS.replace("/", "")} element={<Vuelos />} />
+          <Route path={ROUTES.HOTELES.replace("/", "")} element={<Hoteles />} />
+          <Route path={ROUTES.AUTOS.replace("/", "")} element={<Autos />} />
+          <Route path={ROUTES.RESTAURANTES.replace("/", "")} element={<Restaurantes />} />
+          <Route path={ROUTES.ACTIVIDADES.replace("/", "")} element={<Actividades />} />
+          <Route path={`${ROUTES.CONFIGURACION.replace("/", "")}/*`} element={<ConfiguracionCuenta />} />
         </Route>
-        <Route path={ROUTES.LOGIN} element={<Login />} />
-      </Routes>
-      </Suspense>
-    </>
+      </Route>
+      <Route path={ROUTES.LOGIN} element={<Login />} />
+    </Routes>
   );
 };
 

@@ -46,27 +46,6 @@ export const hotelesRealistas = [
   { id: 'h18', nombre: 'Ikala Galapagos Hotel', ciudad: 'Galápagos', estrellas: 4, precioNoche: 210, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/boutique,hotel?lock=18', lat: -0.7456, lng: -90.3121, proveedor: 'Kayak', rating: 9.0, resenas: 580, comodidades: 'Terraza, Bar' },
   { id: 'h19', nombre: 'Hotel Sol y Mar', ciudad: 'Galápagos', estrellas: 4, precioNoche: 250, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/hotel,ocean?lock=19', lat: -0.7445, lng: -90.3142, proveedor: 'Hotels.com', rating: 9.2, resenas: 850, comodidades: 'Vista al mar' },
   { id: 'h20', nombre: 'Isla Dorada', ciudad: 'Galápagos', estrellas: 3, precioNoche: 110, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/hotel,room?lock=20', lat: -0.7420, lng: -90.3100, proveedor: 'Booking.com', rating: 8.4, resenas: 240, comodidades: 'Wifi, A/C' },
-  // Lima
-  { id: 'h21', nombre: 'Miraflores Park', ciudad: 'Lima', estrellas: 5, precioNoche: 350, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/luxury,hotel?lock=21', lat: -12.1310, lng: -77.0298, proveedor: 'Booking.com', rating: 9.5, resenas: 1100, comodidades: 'Vista al mar' },
-  { id: 'h22', nombre: 'Swissôtel Lima', ciudad: 'Lima', estrellas: 5, precioNoche: 280, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/resort,pool?lock=22', lat: -12.0967, lng: -77.0347, proveedor: 'Expedia', rating: 9.3, resenas: 850, comodidades: 'Desayuno premium' },
-  // Bogotá
-  { id: 'h23', nombre: 'W Bogotá', ciudad: 'Bogotá', estrellas: 5, precioNoche: 210, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/boutique,hotel?lock=23', lat: 4.6853, lng: -74.0322, proveedor: 'Marriott', rating: 9.2, resenas: 920, comodidades: 'Spa, Gimnasio' },
-  { id: 'h24', nombre: 'Click Clack Hotel', ciudad: 'Bogotá', estrellas: 4, precioNoche: 140, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/hotel,bedroom?lock=24', lat: 4.6713, lng: -74.0535, proveedor: 'Kayak', rating: 8.9, resenas: 1050, comodidades: 'Diseño boutique' },
-  // Miami
-  { id: 'h25', nombre: 'Fontainebleau Miami Beach', ciudad: 'Miami', estrellas: 5, precioNoche: 450, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/beach,resort?lock=25', lat: 25.8178, lng: -80.1223, proveedor: 'Expedia', rating: 8.8, resenas: 15400, comodidades: 'Frente al mar' },
-  { id: 'h26', nombre: 'YOTEL Miami', ciudad: 'Miami', estrellas: 4, precioNoche: 180, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/modern,hotel?lock=26', lat: 25.7761, lng: -80.1895, proveedor: 'Booking.com', rating: 8.5, resenas: 2100, comodidades: 'Centro de la ciudad' },
-  // Nueva York
-  { id: 'h27', nombre: 'The Plaza Hotel', ciudad: 'Nueva York', estrellas: 5, precioNoche: 850, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/luxury,city?lock=27', lat: 40.7644, lng: -73.9745, proveedor: 'Hotels.com', rating: 9.1, resenas: 6300, comodidades: 'Lujo clásico' },
-  { id: 'h28', nombre: 'YOTEL New York', ciudad: 'Nueva York', estrellas: 4, precioNoche: 220, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/nyc,hotel?lock=28', lat: 40.7588, lng: -73.9938, proveedor: 'Booking.com', rating: 8.4, resenas: 12000, comodidades: 'Cerca de Times Square' },
-  // París
-  { id: 'h29', nombre: 'Ritz Paris', ciudad: 'París', estrellas: 5, precioNoche: 1200, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/paris,luxury?lock=29', lat: 48.8682, lng: 2.3280, proveedor: 'Expedia', rating: 9.7, resenas: 1500, comodidades: 'Piscina cubierta' },
-  { id: 'h30', nombre: 'Hôtel des Arts Montmartre', ciudad: 'París', estrellas: 4, precioNoche: 250, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/paris,boutique?lock=30', lat: 48.8850, lng: 2.3333, proveedor: 'Booking.com', rating: 9.3, resenas: 2400, comodidades: 'Vistas a la ciudad' },
-  // Roma
-  { id: 'h31', nombre: 'Hotel Hassler Roma', ciudad: 'Roma', estrellas: 5, precioNoche: 900, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/rome,hotel?lock=31', lat: 41.9058, lng: 12.4835, proveedor: 'Kayak', rating: 9.4, resenas: 800, comodidades: 'Vistas al Coliseo' },
-  // Tokyo
-  { id: 'h32', nombre: 'Park Hyatt Tokyo', ciudad: 'Tokyo', estrellas: 5, precioNoche: 600, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/tokyo,hotel?lock=32', lat: 35.6853, lng: 139.6908, proveedor: 'Expedia', rating: 9.6, resenas: 3200, comodidades: 'Vistas al Monte Fuji' },
-  // Londres
-  { id: 'h33', nombre: 'The Savoy', ciudad: 'Londres', estrellas: 5, precioNoche: 750, tipo: 'hotel', imagen: 'https://loremflickr.com/600/400/london,hotel?lock=33', lat: 51.5103, lng: -0.1203, proveedor: 'Marriott', rating: 9.5, resenas: 4500, comodidades: 'Vistas al Támesis' },
 ];
 
 export const autosRealistas = [

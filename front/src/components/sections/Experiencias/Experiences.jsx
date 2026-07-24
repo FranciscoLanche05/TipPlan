@@ -11,16 +11,7 @@ export default function Experiences() {
   const handlePlanificarClick = (e) => {
     e.preventDefault();
     if (isAuthenticated) {
-      navigate(ROUTES.NUEVO_VIAJE);
-    } else {
-      openLoginModal();
-    }
-  };
-
-  const handleCategoryClick = (e) => {
-    e.preventDefault();
-    if (isAuthenticated) {
-      navigate(ROUTES.ACTIVIDADES);
+      navigate(ROUTES.PLANIFICADOR);
     } else {
       openLoginModal();
     }
@@ -50,7 +41,7 @@ export default function Experiences() {
               Rutas guiadas por volcanes, reservas naturales y comunidades
               indígenas del Ecuador.
             </p>
-            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver tours →</a>
+            <Link to="/experiencias/excursiones" className={styles.expLink}>Ver tours →</Link>
           </div>
 
           <div className={styles.expCard}>
@@ -60,7 +51,7 @@ export default function Experiences() {
               Rafting, canopy, escalada en roca y más. Para los que buscan
               adrenalina pura.
             </p>
-            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver actividades →</a>
+            <Link to="/experiencias/aventura" className={styles.expLink}>Ver actividades →</Link>
           </div>
 
           <div className={styles.expCard}>
@@ -70,7 +61,7 @@ export default function Experiences() {
               Descubre los sabores auténticos del Ecuador: mercados,
               restaurantes locales y food tours.
             </p>
-            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver experiencias →</a>
+            <Link to="/experiencias/gastronomia" className={styles.expLink}>Ver experiencias →</Link>
           </div>
 
           <div className={styles.expCard}>
@@ -80,7 +71,7 @@ export default function Experiences() {
               Festivales, ferias artesanales y celebraciones culturales que no
               te puedes perder.
             </p>
-            <a href="/actividades" onClick={handleCategoryClick} className={styles.expLink}>Ver eventos →</a>
+            <Link to="/experiencias/eventos" className={styles.expLink}>Ver eventos →</Link>
           </div>
         </div>
 

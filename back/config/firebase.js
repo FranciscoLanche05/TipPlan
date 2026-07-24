@@ -20,16 +20,16 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-export const isFirebaseConfigured = Object.values(firebaseConfig).every(Boolean);
-
+// Inicialización segura que no rompe la app si faltan credenciales (ej. en Vercel)
 let app;
 try {
-  if (!isFirebaseConfigured) throw new Error("Falta API KEY o variables de entorno incompletas");
+  if (!firebaseConfig.apiKey) throw new Error("Falta API KEY");
   app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 } catch (error) {
   console.warn("⚠️ Firebase deshabilitado:", error.message);
 }
 
+// Exportar instancias nulas si Firebase no pudo inicializarse
 export const auth = app ? getAuth(app) : null;
 export const db = app ? getFirestore(app) : null;
 export default app;

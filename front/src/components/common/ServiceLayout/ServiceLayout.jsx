@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { useLocation } from 'react-router-dom';
-import { getTripById } from '@back/services/firestoreService';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import styles from './ServiceLayout.module.css';
@@ -45,42 +43,13 @@ const ServiceLayout = ({
   renderCard, 
   onSearch, 
   searchPlaceholder = "¿A dónde vas?", 
-  showMap = true,
-  onMarkerClick
+  showMap = true 
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isMobileMapOpen, setIsMobileMapOpen] = useState(false);
   const [sortOption, setSortOption] = useState('');
   const [providerFilters, setProviderFilters] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [isMapReady, setIsMapReady] = useState(false);
-
-  const location = useLocation();
-
-  useEffect(() => {
-    if (showMap) {
-      window.requestAnimationFrame(() => {
-        setTimeout(() => {
-          setIsMapReady(true);
-        }, 0);
-      });
-    }
-  }, [showMap]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const tripId = params.get('tripId');
-    if (tripId) {
-      getTripById(tripId).then(trip => {
-        if (trip && trip.destination) {
-          setSearchTerm(trip.destination);
-          // Only trigger onSearch once initially
-          if (onSearch) onSearch(trip.destination);
-        }
-      });
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -166,7 +135,7 @@ const ServiceLayout = ({
 
         {/* Filters Bar (Kayak Style) */}
         <div className={styles.filtersBar}>
-          <button className={styles.filterBtn} onClick={() => { setSortOption(''); setProviderFilters([]); }} aria-label="Limpiar filtros">
+          <button className={styles.filterBtn} onClick={() => { setSortOption(''); setProviderFilters([]); }}>
             <SlidersHorizontal size={16} /> Restablecer filtros 
             {providerFilters.length > 0 && <span className={styles.badge}>{providerFilters.length}</span>}
           </button>
@@ -239,7 +208,7 @@ const ServiceLayout = ({
           )}
           
           {showMap && (
-            <button className={styles.mobileMapBtn} onClick={() => setIsMobileMapOpen(true)} aria-label="Abrir mapa">
+            <button className={styles.mobileMapBtn} onClick={() => setIsMobileMapOpen(true)}>
               <MapIcon size={16} /> Ver mapa
             </button>
           )}
@@ -271,42 +240,35 @@ const ServiceLayout = ({
         {showMap && (
           <div className={`${styles.mapColumn} ${isMobileMapOpen ? styles.mapOpenMobile : ''}`}>
             {isMobileMapOpen && (
-              <button className={styles.closeMapBtn} onClick={() => setIsMobileMapOpen(false)} aria-label="Cerrar mapa">
+              <button className={styles.closeMapBtn} onClick={() => setIsMobileMapOpen(false)}>
                 <X size={24} /> Cerrar mapa
               </button>
             )}
             <div className={styles.mapStickyContainer}>
-              {isMapReady && (
-                <MapContainer center={defaultCenter} zoom={12} className={styles.leafletMap}>
-                  <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
-                    url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-                  />
-                  <MapUpdater center={defaultCenter} markers={markers} />
-                  
-                  {markers.map(m => {
-                    const price = m.precio || m.precioNoche || m.precioDia || m.precioPromedio;
-                    return (
-                      <Marker 
-                        key={m.id} 
-                        position={[m.lat, m.lng]} 
-                        icon={createPriceIcon(price)}
-                        eventHandlers={{
-                          click: () => {
-                            if (onMarkerClick) onMarkerClick(m.id);
-                          }
-                        }}
-                      >
-                        <Popup className={styles.customPopup}>
-                          <strong>{m.nombre || m.empresa || m.titulo}</strong><br/>
-                          {m.proveedor && <small>Vía {m.proveedor}</small>}<br/>
-                          Precio: ${price}
-                        </Popup>
-                      </Marker>
-                    );
-                  })}
-                </MapContainer>
-              )}
+              <MapContainer center={defaultCenter} zoom={12} className={styles.leafletMap}>
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+                  url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                />
+                <MapUpdater center={defaultCenter} markers={markers} />
+                
+                {markers.map(m => {
+                  const price = m.precio || m.precioNoche || m.precioDia || m.precioPromedio;
+                  return (
+                    <Marker 
+                      key={m.id} 
+                      position={[m.lat, m.lng]} 
+                      icon={createPriceIcon(price)}
+                    >
+                      <Popup className={styles.customPopup}>
+                        <strong>{m.nombre || m.empresa || m.titulo}</strong><br/>
+                        {m.proveedor && <small>Vía {m.proveedor}</small>}<br/>
+                        Precio: ${price}
+                      </Popup>
+                    </Marker>
+                  );
+                })}
+              </MapContainer>
             </div>
           </div>
         )}
