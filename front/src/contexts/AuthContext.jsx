@@ -16,6 +16,7 @@ import {
   loginWithFacebook,
   checkEmailExists,
   logout as firebaseLogout,
+  checkRedirectResult,
 } from "@back/services/authService";
 import { update } from "@back/services/firestoreService";
 import { COLLECTIONS } from "@back/models/collections";
@@ -32,9 +33,9 @@ const mapAuthError = (err) => {
     "auth/email-already-in-use": "Ya existe una cuenta con este correo.",
     "auth/weak-password": "La contraseña debe tener al menos 6 caracteres.",
     "auth/operation-not-allowed": "Operación no permitida.",
-    "auth/too-many-requests": "Demasiados intentos. Intenta más tarde.",
     "auth/network-request-failed": "Sin conexión. Revisa tu internet.",
     "auth/popup-closed-by-user": "Se cerró la ventana de Google.",
+    "auth/popup-blocked": "Popup bloqueado. Redirigiendo...",
   };
   return map[code] || err?.message || "Ocurrió un error inesperado.";
 };
@@ -54,6 +55,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // Revisar si venimos de una redirección de Google (ej. por bloqueo de popup)
+    checkRedirectResult();
+
     try {
       const unsubscribe = onAuthChange((firebaseUser) => {
         setUser(firebaseUser);
