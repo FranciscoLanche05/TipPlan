@@ -10,6 +10,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getAI, getGenerativeModel, GoogleAIBackend } from "firebase/ai";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -32,4 +33,16 @@ try {
 
 export const auth = app ? getAuth(app) : null;
 export const db = app ? getFirestore(app) : null;
+
+// ─── Inicialización de Inteligencia Artificial (Gemini) ──────
+export const ai = app ? getAI(app, { backend: new GoogleAIBackend() }) : null;
+
+export const geminiModel = ai ? getGenerativeModel(ai, {
+  model: "gemini-3.5-flash",
+  generationConfig: {
+    temperature: 0.7,
+    maxOutputTokens: 2048,
+  }
+}) : null;
+
 export default app;

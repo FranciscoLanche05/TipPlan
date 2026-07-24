@@ -22,7 +22,7 @@ const Login = () => {
   const [remember, setRemember] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
-  const { login, authError, clearError, isAuthenticated } = useAuth();
+  const { login, loginGoogle, authError, clearError, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   // Redirigir si ya hay sesión activa
@@ -52,6 +52,18 @@ const Login = () => {
       navigate(ROUTES.DASHBOARD, { replace: true });
     } catch (err) {
       // el mensaje ya queda en authError
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleSocialLogin = async (provider) => {
+    setSubmitting(true);
+    try {
+      if (provider === 'Google') await loginGoogle();
+      navigate(ROUTES.DASHBOARD, { replace: true });
+    } catch (err) {
+      // authError from context
     } finally {
       setSubmitting(false);
     }
@@ -217,9 +229,11 @@ const Login = () => {
 
           {/* Social */}
           <div style={{ display: "flex", gap: "0.8rem", marginBottom: "1.6rem" }}>
-            {[["🔵", "Google"], ["📘", "Facebook"]].map(([icon, label]) => (
+            {[["🔵", "Google"]].map(([icon, label]) => (
               <button
                 key={label}
+                onClick={() => handleSocialLogin(label)}
+                disabled={submitting}
                 className="social-btn"
                 style={{
                   flex: 1,

@@ -322,7 +322,7 @@
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 30px;
   font-weight: 600;
-  color: var(--text-on-dark);
+  color: #ffffff; /* Explicit white to contrast with dark background */
   margin-bottom: 2px;
 }
 .countdownDate {
@@ -483,4 +483,232 @@
 .mainAddBtn:hover {
   border-color: var(--accent-gold);
   background: var(--bg-surface-alt);
+}
+
+/* Floating AI Button */
+.floatingAiBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.floatingAiBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.floatingAiBtn span {
+  background: linear-gradient(90deg, #f97316, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* AI Drawer in DetalleViaje */
+.aiDrawer {
+  position: fixed;
+  top: 70px; /* Assuming navbar is ~70px */
+  right: 0;
+  width: 450px;
+  max-width: 100vw;
+  height: calc(100vh - 70px);
+  background: var(--bg-page);
+  z-index: 1000; /* Ensure it's above other page elements */
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid var(--border-soft);
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--bg-surface);
+}
+
+.drawerTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drawerTitle h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.iconGold {
+  color: #f97316;
+}
+
+.closeDrawerBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeDrawerBtn:hover {
+  background: var(--bg-chip);
+}
+
+.chatArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.emptyChat {
+  margin: auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.emptyIcon {
+  color: #f97316;
+  margin-bottom: 16px;
+}
+
+.emptyChat h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.emptyChat p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.messageList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.messageRow {
+  display: flex;
+  gap: 12px;
+  max-width: 90%;
+}
+
+.messageRowUser {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.messageRowAi {
+  align-self: flex-start;
+}
+
+.avatarAi {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.messageBubble {
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.bubbleUser {
+  background: #0f172a;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.bubbleAi {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-bottom-left-radius: 4px;
+}
+
+.inputArea {
+  padding: 16px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-soft);
+}
+
+.chatForm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: var(--bg-page);
+  border: 1px solid var(--border-soft);
+  border-radius: 50px;
+  padding: 6px 6px 6px 20px;
+}
+
+.chatInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.sendBtn {
+  background: #0f172a;
+  color: white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
 }

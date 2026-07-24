@@ -16,6 +16,8 @@ const Hoteles = lazy(() => import("../pages/Servicios/Hoteles"));
 const Autos = lazy(() => import("../pages/Servicios/Autos"));
 const Restaurantes = lazy(() => import("../pages/Servicios/Restaurantes"));
 const Actividades = lazy(() => import("../pages/Servicios/Actividades"));
+const Privacidad = lazy(() => import("../pages/Legal/Privacidad"));
+const EliminacionDatos = lazy(() => import("../pages/Legal/EliminacionDatos"));
 const NuevoViaje = lazy(() => import("../pages/Viajes/NuevoViaje"));
 const DetalleViaje = lazy(() => import("../pages/Viajes/DetalleViaje"));
 
@@ -36,6 +38,8 @@ const AppRouter = () => {
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="registro" element={<Registro />} />
+          <Route path={ROUTES.PRIVACIDAD} element={<Privacidad />} />
+          <Route path={ROUTES.ELIMINACION_DATOS} element={<EliminacionDatos />} />
 
           {/* Rutas protegidas */}
           <Route element={<ProtectedRoute />}>

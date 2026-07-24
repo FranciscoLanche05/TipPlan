@@ -13,7 +13,6 @@ import {
   loginWithEmail,
   registerWithEmail,
   loginWithGoogle,
-  loginWithFacebook,
   checkEmailExists,
   logout as firebaseLogout,
   checkRedirectResult,
@@ -113,18 +112,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // ─── Login con Facebook ────────────────────────────────────
-  const loginFacebook = async () => {
-    clearError();
-    try {
-      const u = await loginWithFacebook();
-      closeLoginModal(); // Cerrar modal en éxito
-      return u;
-    } catch (err) {
-      setAuthError(mapAuthError(err));
-      throw err;
-    }
-  };
 
   // ─── Cerrar sesión ─────────────────────────────────────────
   const logout = async () => {
@@ -146,7 +133,6 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     loginGoogle,
-    loginFacebook,
     checkEmailExists,
     logout,
     isLoginModalOpen,

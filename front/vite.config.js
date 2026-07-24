@@ -38,6 +38,7 @@ export default defineConfig({
       "firebase/auth": path.resolve(__dirname, "node_modules/firebase/auth"),
       "firebase/firestore": path.resolve(__dirname, "node_modules/firebase/firestore"),
       "firebase/storage": path.resolve(__dirname, "node_modules/firebase/storage"),
+      "firebase/ai": path.resolve(__dirname, "node_modules/firebase/ai"),
     },
   },
   server: {
