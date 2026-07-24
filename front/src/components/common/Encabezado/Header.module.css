@@ -95,14 +95,13 @@
   padding: 10px 0;
   transition: border-color 0.3s ease, color 0.3s;
 }
-
 .btn_plan:hover {
   border-bottom: 2px solid #ffffff;
 }
 
 @media (max-width: 900px) {
   .container {
-    margin: 0 40px;
+    padding: 120px 40px 60px 40px;
   }
 
   .container h1 {
