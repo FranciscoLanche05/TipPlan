@@ -341,11 +341,11 @@ const Hoteles = () => {
                   <div className={modalStyles.mDetails}>
                     <h3>{selectedHotel.nombre}</h3>
                     <p>{selectedHotel.ciudad} • {selectedHotel.estrellas} Estrellas • {selectedHotel.proveedor}</p>
-                    <p style={{fontSize: '12px', color: '#64748b', marginTop: '4px'}}>2 Personas • 3 Noches • {selectedHotel.comodidades}</p>
+                    <p style={{fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px'}}>2 Personas • 3 Noches • {selectedHotel.comodidades}</p>
                   </div>
                   <div className={modalStyles.mPrice}>
                     <h2>${selectedHotel.precioNoche}</h2>
-                    <span style={{ fontSize: '11px', color: '#64748b' }}>precio base p/n</span>
+                    <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>precio base p/n</span>
                   </div>
                 </div>
 
@@ -428,7 +428,7 @@ const Hoteles = () => {
                   >
                     {isPaying ? 'Procesando pago...' : `Comprar por $${getCalculatedTotal()}`}
                   </button>
-                  <p style={{textAlign: 'center', fontSize: '12px', color: '#64748b', marginTop: '12px'}}>
+                  <p style={{textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', marginTop: '12px'}}>
                     Total por {nights} noche(s) para {guests} huésped(es)
                   </p>
                 </div>

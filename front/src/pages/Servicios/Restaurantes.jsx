@@ -243,7 +243,7 @@ const Restaurantes = () => {
             <span className={styles.ratingBadge}>{rest.rating}</span>
             <span className={styles.ratingText}>Excepcional</span>
           </div>
-          <div style={{ fontSize: '14px', color: '#64748b', marginTop: '5px' }}>
+          <div style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '5px' }}>
             {rest.tipoComida} • {rest.ciudad}
           </div>
         </div>
@@ -303,11 +303,11 @@ const Restaurantes = () => {
                   <div className={modalStyles.mDetails}>
                     <h3>{selectedRest.nombre}</h3>
                     <p>{selectedRest.ciudad} • {selectedRest.tipoComida} • {selectedRest.proveedor}</p>
-                    <p style={{fontSize: '12px', color: '#64748b', marginTop: '4px'}}>Mesa para 2 • Confirmación inmediata</p>
+                    <p style={{fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px'}}>Mesa para 2 • Confirmación inmediata</p>
                   </div>
                   <div className={modalStyles.mPrice}>
                     <h2>Gratis</h2>
-                    <span style={{ fontSize: '11px', color: '#64748b' }}>reserva base</span>
+                    <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>reserva base</span>
                   </div>
                 </div>
 
@@ -369,7 +369,7 @@ const Restaurantes = () => {
 
                 <div className={modalStyles.paymentSection} style={{ borderTop: 'none', background: 'transparent' }}>
                   {getCalculatedTotal() > 0 && (
-                    <div className={modalStyles.payCard} style={{ background: '#fff', border: '1px solid #e2e8f0' }}>
+                    <div className={modalStyles.payCard} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-soft)' }}>
                       <CreditCard size={20} />
                       <input type="text" placeholder="Número de tarjeta" defaultValue="**** **** **** 4242" disabled />
                     </div>
@@ -381,7 +381,7 @@ const Restaurantes = () => {
                   >
                     {isPaying ? 'Confirmando...' : (getCalculatedTotal() > 0 ? `Pagar Reserva ($${getCalculatedTotal()})` : 'Confirmar Reserva de Mesa')}
                   </button>
-                  <p style={{textAlign: 'center', fontSize: '12px', color: '#64748b', marginTop: '12px'}}>
+                  <p style={{textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', marginTop: '12px'}}>
                     Mesa para {people} en {tableType}
                   </p>
                 </div>
@@ -391,8 +391,8 @@ const Restaurantes = () => {
                 <div style={{ background: '#10b981', width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
                   <Check size={32} color="#fff" />
                 </div>
-                <h2 style={{fontSize: '24px', fontWeight: 'bold', color: '#0f172a'}}>¡Reserva Exitosa!</h2>
-                <p style={{ color: '#64748b', marginTop: '8px' }}>Tu mesa en {selectedRest.nombre} ha sido confirmada.</p>
+                <h2 style={{fontSize: '24px', fontWeight: 'bold', color: 'var(--text-primary)'}}>¡Reserva Exitosa!</h2>
+                <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Tu mesa en {selectedRest.nombre} ha sido confirmada.</p>
               </div>
             )}
           </div>

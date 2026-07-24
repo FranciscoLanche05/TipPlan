@@ -1,7 +1,7 @@
 .planner {
   position: relative;
   overflow: hidden;
-  background: #fdf6ec;
+  background: var(--bg-surface-alt);
   padding: 4rem 1.5rem;
 }
 
@@ -41,15 +41,15 @@
   font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em;
   text-transform: uppercase; color: #e8a020; margin-bottom: 0.25rem;
 }
-.title { font-size: 1.9rem; font-weight: 700; color: #123524; font-family: Georgia, serif; }
+.title { font-size: 1.9rem; font-weight: 700; color: var(--text-primary); font-family: Georgia, serif; }
 
 .tabSwitch {
   position: relative;
   display: flex;
   width: fit-content;
   margin: 0 auto 2rem;
-  background: #fff;
-  border: 1px solid #e5ddc8;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
   border-radius: 999px;
   padding: 4px;
   box-shadow: 0 4px 14px rgba(18,53,36,0.08);
@@ -71,7 +71,7 @@
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
   padding: 0.6rem 1.5rem;
   font-size: 0.9rem; font-weight: 600;
-  color: #123524;
+  color: var(--text-primary);
   background: none; border: none; cursor: pointer;
   transition: color 0.3s ease;
 }

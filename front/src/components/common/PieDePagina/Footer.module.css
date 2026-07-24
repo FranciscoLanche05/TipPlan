@@ -1,6 +1,6 @@
 .footer {
   background-color: #0d2118;
-  color: #cbd5e1;
+  color: var(--text-muted);
   padding: 80px 0 40px 0;
   border-top: 1px solid rgba(100, 200, 255, 0.1);
 }
@@ -37,7 +37,7 @@
 
 .footerDesc {
   font-size: 14px;
-  color: #94a3b8;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -65,7 +65,7 @@
 
 .socialLink:hover {
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
   transform: translateY(-3px);
 }
 
@@ -88,7 +88,7 @@
 }
 
 .footerLinks a {
-  color: #94a3b8;
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -102,7 +102,7 @@
 .footerLinkButton {
   background: none;
   border: none;
-  color: #94a3b8;
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -154,7 +154,7 @@
   right: 20px;
   background: none;
   border: none;
-  color: #94a3b8;
+  color: var(--text-muted);
   cursor: pointer;
   transition: color 0.3s ease;
   display: flex;
@@ -175,7 +175,7 @@
 
 .modalBody {
   line-height: 1.6;
-  color: #cbd5e1;
+  color: var(--text-muted);
   font-size: 16px;
 }
 
@@ -202,7 +202,7 @@
 
 .footerTagline {
   font-size: 13px;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-style: italic;
   margin: 0;
 }

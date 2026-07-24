@@ -1,16 +1,4 @@
 .dashboardPage {
-  --bg-dark: #0d2118; 
-  --bg-page: #faf7f0; 
-  --bg-surface: #ffffff; 
-  --bg-surface-alt: #f9f6f0; 
-  --bg-chip: #e2dfd9; 
-  --text-primary: #0d2118; 
-  --text-secondary: #606d66; 
-  --text-on-dark: #ffffff; 
-  --accent-gold: #e5a93b; 
-  --accent-gold-strong: #f4a02c; 
-  --border-soft: #e2dfd9;
-
   background-color: var(--bg-page);
   min-height: 100vh;
   padding-top: 70px; /* To account for global navbar */
