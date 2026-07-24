@@ -27,7 +27,6 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 code {
@@ -73,4 +72,19 @@ select {
 #root {
   width: 100%;
   min-height: 100vh;
+}
+
+/* View Transition API - Tema Circular */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* El tema nuevo (new) siempre debe estar encima expandiéndose desde el centro */
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
 }
