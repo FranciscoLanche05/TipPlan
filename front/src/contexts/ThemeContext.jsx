@@ -35,8 +35,41 @@ export function ThemeProvider({ children }) {
     window.localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  const toggleTheme = (e) => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    
+    // Si no soporta View Transitions, cambiar normal
+    if (!document.startViewTransition) {
+      document.documentElement.setAttribute("data-theme", nextTheme);
+      setTheme(nextTheme);
+      return;
+    }
+    
+    const transition = document.startViewTransition(() => {
+      // Sincrónico: Aplicar la variable CSS inmediatamente antes de que capture el "new" frame
+      document.documentElement.setAttribute("data-theme", nextTheme);
+      setTheme(nextTheme);
+    });
+
+    transition.ready.then(() => {
+      // La animación expande el tema nuevo (new) desde el centro hacia afuera
+      const clipPath = [
+        `circle(0px at 50% 50%)`,
+        `circle(100vmax at 50% 50%)`
+      ];
+
+      document.documentElement.animate(
+        {
+          clipPath: clipPath,
+        },
+        {
+          duration: 600,
+          easing: "ease-in-out",
+          fill: "forwards",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
   };
 
   const value = {
