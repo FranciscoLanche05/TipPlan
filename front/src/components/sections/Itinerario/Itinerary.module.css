@@ -1,5 +1,5 @@
 .card {
-  background: #fff;
+  background: var(--bg-surface);
   border-radius: 1.5rem;
   box-shadow: 0 10px 40px rgba(18,53,36,0.10);
   padding: 1.75rem;
@@ -20,11 +20,11 @@
   border-radius: 50%;
   border: none;
   background: none;
-  color: #123524;
+  color: var(--text-primary);
   cursor: pointer;
   transition: background 0.2s;
 }
-.navBtn:hover { background: #f5f0e3; }
+.navBtn:hover { background: var(--bg-surface-alt); }
 
 .dayPillWrap { position: relative; }
 
@@ -32,8 +32,8 @@
   width: 44px; height: 44px;
   border-radius: 50%;
   border: 2px solid #123524;
-  background: #fff;
-  color: #123524;
+  background: var(--bg-surface);
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
@@ -68,12 +68,12 @@
   border-radius: 50%;
   border: 2px dashed #123524;
   background: none;
-  color: #123524;
+  color: var(--text-primary);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
   transition: background 0.2s;
 }
-.addDayBtn:hover { background: #f5f0e3; }
+.addDayBtn:hover { background: var(--bg-surface-alt); }
 
 .timeline {
   max-width: 420px;
@@ -104,7 +104,7 @@
   flex: 1;
   min-height: 28px;
   margin: 4px 0;
-  background: #ddd2b3;
+  background: var(--bg-chip);
 }
 
 .card2 {
@@ -112,7 +112,7 @@
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
   border-radius: 1rem;
-  background: #faf7f0;
+  background: var(--bg-page);
   transition: box-shadow 0.2s;
 }
 .card2Editing { box-shadow: 0 0 0 2px #e8a020; }
@@ -137,7 +137,7 @@
 .itemTitle {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #123524;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -148,7 +148,7 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.75rem;
-  color: #9a9690;
+  color: var(--text-muted);
   margin-top: 0.15rem;
 }
 
@@ -159,17 +159,17 @@
   border-radius: 50%;
   border: none;
   background: none;
-  color: #123524;
+  color: var(--text-primary);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-.iconBtn:hover { background: #ebe5d3; }
-.iconBtnDanger { color: #9a9690; }
+.iconBtn:hover { background: var(--bg-chip); }
+.iconBtnDanger { color: var(--text-muted); }
 .iconBtnDanger:hover { background: #fde8e4; color: #d45830; }
 
 .addFormWrap {
-  background: #faf7f0;
-  border: 2px dashed #ddd2b3;
+  background: var(--bg-page);
+  border: 2px dashed var(--border-soft);
   border-radius: 1rem;
   padding: 0.75rem 1rem;
   animation: popIn 0.25s ease-out both;
@@ -180,28 +180,28 @@
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
   padding: 0.75rem;
   border-radius: 1rem;
-  border: 2px dashed #ddd2b3;
+  border: 2px dashed var(--border-soft);
   background: none;
-  color: #123524;
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
 }
-.addItemBtn:hover { background: #faf7f0; }
+.addItemBtn:hover { background: var(--bg-page); }
 
 .form { display: flex; flex-direction: column; gap: 0.5rem; }
 
 .formSelect, .formInput, .formInputSmall {
   width: 100%;
-  border: 1px solid #ddd2b3;
+  border: 1px solid var(--border-soft);
   border-radius: 0.5rem;
   padding: 0.4rem 0.7rem;
   font-size: 0.85rem;
   outline: none;
-  background: #fff;
+  background: var(--bg-surface);
 }
-.formSelect { font-weight: 600; color: #123524; font-size: 0.78rem; }
+.formSelect { font-weight: 600; color: var(--text-primary); font-size: 0.78rem; }
 .formInputSmall { font-size: 0.78rem; }
 
 .formActions { display: flex; justify-content: flex-end; gap: 0.5rem; padding-top: 0.25rem; }
@@ -214,8 +214,8 @@
   display: flex; align-items: center; justify-content: center;
   transition: transform 0.2s, background 0.2s;
 }
-.cancelBtn { background: none; color: #9a9690; }
-.cancelBtn:hover { background: #ebe5d3; }
+.cancelBtn { background: none; color: var(--text-muted); }
+.cancelBtn:hover { background: var(--bg-chip); }
 .confirmBtn { background: #123524; color: #e8a020; }
 .confirmBtn:hover { transform: scale(1.1); }
 
@@ -230,13 +230,13 @@
 
 .destinationInput {
   width: 100%;
-  border: 1.5px solid #ddd2b3;
+  border: 1.5px solid var(--border-soft);
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
   font-size: 0.95rem;
   outline: none;
-  background: #faf7f0;
-  color: #123524;
+  background: var(--bg-page);
+  color: var(--text-primary);
   box-sizing: border-box;
   transition: border-color 0.2s;
 }
@@ -250,7 +250,7 @@
   border-radius: 50px;
   border: none;
   background: #e8a020;
-  color: #123524;
+  color: var(--text-primary);
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
