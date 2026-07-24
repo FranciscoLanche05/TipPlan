@@ -63,7 +63,7 @@ const Autos = () => {
           <div className={styles.kCardMeta}>
             <span className={styles.ratingBadge}>{auto.rating}</span>
             <span className={styles.ratingText}>Excelente</span>
-            <span style={{ fontSize: '13px', color: '#64748b' }}>• {auto.empresa} en {auto.ciudad}</span>
+            <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>• {auto.empresa} en {auto.ciudad}</span>
           </div>
         </div>
 

@@ -44,7 +44,7 @@
 
 .blogSubtitle {
   font-size: 16px;
-  color: #cbd5e1;
+  color: var(--text-muted);
   max-width: 700px;
   margin: 0 auto;
 }
@@ -112,7 +112,7 @@
 
 .blogExcerpt {
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 20px;
   flex: 1;
@@ -122,7 +122,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--text-muted);
   margin-bottom: 16px;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(100, 200, 255, 0.1);

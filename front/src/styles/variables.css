@@ -1,0 +1,86 @@
+/* ════════════════════════════════════════════════════════
+   THEME TOKENS — Light (default) & Dark mode
+   Toggle by setting data-theme="dark" on <html>.
+   ════════════════════════════════════════════════════════ */
+
+:root {
+  /* Brand chrome (navbar/footer/hero) — stays dark in both themes */
+  --bg-dark: #0d2118;
+  --text-on-dark: #ffffff;
+
+  /* Content surfaces */
+  --bg-page: #faf7f0;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f9f6f0;
+  --bg-chip: #e2dfd9;
+  --bg-muted: #f1f5f9;
+
+  /* Text */
+  --text-primary: #0d2118;
+  --text-secondary: #606d66;
+  --text-muted: #94a3b8;
+
+  /* Accent (brand gold) — same in both themes */
+  --accent-gold: #e5a93b;
+  --accent-gold-strong: #f4a02c;
+
+  /* Borders */
+  --border-soft: #e2dfd9;
+  --border: #e2e8f0;
+
+  /* Link accent (used on light auth panels) */
+  --link-accent: #1b5c3a;
+
+  /* Status */
+  --status-success: #166534;
+  --status-success-bg: #dcfce7;
+  --status-error: #ef4444;
+  --status-error-bg: #fef2f2;
+
+  /* Shadows */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color-strong: rgba(0, 0, 0, 0.25);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  /* Brand chrome stays the same dark green so the navbar/footer keep their identity */
+  --bg-dark: #0a1712;
+  --text-on-dark: #ffffff;
+
+  /* Content surfaces — flipped to dark, warm-tinted to match the brand green */
+  --bg-page: #0e1a14;
+  --bg-surface: #16261d;
+  --bg-surface-alt: #1c2e23;
+  --bg-chip: #24382b;
+  --bg-muted: #1f3527;
+
+  /* Text — warm off-white / soft greys for legibility on dark surfaces */
+  --text-primary: #f5f2ea;
+  --text-secondary: #c3cdc4;
+  --text-muted: #93a196;
+
+  /* Accent stays consistent — gold reads well on dark surfaces too */
+  --accent-gold: #e8b352;
+  --accent-gold-strong: #f4a02c;
+
+  /* Borders */
+  --border-soft: #2c4234;
+  --border: #2c4234;
+
+  /* Link accent — lighter green so it stays legible on dark surfaces */
+  --link-accent: #6fcf9a;
+
+  /* Status — slightly brighter for contrast on dark backgrounds */
+  --status-success: #4ade80;
+  --status-success-bg: #14321f;
+  --status-error: #f87171;
+  --status-error-bg: #3a1a1a;
+
+  /* Shadows */
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --shadow-color-strong: rgba(0, 0, 0, 0.55);
+
+  color-scheme: dark;
+}

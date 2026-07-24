@@ -12,6 +12,20 @@
     />
     <title>TipPlan – Planifica tu aventura</title>
     <meta name="description" content="Planifica, organiza y vive cada viaje sin complicaciones." />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("tipplan-theme");
+          var theme =
+            stored === "light" || stored === "dark"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

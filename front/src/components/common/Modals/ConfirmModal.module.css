@@ -41,7 +41,7 @@
   right: 16px;
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: var(--text-muted);
   cursor: pointer;
   padding: 4px;
   border-radius: 50%;
@@ -52,8 +52,8 @@
 }
 
 .closeButton:hover {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: var(--bg-muted);
+  color: var(--text-primary);
 }
 
 .iconContainer {
@@ -70,13 +70,13 @@
   margin: 0 0 8px;
   font-size: 18px;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .message {
   margin: 0 0 24px;
   font-size: 14px;
-  color: #64748b;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
@@ -97,12 +97,12 @@
 }
 
 .cancelBtn {
-  background-color: #f1f5f9;
-  color: #475569;
+  background-color: var(--bg-muted);
+  color: var(--text-secondary);
 }
 
 .cancelBtn:hover {
-  background-color: #e2e8f0;
+  background-color: var(--bg-muted);
 }
 
 .confirmBtn {

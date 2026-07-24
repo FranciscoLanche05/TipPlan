@@ -10,6 +10,7 @@ import { Menu, X, User, LogOut, MapPin, Calendar } from "lucide-react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, user, logout, openLoginModal } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   // Inicial del nombre del usuario para el avatar
@@ -109,6 +110,10 @@ const Navbar = () => {
 
         {/* Sección de sesión en el sidebar */}
         <div className={styles.sidebarFooter}>
+          <button className={styles.sidebarThemeBtn} onClick={toggleTheme}>
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            <span>{isDark ? "Modo claro" : "Modo oscuro"}</span>
+          </button>
           {isAuthenticated ? (
             <>
               <Link

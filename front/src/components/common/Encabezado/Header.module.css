@@ -55,7 +55,7 @@
 
 .container p {
   font-size: 16px;
-  color: #ccd7d2;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 40px;
 }
@@ -68,7 +68,7 @@
 
 .btn_explorar {
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
   border: none;
   padding: 14px 28px;
   border-radius: 30px;
@@ -94,14 +94,13 @@
   padding: 10px 0;
   transition: border-color 0.3s ease, color 0.3s;
 }
-
 .btn_plan:hover {
   border-bottom: 2px solid #ffffff;
 }
 
 @media (max-width: 900px) {
   .container {
-    margin: 0 40px;
+    padding: 120px 40px 60px 40px;
   }
 
   .container h1 {
@@ -123,7 +122,7 @@
   .container { padding: 100px 20px 40px 20px; }
   .container h1 { font-size: 40px; line-height: 1.2; }
   .search_bar { flex-direction: column; border-radius: 15px; background: transparent; padding: 0; box-shadow: none; }
-  .input_group { width: 100%; background: #ffffff; margin-bottom: 10px; border-radius: 10px; padding: 15px; }
+  .input_group { width: 100%; background: var(--bg-surface); margin-bottom: 10px; border-radius: 10px; padding: 15px; }
   .input_group input, .input_group select { width: 100%; }
   .btn_search { width: 100%; border-radius: 10px; padding: 15px; }
   .input_divider { display: none; }

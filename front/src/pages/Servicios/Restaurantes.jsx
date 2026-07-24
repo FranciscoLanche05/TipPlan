@@ -64,7 +64,7 @@ const Restaurantes = () => {
             <span className={styles.ratingBadge}>{rest.rating}</span>
             <span className={styles.ratingText}>Excepcional ({rest.resenas})</span>
           </div>
-          <div style={{ fontSize: '14px', color: '#64748b', marginTop: '5px' }}>
+          <div style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '5px' }}>
             {rest.tipoComida} • {rest.ciudad}
           </div>
         </div>

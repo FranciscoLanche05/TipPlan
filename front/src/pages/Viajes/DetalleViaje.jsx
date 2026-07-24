@@ -167,28 +167,28 @@ const DetalleViaje = () => {
                   type="text" 
                   value={editTripData.title}
                   onChange={e => setEditTripData({...editTripData, title: e.target.value})}
-                  style={{ padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '18px', fontWeight: 'bold' }}
+                  style={{ padding: '8px', borderRadius: '6px', border: '1px solid var(--border-soft)', fontSize: '18px', fontWeight: 'bold' }}
                   placeholder="Título"
                 />
                 <input 
                   type="date" 
                   value={editTripData.startDate}
                   onChange={e => setEditTripData({...editTripData, startDate: e.target.value})}
-                  style={{ padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1' }}
+                  style={{ padding: '8px', borderRadius: '6px', border: '1px solid var(--border-soft)' }}
                 />
                 <input 
                   type="date" 
                   value={editTripData.endDate}
                   onChange={e => setEditTripData({...editTripData, endDate: e.target.value})}
-                  style={{ padding: '8px', borderRadius: '6px', border: '1px solid #cbd5e1' }}
+                  style={{ padding: '8px', borderRadius: '6px', border: '1px solid var(--border-soft)' }}
                 />
                 <button onClick={handleUpdateTrip} style={{ padding: '8px 12px', background: '#166534', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}><Save size={14}/> Guardar</button>
-                <button onClick={() => setIsEditingTrip(false)} style={{ padding: '8px 12px', background: '#f1f5f9', color: '#334155', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>Cancelar</button>
+                <button onClick={() => setIsEditingTrip(false)} style={{ padding: '8px 12px', background: 'var(--bg-muted)', color: 'var(--text-secondary)', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>Cancelar</button>
               </div>
             ) : (
               <div className={styles.titleTextGroup}>
                 <span className={styles.titleText}>{trip.title}</span>
-                <button onClick={() => setIsEditingTrip(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748b', display: 'flex', alignItems: 'center' }}>
+                <button onClick={() => setIsEditingTrip(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex', alignItems: 'center' }}>
                   <Pencil size={14} className={styles.editIcon} />
                 </button>
                 <button onClick={() => setIsDeleteModalOpen(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ef4444', marginLeft: 'auto', display: 'flex', alignItems: 'center' }} title="Eliminar viaje">

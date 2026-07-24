@@ -11,7 +11,7 @@ import {
 import styles from "./Budget.module.css";
 
 export const categories = [
-  { id: "aloj",   label: "Alojamiento",  pct: 35, color: "#1f5c3a" },
+  { id: "aloj",   label: "Alojamiento",  pct: 35, color: "var(--text-primary)" },
   { id: "trans",  label: "Transporte",   pct: 20, color: "#e8a020" },
   { id: "comida", label: "Comida",       pct: 25, color: "#d45830" },
   { id: "act",    label: "Actividades",  pct: 15, color: "#3b82a0" },

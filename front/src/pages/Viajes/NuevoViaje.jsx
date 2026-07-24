@@ -136,9 +136,6 @@ const NuevoViaje = () => {
     <div className={styles.pageContainer}>
       <div className={styles.leftPane}>
         <div className={styles.header}>
-          <button className={styles.backButton} onClick={() => navigate(-1)}>
-            <ChevronLeft size={24} />
-          </button>
         </div>
 
         <div className={styles.formContainer}>
@@ -149,7 +146,7 @@ const NuevoViaje = () => {
             <div className={styles.aiButtonWrapper}>
               <button className={styles.aiTriggerButton} onClick={() => setIsAiOpen(true)}>
                 <Sparkles size={20} color="#ffffff" />
-                <span>Planifica con IA</span>
+                <span>Planifica tu viaje</span>
                 <BorderBeam size={80} duration={4} borderWidth={2} colorFrom="#ff0080" colorTo="#7928ca" />
               </button>
             </div>

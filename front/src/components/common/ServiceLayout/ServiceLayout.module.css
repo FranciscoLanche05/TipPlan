@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f4f6f8;
+  background-color: var(--bg-muted);
   font-family: 'Inter', system-ui, sans-serif;
   /* Top spacing to account for main global navbar if there is one */
   padding-top: 80px; 
@@ -10,9 +10,9 @@
 
 /* --- Top Header & Search --- */
 .topHeader {
-  background-color: #ffffff;
+  background-color: var(--bg-surface);
   padding: 20px 40px 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .headerTopRow {
@@ -24,13 +24,13 @@
 
 .titles h1 {
   font-size: 28px;
-  color: #1a202c;
+  color: var(--text-primary);
   margin: 0 0 5px;
   font-weight: 700;
 }
 
 .titles p {
-  color: #718096;
+  color: var(--text-secondary);
   margin: 0;
   font-size: 15px;
 }
@@ -38,15 +38,15 @@
 .searchBox {
   display: flex;
   align-items: center;
-  background-color: #f1f5f9;
+  background-color: var(--bg-muted);
   border-radius: 8px;
   padding: 8px 16px;
   min-width: 400px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-soft);
 }
 
 .searchIcon {
-  color: #64748b;
+  color: var(--text-muted);
   margin-right: 10px;
 }
 
@@ -57,7 +57,7 @@
   padding: 10px 0;
   font-size: 16px;
   outline: none;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .searchBtn {
@@ -87,27 +87,27 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-soft);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 500;
-  color: #334155;
+  color: var(--text-secondary);
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s;
 }
 
 .filterBtn:hover {
-  background-color: #f8fafc;
+  background-color: var(--bg-muted);
   border-color: #94a3b8;
 }
 
 .filterActive {
-  background-color: #f1f5f9;
+  background-color: var(--bg-muted);
   border-color: #1e293b;
-  color: #1e293b;
+  color: var(--text-primary);
 }
 
 .badge {
@@ -124,7 +124,7 @@
 
 .arrow {
   font-size: 10px;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 /* --- Custom Dropdowns --- */
@@ -139,7 +139,7 @@
   top: calc(100% + 8px);
   left: 0;
   background: white;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-soft);
   border-radius: 8px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   min-width: 220px;
@@ -152,7 +152,7 @@
 .dropdownItem {
   padding: 10px 16px;
   font-size: 14px;
-  color: #334155;
+  color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -165,13 +165,13 @@
 }
 
 .dropdownItem:hover {
-  background: #f8fafc;
+  background: var(--bg-muted);
 }
 
 .dropdownItemActive {
-  background: #f1f5f9;
+  background: var(--bg-muted);
   font-weight: 600;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 /* --- Main Split Content --- */
@@ -217,7 +217,7 @@
   padding: 60px 20px;
   background-color: white;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-soft);
 }
 
 /* --- Right Column (Map) --- */
@@ -225,7 +225,7 @@
   width: 35%;
   min-width: 400px;
   position: relative;
-  border-left: 1px solid #e2e8f0;
+  border-left: 1px solid var(--border-soft);
 }
 
 .mapStickyContainer {
@@ -249,12 +249,12 @@
 
 .markerPrice {
   background-color: white;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-soft);
   border-radius: 20px;
   padding: 4px 10px;
   font-size: 13px;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: inline-flex;
   white-space: nowrap;

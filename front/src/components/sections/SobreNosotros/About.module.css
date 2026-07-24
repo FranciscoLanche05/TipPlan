@@ -1,6 +1,6 @@
 .about {
   width: 100%;
-  background-color: #fdf6ec;
+  background-color: var(--bg-surface-alt);
   padding: 80px 0;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@
 }
 
 .card p {
-  color: #a3b899;
+  color: var(--text-muted);
   font-size: 13px;
   font-weight: 500;
 }
@@ -61,8 +61,8 @@
 
 .tag {
   display: inline-block;
-  background-color: #e2dfd9;
-  color: #3e4e41;
+  background-color: var(--bg-chip);
+  color: var(--text-secondary);
   padding: 6px 14px;
   border-radius: 15px;
   font-size: 11px;
@@ -75,7 +75,7 @@
   font-size: 48px;
   font-family: "Playfair Display", serif;
   line-height: 1.15;
-  color: #0d2118;
+  color: var(--text-primary);
   margin-bottom: 25px;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .text {
-  color: #4a554f;
+  color: var(--text-secondary);
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 40px;
@@ -107,7 +107,7 @@
 .icon {
   width: 48px;
   height: 48px;
-  background-color: #f3e3c7;
+  background-color: var(--bg-chip);
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -117,14 +117,14 @@
 }
 
 .feature h3 {
-  color: #0d2118;
+  color: var(--text-primary);
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
 .feature p {
-  color: #606d66;
+  color: var(--text-secondary);
   font-size: 14px;
   line-height: 1.5;
 }

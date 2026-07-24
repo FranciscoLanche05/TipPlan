@@ -9,8 +9,10 @@ const colors = {
   gold: "#E8A020",
   goldLight: "#F5C040",
   coral: "#D45830",
-  cream: "#FDF6EC",
-  muted: "#5A7060",
+  cream: "var(--bg-page)",
+  muted: "var(--text-secondary)",
+  text: "var(--text-primary)",
+  link: "var(--link-accent)",
 };
 
 const Login = () => {
@@ -149,7 +151,7 @@ const Login = () => {
                     borderRadius: "50%",
                     border: `2px solid ${colors.forest}`,
                     background: bg,
-                    color: colors.forest,
+                    color: colors.text,
                     fontSize: "0.72rem",
                     fontWeight: 700,
                     display: "flex",
@@ -184,7 +186,7 @@ const Login = () => {
               fontFamily: "'Playfair Display', serif",
               fontSize: "1.8rem",
               fontWeight: 900,
-              color: colors.forest,
+              color: colors.text,
               marginBottom: "2rem",
               textAlign: "center",
             }}
@@ -198,7 +200,7 @@ const Login = () => {
                 fontFamily: "'Playfair Display', serif",
                 fontSize: "2rem",
                 fontWeight: 700,
-                color: colors.forest,
+                color: colors.text,
                 lineHeight: 1.2,
                 marginBottom: "0.5rem",
               }}
@@ -207,7 +209,7 @@ const Login = () => {
             </h2>
             <p style={{ fontSize: "0.9rem", color: colors.muted }}>
               ¿No tienes cuenta?{" "}
-              <Link to="/registro" style={{ color: colors.forestMid, fontWeight: 700, textDecoration: "none" }}>
+              <Link to="/registro" style={{ color: colors.link, fontWeight: 700, textDecoration: "none" }}>
                 Regístrate gratis
               </Link>
             </p>
@@ -290,7 +292,7 @@ const Login = () => {
                 display: "block",
                 fontSize: "0.74rem",
                 fontWeight: 700,
-                color: colors.forest,
+                color: colors.text,
                 textTransform: "uppercase",
                 letterSpacing: "0.6px",
                 marginBottom: "0.45rem",
@@ -313,10 +315,10 @@ const Login = () => {
                   padding: "0.85rem 1rem 0.85rem 2.8rem",
                   borderRadius: "13px",
                   border: `1.5px solid ${errors.email ? colors.coral : "rgba(12,45,30,0.15)"}`,
-                  background: "#fff",
+                  background: "var(--bg-surface)",
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontSize: "0.92rem",
-                  color: colors.forest,
+                  color: colors.text,
                   outline: "none",
                 }}
                 onFocus={(e) => (e.target.style.borderColor = colors.forest)}
@@ -332,7 +334,7 @@ const Login = () => {
                 display: "block",
                 fontSize: "0.74rem",
                 fontWeight: 700,
-                color: colors.forest,
+                color: colors.text,
                 textTransform: "uppercase",
                 letterSpacing: "0.6px",
                 marginBottom: "0.45rem",
@@ -355,10 +357,10 @@ const Login = () => {
                   padding: "0.85rem 2.8rem 0.85rem 2.8rem",
                   borderRadius: "13px",
                   border: `1.5px solid ${errors.pwd ? colors.coral : "rgba(12,45,30,0.15)"}`,
-                  background: "#fff",
+                  background: "var(--bg-surface)",
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                   fontSize: "0.92rem",
-                  color: colors.forest,
+                  color: colors.text,
                   outline: "none",
                 }}
                 onFocus={(e) => (e.target.style.borderColor = colors.forest)}
@@ -394,7 +396,7 @@ const Login = () => {
                   height: 18,
                   borderRadius: "5px",
                   border: `1.5px solid ${remember ? colors.forest : "rgba(12,45,30,0.22)"}`,
-                  background: remember ? colors.forest : "#fff",
+                  background: remember ? colors.forest : "var(--bg-surface)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -404,7 +406,7 @@ const Login = () => {
               </div>
               <span style={{ fontSize: "0.84rem", color: colors.muted }}>Recuérdame</span>
             </label>
-            <a href="#" style={{ fontSize: "0.84rem", color: colors.forestMid, fontWeight: 600, textDecoration: "none" }}>
+            <a href="#" style={{ fontSize: "0.84rem", color: colors.link, fontWeight: 600, textDecoration: "none" }}>
               ¿Olvidaste tu contraseña?
             </a>
           </div>

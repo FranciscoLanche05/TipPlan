@@ -25,10 +25,10 @@ export default function BudgetDonut({ total, progress, categories }) {
           );
         })}
       </g>
-      <text x={cx} y="94" textAnchor="middle" fontSize="12" fontWeight="700" fill="#123524" opacity="0.6">
+      <text x={cx} y="94" textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--text-primary)" opacity="0.6">
         TOTAL
       </text>
-      <text x={cx} y="118" textAnchor="middle" fontSize="22" fontWeight="900" fill="#123524">
+      <text x={cx} y="118" textAnchor="middle" fontSize="22" fontWeight="900" fill="var(--text-primary)">
         ${total.toLocaleString()}
       </text>
     </svg>

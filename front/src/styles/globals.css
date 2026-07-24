@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 /* CSS Reset and Global Styles */
 * {
   margin: 0;
@@ -5,18 +7,26 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
-  width: 100%;
-  overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+body {
   font-family: "Plus Jakarta Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #12231c;
-  color: #ffffff;
 }
 
 code {
@@ -47,7 +57,7 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-muted);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -62,4 +72,19 @@ select {
 #root {
   width: 100%;
   min-height: 100vh;
+}
+
+/* View Transition API - Tema Circular */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* El tema nuevo (new) siempre debe estar encima expandiéndose desde el centro */
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
 }
