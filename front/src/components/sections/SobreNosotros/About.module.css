@@ -71,7 +71,7 @@
   margin-bottom: 25px;
 }
 
-.content h2 {
+.content h1 {
   font-size: 48px;
   font-family: "Playfair Display", serif;
   line-height: 1.15;
@@ -79,8 +79,8 @@
   margin-bottom: 25px;
 }
 
-.content h2 span {
-  color: #b84f28;
+.content h1 span {
+  color: #d96b43;
   font-style: italic;
   font-family: "Playfair Display", serif;
 }
@@ -150,7 +150,7 @@
     font-size: 40px;
   }
 
-  .content h2 {
+  .content h1 {
     font-size: 60px;
   }
 
@@ -164,7 +164,7 @@
     padding: 60px 20px;
   }
 
-  .content h2 {
+  .content h1 {
     font-size: 40px;
   }
 
@@ -181,14 +181,14 @@
     gap: 40px;
   }
   .about { padding: 60px 0; }
-  .content h2 { font-size: 32px; }
+  .content h1 { font-size: 32px; }
   .image img { min-height: 300px; }
 }
 
 
 @media (min-width: 2000px) {
   .aboutContainer { max-width: none; width: 92%; }
-  .content h2 { font-size: 64px; }
+  .content h1 { font-size: 64px; }
   .text { font-size: 24px; }
   .featureItem h3 { font-size: 24px; }
   .featureItem p { font-size: 18px; }

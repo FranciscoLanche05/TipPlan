@@ -33,15 +33,15 @@
   margin-bottom: 50px;
 }
 
-.titleArea h2 {
+.titleArea h1 {
   font-size: 44px;
   font-family: "Playfair Display", serif;
   color: var(--text-primary);
   font-weight: 700;
 }
 
-.titleArea h2 span {
-  color: #b84f28;
+.titleArea h1 span {
+  color: #d96b43;
   font-style: italic;
 }
 
@@ -64,8 +64,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background-color: #0d2118;
   color: #ffffff;
@@ -215,7 +215,7 @@
 @media (max-width: 768px) {
   .destinationsContainer { padding: 0 20px; }
   .header { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .titleArea h2 { font-size: 32px; }
+  .titleArea h1 { font-size: 32px; }
   .cardWrapper { 
     flex: 0 0 100%;
     width: 100%;
@@ -226,12 +226,12 @@
   .destinations {
     padding: 60px 20px;
   }
-  .titleArea h2 {
+  .titleArea h1 {
     font-size: 40px;
   }
 }
 
 @media (min-width: 2000px) {
   .destinationsContainer { max-width: none; width: 92%; }
-  .titleArea h2 { font-size: 64px; }
+  .titleArea h1 { font-size: 64px; }
 }
