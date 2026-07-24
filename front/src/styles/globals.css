@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 /* CSS Reset and Global Styles */
 * {
   margin: 0;
@@ -9,14 +11,19 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
 body {
   width: 100%;
   overflow-x: hidden;
   font-family: "Plus Jakarta Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #12231c;
-  color: #ffffff;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 code {
@@ -47,7 +54,7 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-muted);
 }
 
 ::-webkit-scrollbar-thumb {

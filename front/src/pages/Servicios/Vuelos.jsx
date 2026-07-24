@@ -368,7 +368,7 @@ const Vuelos = () => {
                   </div>
                   <div className={styles.mPrice}>
                     <h2>${selectedVuelo.precio}</h2>
-                    <span style={{ fontSize: '11px', color: '#64748b' }}>precio base p/p</span>
+                    <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>precio base p/p</span>
                   </div>
                 </div>
 
@@ -441,7 +441,7 @@ const Vuelos = () => {
                   >
                     {isPaying ? 'Procesando pago...' : `Comprar por $${getCalculatedTotal()}`}
                   </button>
-                  <p style={{textAlign: 'center', fontSize: '12px', color: '#64748b', marginTop: '12px'}}>
+                  <p style={{textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', marginTop: '12px'}}>
                     {passengers} Pasajero(s) en clase {flightClass}
                   </p>
                 </div>

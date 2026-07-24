@@ -33,7 +33,7 @@
 
 .experiencesSubtitle {
   font-size: 16px;
-  color: #a3b899;
+  color: var(--text-muted);
   line-height: 1.6;
   max-width: 520px;
   margin: 0 auto;
@@ -98,7 +98,7 @@
 
 .expDesc {
   font-size: 14px;
-  color: #a3b899;
+  color: var(--text-muted);
   line-height: 1.65;
   margin-bottom: 24px;
 }
@@ -139,14 +139,14 @@
 
 .ctaBannerText p {
   font-size: 15px;
-  color: #a3b899;
+  color: var(--text-muted);
   line-height: 1.5;
   margin: 0;
 }
 
 .ctaBannerBtn {
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
   padding: 14px 32px;
   border-radius: 30px;
   text-decoration: none;
