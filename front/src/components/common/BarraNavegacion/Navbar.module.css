@@ -32,7 +32,7 @@
   border-radius: 10px;
   background: transparent;
   border: none;
-  color: #cbd5e1;
+  color: var(--text-muted);
   cursor: pointer;
   transition: background-color 0.25s, color 0.25s;
 }
@@ -67,6 +67,46 @@
   gap: 0.75rem;
 }
 
+.themeToggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(229, 169, 59, 0.1);
+  border: 1px solid rgba(229, 169, 59, 0.25);
+  color: var(--accent-gold);
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s, transform 0.2s;
+}
+
+.themeToggleBtn:hover {
+  background: rgba(229, 169, 59, 0.2);
+  transform: rotate(15deg);
+}
+
+.sidebarThemeBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid rgba(229, 169, 59, 0.25);
+  color: var(--accent-gold);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.sidebarThemeBtn:hover {
+  background: rgba(229, 169, 59, 0.15);
+}
+
 .btn_login {
   display: inline-flex;
   align-items: center;
@@ -85,7 +125,7 @@
 
 .btn_login:hover {
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
   border-color: #e5a93b;
 }
 
@@ -135,7 +175,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #f8f9fa;
+  background-color: var(--bg-muted);
   padding: 6px 14px;
   border-radius: 23px;
   color: #1a73e8;
@@ -150,7 +190,7 @@
 }
 
 .googleAiBtn:hover .googleAiBtnContent {
-  background-color: #ffffff;
+  background-color: var(--bg-surface);
 }
 
 .googleAiBtnContent span {
@@ -167,7 +207,7 @@
   gap: 14px;
   padding: 12px 16px;
   border-radius: 12px;
-  background-color: #f8f9fa;
+  background-color: var(--bg-muted);
   color: #1a73e8;
   font-size: 15px;
   font-weight: 600;
@@ -196,7 +236,7 @@
 .googleAiSidebarBtn:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 15px rgba(66, 133, 244, 0.2);
-  background-color: #ffffff;
+  background-color: var(--bg-surface);
 }
 
 /* ── Usuario autenticado (navbar) ─────────────────────── */
@@ -226,7 +266,7 @@
   height: 32px;
   border-radius: 50%;
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,7 +304,7 @@
 
 .btn_logout:hover {
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
 }
 
 /* ════════════════════════════════════════════════════════
@@ -341,7 +381,7 @@
   border-radius: 10px;
   background: transparent;
   border: none;
-  color: #cbd5e1;
+  color: var(--text-muted);
   cursor: pointer;
   transition: background-color 0.25s, color 0.25s;
 }
@@ -365,7 +405,7 @@
   gap: 14px;
   padding: 12px 16px;
   border-radius: 10px;
-  color: #cbd5e1;
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
@@ -413,7 +453,7 @@
   height: 40px;
   border-radius: 50%;
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,7 +475,7 @@
 }
 
 .sidebarUserLabel {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 12px;
 }
 
@@ -466,7 +506,7 @@
   padding: 12px 16px;
   border-radius: 10px;
   background-color: #e5a93b;
-  color: #0d2118;
+  color: var(--text-primary);
   font-size: 15px;
   font-weight: 700;
   transition: background-color 0.25s;

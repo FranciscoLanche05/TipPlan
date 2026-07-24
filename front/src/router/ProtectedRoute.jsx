@@ -26,13 +26,13 @@ export default function ProtectedRoute() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#FDF6EC",
+        background: "var(--bg-surface-alt)",
       }}>
         <div style={{
           width: 40,
           height: 40,
-          border: "4px solid rgba(12,45,30,0.15)",
-          borderTopColor: "#0C2D1E",
+          border: "4px solid var(--border-soft)",
+          borderTopColor: "var(--accent-gold-strong)",
           borderRadius: "50%",
           animation: "spin 0.8s linear infinite",
         }} />
