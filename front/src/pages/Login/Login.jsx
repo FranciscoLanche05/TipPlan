@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { ROUTES } from '../../constants/routes';
 
 const colors = {
   forest: "#0C2D1E",
@@ -19,12 +20,12 @@ const Login = () => {
   const [remember, setRemember] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
-  const { login, authError, clearError, isAuthenticated } = useAuth();
+  const { login, loginGoogle, loginFacebook, authError, clearError, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   // Redirigir si ya hay sesión activa
   useEffect(() => {
-    if (isAuthenticated) navigate("/mis-viajes", { replace: true });
+    if (isAuthenticated) navigate(ROUTES.DASHBOARD, { replace: true });
   }, [isAuthenticated, navigate]);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Login = () => {
     setSubmitting(true);
     try {
       await login(email, pwd);
-      navigate("/mis-viajes", { replace: true });
+      navigate(ROUTES.DASHBOARD, { replace: true });
     } catch (err) {
       // el mensaje ya queda en authError
     } finally {
@@ -214,30 +215,64 @@ const Login = () => {
 
           {/* Social */}
           <div style={{ display: "flex", gap: "0.8rem", marginBottom: "1.6rem" }}>
-            {[["🔵", "Google"], ["📘", "Facebook"]].map(([icon, label]) => (
-              <button
-                key={label}
-                className="social-btn"
-                style={{
-                  flex: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "0.55rem",
-                  padding: "0.72rem",
-                  borderRadius: "12px",
-                  border: "1.5px solid rgba(12,45,30,0.14)",
-                  background: "#fff",
-                  cursor: "pointer",
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontSize: "0.85rem",
-                  fontWeight: 600,
-                  color: colors.forest,
-                }}
-              >
-                <span style={{ fontSize: "1.1rem" }}>{icon}</span> {label}
-              </button>
-            ))}
+            <button
+              className="social-btn"
+              onClick={async () => {
+                try {
+                  await loginGoogle();
+                  navigate(ROUTES.DASHBOARD, { replace: true });
+                } catch (err) {
+                  // error manejado en AuthContext
+                }
+              }}
+              style={{
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.55rem",
+                padding: "0.72rem",
+                borderRadius: "12px",
+                border: "1.5px solid rgba(12,45,30,0.14)",
+                background: "#fff",
+                cursor: "pointer",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                color: colors.forest,
+              }}
+            >
+              <span style={{ fontSize: "1.1rem" }}>🔵</span> Google
+            </button>
+            <button
+              className="social-btn"
+              onClick={async () => {
+                try {
+                  await loginFacebook();
+                  navigate(ROUTES.DASHBOARD, { replace: true });
+                } catch (err) {
+                  alert("Modo Demo: " + err.message);
+                }
+              }}
+              style={{
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.55rem",
+                padding: "0.72rem",
+                borderRadius: "12px",
+                border: "1.5px solid rgba(12,45,30,0.14)",
+                background: "#fff",
+                cursor: "pointer",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                color: colors.forest,
+              }}
+            >
+              <span style={{ fontSize: "1.1rem" }}>📘</span> Facebook
+            </button>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1.6rem" }}>
