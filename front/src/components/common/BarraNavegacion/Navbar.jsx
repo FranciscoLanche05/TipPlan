@@ -5,11 +5,13 @@ import UserDropdown from "./UserDropdown/UserDropdown";
 import styles from "./Navbar.module.css";
 import { ROUTES } from "../../../constants/routes";
 import { useAuth } from "../../../contexts/AuthContext";
-import { Menu, X, User, LogOut, MapPin, Calendar, Sparkles } from "lucide-react";
+import { useTheme } from "../../../contexts/ThemeContext";
+import { Menu, X, User, LogOut, MapPin, Calendar, Sparkles, Sun, Moon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, user, logout, openLoginModal } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   // Inicial del nombre del usuario para el avatar
@@ -68,6 +70,14 @@ const Navbar = () => {
 
         {/* Lado derecho: Botones de acción */}
         <div className={styles.actions}>
+          <button
+            className={styles.themeToggleBtn}
+            onClick={toggleTheme}
+            aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}
+            title={isDark ? "Modo claro" : "Modo oscuro"}
+          >
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           {isAuthenticated && (
             <button className={styles.googleAiBtn} onClick={() => navigate(ROUTES.NUEVO_VIAJE)}>
               <div className={styles.googleAiBtnContent}>
@@ -117,6 +127,10 @@ const Navbar = () => {
 
         {/* Sección de sesión en el sidebar */}
         <div className={styles.sidebarFooter}>
+          <button className={styles.sidebarThemeBtn} onClick={toggleTheme}>
+            {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            <span>{isDark ? "Modo claro" : "Modo oscuro"}</span>
+          </button>
           {isAuthenticated ? (
             <>
               <Link

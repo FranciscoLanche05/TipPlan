@@ -263,7 +263,7 @@ const Actividades = () => {
             <span className={styles.ratingBadge}>{act.rating}</span>
             <span className={styles.ratingText}>Excelente ({act.resenas})</span>
           </div>
-          <div style={{ fontSize: '14px', color: '#64748b', marginTop: '5px' }}>
+          <div style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '5px' }}>
             ⏳ Duración: {act.duracion} • {act.ciudad || getCityFromActivity(act.id)}
           </div>
         </div>
@@ -323,11 +323,11 @@ const Actividades = () => {
                   <div className={modalStyles.mDetails}>
                     <h3>{selectedAct.titulo}</h3>
                     <p>{selectedAct.ciudadDisplay} • {selectedAct.duracion} • {selectedAct.proveedor}</p>
-                    <p style={{fontSize: '12px', color: '#64748b', marginTop: '4px'}}>Cancelación gratuita • Guía profesional</p>
+                    <p style={{fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px'}}>Cancelación gratuita • Guía profesional</p>
                   </div>
                   <div className={modalStyles.mPrice}>
                     <h2>${selectedAct.precio}</h2>
-                    <span style={{ fontSize: '11px', color: '#64748b' }}>precio base p/p</span>
+                    <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>precio base p/p</span>
                   </div>
                 </div>
 
@@ -400,7 +400,7 @@ const Actividades = () => {
                   >
                     {isPaying ? 'Procesando pago...' : `Pagar reserva por $${getCalculatedTotal()}`}
                   </button>
-                  <p style={{textAlign: 'center', fontSize: '12px', color: '#64748b', marginTop: '12px'}}>
+                  <p style={{textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', marginTop: '12px'}}>
                     Total para {people} persona(s) con pase {passType}
                   </p>
                 </div>
@@ -410,8 +410,8 @@ const Actividades = () => {
                 <div style={{ background: '#10b981', width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
                   <Check size={32} color="#fff" />
                 </div>
-                <h2 style={{fontSize: '24px', fontWeight: 'bold', color: '#0f172a'}}>¡Reserva Confirmada!</h2>
-                <p style={{ color: '#64748b', marginTop: '8px' }}>Tu tour "{selectedAct.titulo}" en {selectedAct.ciudadDisplay} está asegurado.</p>
+                <h2 style={{fontSize: '24px', fontWeight: 'bold', color: 'var(--text-primary)'}}>¡Reserva Confirmada!</h2>
+                <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>Tu tour "{selectedAct.titulo}" en {selectedAct.ciudadDisplay} está asegurado.</p>
               </div>
             )}
           </div>
